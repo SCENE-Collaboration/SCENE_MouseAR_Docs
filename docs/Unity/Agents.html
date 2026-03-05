@@ -1,0 +1,1317 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Agent System Reference &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Agents';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parameter Control System" href="ParameterSystem.html" />
+    <link rel="prev" title="Spawner System Reference" href="Spawners.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/Agents.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/Agents.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Agent System Reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inputs-are-split-across-multiple-agents">Why Inputs Are Split Across Multiple Agents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior">1. ML-Agents requires a fixed action and observation spec per behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-disablement-and-substitution">2. Independent disablement and substitution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-and-episode-boundary-isolation">4. Reward and episode boundary isolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-side-action-routing-is-trivially-extensible">5. Python-side action routing is trivially extensible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-observations-can-be-attached-selectively">6. Visual observations can be attached selectively</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-types">Agent Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent">DlcAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent">TouchFingerAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen">PlayerAgent3DOnScreen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent">TTLReceiverAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-iti-observations-during-initialization-period">Init/ITI Observations During Initialization Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-patterns">Integration Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-singlewall-playeragent3donscreen">Pattern 1: SingleWall + PlayerAgent3DOnScreen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-floortargets-dlcagent">Pattern 2: FloorTargets + DlcAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-sequencetarget-dlcagent">Pattern 3: SequenceTarget + DlcAgent</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-space-details">Observation Space Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent-observations">DlcAgent Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen-observations">PlayerAgent3DOnScreen Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent-observations">TouchFingerAgent Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent-observations">TTLReceiverAgent Observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#action-space-details">Action Space Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent-actions">DlcAgent Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent-actions">TouchFingerAgent Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen-actions">PlayerAgent3DOnScreen Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent-actions">TTLReceiverAgent Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="agent-system-reference">
+<h1>Agent System Reference<a class="headerlink" href="#agent-system-reference" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Agents are ML-Agents components that we use to interact between python and Unity game. They collect observations, execute actions, and receive rewards based on episode outcomes.</p>
+</section>
+<hr class="docutils" />
+<section id="why-inputs-are-split-across-multiple-agents">
+<h2>Why Inputs Are Split Across Multiple Agents<a class="headerlink" href="#why-inputs-are-split-across-multiple-agents" title="Link to this heading">#</a></h2>
+<p>Each physical input source (pose tracking, touchscreen, photodiode sync) is wired to a <strong>separate ML-Agents behavior</strong> rather than merged into a single agent. This is an architectural decision with several concrete reasons:</p>
+<section id="ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior">
+<h3>1. ML-Agents requires a fixed action and observation spec per behavior<a class="headerlink" href="#ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior" title="Link to this heading">#</a></h3>
+<p>A Unity behavior’s action space (number of continuous/discrete branches, their sizes) and observation space are <strong>fixed at build time</strong> inside the behavior spec. Combining DLC pose (5 continuous actions) and TTL signal (1 continuous action) into one agent would require a 6-element action vector where the TTL slot is always irrelevant to the pose logic and vice versa. Separate behaviors keep each spec minimal and semantically coherent.</p>
+</section>
+<section id="independent-disablement-and-substitution">
+<h3>2. Independent disablement and substitution<a class="headerlink" href="#independent-disablement-and-substitution" title="Link to this heading">#</a></h3>
+<p>Because each input is a distinct behavior, any of them can be dropped, replaced with a dummy, or run offline without touching the others:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hockey session: no touchscreen, DLC + TTL only</span>
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span> <span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">use_dlc</span>   <span class="o">=</span> <span class="kc">True</span>
+<span class="n">use_touch</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># RL training: no physical hardware at all, agent provides DLCInput</span>
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span> <span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">use_dlc</span>   <span class="o">=</span> <span class="kc">False</span>
+<span class="n">use_photottl</span> <span class="o">=</span> <span class="kc">False</span>             <span class="c1"># zeros sent for TTLInput</span>
+</pre></div>
+</div>
+<p>Removing a behavior from <code class="docutils literal notranslate"><span class="pre">behavior_list</span></code> or replacing it with zeros does not require recompiling Unity.</p>
+</section>
+<section id="reward-and-episode-boundary-isolation">
+<h3>4. Reward and episode boundary isolation<a class="headerlink" href="#reward-and-episode-boundary-isolation" title="Link to this heading">#</a></h3>
+<p>ML-Agents ties reward issuance and <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> calls to individual agents. <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code> is the agent that receives episode outcomes (<code class="docutils literal notranslate"><span class="pre">OnCorrect</span></code> / <code class="docutils literal notranslate"><span class="pre">OnIncorrect</span></code>) from <code class="docutils literal notranslate"><span class="pre">MultiEpisodeToAgentBridge</span></code>. <code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code> observes the scene but never calls <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> itself. Keeping them separate means reward logic is localised to the TTL agent, and the DLC agent’s episode boundary is driven purely by the environment reset signal — its <code class="docutils literal notranslate"><span class="pre">OnEpisodeBegin()</span></code> is a no-op.</p>
+</section>
+<section id="python-side-action-routing-is-trivially-extensible">
+<h3>5. Python-side action routing is trivially extensible<a class="headerlink" href="#python-side-action-routing-is-trivially-extensible" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">UnityAgentTask.get_action_for(bname)</span></code> dispatches by canonical behavior name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;DLCInput&quot;</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_dlc</span><span class="p">:</span>    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;TouchInput&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_touch</span><span class="p">:</span>  <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;TTLInput&quot;</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_photottl</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<span class="c1"># default: zeros</span>
+</pre></div>
+</div>
+<p>Adding a new input source means adding one new Unity agent with its own behavior name, one <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">bare</span> <span class="pre">==</span> <span class="pre">&quot;NewInput&quot;</span></code> branch in Python, and nothing else. The step loop in <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> iterates over <code class="docutils literal notranslate"><span class="pre">behavior_list</span></code> generically and does not need modification.</p>
+</section>
+<section id="visual-observations-can-be-attached-selectively">
+<h3>6. Visual observations can be attached selectively<a class="headerlink" href="#visual-observations-can-be-attached-selectively" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code> optionally carries a <code class="docutils literal notranslate"><span class="pre">CameraSensorComponent</span></code> for visual observations (e.g. a top-down camera for RL training). Attaching a camera sensor to TTLReceiverAgent would be meaningless. The per-agent separation makes it natural to add or remove sensors from exactly the agents that need them, controlled via env params at runtime (<code class="docutils literal notranslate"><span class="pre">DlcAgent.camera_enabled</span></code>).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="agent-types">
+<h2>Agent Types<a class="headerlink" href="#agent-types" title="Link to this heading">#</a></h2>
+<section id="dlcagent">
+<h3>DlcAgent<a class="headerlink" href="#dlcagent" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Navigate on floor/wall surface using direct position + heading control</p>
+<p><strong>Action Space:</strong> Continuous[5]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[0]</span></code>: X position (normalized -1 to 1, mapped to U coordinate 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[1]</span></code>: Y position (normalized -1 to 1, mapped to V coordinate 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[2]</span></code>: Heading in degrees (0 to 360, absolute rotation around Y axis)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[3]</span></code>: Head angle (unused, reserved for future use)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[4]</span></code>: Emitted action (integer, compared to <code class="docutils literal notranslate"><span class="pre">emitAction</span></code> to set interact state)</p></li>
+</ul>
+<p><strong>Observation Space:</strong> Continuous[5]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[0]</span></code>: World position X (meters)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>: World position Z (meters)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[2]</span></code>: Screen-space U coordinate (normalized 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[3]</span></code>: Screen-space V coordinate (normalized 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[4]</span></code>: Heading angle (radians, relative to +Z axis in x-z plane)</p></li>
+<li><p>Optional: Camera sensor (84×84×1 or 84×84×3 pixels if enabled)</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Wiring&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">OrthoScreenFromObject</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span><span class="w">  </span><span class="c1">// Wall surface reference</span>
+
+<span class="na">[Header(&quot;Placement&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">clampFullyInside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Actions&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">emitAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w">  </span><span class="c1">// Action emission tracking</span>
+
+<span class="na">[Header(&quot;Visual Sensor&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Camera</span><span class="w"> </span><span class="n">obsCamera</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DlcAgent.camera_enabled&quot;</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">cameraEnabledDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cameraWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cameraHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">cameraGrayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraSensorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;obs_cam&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Visual Observations (Optional):</strong></p>
+<ul class="simple">
+<li><p>Camera sensor can be enabled via env param</p></li>
+<li><p>Configurable resolution and grayscale</p></li>
+<li><p>Auto-attached at Awake() based on <code class="docutils literal notranslate"><span class="pre">camera_enabled</span></code> param</p></li>
+</ul>
+</section>
+<section id="touchfingeragent">
+<h3>TouchFingerAgent<a class="headerlink" href="#touchfingeragent" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Simple Touch control via teleportation to NDC coordinates, Currently not used. Was replaced by position aware PlayerAgent3DOnScreen for touchscreen tasks.</p>
+<p><strong>Action Space:</strong> Continuous[2]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[0]</span></code>: Y position (normalized device coordinates -1 to 1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[1]</span></code>: X position (normalized device coordinates -1 to 1)</p></li>
+</ul>
+<p><strong>Observation Space:</strong> Continuous[3]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[0]</span></code>: U position on projection plane (normalized 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>: V position on projection plane (normalized 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[2]</span></code>: Azimuth (sin of heading angle relative to plane)</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">TouchFingerTeleporter</span><span class="w"> </span><span class="n">Teleporter</span><span class="p">;</span><span class="w">  </span><span class="c1">// Teleportation component</span>
+</pre></div>
+</div>
+<p><strong>Usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python action (direct position)</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y_ndc</span><span class="p">,</span> <span class="n">x_ndc</span><span class="p">])</span>  <span class="c1"># Each in [-1, 1]</span>
+
+<span class="c1"># Observation</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="n">u</span><span class="p">,</span>              <span class="c1"># UV [0, 1]</span>
+    <span class="n">v</span><span class="p">,</span>              <span class="c1"># UV [0, 1]</span>
+    <span class="n">azimuth_sin</span>     <span class="c1"># Sin of heading angle</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="playeragent3donscreen">
+<h3>PlayerAgent3DOnScreen<a class="headerlink" href="#playeragent3donscreen" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> TouchFinger controller which is aware of mouse position and viewing angle for AR-based touchscreen interaction with on-line view.</p>
+<p><strong>Action Space:</strong> Continuous[2] (or [4] for compatibility)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[0]</span></code>: X position (normalized -1 to 1, mapped to U 0-1 on screen)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[1]</span></code>: Y position (normalized -1 to 1, mapped to V 0-1 on screen)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[2]</span></code>: Unused (compatibility padding)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[3]</span></code>: Unused (compatibility padding)</p></li>
+</ul>
+<p><strong>Observation Space:</strong> Continuous[2]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[0]</span></code>: U position on screen (normalized 0-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>: V position on screen (normalized 0-1)</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Wiring&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">OrthoScreenFromObject</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Placement&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">clampFullyInside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">teleport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">      </span><span class="c1">// Instant vs smooth movement</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">followLerp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20f</span><span class="p">;</span><span class="w">    </span><span class="c1">// Smooth movement speed</span>
+</pre></div>
+</div>
+<p><strong>Movement Modes:</strong></p>
+<ul class="simple">
+<li><p><strong>Teleport</strong> (<code class="docutils literal notranslate"><span class="pre">teleport=true</span></code>): Instant position update</p></li>
+<li><p><strong>Smooth</strong> (<code class="docutils literal notranslate"><span class="pre">teleport=false</span></code>): Lerp to target with <code class="docutils literal notranslate"><span class="pre">followLerp</span></code> speed</p></li>
+</ul>
+<p><strong>Clamping:</strong></p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">clampFullyInside=true</span></code>: Keep entire object within screen bounds</p></li>
+<li><p>Computes planar half-extents from renderers/colliders</p></li>
+<li><p>Pads UV range to prevent clipping</p></li>
+</ul>
+</section>
+<section id="ttlreceiveragent">
+<h3>TTLReceiverAgent<a class="headerlink" href="#ttlreceiveragent" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Emit TTL signal for screen synchronization. Additionally receives episode outcomes from MultiEpisodeToAgentBridge to provide reward/punishment feedback as neutral agent. Also monitors ITI state.</p>
+<p><strong>Implementation note:</strong> class name is <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code> (in <code class="docutils literal notranslate"><span class="pre">Assets/Scripts/Agents/TTLBehavior.cs</span></code>).</p>
+<p><strong>Action Space:</strong> Continuous[1]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">actions[0]</span></code>: TTL signal (0 or 1, threshold 0.5)</p></li>
+</ul>
+<p><strong>Observation Space:</strong> Continuous[4]</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[0]</span></code>: Patch channel (0 or 1, indicates TTL state)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>: ITI flag (0 = episode active, 1 = in ITI period)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[2]</span></code>: Init phase flag (0 = not in init phase, 1 = in init phase)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">obs[3]</span></code>: Latency measurement (Action-&gt;EndOfFrame delay in milliseconds)</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Visual TTL Output&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="n">patch</span><span class="p">;</span><span class="w">           </span><span class="c1">// UI Image for photodiode</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">onColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">offColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">black</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Integration&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">EpisodeScore</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">ITIFlag</span><span class="w"> </span><span class="n">itiFlag</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">InitPhaseFlag</span><span class="w"> </span><span class="n">initPhaseFlag</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Latency Debug&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">debugLatency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// Enable latency logging</span>
+</pre></div>
+</div>
+<p><strong>Reward Interface:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnCorrect</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SetReward</span><span class="p">(</span><span class="o">+</span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnIncorrect</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">SetReward</span><span class="p">(</span><span class="o">-</span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>TTL Signal:</strong></p>
+<ul class="simple">
+<li><p>Agent outputs continuous action [0-1]</p></li>
+<li><p>If action &gt;= 0.5: patch color = white (onColor)</p></li>
+<li><p>If action &lt; 0.5: patch color = black (offColor)</p></li>
+<li><p>Patch visible to photodiode for hardware sync</p></li>
+</ul>
+</section>
+<section id="init-iti-observations-during-initialization-period">
+<h3>Init/ITI Observations During Initialization Period<a class="headerlink" href="#init-iti-observations-during-initialization-period" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code> receives explicit phase state from two flag components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">InitPhaseFlag</span></code> (<code class="docutils literal notranslate"><span class="pre">InInitPhase</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ITIFlag</span></code> (<code class="docutils literal notranslate"><span class="pre">InITI</span></code>)</p></li>
+</ul>
+<p>These flags are driven by <code class="docutils literal notranslate"><span class="pre">MultiEpisodeToAgentBridge</span></code> event wiring:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeBegin</span></code> → <code class="docutils literal notranslate"><span class="pre">itiFlag.EndITI()</span></code> and <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.StartInitPhase()</span></code> (if init enabled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> → <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.EndInitPhase()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code> → <code class="docutils literal notranslate"><span class="pre">itiFlag.StartITI()</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">CollectObservations()</span></code> then emits:</p>
+<ul class="simple">
+<li><p>patch state (<code class="docutils literal notranslate"><span class="pre">obs[0]</span></code>),</p></li>
+<li><p>ITI flag (<code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>),</p></li>
+<li><p>init-phase flag (<code class="docutils literal notranslate"><span class="pre">obs[2]</span></code>),</p></li>
+<li><p>action→end-of-frame latency ms (<code class="docutils literal notranslate"><span class="pre">obs[3]</span></code>).</p></li>
+</ul>
+<p>This makes the initialization period directly observable to the TTL policy.</p>
+<p><strong>Phase Tracking Components:</strong></p>
+<p><strong>ITIFlag</strong> - Tracks inter-trial interval state</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ITIFlag</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartITI</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndITI</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>InitPhaseFlag</strong> - Tracks initialization phase state</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InitPhaseFlag</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">InInitPhase</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartInitPhase</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">InInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndInitPhase</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">InInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Integration via MultiEpisodeToAgentBridge:</strong></p>
+<ul class="simple">
+<li><p>Listens to <code class="docutils literal notranslate"><span class="pre">OnEpisodeBegin</span></code> → calls <code class="docutils literal notranslate"><span class="pre">itiFlag.EndITI()</span></code> and <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.StartInitPhase()</span></code> (if init enabled)</p></li>
+<li><p>Listens to <code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> → calls <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.EndInitPhase()</span></code></p></li>
+<li><p>Listens to <code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code> → calls <code class="docutils literal notranslate"><span class="pre">itiFlag.StartITI()</span></code></p></li>
+<li><p>TTLReceiverAgent observes both flags to provide episode state context</p></li>
+</ul>
+<p><strong>Latency Measurement:</strong></p>
+<ul class="simple">
+<li><p>High-precision Stopwatch tracks time from <code class="docutils literal notranslate"><span class="pre">OnActionReceived()</span></code> to end of frame</p></li>
+<li><p>Measures Unity’s internal processing latency (excludes GPU/OS delays)</p></li>
+<li><p>Exposed as observation for adaptive timing or analysis</p></li>
+<li><p>Optional debug logging via <code class="docutils literal notranslate"><span class="pre">debugLatency</span></code> flag</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="integration-patterns">
+<h2>Integration Patterns<a class="headerlink" href="#integration-patterns" title="Link to this heading">#</a></h2>
+<section id="pattern-1-singlewall-playeragent3donscreen">
+<h3>Pattern 1: SingleWall + PlayerAgent3DOnScreen<a class="headerlink" href="#pattern-1-singlewall-playeragent3donscreen" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene:
+├── Wall (OrthoScreenFromObject)
+│   ├── ScreenSpawnerFromObject
+│   ├── ScreenSpawnerAdapter
+│   └── (spawns Player with PlayerAgent3DOnScreen)
+├── EpisodeManagerSingleWall
+│   └── spawnerComponents[0] → ScreenSpawnerAdapter
+├── MultiEpisodeToAgentBridge
+│   ├── wallManagers[0] → EpisodeManagerSingleWall
+│   └── agents[0] → TTLReceiverAgent
+└── AgentGameObject (TTLReceiverAgent)
+
+Flow:
+1. ScreenSpawner creates Player with PlayerAgent3DOnScreen
+2. PlayerAgent3DOnScreen receives actions, moves on wall
+3. Player destroys targets via collision
+4. EpisodeManager detects all cleared
+5. Bridge calls TTLReceiverAgent.OnCorrect()
+6. TTLReceiverAgent gets +1 reward, episode ends
+</pre></div>
+</div>
+</section>
+<section id="pattern-2-floortargets-dlcagent">
+<h3>Pattern 2: FloorTargets + DlcAgent<a class="headerlink" href="#pattern-2-floortargets-dlcagent" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene:
+├── FloorSpawner
+│   ├── FloorTargetsSpawner
+│   ├── FloorTargetsSpawnerAdapter
+│   └── (spawns MoveObject, TargetAreas)
+├── Player (DlcAgent + Rigidbody)
+├── EpisodeManagerSingleWall
+│   └── spawnerComponents[0] → FloorTargetsSpawnerAdapter
+├── MultiEpisodeToAgentBridge
+│   ├── wallManagers[0] → EpisodeManagerSingleWall
+│   └── agents[0] → TTLReceiverAgent
+└── AgentGameObject (TTLReceiverAgent)
+
+Flow:
+1. FloorSpawner creates TargetAreas + MoveObject
+2. DlcAgent (Player) moves via velocity+heading actions
+3. Player pushes MoveObject into TargetArea
+4. TargetKillOnArea destroys MoveObject
+5. EpisodeManager detects TargetsAlive() == 0
+6. Bridge calls TTLReceiverAgent.OnCorrect()
+7. TTLReceiverAgent gets +1 reward
+</pre></div>
+</div>
+</section>
+<section id="pattern-3-sequencetarget-dlcagent">
+<h3>Pattern 3: SequenceTarget + DlcAgent<a class="headerlink" href="#pattern-3-sequencetarget-dlcagent" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene:
+├── GridSpawner (GridTargetsSpawner)
+├── Player (DlcAgent)
+├── SequenceTargetManager
+│   └── spawner → GridTargetsSpawner
+├── EpisodeScore
+├── MultiEpisodeToAgentBridge
+│   ├── sequenceManagers[0] → SequenceTargetManager
+│   └── agents[0] → TTLReceiverAgent
+└── AgentGameObject (TTLReceiverAgent)
+
+Flow:
+1. GridSpawner creates N×N targets + walls
+2. SequenceManager activates targets one at a time
+3. DlcAgent navigates to active target, dwells
+4. StatefulTarget fires OnCompleted, score increments
+5. SequenceManager advances to next target
+6. Repeat until sequence complete (success) or timeout (fail)
+7. Bridge calls OnCorrect/OnIncorrect on TTLReceiverAgent
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="observation-space-details">
+<h2>Observation Space Details<a class="headerlink" href="#observation-space-details" title="Link to this heading">#</a></h2>
+<section id="dlcagent-observations">
+<h3>DlcAgent Observations<a class="headerlink" href="#dlcagent-observations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>world_x</p></td>
+<td><p>ℝ</p></td>
+<td><p>World position X coordinate (meters)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>world_z</p></td>
+<td><p>ℝ</p></td>
+<td><p>World position Z coordinate (meters)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>u</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Screen-space U coordinate (horizontal)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>v</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Screen-space V coordinate (vertical)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>heading</p></td>
+<td><p>[-π, π]</p></td>
+<td><p>Heading angle in radians (from +Z axis in x-z plane)</p></td>
+</tr>
+<tr class="row-odd"><td><p>5+</p></td>
+<td><p>camera</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Optional visual obs (84×84×1 or 84×84×3)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="playeragent3donscreen-observations">
+<h3>PlayerAgent3DOnScreen Observations<a class="headerlink" href="#playeragent3donscreen-observations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>u</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Screen-space U coordinate (horizontal)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>v</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Screen-space V coordinate (vertical)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="touchfingeragent-observations">
+<h3>TouchFingerAgent Observations<a class="headerlink" href="#touchfingeragent-observations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>u</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Projection plane U coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>v</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>Projection plane V coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>azimuth_sin</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Sin of heading angle on plane</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="ttlreceiveragent-observations">
+<h3>TTLReceiverAgent Observations<a class="headerlink" href="#ttlreceiveragent-observations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>patch_color</p></td>
+<td><p>{0, 1}</p></td>
+<td><p>Current TTL patch state</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>iti_flag</p></td>
+<td><p>{0, 1}</p></td>
+<td><p>In ITI (1) or not (0)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>init_phase_flag</p></td>
+<td><p>{0, 1}</p></td>
+<td><p>In init phase (1) or not (0)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>latency_ms</p></td>
+<td><p>ℝ+</p></td>
+<td><p>Last Action-&gt;Render delay (milliseconds)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="action-space-details">
+<h2>Action Space Details<a class="headerlink" href="#action-space-details" title="Link to this heading">#</a></h2>
+<section id="dlcagent-actions">
+<h3>DlcAgent Actions<a class="headerlink" href="#dlcagent-actions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>x_norm</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Target X position (mapped to U 0-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>y_norm</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Target Y position (mapped to V 0-1)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>heading_deg</p></td>
+<td><p>[0, 360]</p></td>
+<td><p>Absolute heading in degrees (rotation around Y axis)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>head_angle</p></td>
+<td><p>ℝ</p></td>
+<td><p>Reserved for future use</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>emit_action</p></td>
+<td><p>ℝ</p></td>
+<td><p>Integer action ID (triggers interact when == emitAction)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Action Processing:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Map actions to UV coordinates</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="o">-</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span><span class="w">  </span><span class="c1">// [-1,1] -&gt; [0,1]</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">-</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span><span class="w">  </span><span class="c1">// [-1,1] -&gt; [0,1]</span>
+
+<span class="c1">// Get heading from action</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">headingDeg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Repeat</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mf">360f</span><span class="p">);</span><span class="w">  </span><span class="c1">// Wrap to [0, 360]</span>
+<span class="n">Quaternion</span><span class="w"> </span><span class="n">rotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Quaternion</span><span class="p">.</span><span class="n">Euler</span><span class="p">(</span><span class="mf">0f</span><span class="p">,</span><span class="w"> </span><span class="n">headingDeg</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">);</span>
+
+<span class="c1">// Clamp to keep object within bounds</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clampFullyInside</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">uPad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">halfExtents</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">screenWidth</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">vPad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">halfExtents</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">screenHeight</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uPad</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uPad</span><span class="p">);</span>
+<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">vPad</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">vPad</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Compute world target position on screen plane</span>
+<span class="n">Vector3</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">BottomLeft</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Right</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">screenWidth</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Up</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">screenHeight</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Normal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">faceOffset</span><span class="p">;</span>
+
+<span class="c1">// Apply position and rotation</span>
+<span class="n">rigidbody</span><span class="p">.</span><span class="n">MovePosition</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+<span class="n">rigidbody</span><span class="p">.</span><span class="n">MoveRotation</span><span class="p">(</span><span class="n">rotation</span><span class="p">);</span>
+
+<span class="c1">// Check interaction</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">actions</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">interact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">emitAction</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="touchfingeragent-actions">
+<h3>TouchFingerAgent Actions<a class="headerlink" href="#touchfingeragent-actions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>y_ndc</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Y position in normalized device coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>x_ndc</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>X position in normalized device coordinates</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="playeragent3donscreen-actions">
+<h3>PlayerAgent3DOnScreen Actions<a class="headerlink" href="#playeragent3donscreen-actions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>x_norm</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Target X position (normalized)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>y_norm</p></td>
+<td><p>[-1, 1]</p></td>
+<td><p>Target Y position (normalized)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>(unused)</p></td>
+<td><p>-</p></td>
+<td><p>Compatibility padding</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>(unused)</p></td>
+<td><p>-</p></td>
+<td><p>Compatibility padding</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Action Processing:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="o">-</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span><span class="w">  </span><span class="c1">// Map [-1,1] to [0,1]</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">-</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span><span class="w">  </span><span class="c1">// Map [-1,1] to [0,1]</span>
+
+<span class="c1">// Clamp if needed</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clampFullyInside</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">uPad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">halfExtents</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">vPad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">halfExtents</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uPad</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">uPad</span><span class="p">);</span>
+<span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Clamp</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">vPad</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">vPad</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Compute world position on screen plane</span>
+<span class="n">Vector3</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">BottomLeft</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">DirRight</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Width</span><span class="p">)</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">DirUp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">Height</span><span class="p">)</span>
+<span class="w">               </span><span class="o">+</span><span class="w"> </span><span class="n">screen</span><span class="p">.</span><span class="n">DirNormal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">faceOffset</span><span class="p">;</span>
+
+<span class="c1">// Apply (teleport or smooth)</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">teleport</span><span class="p">)</span>
+<span class="w">    </span><span class="n">rigidbody</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="n">rigidbody</span><span class="p">.</span><span class="n">MovePosition</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">Lerp</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span>
+<span class="w">                                        </span><span class="mf">1f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Exp</span><span class="p">(</span><span class="o">-</span><span class="n">followLerp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">)));</span>
+</pre></div>
+</div>
+</section>
+<section id="ttlreceiveragent-actions">
+<h3>TTLReceiverAgent Actions<a class="headerlink" href="#ttlreceiveragent-actions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Range</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>ttl_signal</p></td>
+<td><p>[0, 1]</p></td>
+<td><p>TTL output (&gt;= 0.5 = ON/white, &lt; 0.5 = OFF/black)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
+<li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a></strong> - Episode lifecycle</p></li>
+<li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a></strong> - Configuration</p></li>
+<li><p><strong><a class="reference external" href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/blob/main/rl/WRAPPER_ARCHITECTURE.md">Wrapper Documentation</a></strong> - Python training wrappers</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Spawners.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spawner System Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ParameterSystem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parameter Control System</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inputs-are-split-across-multiple-agents">Why Inputs Are Split Across Multiple Agents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior">1. ML-Agents requires a fixed action and observation spec per behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-disablement-and-substitution">2. Independent disablement and substitution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-and-episode-boundary-isolation">4. Reward and episode boundary isolation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-side-action-routing-is-trivially-extensible">5. Python-side action routing is trivially extensible</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-observations-can-be-attached-selectively">6. Visual observations can be attached selectively</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-types">Agent Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent">DlcAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent">TouchFingerAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen">PlayerAgent3DOnScreen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent">TTLReceiverAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-iti-observations-during-initialization-period">Init/ITI Observations During Initialization Period</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-patterns">Integration Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-singlewall-playeragent3donscreen">Pattern 1: SingleWall + PlayerAgent3DOnScreen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-floortargets-dlcagent">Pattern 2: FloorTargets + DlcAgent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-sequencetarget-dlcagent">Pattern 3: SequenceTarget + DlcAgent</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-space-details">Observation Space Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent-observations">DlcAgent Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen-observations">PlayerAgent3DOnScreen Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent-observations">TouchFingerAgent Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent-observations">TTLReceiverAgent Observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#action-space-details">Action Space Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent-actions">DlcAgent Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent-actions">TouchFingerAgent Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen-actions">PlayerAgent3DOnScreen Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent-actions">TTLReceiverAgent Actions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

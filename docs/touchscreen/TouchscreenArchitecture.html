@@ -1,0 +1,1494 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Touchscreen Module Architecture &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/touchscreen/TouchscreenArchitecture';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Teensy Hardware Reference" href="../hardware/Teensy.html" />
+    <link rel="prev" title="TTL Generator Documentation" href="../python/TTLGenerator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/touchscreen/TouchscreenArchitecture.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/touchscreen/TouchscreenArchitecture.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Touchscreen Module Architecture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchcontroller-server-side">1. <strong>TouchController</strong> (Server-Side)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#responsibilities"><strong>Responsibilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features"><strong>Key Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-parameters"><strong>Constructor Parameters:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-methods"><strong>API Methods:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rawstore-frame-buffer">2. <strong>RawStore</strong> (Frame Buffer)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure"><strong>Data Structure:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-pipeline-data-transformations">3. <strong>View Pipeline</strong> (Data Transformations)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rawview"><strong>3.1 RawView</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizedview"><strong>3.2 NormalizedView</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filteredview-one-euro-filter"><strong>3.3 FilteredView</strong> (One-Euro Filter)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reducedview-single-touch-reduction"><strong>3.4 ReducedView</strong> (Single Touch Reduction)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorizedview-sliding-window-velocity"><strong>3.5 VectorizedView</strong> (Sliding Window Velocity)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectionhub-multicast-server">4. <strong>ConnectionHub</strong> (Multicast Server)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#features"><strong>Features:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hosttouchclient-client-side">5. <strong>HostTouchClient</strong> (Client-Side)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Responsibilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor Parameters:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>API Methods:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#clock-synchronization-ntp-style"><strong>Clock Synchronization (NTP-Style):</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asyncjsonlrecorder-logging">6. <strong>AsyncJSONLRecorder</strong> (Logging)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api"><strong>API:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-vis-gui-py-real-time-monitor">7. <strong>host_vis_gui.py</strong> (Real-Time Monitor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ui-layout"><strong>UI Layout:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage"><strong>Usage:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-architecture">Timing Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamps-in-the-pipeline"><strong>Timestamps in the Pipeline</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-timing-metadata-host-field"><strong>Host Timing Metadata (<code class="docutils literal notranslate"><span class="pre">_host</span></code> field)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-measurement-semantics"><strong>Lag Measurement Semantics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-mode-heartbeat-hold-semantics"><strong>Rate Mode Heartbeat/Hold Semantics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#client-configuration-host-pc"><strong>Client Configuration (Host PC)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-connection"><strong>Basic Connection:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-recording"><strong>With Recording:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-control"><strong>Runtime Parameter Control:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-setup">Hardware Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raspberry-pi-configuration"><strong>Raspberry Pi Configuration</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-touch-device"><strong>1. Find Touch Device:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-device-capabilities"><strong>2. Check Device Capabilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-raspberry-pi-ip"><strong>3. Get Raspberry Pi IP:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-server-on-boot-systemd-service"><strong>4. Run Server on Boot (systemd service):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#low-latency-network-settings-optional"><strong>Low-Latency Network Settings (Optional):</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-analysis-of-recorded-data"><strong>Offline Analysis of Recorded Data</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="touchscreen-module-architecture">
+<h1>Touchscreen Module Architecture<a class="headerlink" href="#touchscreen-module-architecture" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The touchscreen module provides a <strong>server-client architecture</strong> for capturing, processing, and streaming multitouch input data from Linux-based touchscreen devices (or Raspberry Pi if Windows is used as host machine) to remote control/visualization hosts. The system is designed for low-latency behavioral experiments with precise timing measurements and flexible data processing pipelines.</p>
+</section>
+<hr class="docutils" />
+<section id="system-architecture">
+<h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
+│                      RASPBERRY PI (Server)                  │
+│                                                             │
+│  ┌──────────────┐      ┌──────────────────────────────────┐ │
+│  │ evdev Device │──►   │      TouchController             │ │
+│  │ /dev/input/* │      │  ┌────────────────────────────┐  │ │
+│  └──────────────┘      │  │      RawStore              │  │ │
+│                        │  │  (Ring Buffer of Frames)   │  │ │
+│                        │  └────────────┬───────────────┘  │ │
+│                        │               │                  │ │
+│                        │               ▼                  │ │
+│                        │  ┌────────────────────────────┐  │ │
+│                        │  │      View Pipeline         │  │ │
+│                        │  │  • Raw                     │  │ │
+│                        │  │  • Normalized [0,1]        │  │ │
+│                        │  │  • Filtered (One-Euro)     │  │ │
+│                        │  │  • Reduced (Single Touch)  │  │ │
+│                        │  │  • Vectorized (Velocity)   │  │ │
+│                        │  └────────────┬───────────────┘  │ │
+│                        │               │                  │ │
+│                        │               ▼                  │ │
+│                        │  ┌────────────────────────────┐  │ │
+│                        │  │   Transmission Engine      │  │ │
+│                        │  │  • Event-driven (on touch) │  │ │
+│                        │  │  • Rate-based (60Hz)       │  │ │
+│                        │  │  • Both (hybrid)           │  │ │
+│                        │  └────────────┬───────────────┘  │ │
+│                        └───────────────┼──────────────────┘ │
+│                                        │                    │
+│  ┌─────────────────────────────────────▼──────────────────┐ │
+│  │              ConnectionHub (Multicast Server)          │ │
+│  │         0.0.0.0:6001 (multiprocessing.Listener)        │ │
+│  └─────────────────────────────────────┬──────────────────┘ │
+└────────────────────────────────────────┼────────────────────┘
+                                         │ TCP Connection
+                                         │ (multiprocessing)
+                          ┌──────────────┼──────────────┐
+                          │              │              │
+                          ▼              ▼              ▼
+              ┌──────────────────┐  ┌──────────────────┐
+              │  HOST PC #1      │  │  HOST PC #2      │
+              │                  │  │                  │
+              │ HostTouchClient  │  │ HostTouchClient  │
+              │  • RX Thread     │  │  • RX Thread     │
+              │  • Timing Annot. │  │  • Timing Annot. │
+              │  • Clock Sync    │  │  • Clock Sync    │
+              │  • Recorder      │  │  • Recorder      │
+              └────────┬─────────┘  └────────┬─────────┘
+                       │                     │
+                       ▼                     ▼
+             ┌─────────────────┐   ┌─────────────────┐
+             │ host_vis_gui.py │   │ Experiment      │
+             │ (PyQt6 Monitor) │   │ (Custom Logic)  │
+             └─────────────────┘   └─────────────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="core-components">
+<h2>Core Components<a class="headerlink" href="#core-components" title="Link to this heading">#</a></h2>
+<section id="touchcontroller-server-side">
+<h3>1. <strong>TouchController</strong> (Server-Side)<a class="headerlink" href="#touchcontroller-server-side" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">touch_controller.py</span></code></p>
+<p>The main server component running on Raspberry Pi (or could also run on the host compute if its running Linux). Captures raw touch events from Linux evdev, processes them through a view pipeline, and broadcasts to connected clients.</p>
+<section id="responsibilities">
+<h4><strong>Responsibilities:</strong><a class="headerlink" href="#responsibilities" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Device Input:</strong> Read multitouch events from <code class="docutils literal notranslate"><span class="pre">/dev/input/eventX</span></code> via <code class="docutils literal notranslate"><span class="pre">evdev</span></code> library</p></li>
+<li><p><strong>Event Parsing:</strong> Convert low-level kernel events (<code class="docutils literal notranslate"><span class="pre">ABS_MT_*</span></code>, <code class="docutils literal notranslate"><span class="pre">SYN_REPORT</span></code>) into structured frames</p></li>
+<li><p><strong>Frame Storage:</strong> Maintain ring buffer of recent frames (default: 2000 frames)</p></li>
+<li><p><strong>View Pipeline:</strong> Apply data transformations (normalization, filtering, reduction, vectorization)</p></li>
+<li><p><strong>Broadcasting:</strong> Send packets to all connected clients via ConnectionHub</p></li>
+<li><p><strong>Runtime Control:</strong> Accept remote commands (mode switching, parameter updates, time sync)</p></li>
+</ul>
+</section>
+<section id="key-features">
+<h4><strong>Key Features:</strong><a class="headerlink" href="#key-features" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Slot Tracking:</strong> Multi-finger tracking via <code class="docutils literal notranslate"><span class="pre">ABS_MT_SLOT</span></code> and <code class="docutils literal notranslate"><span class="pre">ABS_MT_TRACKING_ID</span></code></p></li>
+<li><p><strong>Device Auto-Discovery:</strong> Automatically finds touchscreen device if path is <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code></p></li>
+<li><p><strong>Exclusive Grab:</strong> Prevents OS from interfering with touch events during experiments</p></li>
+<li><p><strong>Flexible Transmission:</strong></p>
+<ul>
+<li><p><strong>Event Mode:</strong> Send packet on every touch event (lowest latency)</p></li>
+<li><p><strong>Rate Mode:</strong> Send at fixed Hz (e.g., 60 Hz) with “hold-last” semantics</p></li>
+<li><p><strong>Both Mode:</strong> Combine event-driven and rate-based transmission</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="constructor-parameters">
+<h4><strong>Constructor Parameters:</strong><a class="headerlink" href="#constructor-parameters" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TouchController</span><span class="p">(</span>
+    <span class="n">device_path</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>              <span class="c1"># Device path or &quot;auto&quot; for discovery</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reduced&quot;</span><span class="p">,</span>                  <span class="c1"># Default view mode</span>
+    <span class="n">store_max_frames</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>           <span class="c1"># Ring buffer size</span>
+
+    <span class="c1"># View filtering params</span>
+    <span class="n">min_cutoff</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>                  <span class="c1"># One-Euro filter min cutoff</span>
+    <span class="n">beta</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>                       <span class="c1"># One-Euro filter beta</span>
+    <span class="n">jitter_px</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>                   <span class="c1"># Jitter suppression threshold (raw pixels)</span>
+    <span class="n">merge_dist_norm</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>            <span class="c1"># Distance for centroid merge (normalized)</span>
+    <span class="n">vector_window_ms</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>            <span class="c1"># Vectorized view sliding window</span>
+
+    <span class="c1"># Transmission params</span>
+    <span class="n">tx_mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span>                  <span class="c1"># &quot;event&quot; | &quot;rate&quot; | &quot;both&quot;</span>
+    <span class="n">tx_hz</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>                      <span class="c1"># Rate in Hz for rate mode</span>
+    <span class="n">max_source_stale_ms</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>         <span class="c1"># Max age before heartbeat/hold</span>
+    <span class="n">hold_last_when_touch_present</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Hold stale data if finger is down</span>
+
+    <span class="c1"># Server params</span>
+    <span class="n">serve_addr</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>   <span class="c1"># Listen address</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>             <span class="c1"># Authentication key</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>                   <span class="c1"># &quot;evdev&quot; | &quot;win&quot; | &quot;stub&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="api-methods">
+<h4><strong>API Methods:</strong><a class="headerlink" href="#api-methods" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span> <span class="o">=</span> <span class="n">TouchController</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>                           <span class="c1"># Start capture and transmission</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>                            <span class="c1"># Stop all threads and cleanup</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>            <span class="c1"># Switch view mode at runtime</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>                          <span class="c1"># Get latest frame from current view</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">since</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>                        <span class="c1"># Get all frames since sequence number</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rawstore-frame-buffer">
+<h3>2. <strong>RawStore</strong> (Frame Buffer)<a class="headerlink" href="#rawstore-frame-buffer" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">touch_data_utils.py</span></code></p>
+<p>Ring buffer storing raw touch frames with monotonic sequence numbers.</p>
+<section id="data-structure">
+<h4><strong>Data Structure:</strong><a class="headerlink" href="#data-structure" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RawPoint</span><span class="p">:</span>
+    <span class="n">slot</span><span class="p">:</span> <span class="nb">int</span>                        <span class="c1"># Kernel slot number</span>
+    <span class="n">tracking_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>       <span class="c1"># Kernel tracking ID (unique per touch)</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>                 <span class="c1"># Raw X coordinate (device units)</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>                 <span class="c1"># Raw Y coordinate (device units)</span>
+    <span class="n">active</span><span class="p">:</span> <span class="nb">bool</span>                     <span class="c1"># Touch is in contact</span>
+    <span class="n">t_start</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>         <span class="c1"># Touch down time (wall clock)</span>
+    <span class="n">t_now</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>           <span class="c1"># Last update time</span>
+    <span class="n">t_end</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>           <span class="c1"># Touch up time</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TouchFrame</span><span class="p">:</span>
+    <span class="n">seq</span><span class="p">:</span> <span class="nb">int</span>                         <span class="c1"># Monotonic sequence number</span>
+    <span class="n">t_host</span><span class="p">:</span> <span class="nb">float</span>                    <span class="c1"># Host timestamp when frame was emitted</span>
+    <span class="n">t_evt</span><span class="p">:</span> <span class="nb">float</span>                     <span class="c1"># Kernel event timestamp</span>
+    <span class="n">points</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RawPoint</span><span class="p">]</span>           <span class="c1"># All active/inactive touches in this frame</span>
+    <span class="n">meta</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>             <span class="c1"># Device metadata (absinfo, device name)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="view-pipeline-data-transformations">
+<h3>3. <strong>View Pipeline</strong> (Data Transformations)<a class="headerlink" href="#view-pipeline-data-transformations" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">touch_data_utils.py</span></code></p>
+<p>Five progressive views over the raw data, each building on the previous:</p>
+<section id="rawview">
+<h4><strong>3.1 RawView</strong><a class="headerlink" href="#rawview" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Output:</strong> Exactly as captured from kernel</p></li>
+<li><p><strong>Format:</strong> List of points with raw integer coordinates</p></li>
+</ul>
+<p><strong>Output Schema:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;raw&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">&quot;t_evt&quot;</span><span class="p">:</span> <span class="mf">1698765432.100</span><span class="p">,</span>
+    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>           <span class="c1"># tracking_id</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>           <span class="c1"># raw device units</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">1536</span><span class="p">,</span>
+            <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;t_start&quot;</span><span class="p">:</span> <span class="mf">1698765430.0</span><span class="p">,</span>
+            <span class="s2">&quot;t_now&quot;</span><span class="p">:</span> <span class="mf">1698765432.1</span><span class="p">,</span>
+            <span class="s2">&quot;t_end&quot;</span><span class="p">:</span> <span class="kc">None</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;Touchscreen Name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;abs_xmin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;abs_xmax&quot;</span><span class="p">:</span> <span class="mi">4095</span><span class="p">,</span>
+        <span class="s2">&quot;abs_ymin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;abs_ymax&quot;</span><span class="p">:</span> <span class="mi">4095</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="normalizedview">
+<h4><strong>3.2 NormalizedView</strong><a class="headerlink" href="#normalizedview" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Input:</strong> RawView</p></li>
+<li><p><strong>Transform:</strong> Map <code class="docutils literal notranslate"><span class="pre">[abs_xmin,</span> <span class="pre">abs_xmax]</span> <span class="pre">×</span> <span class="pre">[abs_ymin,</span> <span class="pre">abs_ymax]</span></code> → <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span> <span class="pre">×</span> <span class="pre">[0,</span> <span class="pre">1]</span></code></p></li>
+</ul>
+<p><strong>Output Schema:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;normalized&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>          <span class="c1"># normalized [0,1]</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
+            <span class="s2">&quot;age_ms&quot;</span><span class="p">:</span> <span class="mi">2100</span>       <span class="c1"># time since t_start</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="filteredview-one-euro-filter">
+<h4><strong>3.3 FilteredView</strong> (One-Euro Filter)<a class="headerlink" href="#filteredview-one-euro-filter" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Input:</strong> NormalizedView</p></li>
+<li><p><strong>Transform:</strong> Per-finger One-Euro low-pass filter (adaptive cutoff based on velocity)</p></li>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_cutoff</span></code>: Minimum cutoff frequency (Hz) for slow movements</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">beta</span></code>: Speed coefficient for adaptive cutoff</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jitter_px</span></code>: Raw pixel threshold to suppress jitter (locks to input if below)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Output Schema:</strong> Same as NormalizedView, but coordinates are filtered</p>
+</section>
+<hr class="docutils" />
+<section id="reducedview-single-touch-reduction">
+<h4><strong>3.4 ReducedView</strong> (Single Touch Reduction)<a class="headerlink" href="#reducedview-single-touch-reduction" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Input:</strong> FilteredView</p></li>
+<li><p><strong>Transform:</strong> Collapse multiple touches into ONE representative touch</p></li>
+<li><p><strong>Algorithm:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Clustered Mode:</strong> If all touches are within <code class="docutils literal notranslate"><span class="pre">merge_dist_norm</span></code> of centroid → emit centroid</p></li>
+<li><p><strong>Separated Mode:</strong> Else, emit the <strong>newest</strong> touch (by <code class="docutils literal notranslate"><span class="pre">age_ms</span></code>)</p></li>
+</ol>
+</li>
+</ul>
+<p><strong>Output Schema:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;reduced&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">&quot;point&quot;</span><span class="p">:</span> <span class="p">{</span>               <span class="c1"># Single representative touch or None</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>
+        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
+        <span class="s2">&quot;age_ms&quot;</span><span class="p">:</span> <span class="mi">2100</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>         <span class="c1"># List containing the single point (or empty)</span>
+    <span class="s2">&quot;n_active&quot;</span><span class="p">:</span> <span class="mi">3</span>            <span class="c1"># Total number of active touches before reduction</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="vectorizedview-sliding-window-velocity">
+<h4><strong>3.5 VectorizedView</strong> (Sliding Window Velocity)<a class="headerlink" href="#vectorizedview-sliding-window-velocity" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Input:</strong> ReducedView (single touch)</p></li>
+<li><p><strong>Transform:</strong> Compute velocity vector over sliding time window</p></li>
+<li><p><strong>Parameters:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">window_ms</span></code>: Window duration (e.g., 200ms)</p></li>
+</ul>
+</li>
+<li><p><strong>Algorithm:</strong></p>
+<ol class="arabic simple">
+<li><p>Maintain deque of <code class="docutils literal notranslate"><span class="pre">(t,</span> <span class="pre">x,</span> <span class="pre">y)</span></code> samples from reduced single-touch</p></li>
+<li><p>Remove samples older than <code class="docutils literal notranslate"><span class="pre">now</span> <span class="pre">-</span> <span class="pre">window_ms</span></code></p></li>
+<li><p>Compute <code class="docutils literal notranslate"><span class="pre">end_point</span> <span class="pre">-</span> <span class="pre">start_point</span></code> and derive velocity</p></li>
+<li><p>If no new events, synthesize end point at current time with last known position (stationary finger → zero velocity)</p></li>
+</ol>
+</li>
+</ul>
+<p><strong>Output Schema:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;vectorized&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">&quot;window_ms&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;point&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>          <span class="c1"># Current single-touch point (same as ReducedView)</span>
+    <span class="s2">&quot;n_active&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;vector&quot;</span><span class="p">:</span> <span class="p">{</span>              <span class="c1"># None if no touch</span>
+        <span class="s2">&quot;dx&quot;</span><span class="p">:</span> <span class="mf">0.120</span><span class="p">,</span>         <span class="c1"># Displacement in normalized units</span>
+        <span class="s2">&quot;dy&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.085</span><span class="p">,</span>
+        <span class="s2">&quot;dt_ms&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>        <span class="c1"># Actual time span</span>
+        <span class="s2">&quot;len&quot;</span><span class="p">:</span> <span class="mf">0.147</span><span class="p">,</span>        <span class="c1"># Euclidean length</span>
+        <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="mf">0.735</span><span class="p">,</span>      <span class="c1"># Units per second</span>
+        <span class="s2">&quot;vx&quot;</span><span class="p">:</span> <span class="mf">0.600</span><span class="p">,</span>         <span class="c1"># Velocity components</span>
+        <span class="s2">&quot;vy&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.425</span><span class="p">,</span>
+        <span class="s2">&quot;direction_deg&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">35.2</span><span class="p">,</span>  <span class="c1"># Atan2(dy, dx) in degrees</span>
+        <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.0</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.380</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.460</span><span class="p">},</span>
+        <span class="s2">&quot;end&quot;</span><span class="p">:</span>   <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.2</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="connectionhub-multicast-server">
+<h3>4. <strong>ConnectionHub</strong> (Multicast Server)<a class="headerlink" href="#connectionhub-multicast-server" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">socket_utils.py</span></code></p>
+<p>Lightweight TCP server using Python’s <code class="docutils literal notranslate"><span class="pre">multiprocessing.connection.Listener</span></code>. Allows multiple clients to connect/disconnect dynamically without disrupting the touch pipeline.</p>
+<section id="features">
+<h4><strong>Features:</strong><a class="headerlink" href="#features" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Multi-Client:</strong> Broadcast to all connected clients simultaneously</p></li>
+<li><p><strong>Accept Loop:</strong> Continuously accepts new connections in background thread</p></li>
+<li><p><strong>Per-Client RX:</strong> Each client has a receive thread for bidirectional control commands</p></li>
+<li><p><strong>Callback:</strong> <code class="docutils literal notranslate"><span class="pre">on_message(conn,</span> <span class="pre">msg)</span></code> for handling incoming commands</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hosttouchclient-client-side">
+<h3>5. <strong>HostTouchClient</strong> (Client-Side)<a class="headerlink" href="#hosttouchclient-client-side" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">host_client.py</span></code></p>
+<p>Client component running on control/visualization host PC. Connects to TouchController server, receives packets in background thread, annotates with timing metadata, and optionally records to disk.</p>
+<section id="id1">
+<h4><strong>Responsibilities:</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Connection Management:</strong> Automatic reconnection with configurable delay</p></li>
+<li><p><strong>Packet Reception:</strong> Background thread with deque buffer (default: 2048 packets)</p></li>
+<li><p><strong>Timing Annotation:</strong> Add host-side timing metadata (<code class="docutils literal notranslate"><span class="pre">t_rx</span></code>, lag measurements)</p></li>
+<li><p><strong>Clock Synchronization:</strong> NTP-style offset estimation for cross-host timing</p></li>
+<li><p><strong>Recording:</strong> Async JSONL writer with gzip support</p></li>
+<li><p><strong>Command Sending:</strong> Remote control of server (mode, tx params, view params)</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4><strong>Constructor Parameters:</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HostTouchClient</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>
+    <span class="n">max_packets</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>               <span class="c1"># Deque buffer size</span>
+    <span class="n">reconnect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                 <span class="c1"># Auto-reconnect on disconnect</span>
+    <span class="n">reconnect_delay</span><span class="o">=</span><span class="mf">1.0</span>             <span class="c1"># Reconnect interval</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h4><strong>API Methods:</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>                      <span class="c1"># Start RX thread</span>
+<span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>                       <span class="c1"># Stop and cleanup</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connected</span><span class="p">()</span>                  <span class="c1"># Bool: connection status</span>
+
+<span class="c1"># Data access</span>
+<span class="n">client</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>                     <span class="c1"># Get most recent packet</span>
+<span class="n">client</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>                      <span class="c1"># Pop all queued packets, return latest</span>
+
+<span class="c1"># Commands to server</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>       <span class="c1"># Switch view mode</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>  <span class="c1"># Update transmission params</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_view_params</span><span class="p">(</span><span class="n">min_cutoff</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">window_ms</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>  <span class="c1"># Update filter params</span>
+<span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>        <span class="c1"># Clock synchronization</span>
+
+<span class="c1"># Recording</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_recorder</span><span class="p">(</span><span class="n">AsyncJSONLRecorder</span><span class="p">(</span><span class="s2">&quot;data.jsonl.gz&quot;</span><span class="p">))</span>
+<span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Auto-closes recorder</span>
+</pre></div>
+</div>
+</section>
+<section id="clock-synchronization-ntp-style">
+<h4><strong>Clock Synchronization (NTP-Style):</strong><a class="headerlink" href="#clock-synchronization-ntp-style" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="c1"># Returns: {</span>
+<span class="c1">#   &quot;ok&quot;: True,</span>
+<span class="c1">#   &quot;offset_s&quot;: -0.0123,            # Host clock = Server clock - offset</span>
+<span class="c1">#   &quot;offset_ms&quot;: -12.3,</span>
+<span class="c1">#   &quot;rtt_ms&quot;: 4.2,                  # Round-trip time</span>
+<span class="c1">#   &quot;samples&quot;: [...]                # All attempts</span>
+<span class="c1"># }</span>
+</pre></div>
+</div>
+<p><strong>Algorithm:</strong></p>
+<ol class="arabic simple">
+<li><p>Client sends <code class="docutils literal notranslate"><span class="pre">{&quot;cmd&quot;:</span> <span class="pre">&quot;time_sync&quot;,</span> <span class="pre">&quot;t0&quot;:</span> <span class="pre">&lt;client_time&gt;}</span></code></p></li>
+<li><p>Server replies immediately with <code class="docutils literal notranslate"><span class="pre">{&quot;t1&quot;:</span> <span class="pre">&lt;recv_time&gt;,</span> <span class="pre">&quot;t2&quot;:</span> <span class="pre">&lt;send_time&gt;}</span></code></p></li>
+<li><p>Client marks <code class="docutils literal notranslate"><span class="pre">t3</span></code> on receipt</p></li>
+<li><p>Compute: <code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">((t1</span> <span class="pre">-</span> <span class="pre">t0)</span> <span class="pre">+</span> <span class="pre">(t2</span> <span class="pre">-</span> <span class="pre">t3))</span> <span class="pre">/</span> <span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">rtt</span> <span class="pre">=</span> <span class="pre">(t3</span> <span class="pre">-</span> <span class="pre">t0)</span> <span class="pre">-</span> <span class="pre">(t2</span> <span class="pre">-</span> <span class="pre">t1)</span></code></p></li>
+<li><p>Repeat N times, select sample with minimal RTT (most symmetric path)</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="asyncjsonlrecorder-logging">
+<h3>6. <strong>AsyncJSONLRecorder</strong> (Logging)<a class="headerlink" href="#asyncjsonlrecorder-logging" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">host_client.py</span></code></p>
+<p>Non-blocking JSONL logger with background writer thread. Supports gzip compression.</p>
+<section id="id4">
+<h4><strong>Features:</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Non-Blocking Enqueue:</strong> RX thread never blocks on disk I/O</p></li>
+<li><p><strong>Batch Writing:</strong> Drains up to 256 lines per write syscall</p></li>
+<li><p><strong>Drop Policies:</strong> <code class="docutils literal notranslate"><span class="pre">&quot;block&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;drop_new&quot;</span></code> | <code class="docutils literal notranslate"><span class="pre">&quot;drop_oldest&quot;</span></code> on queue full</p></li>
+<li><p><strong>Header Line:</strong> Automatically writes metadata header on new file</p></li>
+<li><p><strong>Gzip Support:</strong> Auto-detects <code class="docutils literal notranslate"><span class="pre">.gz</span></code> extension</p></li>
+</ul>
+</section>
+<section id="api">
+<h4><strong>API:</strong><a class="headerlink" href="#api" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recorder</span> <span class="o">=</span> <span class="n">AsyncJSONLRecorder</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;data.jsonl.gz&quot;</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;Touchscreen&quot;</span><span class="p">,</span> <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;trial_001&quot;</span><span class="p">},</span>
+    <span class="n">flush_every</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>                 <span class="c1"># Flush to disk every N lines</span>
+    <span class="n">max_queue</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>                <span class="c1"># Queue capacity</span>
+    <span class="n">drop_policy</span><span class="o">=</span><span class="s2">&quot;drop_oldest&quot;</span>       <span class="c1"># Backpressure handling</span>
+<span class="p">)</span>
+<span class="n">recorder</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>             <span class="c1"># Non-blocking enqueue</span>
+<span class="n">recorder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                    <span class="c1"># Flush and stop writer thread</span>
+<span class="n">recorder</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>                    <span class="c1"># {&quot;written&quot;: N, &quot;dropped&quot;: M, &quot;queued&quot;: K}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="host-vis-gui-py-real-time-monitor">
+<h3>7. <strong>host_vis_gui.py</strong> (Real-Time Monitor)<a class="headerlink" href="#host-vis-gui-py-real-time-monitor" title="Link to this heading">#</a></h3>
+<p><strong>Location:</strong> <code class="docutils literal notranslate"><span class="pre">host_vis_gui.py</span></code></p>
+<p>PyQt6-based GUI for visualizing touch input and monitoring system performance.</p>
+<section id="id5">
+<h4><strong>Features:</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Live Canvas:</strong> Render touch points, reduced point, velocity vectors</p></li>
+<li><p><strong>Connection Control:</strong> Connect/disconnect with custom host/port/auth</p></li>
+<li><p><strong>Mode Switching:</strong> Change view mode at runtime</p></li>
+<li><p><strong>TX Parameter Control:</strong> Adjust transmission mode, rate, staleness, hold-last</p></li>
+<li><p><strong>View Parameter Control:</strong> Update filter parameters (cutoff, beta, jitter, merge distance, window)</p></li>
+<li><p><strong>Recording Control:</strong> Start/stop JSONL recording with file browser</p></li>
+<li><p><strong>Clock Sync:</strong> Trigger NTP-style synchronization</p></li>
+<li><p><strong>Timing Overlay:</strong> Display lag metrics (e2e, wire, stale, gap, RTT, offset)</p></li>
+<li><p><strong>Invert Y:</strong> Coordinate system flip for different screen orientations</p></li>
+</ul>
+</section>
+<section id="ui-layout">
+<h4><strong>UI Layout:</strong><a class="headerlink" href="#ui-layout" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌────────────────────────────────────────────────────────────┐
+│              [Touch Canvas - Live Visualization]           │
+│  • Touch points: Blue circles                              │
+│  • Reduced point: Yellow circle (larger)                   │
+│  • Velocity vector: Green arrow (vectorized mode)          │
+│  • Stats overlay: mode, seq, lag, sync                     │
+└────────────────────────────────────────────────────────────┘
+│ Connection: [Host: 128.178.51.86] [Port: 6001] [Auth: ...] │
+│             [Connect] [Disconnect]                         │
+├────────────────────────────────────────────────────────────┤
+│ Mode: [reduced ▼] [Set Mode]                               │
+│ TX: [rate ▼] Hz:[60] MaxStale:[300] [Hold-last ☑] [Apply]  │
+│ [Invert Y ☐]                                               │
+├────────────────────────────────────────────────────────────┤
+│ Record: [./logs/run_20250930_120000.jsonl] [Browse...]     │
+│         [Start Rec] [Stop Rec]  REC: on (w:1234 d:0 q:12)  │
+├────────────────────────────────────────────────────────────┤
+│ [Sync Time] offset: -12.3 ms | rtt: 4.2 ms [Get Meta]      │
+├────────────────────────────────────────────────────────────┤
+│ Connected | RX:60.0 pkt/s | mode:reduced | hb:False        │
+│ e2e:15.2ms wire:3.1ms stale:0.0ms gap:-0.5ms               │
+│ synced:yes offset:-12.3ms rtt:4.2ms                        │
+└────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h4><strong>Usage:</strong><a class="headerlink" href="#usage" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>host_vis_gui.py
+<span class="c1"># Then use GUI controls to connect and configure</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="timing-architecture">
+<h2>Timing Architecture<a class="headerlink" href="#timing-architecture" title="Link to this heading">#</a></h2>
+<section id="timestamps-in-the-pipeline">
+<h3><strong>Timestamps in the Pipeline</strong><a class="headerlink" href="#timestamps-in-the-pipeline" title="Link to this heading">#</a></h3>
+<p>The system tracks multiple timestamps at different stages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Touch Event on Pi → t_evt (kernel timestamp)
+    ↓
+Frame Emit → t_host (Pi wall clock)
+    ↓
+TX Send → t_tx (Pi wall clock), t_tx_mono (Pi monotonic)
+    ↓
+Network Transit
+    ↓
+RX Recv → t_rx (Host wall clock), t_rx_mono (Host monotonic)
+    ↓
+Annotation → _host metadata
+</pre></div>
+</div>
+</section>
+<section id="host-timing-metadata-host-field">
+<h3><strong>Host Timing Metadata (<code class="docutils literal notranslate"><span class="pre">_host</span></code> field)</strong><a class="headerlink" href="#host-timing-metadata-host-field" title="Link to this heading">#</a></h3>
+<p>Added by <code class="docutils literal notranslate"><span class="pre">HostTouchClient._annotate_packet()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;t_rx&quot;</span><span class="p">:</span> <span class="mf">1698765432.456</span><span class="p">,</span>           <span class="c1"># Host wall clock receive time</span>
+    <span class="s2">&quot;t_rx_mono&quot;</span><span class="p">:</span> <span class="mf">1234567.890</span><span class="p">,</span>         <span class="c1"># Host monotonic time</span>
+    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0123</span><span class="p">,</span>                <span class="c1"># Clock offset (if synced)</span>
+    <span class="s2">&quot;synced&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                   <span class="c1"># Clock sync status</span>
+    <span class="s2">&quot;rtt_ms&quot;</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>                    <span class="c1"># Last sync RTT</span>
+
+    <span class="c1"># Lag measurements</span>
+    <span class="s2">&quot;fresh&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                    <span class="c1"># Is this a new source frame?</span>
+    <span class="s2">&quot;stale_ms&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>                  <span class="c1"># Time since last fresh frame arrived at host</span>
+    <span class="s2">&quot;lag_ms_e2e&quot;</span><span class="p">:</span> <span class="mf">15.2</span><span class="p">,</span>               <span class="c1"># End-to-end: (t_rx - source_t) - offset [FROZEN on repeat frames]</span>
+    <span class="s2">&quot;lag_ms_wire&quot;</span><span class="p">:</span> <span class="mf">3.1</span><span class="p">,</span>               <span class="c1"># Wire delay: (t_rx - t_tx) - offset [COMPUTED EVERY PACKET]</span>
+
+    <span class="c1"># Monotonic tick diagnostics (no cross-host sync needed)</span>
+    <span class="s2">&quot;srv_tick_ms&quot;</span><span class="p">:</span> <span class="mf">16.7</span><span class="p">,</span>              <span class="c1"># Server inter-packet interval (monotonic)</span>
+    <span class="s2">&quot;rx_tick_ms&quot;</span><span class="p">:</span> <span class="mf">17.2</span><span class="p">,</span>               <span class="c1"># Host inter-arrival interval (monotonic)</span>
+    <span class="s2">&quot;gap_ms&quot;</span><span class="p">:</span> <span class="mf">0.5</span>                     <span class="c1"># rx_tick - srv_tick (network jitter)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="lag-measurement-semantics">
+<h3><strong>Lag Measurement Semantics</strong><a class="headerlink" href="#lag-measurement-semantics" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lag_ms_e2e</span></code> (End-to-End Latency):</strong></p>
+<ul class="simple">
+<li><p>Measures: <strong>Touch event on Pi → Packet received on Host</strong></p></li>
+<li><p>Computed: <code class="docutils literal notranslate"><span class="pre">(t_rx</span> <span class="pre">-</span> <span class="pre">source_t)</span> <span class="pre">-</span> <span class="pre">clock_offset</span></code></p></li>
+<li><p><strong>Frozen Behavior:</strong> Only updated when a NEW source frame arrives (fresh=True)</p></li>
+<li><p><strong>Rationale:</strong> In “rate” mode, server may send same source frame multiple times. Lag should NOT increase artificially on repeated transmissions.</p></li>
+<li><p><strong>Use Case:</strong> True touch-to-host latency for fresh events</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">stale_ms</span></code> (Staleness):</strong></p>
+<ul class="simple">
+<li><p>Measures: <strong>Time since last fresh frame was received</strong></p></li>
+<li><p>Computed: <code class="docutils literal notranslate"><span class="pre">t_rx_now</span> <span class="pre">-</span> <span class="pre">t_rx_last_fresh</span></code></p></li>
+<li><p><strong>Always Increasing:</strong> Increments on every packet until a fresh frame arrives</p></li>
+<li><p><strong>Use Case:</strong> Detect when server is repeating old data (hold-last mode)</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">lag_ms_wire</span></code> (Network Latency):</strong></p>
+<ul class="simple">
+<li><p>Measures: <strong>Packet send on Pi → Packet received on Host</strong></p></li>
+<li><p>Computed: <code class="docutils literal notranslate"><span class="pre">(t_rx</span> <span class="pre">-</span> <span class="pre">t_tx)</span> <span class="pre">-</span> <span class="pre">clock_offset</span></code></p></li>
+<li><p><strong>Computed Every Packet:</strong> Includes both fresh and repeated frames</p></li>
+<li><p><strong>Use Case:</strong> Monitor network performance</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">gap_ms</span></code> (Jitter):</strong></p>
+<ul class="simple">
+<li><p>Measures: <strong>Difference between host RX interval and server TX interval</strong></p></li>
+<li><p>Computed: <code class="docutils literal notranslate"><span class="pre">rx_tick_ms</span> <span class="pre">-</span> <span class="pre">srv_tick_ms</span></code></p></li>
+<li><p><strong>Monotonic-Based:</strong> No cross-host sync required (uses monotonic clocks)</p></li>
+<li><p><strong>Interpretation:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">gap_ms</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>: Packet arrived later than expected (network delay)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gap_ms</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>: Packet arrived earlier (batching or clock drift)</p></li>
+</ul>
+</li>
+<li><p><strong>Use Case:</strong> Diagnose network jitter</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="rate-mode-heartbeat-hold-semantics">
+<h3><strong>Rate Mode Heartbeat/Hold Semantics</strong><a class="headerlink" href="#rate-mode-heartbeat-hold-semantics" title="Link to this heading">#</a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">tx_mode=&quot;rate&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">tx_hz=60</span></code>:</p>
+<ul class="simple">
+<li><p>Server sends packet every 16.7ms (60 Hz) regardless of touch events</p></li>
+<li><p>If source frame age &gt; <code class="docutils literal notranslate"><span class="pre">max_source_stale_ms</span></code>:</p>
+<ul>
+<li><p><strong>No touch present OR <code class="docutils literal notranslate"><span class="pre">hold_last_when_touch_present=False</span></code>:</strong></p>
+<ul>
+<li><p>Send <strong>heartbeat packet</strong> (<code class="docutils literal notranslate"><span class="pre">heartbeat=True</span></code>, no data)</p></li>
+</ul>
+</li>
+<li><p><strong>Touch present AND <code class="docutils literal notranslate"><span class="pre">hold_last_when_touch_present=True</span></code>:</strong></p>
+<ul>
+<li><p>Send <strong>held packet</strong> (<code class="docutils literal notranslate"><span class="pre">held=True</span></code>, repeat last data)</p></li>
+<li><p>Useful for maintaining smooth visualization during brief event gaps</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="client-configuration-host-pc">
+<h3><strong>Client Configuration (Host PC)</strong><a class="headerlink" href="#client-configuration-host-pc" title="Link to this heading">#</a></h3>
+<section id="basic-connection">
+<h4><strong>Basic Connection:</strong><a class="headerlink" href="#basic-connection" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">touchscreen.host_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">HostTouchClient</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span>  <span class="c1"># Raspberry Pi IP</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>
+    <span class="n">reconnect</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Synchronize clocks</span>
+<span class="n">sync_result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Offset: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">&#39;offset_ms&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms, RTT: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">&#39;rtt_ms&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+
+<span class="c1"># Main loop</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">pkt</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>  <span class="c1"># Get latest packet</span>
+        <span class="k">if</span> <span class="n">pkt</span> <span class="ow">and</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;point&quot;</span><span class="p">):</span>
+            <span class="n">point</span> <span class="o">=</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch at (</span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.016</span><span class="p">)</span>  <span class="c1"># ~60 fps</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="with-recording">
+<h4><strong>With Recording:</strong><a class="headerlink" href="#with-recording" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">touchscreen.host_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">HostTouchClient</span><span class="p">,</span> <span class="n">AsyncJSONLRecorder</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span> <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Start recording</span>
+<span class="n">recorder</span> <span class="o">=</span> <span class="n">AsyncJSONLRecorder</span><span class="p">(</span>
+    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;./logs/experiment_001.jsonl.gz&quot;</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;mouse_001&quot;</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;training_day_3&quot;</span><span class="p">},</span>
+    <span class="n">flush_every</span><span class="o">=</span><span class="mi">64</span>
+<span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_recorder</span><span class="p">(</span><span class="n">recorder</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Your experiment loop</span>
+    <span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="c1"># ... run trial ...</span>
+        <span class="k">pass</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Auto-closes recorder</span>
+</pre></div>
+</div>
+</section>
+<section id="runtime-parameter-control">
+<h4><strong>Runtime Parameter Control:</strong><a class="headerlink" href="#runtime-parameter-control" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Switch to vectorized mode</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>
+
+<span class="c1"># Increase rate to 120 Hz</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">)</span>
+
+<span class="c1"># Update filter parameters</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_view_params</span><span class="p">(</span>
+    <span class="n">min_cutoff</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>      <span class="c1"># More aggressive filtering</span>
+    <span class="n">beta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">jitter_px</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">merge_dist_norm</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span>
+    <span class="n">window_ms</span><span class="o">=</span><span class="mi">150</span>        <span class="c1"># Shorter velocity window</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hardware-setup">
+<h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Link to this heading">#</a></h2>
+<section id="raspberry-pi-configuration">
+<h3><strong>Raspberry Pi Configuration</strong><a class="headerlink" href="#raspberry-pi-configuration" title="Link to this heading">#</a></h3>
+<section id="find-touch-device">
+<h4><strong>1. Find Touch Device:</strong><a class="headerlink" href="#find-touch-device" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all input devices</span>
+sudo<span class="w"> </span>libinput<span class="w"> </span>list-devices
+
+<span class="c1"># Or use evtest</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>evtest
+sudo<span class="w"> </span>evtest
+<span class="c1"># Select device and test by touching screen</span>
+</pre></div>
+</div>
+</section>
+<section id="check-device-capabilities">
+<h4><strong>2. Check Device Capabilities:</strong><a class="headerlink" href="#check-device-capabilities" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install evdev tools</span>
+pip<span class="w"> </span>install<span class="w"> </span>evdev
+
+<span class="c1"># Auto-detect touchscreen</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from touchscreen.touch_controller import TouchController; tc = TouchController(device_path=&#39;auto&#39;); print(tc.device_path)&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-raspberry-pi-ip">
+<h4><strong>3. Get Raspberry Pi IP:</strong><a class="headerlink" href="#get-raspberry-pi-ip" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>hostname<span class="w"> </span>-I
+<span class="c1"># Example: 192.168.1.100</span>
+</pre></div>
+</div>
+</section>
+<section id="run-server-on-boot-systemd-service">
+<h4><strong>4. Run Server on Boot (systemd service):</strong><a class="headerlink" href="#run-server-on-boot-systemd-service" title="Link to this heading">#</a></h4>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># /etc/systemd/system/touchscreen.service</span>
+<span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Touchscreen Server</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">User</span><span class="o">=</span><span class="s">pi</span>
+<span class="na">WorkingDirectory</span><span class="o">=</span><span class="s">/home/pi/mice_ar_tasks</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/home/pi/mice_ar_tasks/venv/bin/python -m touchscreen.touch_controller --device auto --mode reduced --tx-mode rate --tx-hz 60</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+<span class="na">RestartSec</span><span class="o">=</span><span class="s">5</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>touchscreen.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>touchscreen.service
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>touchscreen.service
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="low-latency-network-settings-optional">
+<h4><strong>Low-Latency Network Settings (Optional):</strong><a class="headerlink" href="#low-latency-network-settings-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable power management on WiFi</span>
+sudo<span class="w"> </span>iwconfig<span class="w"> </span>wlan0<span class="w"> </span>power<span class="w"> </span>off
+
+<span class="c1"># Increase TCP buffer sizes</span>
+sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.core.rmem_max<span class="o">=</span><span class="m">8388608</span>
+sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.core.wmem_max<span class="o">=</span><span class="m">8388608</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="offline-analysis-of-recorded-data">
+<h3><strong>Offline Analysis of Recorded Data</strong><a class="headerlink" href="#offline-analysis-of-recorded-data" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gzip</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="c1"># Read recorded JSONL</span>
+<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;logs/experiment_001.jsonl.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device:&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;device&quot;</span><span class="p">])</span>
+
+    <span class="n">packets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">if</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;packet&quot;</span><span class="p">]</span>
+
+<span class="c1"># Extract trajectories</span>
+<span class="n">trajectories</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">pkt</span> <span class="ow">in</span> <span class="n">packets</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;point&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heartbeat&quot;</span><span class="p">):</span>
+        <span class="n">trajectories</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;lag_ms&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_host&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lag_ms_e2e&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">})</span>
+
+<span class="c1"># Analyze</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;lag_ms&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trajectories</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P95 lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/touchscreen"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../python/TTLGenerator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TTL Generator Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../hardware/Teensy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Teensy Hardware Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchcontroller-server-side">1. <strong>TouchController</strong> (Server-Side)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#responsibilities"><strong>Responsibilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features"><strong>Key Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-parameters"><strong>Constructor Parameters:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api-methods"><strong>API Methods:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rawstore-frame-buffer">2. <strong>RawStore</strong> (Frame Buffer)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-structure"><strong>Data Structure:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-pipeline-data-transformations">3. <strong>View Pipeline</strong> (Data Transformations)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rawview"><strong>3.1 RawView</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizedview"><strong>3.2 NormalizedView</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filteredview-one-euro-filter"><strong>3.3 FilteredView</strong> (One-Euro Filter)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reducedview-single-touch-reduction"><strong>3.4 ReducedView</strong> (Single Touch Reduction)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorizedview-sliding-window-velocity"><strong>3.5 VectorizedView</strong> (Sliding Window Velocity)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connectionhub-multicast-server">4. <strong>ConnectionHub</strong> (Multicast Server)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#features"><strong>Features:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hosttouchclient-client-side">5. <strong>HostTouchClient</strong> (Client-Side)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Responsibilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor Parameters:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>API Methods:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#clock-synchronization-ntp-style"><strong>Clock Synchronization (NTP-Style):</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asyncjsonlrecorder-logging">6. <strong>AsyncJSONLRecorder</strong> (Logging)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#api"><strong>API:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-vis-gui-py-real-time-monitor">7. <strong>host_vis_gui.py</strong> (Real-Time Monitor)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Features:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ui-layout"><strong>UI Layout:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage"><strong>Usage:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-architecture">Timing Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timestamps-in-the-pipeline"><strong>Timestamps in the Pipeline</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#host-timing-metadata-host-field"><strong>Host Timing Metadata (<code class="docutils literal notranslate"><span class="pre">_host</span></code> field)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-measurement-semantics"><strong>Lag Measurement Semantics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-mode-heartbeat-hold-semantics"><strong>Rate Mode Heartbeat/Hold Semantics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#client-configuration-host-pc"><strong>Client Configuration (Host PC)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-connection"><strong>Basic Connection:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-recording"><strong>With Recording:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-control"><strong>Runtime Parameter Control:</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-setup">Hardware Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raspberry-pi-configuration"><strong>Raspberry Pi Configuration</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-touch-device"><strong>1. Find Touch Device:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#check-device-capabilities"><strong>2. Check Device Capabilities:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-raspberry-pi-ip"><strong>3. Get Raspberry Pi IP:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#run-server-on-boot-systemd-service"><strong>4. Run Server on Boot (systemd service):</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#low-latency-network-settings-optional"><strong>Low-Latency Network Settings (Optional):</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-analysis-of-recorded-data"><strong>Offline Analysis of Recorded Data</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

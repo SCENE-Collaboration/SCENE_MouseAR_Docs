@@ -1,0 +1,1814 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Episode Management System &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/EpisodeManagement';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spawner System Reference" href="Spawners.html" />
+    <link rel="prev" title="Unity Game Architecture" href="Architecture.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/EpisodeManagement.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/EpisodeManagement.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Episode Management System</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managers-spawners-interaction-overview">Managers ↔ Spawners Interaction Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-idea">Core idea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-flow-control-path">System flow (control path)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall-runtime-loop">EpisodeManagerSingleWall runtime loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager-runtime-loop">SequenceTargetManager runtime loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-flow-what-downstream-systems-listen-to">Event flow (what downstream systems listen to)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-role-split-for-presentations">Quick role split for presentations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-manager-types">Two Manager Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">EpisodeManagerSingleWall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-responsibilities">Core Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-machine">State Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-configuration">Inspector Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-flow">Episode Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#startepisode">1. StartEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-state-update-loop">2. Running State (Update Loop)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#endepisode">3. EndEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iti-state-update-loop">4. ITI State (Update Loop)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-management">Spawner Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-spawners">Adding Spawners</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-switching">Runtime Switching</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-parameters">Environment Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-control">KV Channel Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disable-behavior">Disable Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-phase-ttl-observation-path">Init Phase → TTL Observation Path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-means-the-policy-receives-explicit-phase-context-while-generating-ttl-output">This means the policy receives explicit phase context while generating TTL output.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">SequenceTargetManager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Core Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">State Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Inspector Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Episode Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1. StartEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#target-sequence-formats">2. Target Sequence Formats</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-sequence-formats">3. Wall Sequence Formats</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-progression">4. Step Progression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-hazard-detection">5. Parallel Hazard Detection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-timeout">6. Step Timeout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7. EndEpisode()</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Environment Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">KV Channel Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring-integration">Scoring Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodescore-component">EpisodeScore Component</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-in-sequencetargetmanager">Usage in SequenceTargetManager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="episode-management-system">
+<h1>Episode Management System<a class="headerlink" href="#episode-management-system" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Episode managers orchestrate the game lifecycle: starting episodes, tracking time, detecting completion conditions, managing inter-trial intervals (ITI), and firing events. They provide a consistent framework for different task types while remaining agnostic to spatial layout (delegated to spawners).</p>
+</section>
+<section id="managers-spawners-interaction-overview">
+<h2>Managers ↔ Spawners Interaction Overview<a class="headerlink" href="#managers-spawners-interaction-overview" title="Link to this heading">#</a></h2>
+<p>This section summarizes how episode managers and spawners work together at runtime.</p>
+<section id="core-idea">
+<h3>Core idea<a class="headerlink" href="#core-idea" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Episode managers own lifecycle and task logic (start, run, success/fail, ITI)</p></li>
+<li><p>Spawners own object creation/cleanup (player, targets, walls, zones)</p></li>
+<li><p>Managers talk to spawners through <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> (or direct spawner APIs for sequence/grid use cases)</p></li>
+<li><p>Runtime control comes from env params (<code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code>) and KV commands (<code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code>)</p></li>
+</ul>
+</section>
+<section id="system-flow-control-path">
+<h3>System flow (control path)<a class="headerlink" href="#system-flow-control-path" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Python Config / GUI
+   ├─ unity.env.*  ─────→ EnvironmentParametersChannel
+   └─ unity.kv.*   ─────→ KvChannel → KvManagersDirector
+                                      │
+                                      ├─ EpisodeManagerSingleWall
+                                      └─ SequenceTargetManager
+                                               │
+                                               ▼
+                                 Spawners (Floor / Screen / Side / Grid)
+                                               │
+                                               ▼
+                                 Spawned objects (targets, walls, move object)
+</pre></div>
+</div>
+</section>
+<section id="episodemanagersinglewall-runtime-loop">
+<h3>EpisodeManagerSingleWall runtime loop<a class="headerlink" href="#episodemanagersinglewall-runtime-loop" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>StartEpisode()
+  → Read env params (general.*)
+  → Select active IEpisodeSpawner
+  → ClearAll()
+  → SpawnAll()   [or Init phase first]
+  → Running
+      ├─ success when TargetsAlive() == 0
+      └─ failure when elapsed &gt;= episode_length
+  → EndEpisode()
+      ├─ ClearAll()
+      └─ enter ITI
+  → ITI elapsed
+      ├─ loopEpisodes=true  → StartEpisode()
+      └─ loopEpisodes=false → Idle
+</pre></div>
+</div>
+</section>
+<section id="sequencetargetmanager-runtime-loop">
+<h3>SequenceTargetManager runtime loop<a class="headerlink" href="#sequencetargetmanager-runtime-loop" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>StartEpisode()
+  → Read env params (timeouts, dwell, iti, random lengths)
+  → GridSpawner.SpawnGrid() (targets + walls)
+  → Build target sequence + activate hazard walls
+  → Running (step-by-step)
+      ├─ target completed → advance step
+      ├─ wall hit (after grace) → fail
+      └─ step timeout → fail
+  → EndEpisode(success/fail)
+      ├─ deactivate targets/walls
+      └─ enter ITI (or immediate restart)
+</pre></div>
+</div>
+</section>
+<section id="event-flow-what-downstream-systems-listen-to">
+<h3>Event flow (what downstream systems listen to)<a class="headerlink" href="#event-flow-what-downstream-systems-listen-to" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>EpisodeManager events
+  OnEpisodeBegin
+  OnSpawningComplete
+  OnAllTargetsCleared / OnEpisodeTimeout / OnEpisodeSuccess
+  OnEpisodeEnd
+         │
+         ├─ Visual feedback (ColorOverlay / WhiteNoiseOverlayGPU)
+         ├─ Agent bridge flags (Init / ITI observations)
+         └─ Reporting components (if enabled)
+</pre></div>
+</div>
+</section>
+<section id="quick-role-split-for-presentations">
+<h3>Quick role split for presentations<a class="headerlink" href="#quick-role-split-for-presentations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Manager = When and why</strong> (state machine + task rules)</p></li>
+<li><p><strong>Spawner = What and where</strong> (which objects, where they appear)</p></li>
+<li><p><strong>Director/channels = How externally controlled</strong> (profiles, KV, env params)</p></li>
+</ul>
+</section>
+</section>
+<section id="two-manager-types">
+<h2>Two Manager Types<a class="headerlink" href="#two-manager-types" title="Link to this heading">#</a></h2>
+<section id="episodemanagersinglewall">
+<h3>EpisodeManagerSingleWall<a class="headerlink" href="#episodemanagersinglewall" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Simple “clear all targets” tasks with timeout</p>
+</section>
+<section id="sequencetargetmanager">
+<h3>SequenceTargetManager<a class="headerlink" href="#sequencetargetmanager" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Sequential multi-step tasks with hazards.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2>EpisodeManagerSingleWall<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="core-responsibilities">
+<h3>Core Responsibilities<a class="headerlink" href="#core-responsibilities" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Lifecycle Management</strong></p>
+<ul class="simple">
+<li><p>Start episodes</p></li>
+<li><p>Track elapsed time</p></li>
+<li><p>Detect completion (all targets cleared OR timeout)</p></li>
+<li><p>Manage ITI (inter-trial interval)</p></li>
+</ul>
+</li>
+<li><p><strong>Spawner Coordination</strong></p>
+<ul class="simple">
+<li><p>Support multiple spawner types via <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code></p></li>
+<li><p>Switch between spawners at runtime</p></li>
+<li><p>Clear and spawn objects at episode boundaries</p></li>
+</ul>
+</li>
+<li><p><strong>Event Broadcasting</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeBegin</span></code> - Episode started</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnSpawningComplete</span></code> - Objects created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnAllTargetsCleared</span></code> - Success condition met</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> - Init target completed (when init phase is enabled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code> - Episode finished (success or timeout)</p></li>
+</ul>
+</li>
+<li><p><strong>Visual Feedback Integration</strong></p>
+<ul class="simple">
+<li><p>Optional green flash on success (<code class="docutils literal notranslate"><span class="pre">ColorOverlay</span></code>)</p></li>
+<li><p>Optional noise overlay on timeout (<code class="docutils literal notranslate"><span class="pre">WhiteNoiseOverlayGPU</span></code>)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="state-machine">
+<h3>State Machine<a class="headerlink" href="#state-machine" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────┐
+│   Idle   │  (Initial state)
+└──────────┘
+     │
+     │ StartEpisode() called
+     ▼
+┌──────────┐
+│   Init   │  (Optional: player must reach init target)
+└──────────┘  [Only if enableInitPhase=true]
+     │
+     │ Init target completed by player
+     │ (skipped if enableInitPhase=false)
+     ▼
+┌──────────┐
+│ Running  │  (Tracking time, checking targets)
+└──────────┘
+     │
+     │ AllTargetsCleared OR Timeout
+     ▼
+┌──────────┐
+│   ITI    │  (Inter-trial interval)
+└──────────┘
+     │
+     │ ITI elapsed
+     ▼
+  Idle (if loopEpisodes=false)
+  OR
+  Init/Running (if loopEpisodes=true, auto restart)
+</pre></div>
+</div>
+</section>
+<section id="inspector-configuration">
+<h3>Inspector Configuration<a class="headerlink" href="#inspector-configuration" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Spawners&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MonoBehaviour</span><span class="o">&gt;</span><span class="w"> </span><span class="n">spawnerComponents</span><span class="p">;</span><span class="w">  </span><span class="c1">// Drag adapters here</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">activeSpawnerIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">             </span><span class="c1">// Which to use</span>
+
+<span class="na">[Header(&quot;Episode Timing&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">episodeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span><span class="w">              </span><span class="c1">// Max episode duration</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">itiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2f</span><span class="p">;</span><span class="w">                   </span><span class="c1">// Pause between episodes</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">loopEpisodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">               </span><span class="c1">// Auto-restart after ITI?</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">        </span><span class="c1">// Randomize ITI (±25% variation)</span>
+
+<span class="na">[Header(&quot;Initialization Phase (optional)&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">           </span><span class="c1">// Enable init phase?</span>
+<span class="k">public</span><span class="w"> </span><span class="n">SimpleTargetSpawner</span><span class="w"> </span><span class="n">initSpawner</span><span class="p">;</span><span class="w">        </span><span class="c1">// Init target spawner</span>
+
+<span class="na">[Header(&quot;Reward Flash on Success&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">        </span><span class="c1">// Green flash on success?</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span><span class="w">     </span><span class="c1">// Duration</span>
+
+<span class="na">[Header(&quot;Noise Overlay&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">       </span><span class="c1">// Noise on timeout?</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Duration</span>
+
+<span class="na">[Header(&quot;Events&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnEpisodeBegin</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnEpisodeEnd</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnSpawningComplete</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnAllTargetsCleared</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnInitPhaseComplete</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="episode-flow">
+<h3>Episode Flow<a class="headerlink" href="#episode-flow" title="Link to this heading">#</a></h3>
+<section id="startepisode">
+<h4>1. StartEpisode()<a class="headerlink" href="#startepisode" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartEpisode</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Read environment parameters (ML-Agents)</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="w">    </span><span class="n">itiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiLength</span><span class="p">);</span>
+<span class="w">    </span><span class="n">episodeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">episodeLength</span><span class="p">);</span>
+<span class="w">    </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.enable_init_phase&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.randomize_iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Optional: Configure reporter</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">reporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">EpisodeManagerSingleWallReporter</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reporter</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.enable_reporting&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">reporter</span><span class="p">.</span><span class="n">enableReporting</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">);</span>
+<span class="w">        </span><span class="n">reporter</span><span class="p">.</span><span class="n">enableReporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">OnEpisodeBegin</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Clear previous objects</span>
+<span class="w">    </span><span class="n">_active</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initSpawner</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">initSpawner</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Optional init phase before running phase</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">initSpawner</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EpisodeState</span><span class="p">.</span><span class="n">Init</span><span class="p">;</span>
+<span class="w">        </span><span class="n">initSpawner</span><span class="p">.</span><span class="n">SpawnAll</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StartRunningPhase</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Key Points:</strong></p>
+<ul class="simple">
+<li><p>Reads global env params: <code class="docutils literal notranslate"><span class="pre">general.iti_length</span></code>, <code class="docutils literal notranslate"><span class="pre">general.episode_length</span></code></p></li>
+<li><p>Reads init-related env params: <code class="docutils literal notranslate"><span class="pre">general.enable_init_phase</span></code>, <code class="docutils literal notranslate"><span class="pre">general.randomize_iti_length</span></code></p></li>
+<li><p>Configures optional reporter from env params</p></li>
+<li><p>Clears previous objects before spawning</p></li>
+<li><p>Enters <code class="docutils literal notranslate"><span class="pre">Init</span></code> state first when init phase is enabled</p></li>
+<li><p>Fires <code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> when the init target is completed</p></li>
+</ul>
+</section>
+<section id="running-state-update-loop">
+<h4>2. Running State (Update Loop)<a class="headerlink" href="#running-state-update-loop" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TickRunning</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Elapsed</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Check for success condition</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">alive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_active</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">_active</span><span class="p">.</span><span class="n">TargetsAlive</span><span class="p">()</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">_firedClearedThisEpisode</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">alive</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_firedClearedThisEpisode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">OnAllTargetsCleared</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// Optional green flash</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayRewardFlash</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">ColorOverlay</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">rewardDisplayDuration</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Check for timeout</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Elapsed</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">episodeLength</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Optional noise overlay</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayNoiseOverlay</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">WhiteNoiseOverlayGPU</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">noiseDisplayDuration</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Detection Logic:</strong></p>
+<ul class="simple">
+<li><p><strong>Success:</strong> <code class="docutils literal notranslate"><span class="pre">TargetsAlive()</span> <span class="pre">==</span> <span class="pre">0</span></code> (all cleared)</p></li>
+<li><p><strong>Timeout:</strong> <code class="docutils literal notranslate"><span class="pre">Elapsed</span> <span class="pre">&gt;=</span> <span class="pre">episodeLength</span></code></p></li>
+<li><p><strong>Visual Feedback:</strong> Overlays triggered automatically if enabled</p></li>
+</ul>
+</section>
+<section id="endepisode">
+<h4>3. EndEpisode()<a class="headerlink" href="#endepisode" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndEpisode</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EpisodeState</span><span class="p">.</span><span class="n">ITI</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ITIElapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">randomizeItiLength</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itiLength</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_currentItiDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="mf">0f</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2f</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">4f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_currentItiDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mathf</span><span class="p">.</span><span class="n">Max</span><span class="p">(</span><span class="mf">0f</span><span class="p">,</span><span class="w"> </span><span class="n">_currentItiDuration</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_currentItiDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itiLength</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Clean up</span>
+<span class="w">    </span><span class="n">_active</span><span class="o">?.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">initSpawner</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="n">initSpawner</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">OnEpisodeEnd</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Actions:</strong></p>
+<ul class="simple">
+<li><p>Clear all spawned objects</p></li>
+<li><p>Clear init target if present</p></li>
+<li><p>Compute ITI duration (fixed or randomized ±25%)</p></li>
+<li><p>Enter ITI state</p></li>
+<li><p>Fire <code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code> event</p></li>
+</ul>
+</section>
+<section id="iti-state-update-loop">
+<h4>4. ITI State (Update Loop)<a class="headerlink" href="#iti-state-update-loop" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TickITI</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ITIElapsed</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ITIElapsed</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">_currentItiDuration</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loopEpisodes</span><span class="p">)</span><span class="w"> </span><span class="n">StartEpisode</span><span class="p">();</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EpisodeState</span><span class="p">.</span><span class="n">Idle</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Behavior:</strong></p>
+<ul class="simple">
+<li><p>Wait <code class="docutils literal notranslate"><span class="pre">itiLength</span></code> seconds</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">loopEpisodes=true</span></code>: Automatically restart</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">loopEpisodes=false</span></code>: Return to Idle (manual restart required)</p></li>
+</ul>
+</section>
+</section>
+<section id="spawner-management">
+<h3>Spawner Management<a class="headerlink" href="#spawner-management" title="Link to this heading">#</a></h3>
+<section id="adding-spawners">
+<h4>Adding Spawners<a class="headerlink" href="#adding-spawners" title="Link to this heading">#</a></h4>
+<p>In Inspector:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EpisodeManagerSingleWall
+└── spawnerComponents (List)
+    ├── Element 0: ScreenSpawnerAdapter
+    ├── Element 1: SideTargetsSpawnerAdapter
+    └── Element 2: FloorTargetsSpawnerAdapter
+</pre></div>
+</div>
+<p><strong>Important:</strong> Drag the <strong>adapter component</strong>, not the GameObject!</p>
+</section>
+<section id="runtime-switching">
+<h4>Runtime Switching<a class="headerlink" href="#runtime-switching" title="Link to this heading">#</a></h4>
+<p><strong>Via KV Channel (from Python):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.spawner=1&quot;</span><span class="p">)</span>  <span class="c1"># Switch to spawner at index 1</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>    <span class="c1"># Restart episode</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="environment-parameters">
+<h3>Environment Parameters<a class="headerlink" href="#environment-parameters" title="Link to this heading">#</a></h3>
+<p><strong>Read at StartEpisode():</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Param Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration (seconds)</p></td>
+<td><p>Inspector value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.episode_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Episode timeout (seconds)</p></td>
+<td><p>Inspector value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_init_phase</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Enable init phase (0/1)</p></td>
+<td><p>Inspector value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.randomize_iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Randomize ITI ±25% (0/1)</p></td>
+<td><p>Inspector value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_reporting</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Enable reporter (0/1)</p></td>
+<td><p>Inspector value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Reporter update interval</p></td>
+<td><p>0.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Python Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;general.iti_length&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s2">&quot;general.episode_length&quot;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span>
+    <span class="s2">&quot;general.enable_reporting&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;general.reporting_period&quot;</span><span class="p">:</span> <span class="mf">0.5</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="kv-channel-control">
+<h3>KV Channel Control<a class="headerlink" href="#kv-channel-control" title="Link to this heading">#</a></h3>
+<p><strong>Available Commands:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enabled</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable manager</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.spawner</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Set active spawner index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.episode_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Set episode duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Set ITI duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.loop</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Set loopEpisodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_reward_flash</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable success flash</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_noise_overlay</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable timeout noise</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.reward_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Success flash duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.noise_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Timeout noise duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.start</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Start episode now</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="disable-behavior">
+<h3>Disable Behavior<a class="headerlink" href="#disable-behavior" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">OnDisable()</span></code> is intentionally a no-op in the current implementation to avoid premature cleanup when managers are toggled by <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code>.</p>
+<p>Cleanup happens inside explicit lifecycle methods (<code class="docutils literal notranslate"><span class="pre">StartEpisode</span></code>, <code class="docutils literal notranslate"><span class="pre">EndEpisode</span></code>) instead of on-disable.</p>
+</section>
+<section id="init-phase-ttl-observation-path">
+<h3>Init Phase → TTL Observation Path<a class="headerlink" href="#init-phase-ttl-observation-path" title="Link to this heading">#</a></h3>
+<p>For tasks using <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code>, init-phase state is exported as observations through this event chain:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.StartEpisode()</span></code> enters <code class="docutils literal notranslate"><span class="pre">EpisodeState.Init</span></code> and spawns <code class="docutils literal notranslate"><span class="pre">initSpawner</span></code> target.</p></li>
+<li><p>Player dwells on target (<code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code> + <code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code>) until completion.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.TickInit()</span></code> detects <code class="docutils literal notranslate"><span class="pre">initSpawner.IsCompletedByPlayer()</span></code> and fires <code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultiEpisodeToAgentBridge</span></code> listens to manager events and toggles flags:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeBegin</span></code> → <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.StartInitPhase()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> → <code class="docutils literal notranslate"><span class="pre">initPhaseFlag.EndInitPhase()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code> → <code class="docutils literal notranslate"><span class="pre">itiFlag.StartITI()</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code> appends both flags:</p>
+<ul class="simple">
+<li><p>init phase flag (<code class="docutils literal notranslate"><span class="pre">obs[2]</span></code>)</p></li>
+<li><p>ITI flag (<code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="this-means-the-policy-receives-explicit-phase-context-while-generating-ttl-output">
+<h2>This means the policy receives explicit phase context while generating TTL output.<a class="headerlink" href="#this-means-the-policy-receives-explicit-phase-context-while-generating-ttl-output" title="Link to this heading">#</a></h2>
+</section>
+<section id="id2">
+<h2>SequenceTargetManager<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>Core Responsibilities<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Sequential Task Orchestration</strong></p>
+<ul class="simple">
+<li><p>Present targets one at a time in sequence</p></li>
+<li><p>Track step-by-step progress</p></li>
+<li><p>Support random or fixed sequences</p></li>
+</ul>
+</li>
+<li><p><strong>Parallel Hazards</strong></p>
+<ul class="simple">
+<li><p>Activate hazard walls during episode</p></li>
+<li><p>Immediate fail on wall collision (after grace period)</p></li>
+<li><p>Configurable wall sequences</p></li>
+</ul>
+</li>
+<li><p><strong>Scoring Integration</strong></p>
+<ul class="simple">
+<li><p>Track score via <code class="docutils literal notranslate"><span class="pre">EpisodeScore</span></code> component</p></li>
+<li><p>Require score == target count for success</p></li>
+<li><p>Reset score on wall collision</p></li>
+</ul>
+</li>
+<li><p><strong>Grace Period</strong></p>
+<ul class="simple">
+<li><p>Ignore wall collisions for initial seconds</p></li>
+<li><p>Prevent unfair fails at episode start</p></li>
+</ul>
+</li>
+<li><p><strong>Event Broadcasting</strong></p>
+<ul class="simple">
+<li><p>Per-step events (<code class="docutils literal notranslate"><span class="pre">OnStepAdvanced</span></code>, <code class="docutils literal notranslate"><span class="pre">OnStepLabel</span></code>)</p></li>
+<li><p>Success/timeout events</p></li>
+<li><p>Wall grace violations</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id4">
+<h3>State Machine<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────┐
+│   Idle   │  (Initial state)
+└──────────┘
+     │
+     │ StartEpisode() called
+     ▼
+┌───────────────────────┐
+│      Running          │
+│  ┌─────────────────┐  │
+│  │ Step 1 Active   │  │
+│  └─────────────────┘  │
+│         │ Target completed
+│         ▼
+│  ┌─────────────────┐  │
+│  │ Step 2 Active   │  │
+│  └─────────────────┘  │
+│         │ ...
+│         ▼
+│  ┌─────────────────┐  │
+│  │ Step N Active   │  │
+│  └─────────────────┘  │
+└───────────────────────┘
+     │                   │
+     │ All steps done    │ Timeout or Wall hit
+     │ (Success)         │ (Failure)
+     ▼                   ▼
+┌──────────┐         ┌──────────┐
+│   ITI    │◄────────│   ITI    │
+└──────────┘         └──────────┘
+     │
+     │ ITI elapsed
+     ▼
+  StartEpisode() again (always loops)
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Inspector Configuration<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Wiring&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GridTargetsSpawner</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span><span class="w">   </span><span class="c1">// Grid of targets + walls</span>
+<span class="k">public</span><span class="w"> </span><span class="n">EpisodeScore</span><span class="w"> </span><span class="n">score</span><span class="p">;</span><span class="w">           </span><span class="c1">// Optional scoring component</span>
+
+<span class="na">[Header(&quot;Target Sequence&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">targetSequenceText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;-1&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// &quot;1593&quot;, &quot;1,5,9,3&quot;, or &quot;-1&quot; (random)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Hazard Walls&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">wallSequenceText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// &quot;ABC&quot;, &quot;1,2,3&quot;, &quot;0&quot; (none), &quot;-1&quot; (random)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">randomWallLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Hazard Wall Grace Period&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span><span class="w">        </span><span class="c1">// Ignore walls for N seconds</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnWallIgnoredDuringGrace</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Timing&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span><span class="w">     </span><span class="c1">// Per-step timeout</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w">    </span><span class="c1">// Target dwell time</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Wall dwell time (immediate fail)</span>
+
+<span class="na">[Header(&quot;ITI&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableITI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">itiSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2f</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Task feedback&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOnTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>Episode Flow<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h4>1. StartEpisode()<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartEpisode</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Read environment parameters</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stepTimeoutSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;step_timeout_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="p">);</span>
+<span class="w">    </span><span class="n">dwellTargetSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_target_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="p">);</span>
+<span class="w">    </span><span class="n">dwellWallSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_wall_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="p">);</span>
+<span class="w">    </span><span class="n">wallGraceSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;wall_grace_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="p">);</span>
+<span class="w">    </span><span class="n">itiSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiSeconds</span><span class="p">);</span>
+<span class="w">    </span><span class="n">randomTargetLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;random_target_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="p">);</span>
+<span class="w">    </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;target_no_repeats&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Spawn grid (all targets + walls)</span>
+<span class="w">    </span><span class="n">_targets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">SpawnGrid</span><span class="p">();</span>
+<span class="w">    </span><span class="n">_walls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">Walls</span><span class="o">?.</span><span class="n">ToList</span><span class="p">()</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">GameObject</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Reset all targets to Static</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_targets</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">t</span><span class="p">.</span><span class="n">SetStatic</span><span class="p">();</span>
+<span class="w">        </span><span class="n">t</span><span class="p">.</span><span class="n">dwellSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Reset all walls to Inactive</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_walls</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">StatefulWall</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sw</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">dwellSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Build target sequence</span>
+<span class="w">    </span><span class="n">_targetRun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BuildTargetSequence</span><span class="p">(</span><span class="n">targetSequenceText</span><span class="p">,</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="p">,</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="p">,</span><span class="w"> </span><span class="n">_targets</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+<span class="w">    </span><span class="n">lastRequiredScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Activate hazard walls</span>
+<span class="w">    </span><span class="n">_hazardWalls</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">wi</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">BuildWallSet</span><span class="p">(</span><span class="n">wallSequenceText</span><span class="p">,</span><span class="w"> </span><span class="n">randomWallLength</span><span class="p">,</span><span class="w"> </span><span class="n">_walls</span><span class="p">.</span><span class="n">Count</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_hazardWalls</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">wi</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_walls</span><span class="p">[</span><span class="n">wi</span><span class="p">].</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">StatefulWall</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sw</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">HandleWallTriggered</span><span class="p">);</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Reset scoring</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ResetScore</span><span class="p">();</span>
+<span class="w">    </span><span class="n">lastScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Start sequence</span>
+<span class="w">    </span><span class="n">_curStep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_stepTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">lastEpisodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RunState</span><span class="p">.</span><span class="n">Running</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_wallGraceTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">OnEpisodeBegin</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">    </span><span class="n">AdvanceStep</span><span class="p">();</span><span class="w">  </span><span class="c1">// Activate first target</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Key Points:</strong></p>
+<ul class="simple">
+<li><p>Spawns entire grid (all targets + walls) at once</p></li>
+<li><p>Builds target sequence (random or fixed)</p></li>
+<li><p>Activates subset of walls as hazards</p></li>
+<li><p>Starts at step -1, then advances to step 0 (first target)</p></li>
+</ul>
+</section>
+<section id="target-sequence-formats">
+<h4>2. Target Sequence Formats<a class="headerlink" href="#target-sequence-formats" title="Link to this heading">#</a></h4>
+<p><strong>Compact Style (gridSize ≤ 3):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>targetSequenceText = &quot;1593&quot;
+→ Targets: #1, #5, #9, #3
+</pre></div>
+</div>
+<p><strong>Comma-Separated (any gridSize):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>targetSequenceText = &quot;1, 10, 23, 5&quot;
+→ Targets: #1, #10, #23, #5
+</pre></div>
+</div>
+<p><strong>Random:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>targetSequenceText = &quot;-1&quot;
+randomTargetLength = 4
+targetNoRepeatsInRandom = true
+→ Randomly select 4 unique targets
+</pre></div>
+</div>
+</section>
+<section id="wall-sequence-formats">
+<h4>3. Wall Sequence Formats<a class="headerlink" href="#wall-sequence-formats" title="Link to this heading">#</a></h4>
+<p><strong>Letter Style (first 26 walls):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallSequenceText = &quot;ABC&quot;
+→ Walls A (index 0), B (index 1), C (index 2)
+</pre></div>
+</div>
+<p><strong>Numeric Style:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallSequenceText = &quot;1, 5, 10&quot;
+→ Walls at indices 0, 4, 9 (1-based)
+</pre></div>
+</div>
+<p><strong>None:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallSequenceText = &quot;0&quot;
+→ No walls active
+</pre></div>
+</div>
+<p><strong>Random:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wallSequenceText = &quot;-1&quot;
+randomWallLength = 3
+→ Randomly select 3 walls
+</pre></div>
+</div>
+</section>
+<section id="step-progression">
+<h4>4. Step Progression<a class="headerlink" href="#step-progression" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">AdvanceStep</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Deactivate previous target</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_curStep</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">_curStep</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">[</span><span class="n">_curStep</span><span class="p">];</span>
+<span class="w">        </span><span class="n">_targets</span><span class="p">[</span><span class="n">prev</span><span class="p">].</span><span class="n">SetStatic</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">_curStep</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Check if sequence complete</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_curStep</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">score</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">Score</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">lastRequiredScore</span><span class="p">;</span>
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">(</span><span class="n">success</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Activate next target</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">[</span><span class="n">_curStep</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targets</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+<span class="w">    </span><span class="n">cur</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">HandleTargetCompleted</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cur</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">_stepTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OnStepAdvanced</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">_curStep</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c1">// 1-based for display</span>
+<span class="w">    </span><span class="n">OnStepLabel</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="s">$&quot;Target #{idx + 1}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">void</span><span class="w"> </span><span class="nf">HandleTargetCompleted</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">AdvanceStep</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Flow:</strong></p>
+<ol class="arabic simple">
+<li><p>Deactivate previous target (set to Static)</p></li>
+<li><p>Increment step counter</p></li>
+<li><p>If all steps done → Check score → EndEpisode()</p></li>
+<li><p>Else: Activate next target in sequence</p></li>
+<li><p>Reset step timer</p></li>
+<li><p>Fire events with step info</p></li>
+</ol>
+</section>
+<section id="parallel-hazard-detection">
+<h4>5. Parallel Hazard Detection<a class="headerlink" href="#parallel-hazard-detection" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">HandleWallTriggered</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Ignore during grace period</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_wallGraceTimer</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OnWallIgnoredDuringGrace</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Trigger failure overlay</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">WhiteNoiseOverlayGPU</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">noiseDisplayDuration</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Reset score (immediate fail)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ResetScore</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">EndEpisode</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Grace Period Logic:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_wallGraceTimer</span></code> increments in Update()</p></li>
+<li><p>Wall collisions ignored if <code class="docutils literal notranslate"><span class="pre">_wallGraceTimer</span> <span class="pre">&lt;</span> <span class="pre">wallGraceSeconds</span></code></p></li>
+<li><p>After grace period: Immediate fail + score reset</p></li>
+</ul>
+<p><strong>Purpose:</strong></p>
+<ul class="simple">
+<li><p>Prevent unfair fails when episode just started</p></li>
+<li><p>Agent needs time to move away from spawn location</p></li>
+</ul>
+</section>
+<section id="step-timeout">
+<h4>6. Step Timeout<a class="headerlink" href="#step-timeout" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">State</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RunState</span><span class="p">.</span><span class="n">Running</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_wallGraceTimer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_stepTimer</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_stepTimer</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">OnEpisodeTimeout</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayNoiseOnTimeout</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">WhiteNoiseOverlayGPU</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">noiseDisplayDuration</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">EndEpisode</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Per-Step Timeout:</strong></p>
+<ul class="simple">
+<li><p>Each step has independent timeout (<code class="docutils literal notranslate"><span class="pre">stepTimeoutSeconds</span></code>)</p></li>
+<li><p>Timer resets on each <code class="docutils literal notranslate"><span class="pre">AdvanceStep()</span></code></p></li>
+<li><p>If timeout expires: Fire <code class="docutils literal notranslate"><span class="pre">OnEpisodeTimeout</span></code>, show noise, fail episode</p></li>
+</ul>
+</section>
+<section id="id8">
+<h4>7. EndEpisode()<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndEpisode</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Unhook current target</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_curStep</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">_curStep</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">[</span><span class="n">_curStep</span><span class="p">];</span>
+<span class="w">        </span><span class="n">_targets</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">OnCompleted</span><span class="p">.</span><span class="n">RemoveListener</span><span class="p">(</span><span class="n">HandleTargetCompleted</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_targets</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">SetInactive</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Inactivate all targets</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_targets</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Unhook and inactivate all walls</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">w</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_walls</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">sw</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">GetComponent</span><span class="o">&lt;</span><span class="n">StatefulWall</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sw</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">.</span><span class="n">RemoveListener</span><span class="p">(</span><span class="n">HandleWallTriggered</span><span class="p">);</span>
+<span class="w">            </span><span class="n">sw</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">lastEpisodeSuccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">success</span><span class="p">;</span>
+<span class="w">    </span><span class="n">lastScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">Score</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Success feedback</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OnEpisodeSuccess</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayRewardFlash</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">ColorOverlay</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">rewardDisplayDuration</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">OnEpisodeEnd</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Always go to ITI, then auto-restart</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enableITI</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RunState</span><span class="p">.</span><span class="n">ITI</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_itiTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="w">        </span><span class="n">OnITIStart</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">State</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RunState</span><span class="p">.</span><span class="n">Idle</span><span class="p">;</span>
+<span class="w">        </span><span class="n">StartEpisode</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Cleanup:</strong></p>
+<ul class="simple">
+<li><p>Unhook all event listeners</p></li>
+<li><p>Inactivate all targets and walls</p></li>
+<li><p>Record outcome and score</p></li>
+<li><p>Show success overlay if applicable</p></li>
+<li><p>Enter ITI → Auto-restart</p></li>
+</ul>
+</section>
+</section>
+<section id="id9">
+<h3>Environment Parameters<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p><strong>Read at StartEpisode():</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Param Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">step_timeout_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Per-step timeout</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dwell_target_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target dwell time</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dwell_wall_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall dwell time</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wall_grace_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall grace period</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">random_target_length</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Random sequence length</p></td>
+<td><p>Inspector</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_no_repeats</span></code></p></td>
+<td><p>float</p></td>
+<td><p>No-repeat random (0/1)</p></td>
+<td><p>Inspector</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id10">
+<h3>KV Channel Control<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p><strong>Available Commands:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enabled</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable manager</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.step_timeout_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Per-step timeout</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.dwell_target_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target dwell time</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.dwell_wall_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall dwell time</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.wall_grace_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall grace period</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enable_iti</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable ITI</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.iti_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.target_sequence</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Target sequence (“1593”, “-1”)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.wall_sequence</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Wall sequence (“ABC”, “0”, “-1”)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.random_target_length</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Random sequence length</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.random_wall_length</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Random wall count</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.target_no_repeats</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>No repeats in random</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_noise_timeout</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Noise on timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.noise_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Noise duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_reward_flash</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Flash on success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.reward_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Flash duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.start</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Start episode now</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="scoring-integration">
+<h3>Scoring Integration<a class="headerlink" href="#scoring-integration" title="Link to this heading">#</a></h3>
+<section id="episodescore-component">
+<h4>EpisodeScore Component<a class="headerlink" href="#episodescore-component" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EpisodeScore</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">OnScoreChanged</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ResetScore</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">OnScoreChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">Score</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddPoint</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span><span class="w"> </span><span class="n">OnScoreChanged</span><span class="o">?.</span><span class="n">Invoke</span><span class="p">(</span><span class="n">Score</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="usage-in-sequencetargetmanager">
+<h4>Usage in SequenceTargetManager<a class="headerlink" href="#usage-in-sequencetargetmanager" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// At StartEpisode()</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ResetScore</span><span class="p">();</span>
+<span class="n">lastRequiredScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span><span class="w">  </span><span class="c1">// Expected score for success</span>
+
+<span class="c1">// At each step completion</span>
+<span class="k">void</span><span class="w"> </span><span class="nf">HandleTargetCompleted</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">AddPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">AdvanceStep</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// At sequence completion</span>
+<span class="k">void</span><span class="w"> </span><span class="nf">AdvanceStep</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_curStep</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">_targetRun</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">score</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">Score</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">lastRequiredScore</span><span class="p">;</span>
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">(</span><span class="n">success</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// On wall collision</span>
+<span class="k">void</span><span class="w"> </span><span class="nf">HandleWallTriggered</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="p">)</span><span class="w"> </span><span class="n">score</span><span class="p">.</span><span class="n">ResetScore</span><span class="p">();</span><span class="w">  </span><span class="c1">// Immediate fail</span>
+<span class="w">    </span><span class="n">EndEpisode</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
+<li><p><strong><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawner Reference</span></a></strong> - All spawner types</p></li>
+<li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a></strong> - Env params and KV control</p></li>
+<li><p><strong><a class="reference internal" href="Agents.html"><span class="std std-doc">Agent Integration</span></a></strong> - ML-Agents connection</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Architecture.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Unity Game Architecture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Spawners.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spawner System Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#managers-spawners-interaction-overview">Managers ↔ Spawners Interaction Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-idea">Core idea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-flow-control-path">System flow (control path)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall-runtime-loop">EpisodeManagerSingleWall runtime loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager-runtime-loop">SequenceTargetManager runtime loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-flow-what-downstream-systems-listen-to">Event flow (what downstream systems listen to)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-role-split-for-presentations">Quick role split for presentations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-manager-types">Two Manager Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">EpisodeManagerSingleWall</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-responsibilities">Core Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-machine">State Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-configuration">Inspector Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-flow">Episode Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#startepisode">1. StartEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-state-update-loop">2. Running State (Update Loop)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#endepisode">3. EndEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iti-state-update-loop">4. ITI State (Update Loop)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-management">Spawner Management</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-spawners">Adding Spawners</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-switching">Runtime Switching</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-parameters">Environment Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-control">KV Channel Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disable-behavior">Disable Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-phase-ttl-observation-path">Init Phase → TTL Observation Path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-means-the-policy-receives-explicit-phase-context-while-generating-ttl-output">This means the policy receives explicit phase context while generating TTL output.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">SequenceTargetManager</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Core Responsibilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">State Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Inspector Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Episode Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1. StartEpisode()</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#target-sequence-formats">2. Target Sequence Formats</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-sequence-formats">3. Wall Sequence Formats</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-progression">4. Step Progression</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-hazard-detection">5. Parallel Hazard Detection</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-timeout">6. Step Timeout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7. EndEpisode()</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Environment Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">KV Channel Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scoring-integration">Scoring Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodescore-component">EpisodeScore Component</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-in-sequencetargetmanager">Usage in SequenceTargetManager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

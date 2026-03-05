@@ -1,0 +1,1365 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unity Game Architecture &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Architecture';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Episode Management System" href="EpisodeManagement.html" />
+    <link rel="prev" title="Touchscreen Module - Quick Reference" href="../touchscreen/Overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/Architecture.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/Architecture.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unity Game Architecture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-architecture-layers">Core Architecture Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships">Component Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-ttl-integration">Init/TTL integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-and-display-utilities">Camera and display utilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-parameter-bridge-utility">Interaction/parameter bridge utility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-managers-spawners">Episode Managers ↔ Spawners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawners-implementation-vs-adapter-pattern">Spawners: Implementation vs Adapter Pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-control-two-systems">Parameter Control: Two Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters-env-params">1. ML-Agents EnvironmentParameters (Env Params)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">2. KV Channel (Key-Value Side Channel)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-lifecycle">Episode Lifecycle</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-integration">Agent Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-components">ML-Agents Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-manager-agent-connection">Episode Manager ↔ Agent Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-observations">Visual Observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-types-overview">Spawner Types Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-system">Visual Feedback System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-feedback-coloroverlay">Success Feedback: ColorOverlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-feedback-whitenoiseoverlaygpu">Failure Feedback: WhiteNoiseOverlayGPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-manager-hookup">Episode-Manager Hookup</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-strategies">Configuration Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editor-only-configuration">Editor-Only Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-configuration">GUI Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-configuration-python-scripts">Programmatic Configuration (Python Scripts)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toml-config-files-profile-system">TOML Config Files (Profile System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-updates">Runtime Parameter Updates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-components-per-spawner">EnvParams Components (Per-Spawner)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-concerns">1. Separation of Concerns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-naming-conventions">2. Parameter Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-documentation"><strong>Unity Documentation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-documentation"><strong>Python Documentation</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unity-game-architecture">
+<h1>Unity Game Architecture<a class="headerlink" href="#unity-game-architecture" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The Unity game framework is built around a modular architecture that separates concerns into distinct, reusable components. The system enables researchers to configure complex behavioral experiments with minimal code changes through runtime parameter control.</p>
+</section>
+<section id="core-architecture-layers">
+<h2>Core Architecture Layers<a class="headerlink" href="#core-architecture-layers" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
+│                    Python/ML-Agents Layer                   │
+│  (Training scripts, Environment Parameters, KV Channels)    │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   Parameter Control Layer                   │
+│        KvManagersDirector + EnvParams Components            │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  Episode Management Layer                   │
+│     EpisodeManagerSingleWall + SequenceTargetManager        │
+│         (Lifecycle, Timing, Events, Rewards)                │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Spawner Layer                            │
+│  IEpisodeSpawner Interface + Concrete Implementations       │
+│  (FloorTargets, GridTargets, ScreenSpawner, etc.)           │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      Agent Layer                            │
+│   ML-Agents (DlcAgent, TouchFingerAgent, TTLBehavior)       │
+│        (Observations, Actions, Sensors)                     │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   Interaction Layer                         │
+│  StatefulTarget, StatefulWall, Colliders, Physics           │
+└─────────────────────────────────────────────────────────────┘
+                           ▼ ▼ ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Feedback Layer                           │
+│  ColorOverlay, WhiteNoiseOverlayGPU, EpisodeScore           │
+└─────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="component-relationships">
+<h2>Component Relationships<a class="headerlink" href="#component-relationships" title="Link to this heading">#</a></h2>
+<section id="init-ttl-integration">
+<h3>Init/TTL integration<a class="headerlink" href="#init-ttl-integration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">InitPhaseFlag</span></code>: boolean flag component for init-phase state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawnerAdapter</span></code>: exposes <code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code> through <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> when needed.</p></li>
+</ul>
+</section>
+<section id="camera-and-display-utilities">
+<h3>Camera and display utilities<a class="headerlink" href="#camera-and-display-utilities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PlaneOffAxisCamera</span></code>: computes off-axis projection matrix against a rectangular plane.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CameraEnvConfig</span></code>: maps env parameters to camera mode/FOV/clip/ortho-size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CameraFollowNoRotation</span></code>: follows target position while keeping fixed camera rotation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FollowXZFixedY</span></code>: follows target XZ with fixed Y for top/aux camera views.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MultiDisplayActivator</span></code>: activates selected Unity displays at startup/runtime.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RotateBottomScreen</span></code>: rotates camera/border layout from env param (<code class="docutils literal notranslate"><span class="pre">general.rotate_bottom_screen</span></code>).</p></li>
+</ul>
+</section>
+<section id="interaction-parameter-bridge-utility">
+<h3>Interaction/parameter bridge utility<a class="headerlink" href="#interaction-parameter-bridge-utility" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MoveByAction</span></code>: conditionally unlocks rigidbody movement only while nearby agents signal interaction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ParamBridge</span></code>: lightweight direct <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> bridge for sequence text keys.</p></li>
+</ul>
+</section>
+<section id="episode-managers-spawners">
+<h3>Episode Managers ↔ Spawners<a class="headerlink" href="#episode-managers-spawners" title="Link to this heading">#</a></h3>
+<p>Episode managers orchestrate the game lifecycle but don’t know <em>how</em> to create game objects. They depend on the <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> interface:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">();</span><span class="w">         </span><span class="c1">// Remove all spawned objects</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">();</span><span class="w">         </span><span class="c1">// Create player + targets</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">();</span><span class="w">      </span><span class="c1">// Count remaining targets</span>
+<span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">();</span><span class="w">  </span><span class="c1">// Get player instance</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><p>Episode managers can work with any spawner implementation</p></li>
+<li><p>New game scenarios require only new spawner implementations</p></li>
+<li><p>Same episode logic works across different spatial layouts</p></li>
+</ul>
+<p><strong>Connection Pattern:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EpisodeManagerSingleWall
+├── spawnerComponents: List&lt;MonoBehaviour&gt;
+│   ├── [0] ScreenSpawnerAdapter
+│   ├── [1] SideTargetsSpawnerAdapter
+│   └── [2] FloorTargetsSpawnerAdapter
+└── activeSpawnerIndex: 0  (which to use)
+</pre></div>
+</div>
+</section>
+<section id="spawners-implementation-vs-adapter-pattern">
+<h3>Spawners: Implementation vs Adapter Pattern<a class="headerlink" href="#spawners-implementation-vs-adapter-pattern" title="Link to this heading">#</a></h3>
+<p>Most spawners use a two-component architecture:</p>
+<p><strong>1. Implementation Component</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">ScreenSpawnerFromObject</span></code>)</p>
+<ul class="simple">
+<li><p>Contains spawning logic, placement algorithms, prefab references</p></li>
+<li><p>Manages spawned object lifecycle</p></li>
+<li><p>Exposes configuration parameters</p></li>
+</ul>
+<p><strong>2. Adapter Component</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">ScreenSpawnerAdapter</span></code>)</p>
+<ul class="simple">
+<li><p>Implements <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> interface</p></li>
+<li><p>Delegates to implementation component</p></li>
+<li><p>Provides standardized API for episode managers</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Implementation: ScreenSpawnerFromObject.cs</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ScreenSpawnerFromObject</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* spawning logic */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* spawning logic */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* count logic */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Adapter: ScreenSpawnerAdapter.cs</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ScreenSpawnerAdapter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ScreenSpawnerFromObject</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">SpawnAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">TargetsAlive</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">GetPlayer</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Why This Pattern?</strong></p>
+<ul class="simple">
+<li><p>Separates interface compliance from implementation</p></li>
+<li><p>Allows reuse of spawner logic without interface dependencies</p></li>
+<li><p>Easy to add new episode managers with different interfaces</p></li>
+</ul>
+</section>
+<section id="parameter-control-two-systems">
+<h3>Parameter Control: Two Systems<a class="headerlink" href="#parameter-control-two-systems" title="Link to this heading">#</a></h3>
+<p>The framework supports two independent parameter control mechanisms:</p>
+<section id="ml-agents-environmentparameters-env-params">
+<h4>1. ML-Agents EnvironmentParameters (Env Params)<a class="headerlink" href="#ml-agents-environmentparameters-env-params" title="Link to this heading">#</a></h4>
+<p><strong>Source:</strong> Python scripts → Unity ML-Agents Academy</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Characteristics:</strong></p>
+<ul class="simple">
+<li><p>only changed on env reset(cannot be changed mid-episode)</p></li>
+<li><p>Best for training-time configuration</p></li>
+</ul>
+<p><strong>Example Flow:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python                    Unity
+------                    -----
+env_params = {            →  Academy.Instance.EnvironmentParameters
+  &quot;episode_length&quot;: 15        ↓
+}                             EpisodeManagerSingleWall.StartEpisode()
+                              ↓
+                              episodeLength = envParams.GetWithDefault(...)
+</pre></div>
+</div>
+</section>
+<section id="kv-channel-key-value-side-channel">
+<h4>2. KV Channel (Key-Value Side Channel)<a class="headerlink" href="#kv-channel-key-value-side-channel" title="Link to this heading">#</a></h4>
+<p><strong>Source:</strong> Python scripts → Unity via <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> side channel → <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code></p>
+<p><strong>Usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.enabled=1&quot;</span><span class="p">)</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=12&quot;</span><span class="p">)</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Characteristics:</strong></p>
+<ul class="simple">
+<li><p>Control during runtime, some managers redraw, others apply on next episode</p></li>
+<li><p>Namespace-based (per-manager control)</p></li>
+<li><p>Managed by <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code> component</p></li>
+</ul>
+<p><strong>Example Flow:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python                              Unity
+------                              -----
+kv.send(&quot;wallL.enabled=1&quot;)       →  KvManagersDirector.OnKv()
+                                    ↓
+                                    Parse &quot;wallL&quot; namespace
+                                    ↓
+                                    Find EpisodeManagerSingleWall with key=&quot;wallL&quot;
+                                    ↓
+                                    manager.enabled = true
+</pre></div>
+</div>
+</section>
+</section>
+<section id="episode-lifecycle">
+<h3>Episode Lifecycle<a class="headerlink" href="#episode-lifecycle" title="Link to this heading">#</a></h3>
+<section id="episodemanagersinglewall">
+<h4>EpisodeManagerSingleWall<a class="headerlink" href="#episodemanagersinglewall" title="Link to this heading">#</a></h4>
+<p><strong>Simple task lifecycle:</strong> Spawn targets → Agent interacts → Success (all cleared) or Timeout → ITI → Repeat</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>State Machine:
+┌──────┐                    ┌─────────┐
+│ Idle │────StartEpisode───→│ Running │
+└──────┘                    └─────────┘
+    ▲                            │
+    │                            │ AllTargetsCleared
+    │                            │ OR Timeout
+    │                            ▼
+    │                        ┌──────┐
+    │                        │ ITI  │
+    │                        └──────┘
+    │                            │
+    └────────────────────────────┘
+         (if loopEpisodes=true)
+</pre></div>
+</div>
+<p><strong>Event Sequence:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>StartEpisode()
+  → OnEpisodeBegin (event)
+  → _active.ClearAll()
+  → _active.SpawnAll()
+  → OnSpawningComplete (event)
+  ↓
+[Running State]
+  → Check TargetsAlive()
+  → If 0: OnAllTargetsCleared (event) → EndEpisode()
+  → If timeout: EndEpisode()
+  ↓
+EndEpisode()
+  → _active.ClearAll()
+  → OnEpisodeEnd (event)
+  → Enter ITI state
+  ↓
+[ITI State]
+  → Wait itiLength seconds
+  → If loopEpisodes: StartEpisode() again
+</pre></div>
+</div>
+</section>
+<section id="sequencetargetmanager">
+<h4>SequenceTargetManager<a class="headerlink" href="#sequencetargetmanager" title="Link to this heading">#</a></h4>
+<p><strong>Sequence task lifecycle:</strong> Spawn grid → Present targets one-by-one → Success (complete sequence) or Timeout/Wall collision → ITI → Repeat</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>State Machine:
+┌──────┐                    ┌─────────┐
+│ Idle │────StartEpisode───→│ Running │
+└──────┘                    └─────────┘
+    ▲                            │
+    │                            │ Sequence Complete (Success)
+    │                            │ OR Timeout/Wall Hit (Failure)
+    │                            ▼
+    │                        ┌──────┐
+    │                        │ ITI  │
+    │                        └──────┘
+    │                            │
+    └────────────────────────────┘
+
+</pre></div>
+</div>
+<p><strong>Event Sequence:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>StartEpisode()
+  → OnEpisodeBegin (event)
+  → spawner.SpawnGrid() (create all targets + walls)
+  → Reset all targets to Static
+  → Activate hazard walls (parallel)
+  → AdvanceStep() (activate first target)
+  ↓
+[Running State - Per Step]
+  → OnStepAdvanced(stepNum) (event)
+  → OnStepLabel(&quot;Target #5&quot;) (event)
+  → Current target = Active
+  → Wait for player dwell OR timeout
+  ↓
+[Step Complete]
+  → HandleTargetCompleted()
+  → score.AddPoint(1)
+  → AdvanceStep() (next target)
+  ↓
+[Parallel: Hazard Walls]
+  → If player hits wall: HandleWallTriggered()
+  → If within grace period: OnWallIgnoredDuringGrace (event)
+  → Else: EndEpisode(false) → failure
+  ↓
+[Sequence Complete]
+  → All steps done
+  → OnEpisodeSuccess (event) → ColorOverlay flash
+  → OR OnEpisodeTimeout (event) → WhiteNoiseOverlay
+  → EndEpisode(success/fail)
+  ↓
+EndEpisode()
+  → Unhook all targets/walls
+  → Set lastEpisodeSuccess, lastScore
+  → OnEpisodeEnd (event)
+  → Enter ITI state (OnITIStart event)
+  → Wait itiSeconds → StartEpisode() again
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="agent-integration">
+<h2>Agent Integration<a class="headerlink" href="#agent-integration" title="Link to this heading">#</a></h2>
+<section id="ml-agents-components">
+<h3>ML-Agents Components<a class="headerlink" href="#ml-agents-components" title="Link to this heading">#</a></h3>
+<p>All agents inherit from Unity ML-Agents <code class="docutils literal notranslate"><span class="pre">Agent</span></code> base class:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DlcAgent</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Agent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CollectObservations</span><span class="p">(</span><span class="n">VectorSensor</span><span class="w"> </span><span class="n">sensor</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Add observations to network input</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnActionReceived</span><span class="p">(</span><span class="n">ActionBuffers</span><span class="w"> </span><span class="n">actions</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Process network output (continuous/discrete actions)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Heuristic</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="n">ActionBuffers</span><span class="w"> </span><span class="n">actionsOut</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Manual control for testing</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="episode-manager-agent-connection">
+<h3>Episode Manager ↔ Agent Connection<a class="headerlink" href="#episode-manager-agent-connection" title="Link to this heading">#</a></h3>
+<p>Agents connect to episode managers through the <strong><code class="docutils literal notranslate"><span class="pre">MultiEpisodeToAgentBridge</span></code></strong> component:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MultiEpisodeToAgentBridge
+├── wallManagers: List&lt;EpisodeManagerSingleWall&gt;
+├── sequenceManagers: List&lt;SequenceTargetManager&gt;
+└── agents: List&lt;TTLReceiverAgent&gt;
+
+// Bridge listens to manager events:
+OnAllTargetsCleared → agent.OnCorrect()  (reward)
+OnEpisodeTimeout    → agent.OnIncorrect() (punishment)
+</pre></div>
+</div>
+<p><strong>TTLReceiverAgent</strong> mixin adds episode outcome tracking:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TTLReceiverAgent</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Agent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnCorrect</span><span class="p">()</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="cm">/* reward, end episode */</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnIncorrect</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* punish, end episode */</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="visual-observations">
+<h3>Visual Observations<a class="headerlink" href="#visual-observations" title="Link to this heading">#</a></h3>
+<p>Agents can include camera sensors for visual observations:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In DlcAgent.cs (configured via env params)</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">envParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">cameraEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;DlcAgent.camera_enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_width&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_height&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_grayscale&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraEnabled</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">cam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">attachGo</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">CameraSensorComponent</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">cam</span><span class="p">.</span><span class="n">Width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cam</span><span class="p">.</span><span class="n">Height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cam</span><span class="p">.</span><span class="n">Grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grayscale</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spawner-types-overview">
+<h2>Spawner Types Overview<a class="headerlink" href="#spawner-types-overview" title="Link to this heading">#</a></h2>
+<section id="floortargetsspawner">
+<h3>FloorTargetsSpawner<a class="headerlink" href="#floortargetsspawner" title="Link to this heading">#</a></h3>
+<p><strong>Use case:</strong> Navigate 2D floor space, push/chase objects</p>
+<ul class="simple">
+<li><p>Spawns 1-3 vertical target areas on floor (trigger volumes)</p></li>
+<li><p>Spawns 1 MoveObject (Rigidbody sphere/cube)</p></li>
+<li><p>Integer-spaced Z positions with jitter and overlap prevention</p></li>
+<li><p>Physics-based object interactions</p></li>
+<li><p>Optional distance/rotation-based coloring</p></li>
+<li><p>Optional “lock until action” mechanic</p></li>
+</ul>
+</section>
+<section id="gridtargetsspawner">
+<h3>GridTargetsSpawner<a class="headerlink" href="#gridtargetsspawner" title="Link to this heading">#</a></h3>
+<p><strong>Use case:</strong> Grid-based sequence tasks with walls</p>
+<ul class="simple">
+<li><p>Spawns N×N grid of StatefulTarget objects</p></li>
+<li><p>Spawns walls between tiles (hazards)</p></li>
+<li><p>Used by SequenceTargetManager for sequential navigation</p></li>
+<li><p>Targets have dwell-to-complete mechanic</p></li>
+<li><p>Walls can be hazards (immediate fail)</p></li>
+</ul>
+</section>
+<section id="screenspawnerfromobject">
+<h3>ScreenSpawnerFromObject<a class="headerlink" href="#screenspawnerfromobject" title="Link to this heading">#</a></h3>
+<p><strong>Use case:</strong> 2D touchscreen-style tasks</p>
+<ul class="simple">
+<li><p>Spawns targets on virtual wall surface (OrthoScreenFromObject)</p></li>
+<li><p>Non-overlapping placement with padding</p></li>
+<li><p>Configurable vertical band (minYFraction, maxYFraction)</p></li>
+<li><p>Player positioned on wall, targets are 2D projections</p></li>
+</ul>
+</section>
+<section id="sidetargetsspawnerfromobject">
+<h3>SideTargetsSpawnerFromObject<a class="headerlink" href="#sidetargetsspawnerfromobject" title="Link to this heading">#</a></h3>
+<p><strong>Use case:</strong> Combined side wall + floor targets</p>
+<ul class="simple">
+<li><p>Spawns 1-4 target objects in floor area</p></li>
+<li><p>Spawns 1-2 target areas on side walls</p></li>
+<li><p>Configurable positioning and scales</p></li>
+<li><p>Mixed 3D navigation + wall interaction</p></li>
+</ul>
+</section>
+<section id="simpletargetspawner">
+<h3>SimpleTargetSpawner<a class="headerlink" href="#simpletargetspawner" title="Link to this heading">#</a></h3>
+<p><strong>Use case:</strong> Minimal navigation target</p>
+<ul class="simple">
+<li><p>Single invisible trigger cube at fixed position</p></li>
+<li><p>Simplest possible target setup</p></li>
+<li><p>Good for basic navigation tests</p></li>
+</ul>
+</section>
+</section>
+<section id="visual-feedback-system">
+<h2>Visual Feedback System<a class="headerlink" href="#visual-feedback-system" title="Link to this heading">#</a></h2>
+<section id="success-feedback-coloroverlay">
+<h3>Success Feedback: ColorOverlay<a class="headerlink" href="#success-feedback-coloroverlay" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Triggered on episode success</span>
+<span class="n">ColorOverlay</span><span class="w"> </span><span class="n">overlay</span><span class="p">;</span>
+<span class="n">overlay</span><span class="p">.</span><span class="n">SetColor</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">);</span>
+<span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">);</span><span class="w"> </span><span class="c1">// brief green flash</span>
+</pre></div>
+</div>
+<p>Multiple playback modes (flash, fade)</p>
+</section>
+<section id="failure-feedback-whitenoiseoverlaygpu">
+<h3>Failure Feedback: WhiteNoiseOverlayGPU<a class="headerlink" href="#failure-feedback-whitenoiseoverlaygpu" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Triggered on timeout/failure</span>
+<span class="n">WhiteNoiseOverlayGPU</span><span class="w"> </span><span class="n">overlay</span><span class="p">;</span>
+<span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="mf">0.5f</span><span class="p">);</span><span class="w"> </span><span class="c1">// animated noise punishment</span>
+</pre></div>
+</div>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>GPU shader-based animated noise</p></li>
+<li><p>Configurable FPS and opacity</p></li>
+<li><p>Region control (fullscreen/partial)</p></li>
+<li><p>Punishment signal for agent</p></li>
+</ul>
+</section>
+<section id="episode-manager-hookup">
+<h3>Episode-Manager Hookup<a class="headerlink" href="#episode-manager-hookup" title="Link to this heading">#</a></h3>
+<p>Both managers support automatic overlay triggering:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In EpisodeManagerSingleWall</span>
+<span class="na">[Header(&quot;Reward Flash on Success&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Noise Overlay&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+
+<span class="c1">// Automatic triggering in code:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayRewardFlash</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">ColorOverlay</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">rewardDisplayDuration</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration-strategies">
+<h2>Configuration Strategies<a class="headerlink" href="#configuration-strategies" title="Link to this heading">#</a></h2>
+<section id="editor-only-configuration">
+<h3>Editor-Only Configuration<a class="headerlink" href="#editor-only-configuration" title="Link to this heading">#</a></h3>
+<p>Parameters can also be modified directly in the Unity Editor for quick testing.</p>
+</section>
+<section id="gui-configuration">
+<h3>GUI Configuration<a class="headerlink" href="#gui-configuration" title="Link to this heading">#</a></h3>
+<p>Interactive experiments, real-time parameter tuning, behavioral testing</p>
+<p><strong>Workflow:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Launch GUI</span>
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_gui
+
+<span class="c1"># 2. Load config file (contains all profiles)</span>
+<span class="c1">#    File: mouse_ar/tasks/configs/hockey.game.toml</span>
+
+<span class="c1"># 3. Select profile from dropdown</span>
+<span class="c1">#    - &quot;Default&quot; (base parameters)</span>
+<span class="c1">#    - &quot;RL&quot; (fast execution for training)</span>
+
+<span class="c1"># 4. Adjust parameters in Parameters tab</span>
+<span class="c1">#    - Edit values (turn red when modified)</span>
+<span class="c1">#    - Click &quot;Send params (diff-only)&quot; to apply</span>
+
+<span class="c1"># 5. Monitor live during experiment</span>
+<span class="c1">#    - Epochs, episodes, steps</span>
+<span class="c1">#    - Rewards (per-trial and total)</span>
+<span class="c1">#    - Session duration</span>
+
+<span class="c1"># 6. Data automatically saved on Stop</span>
+<span class="c1">#    UnityData_TestMouse_20251104_143022.json</span>
+</pre></div>
+</div>
+</section>
+<section id="programmatic-configuration-python-scripts">
+<h3>Programmatic Configuration (Python Scripts)<a class="headerlink" href="#programmatic-configuration-python-scripts" title="Link to this heading">#</a></h3>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
+
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Define parameters (fake examples)</span>
+<span class="n">env_kv_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;target_color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;reward_type&quot;</span><span class="p">:</span> <span class="s2">&quot;immediate&quot;</span>
+<span class="p">}</span>
+
+<span class="n">env_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;episode_length&quot;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span>
+    <span class="s2">&quot;iti_length&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s2">&quot;target_size&quot;</span><span class="p">:</span> <span class="mf">0.3</span>
+<span class="p">}</span>
+
+<span class="c1"># Create task</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/Hockey.x86_64&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">],</span>
+    <span class="n">env_kv_params</span><span class="o">=</span><span class="n">env_kv_params</span><span class="p">,</span>
+    <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">,</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Run experiment</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">():</span>
+    <span class="c1"># Optional: runtime parameter adjustment</span>
+    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">episode</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.7&quot;</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">task</span><span class="o">.</span><span class="n">save_data_to_json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="toml-config-files-profile-system">
+<h3>TOML Config Files (Profile System)<a class="headerlink" href="#toml-config-files-profile-system" title="Link to this heading">#</a></h3>
+<p><strong>When to use:</strong> Multiple parameter sets, shared configurations, version control</p>
+<p>TOML configuration files support a profile-based system for managing experimental parameters. Profiles allow you to define multiple parameter sets in a single file and switch between them.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.utils.config_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+
+<span class="c1"># Load with specific profile</span>
+<span class="n">env_kv</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span>
+    <span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;Training&quot;</span>  <span class="c1"># or &quot;RL&quot;, &quot;Testing&quot;, or None for default</span>
+<span class="p">)</span>
+
+<span class="c1"># Use in task</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_kv_params</span><span class="o">=</span><span class="n">env_kv</span><span class="p">,</span>
+    <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>See:</strong> <a class="reference internal" href="../python/ConfigSystem.html"><span class="std std-doc">Python Config System Documentation</span></a> for complete TOML profile system details, file structure, and best practices.</p>
+</section>
+<section id="runtime-parameter-updates">
+<h3>Runtime Parameter Updates<a class="headerlink" href="#runtime-parameter-updates" title="Link to this heading">#</a></h3>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># During task execution</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="c1"># Curriculum: increase difficulty</span>
+    <span class="k">if</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.6&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">75</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+
+    <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="c1"># All parameter changes logged in task.runtime_params</span>
+<span class="c1"># [{&quot;difficulty&quot;: &quot;0.6&quot;, &quot;time&quot;: 120.5, &quot;episode&quot;: 25, &quot;step&quot;: 1240}, ...]</span>
+</pre></div>
+</div>
+</section>
+<section id="envparams-components-per-spawner">
+<h3>EnvParams Components (Per-Spawner)<a class="headerlink" href="#envparams-components-per-spawner" title="Link to this heading">#</a></h3>
+<p><strong>When to use:</strong> Per-spawner parameter control from Python</p>
+<p><strong>Components:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ScreenSpawnerEnvParams</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SideTargetsSpawnerEnvParams</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GridTargetsSpawnerEnvParams</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawnerEnvParams</span></code></p></li>
+</ul>
+<p><strong>Pattern:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FloorTargetsSpawnerEnvParams</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">FloorTargetsSpawner</span><span class="w"> </span><span class="n">_sp</span><span class="p">;</span><span class="w">  </span><span class="c1">// spawner reference</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">StartCoroutine</span><span class="p">(</span><span class="n">WaitForAcademyAndApply</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">WaitForAcademyAndApply</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Academy</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">)</span><span class="w"> </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="n">ApplyParams</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyParams</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">numTargetAreas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.num_areas&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">numTargetAreas</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.target_x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// ... apply all parameters</span>
+<span class="w">        </span><span class="n">TryRespawnOrClear</span><span class="p">();</span><span class="w">  </span><span class="c1">// rebuild with new params</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="separation-of-concerns">
+<h3>1. Separation of Concerns<a class="headerlink" href="#separation-of-concerns" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Episode Managers:</strong> Lifecycle and timing only</p></li>
+<li><p><strong>Spawners:</strong> Object creation and placement only</p></li>
+<li><p><strong>Agents:</strong> Observations and actions only</p></li>
+<li><p><strong>Adapters:</strong> Interface compliance only</p></li>
+</ul>
+</section>
+<section id="parameter-naming-conventions">
+<h3>2. Parameter Naming Conventions<a class="headerlink" href="#parameter-naming-conventions" title="Link to this heading">#</a></h3>
+<p><strong>Global params:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">general</span><span class="o">.</span><span class="n">iti_length</span>
+<span class="n">general</span><span class="o">.</span><span class="n">episode_length</span>
+<span class="n">general</span><span class="o">.</span><span class="n">enable_reporting</span>
+</pre></div>
+</div>
+<p><strong>Namespaced params (KV):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">manager_id</span><span class="o">&gt;.&lt;</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="n">wallL</span><span class="o">.</span><span class="n">enabled</span>
+<span class="n">wallL</span><span class="o">.</span><span class="n">episode_length</span>
+<span class="n">seqA</span><span class="o">.</span><span class="n">target_sequence</span>
+</pre></div>
+</div>
+<p><strong>Spawner params (Env):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">prefix</span><span class="o">&gt;.&lt;</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="n">hockeyFloor</span><span class="o">.</span><span class="n">num_areas</span>
+<span class="n">touchDestroy</span><span class="o">.</span><span class="n">num_targets</span>
+<span class="n">simpleTarget</span><span class="o">.</span><span class="n">position_x</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<section id="unity-documentation">
+<h3><strong>Unity Documentation</strong><a class="headerlink" href="#unity-documentation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management System</span></a></strong> - Detailed lifecycle docs</p></li>
+<li><p><strong><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawner Reference</span></a></strong> - All spawner implementations</p></li>
+<li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter Control</span></a></strong> - Env params and KV channels</p></li>
+<li><p><strong><a class="reference internal" href="Agents.html"><span class="std std-doc">Agent System</span></a></strong> - ML-Agents integration</p></li>
+<li><p><strong><a class="reference internal" href="VisualFeedback.html"><span class="std std-doc">Visual Feedback</span></a></strong> - Overlays and scoring</p></li>
+</ul>
+</section>
+<section id="python-documentation">
+<h3><strong>Python Documentation</strong><a class="headerlink" href="#python-documentation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="../python/ConfigSystem.html"><span class="std std-doc">Config System</span></a></strong> - TOML profile system and configuration management</p></li>
+<li><p><strong><a class="reference internal" href="../python/GUIs.html"><span class="std std-doc">GUIs</span></a></strong> - UnityTaskGUI and TeensyControlGUI user guide</p></li>
+<li><p><strong><a class="reference internal" href="../python/Tasks.html"><span class="std std-doc">Tasks API</span></a></strong> - UnityAgentTask and task system</p></li>
+<li><p><strong><a class="reference internal" href="../python/Overview.html"><span class="std std-doc">Overview</span></a></strong> - Complete system architecture</p></li>
+</ul>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../touchscreen/Overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Touchscreen Module - Quick Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="EpisodeManagement.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Episode Management System</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-architecture-layers">Core Architecture Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships">Component Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#init-ttl-integration">Init/TTL integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-and-display-utilities">Camera and display utilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-parameter-bridge-utility">Interaction/parameter bridge utility</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-managers-spawners">Episode Managers ↔ Spawners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawners-implementation-vs-adapter-pattern">Spawners: Implementation vs Adapter Pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-control-two-systems">Parameter Control: Two Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters-env-params">1. ML-Agents EnvironmentParameters (Env Params)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">2. KV Channel (Key-Value Side Channel)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-lifecycle">Episode Lifecycle</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-integration">Agent Integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-components">ML-Agents Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-manager-agent-connection">Episode Manager ↔ Agent Connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-observations">Visual Observations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-types-overview">Spawner Types Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-system">Visual Feedback System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#success-feedback-coloroverlay">Success Feedback: ColorOverlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-feedback-whitenoiseoverlaygpu">Failure Feedback: WhiteNoiseOverlayGPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-manager-hookup">Episode-Manager Hookup</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-strategies">Configuration Strategies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editor-only-configuration">Editor-Only Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-configuration">GUI Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-configuration-python-scripts">Programmatic Configuration (Python Scripts)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toml-config-files-profile-system">TOML Config Files (Profile System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-updates">Runtime Parameter Updates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-components-per-spawner">EnvParams Components (Per-Spawner)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separation-of-concerns">1. Separation of Concerns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-naming-conventions">2. Parameter Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-documentation"><strong>Unity Documentation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-documentation"><strong>Python Documentation</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

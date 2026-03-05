@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Control System &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/ParameterSystem';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visual Feedback &amp; Utility Components" href="VisualFeedback.html" />
+    <link rel="prev" title="Agent System Reference" href="Agents.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/ParameterSystem.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/ParameterSystem.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parameter Control System</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-comparison">System Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-setup">Python Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-access">Unity Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-parameters">Global Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manager-specific-parameters">Manager-Specific Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-envparams-components">Spawner EnvParams Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-envparam-driven-components">Additional EnvParam-Driven Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawnerenvparams">SimpleTargetSpawnerEnvParams</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cameraenvconfig">CameraEnvConfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">KV Channel (Key-Value Side Channel)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kvmanagersdirector">Unity: KvManagersDirector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-format">Message Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-commands">Supported Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">SequenceTargetManager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-parameters">Spawner Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-reporting-unity-python">KV Reporting (Unity → Python)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-ordering">Message Ordering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="parameter-control-system">
+<h1>Parameter Control System<a class="headerlink" href="#parameter-control-system" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The Unity game supports two independent parameter control mechanisms for runtime configuration:</p>
+<ol class="arabic simple">
+<li><p><strong>ML-Agents EnvironmentParameters</strong> - Training-time configuration from Python</p></li>
+<li><p><strong>KV Channel</strong> - Real-time control via key-value side channel</p></li>
+</ol>
+<p>Both systems allow external control without recompiling Unity, enabling flexible experimentation and training.</p>
+</section>
+<section id="system-comparison">
+<h2>System Comparison<a class="headerlink" href="#system-comparison" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>EnvironmentParameters</p></th>
+<th class="head"><p>KV Channel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Source</strong></p></td>
+<td><p>Python → ML-Agents Academy</p></td>
+<td><p>Python → KvChannel → KvManagersDirector</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Timing</strong></p></td>
+<td><p>Read at episode start</p></td>
+<td><p>Real-time, immediate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Scope</strong></p></td>
+<td><p>Global (all managers share)</p></td>
+<td><p>Namespaced (per-manager)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>API</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">envParams.GetWithDefault(key,</span> <span class="pre">default)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">kv.send_string(&quot;key=value&quot;)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Batching</strong></p></td>
+<td><p>Single dict at env creation</p></td>
+<td><p>Individual messages</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="ml-agents-environmentparameters">
+<h2>ML-Agents EnvironmentParameters<a class="headerlink" href="#ml-agents-environmentparameters" title="Link to this heading">#</a></h2>
+<section id="python-setup">
+<h3>Python Setup<a class="headerlink" href="#python-setup" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mlagents_envs.environment_parameters</span><span class="w"> </span><span class="kn">import</span> <span class="n">EnvironmentParametersChannel</span>
+
+<span class="c1"># Create channel</span>
+<span class="n">env_channel</span> <span class="o">=</span> <span class="n">EnvironmentParametersChannel</span><span class="p">()</span>
+
+<span class="c1"># Set parameters</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;episode_length&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;general.iti_length&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;step_timeout_seconds&quot;</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
+
+<span class="c1"># Create environment with channel</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">UnityEnvironment</span><span class="p">(</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;Build/game.exe&quot;</span><span class="p">,</span>
+    <span class="n">side_channels</span><span class="o">=</span><span class="p">[</span><span class="n">env_channel</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="unity-access">
+<h3>Unity Access<a class="headerlink" href="#unity-access" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">Unity.MLAgents</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MyScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Wait for Academy initialization</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Academy</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">)</span>
+<span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Read parameters</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">episodeLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">itiLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2f</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;Episode length: {episodeLen}, ITI: {itiLen}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="global-parameters">
+<h3>Global Parameters<a class="headerlink" href="#global-parameters" title="Link to this heading">#</a></h3>
+<p><strong>Naming Convention:</strong> <code class="docutils literal notranslate"><span class="pre">general.&lt;property&gt;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Used By</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration (seconds)</p></td>
+<td><p>Both episode managers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.episode_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Episode timeout (SingleWall only)</p></td>
+<td><p>EpisodeManagerSingleWall</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_init_phase</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Enable init phase (0/1)</p></td>
+<td><p>EpisodeManagerSingleWall</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.randomize_iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Randomize ITI ±25% (0/1)</p></td>
+<td><p>Episode managers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.rotate_bottom_screen</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Rotate bottom-screen layout (0/1)</p></td>
+<td><p>RotateBottomScreen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_reporting</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Enable KV reporting (0/1)</p></td>
+<td><p>Reporter components</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Reporter update interval</p></td>
+<td><p>Reporter components</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="manager-specific-parameters">
+<h3>Manager-Specific Parameters<a class="headerlink" href="#manager-specific-parameters" title="Link to this heading">#</a></h3>
+<section id="episodemanagersinglewall">
+<h4>EpisodeManagerSingleWall<a class="headerlink" href="#episodemanagersinglewall" title="Link to this heading">#</a></h4>
+<p>Read at <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code>:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="n">episodeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">episodeLength</span><span class="p">);</span>
+<span class="n">itiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiLength</span><span class="p">);</span>
+<span class="n">enableInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.enable_init_phase&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.randomize_iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="sequencetargetmanager">
+<h4>SequenceTargetManager<a class="headerlink" href="#sequencetargetmanager" title="Link to this heading">#</a></h4>
+<p>Read at <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code>:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+<span class="n">stepTimeoutSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;step_timeout_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="p">);</span>
+<span class="n">dwellTargetSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_target_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="p">);</span>
+<span class="n">dwellWallSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_wall_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="p">);</span>
+<span class="n">wallGraceSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;wall_grace_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="p">);</span>
+<span class="n">itiSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiSeconds</span><span class="p">);</span>
+<span class="n">randomTargetLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;random_target_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="p">);</span>
+<span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;target_no_repeats&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spawner-envparams-components">
+<h3>Spawner EnvParams Components<a class="headerlink" href="#spawner-envparams-components" title="Link to this heading">#</a></h3>
+<p>Each spawner type has an optional <code class="docutils literal notranslate"><span class="pre">*EnvParams</span></code> component that reads parameters at startup:</p>
+<p><strong>Pattern:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SomeSpawnerEnvParams</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spawnerName&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace prefix</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SomeSpawner</span><span class="w"> </span><span class="n">_sp</span><span class="p">;</span><span class="w">                </span><span class="c1">// Spawner reference</span>
+
+<span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Wait for Academy</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Academy</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">)</span>
+<span class="w">            </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">ApplyParams</span><span class="p">();</span>
+<span class="w">        </span><span class="n">TryRespawnOrClear</span><span class="p">();</span><span class="w">  </span><span class="c1">// Apply immediately</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyParams</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Read with prefix</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.some_property&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.another_property&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TryRespawnOrClear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enabled</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_sp</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">            </span><span class="n">_sp</span><span class="p">.</span><span class="n">SpawnAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_sp</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="additional-envparam-driven-components">
+<h3>Additional EnvParam-Driven Components<a class="headerlink" href="#additional-envparam-driven-components" title="Link to this heading">#</a></h3>
+<section id="simpletargetspawnerenvparams">
+<h4>SimpleTargetSpawnerEnvParams<a class="headerlink" href="#simpletargetspawnerenvparams" title="Link to this heading">#</a></h4>
+<p>Controls init-target placement/shape/visibility for <code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.position_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target world position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.size_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.visible</span></code></p></td>
+<td><p>bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BottomView</span></code> (1) vs <code class="docutils literal notranslate"><span class="pre">Invisible</span></code> (0)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.dwell_time</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Required dwell seconds</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cameraenvconfig">
+<h4>CameraEnvConfig<a class="headerlink" href="#cameraenvconfig" title="Link to this heading">#</a></h4>
+<p>Controls camera projection parameters from env params (prefix set by <code class="docutils literal notranslate"><span class="pre">configKey</span></code>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;.is_ortho</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Camera mode (0 perspective / 1 orthographic)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;.ortho_size</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Orthographic size</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;.fov</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Perspective field of view</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;.near_clip</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Near clipping plane</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;key&gt;.far_clip</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Far clipping plane</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kv-channel-key-value-side-channel">
+<h2>KV Channel (Key-Value Side Channel)<a class="headerlink" href="#kv-channel-key-value-side-channel" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Python Setup<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.utils.kv_channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">KvChannel</span>
+
+<span class="c1"># Create channel</span>
+<span class="n">kv</span> <span class="o">=</span> <span class="n">KvChannel</span><span class="p">()</span>
+
+<span class="c1"># Send messages</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.enabled=1&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=12&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create environment with channel</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">UnityEnvironment</span><span class="p">(</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;Build/game.exe&quot;</span><span class="p">,</span>
+    <span class="n">side_channels</span><span class="o">=</span><span class="p">[</span><span class="n">kv</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="unity-kvmanagersdirector">
+<h3>Unity: KvManagersDirector<a class="headerlink" href="#unity-kvmanagersdirector" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Central router for KV messages to episode managers and spawners</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">KvManagersDirector</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[Serializable]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WallManaged</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wallL&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">EpisodeManagerSingleWall</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Serializable]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SeqManaged</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;seqA&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// Namespace</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">SequenceTargetManager</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Header(&quot;Managed Single-Wall episodes&quot;)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">WallManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">walls</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[Header(&quot;Managed SequenceTarget episodes&quot;)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SeqManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">sequences</span><span class="p">;</span>
+
+<span class="w">    </span><span class="na">[Header(&quot;Managed spawners&quot;)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">FloorSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">floorSpawners</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ScreenSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">screenSpawners</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SideTargetsSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">sideSpawners</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GridSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">gridSpawners</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Inspector Setup:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>KvManagersDirector:
+├── walls[0]:
+│   ├── key: &quot;wallL&quot;
+│   └── manager: → EpisodeManagerSingleWall
+├── walls[1]:
+│   ├── key: &quot;wallR&quot;
+│   └── manager: → EpisodeManagerSingleWall
+├── sequences[0]:
+│   ├── key: &quot;seqA&quot;
+│   └── manager: → SequenceTargetManager
+├── floorSpawners[0]:
+│   ├── key: &quot;hockeyFloor&quot;
+│   └── envParams: → FloorTargetsSpawnerEnvParams
+└── screenSpawners[0]:
+    ├── key: &quot;touchDestroy&quot;
+    └── env: → ScreenSpawnerEnvParams
+</pre></div>
+</div>
+</section>
+<section id="message-format">
+<h3>Message Format<a class="headerlink" href="#message-format" title="Link to this heading">#</a></h3>
+<p><strong>Pattern:</strong> <code class="docutils literal notranslate"><span class="pre">&lt;namespace&gt;.&lt;property&gt;=&lt;value&gt;</span></code></p>
+<p><strong>Examples:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wallL</span><span class="o">.</span><span class="n">enabled</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">wallL</span><span class="o">.</span><span class="n">episode_length</span><span class="o">=</span><span class="mf">12.5</span>
+<span class="n">wallL</span><span class="o">.</span><span class="n">spawner</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">wallL</span><span class="o">.</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">seqA</span><span class="o">.</span><span class="n">target_sequence</span><span class="o">=-</span><span class="mi">1</span>
+<span class="n">seqA</span><span class="o">.</span><span class="n">random_target_length</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">seqA</span><span class="o">.</span><span class="n">wall_sequence</span><span class="o">=</span><span class="n">ABC</span>
+<span class="n">seqA</span><span class="o">.</span><span class="n">start</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">hockeyFloor</span><span class="o">.</span><span class="n">num_target_areas</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">hockeyFloor</span><span class="o">.</span><span class="n">target_x</span><span class="o">=-</span><span class="mf">8.0</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-commands">
+<h3>Supported Commands<a class="headerlink" href="#supported-commands" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h4>EpisodeManagerSingleWall<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enabled</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable manager</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.spawner</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Set active spawner index</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.episode_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Episode duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.iti_length</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.loop</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Auto-restart episodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_reward_flash</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Green flash on success</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_noise_overlay</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Noise on timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.reward_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Flash duration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.noise_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Noise duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.start</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Start episode now</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id3">
+<h4>SequenceTargetManager<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enabled</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.step_timeout_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Per-step timeout</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.dwell_target_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target dwell time</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.dwell_wall_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall dwell time</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.wall_grace_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Grace period</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.enable_iti</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Enable ITI</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.iti_seconds</span></code></p></td>
+<td><p>float</p></td>
+<td><p>ITI duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.target_sequence</span></code></p></td>
+<td><p>string</p></td>
+<td><p>“1593”, “-1”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.wall_sequence</span></code></p></td>
+<td><p>string</p></td>
+<td><p>“ABC”, “0”, “-1”</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.random_target_length</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Random length</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.random_wall_length</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Random wall count</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.target_no_repeats</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>No-repeat random</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_noise_timeout</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Noise on timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.display_reward_flash</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Flash on success</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;id&gt;.start</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Start episode</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="spawner-parameters">
+<h4>Spawner Parameters<a class="headerlink" href="#spawner-parameters" title="Link to this heading">#</a></h4>
+<p>See <a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawners.md</span></a> for complete spawner parameter lists.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kv-reporting-unity-python">
+<h2>KV Reporting (Unity → Python)<a class="headerlink" href="#kv-reporting-unity-python" title="Link to this heading">#</a></h2>
+<p>KvManagersDirector can send state information back to Python. We use this to flexibly send observations from different managers, depending on the experiment.</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Reporting&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableReporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="c1">// Send KV message from Unity</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendKv</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">enableReporting</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">_kv</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="n">_kv</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Python Receiving:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># KvChannel receives messages in message_received callback</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_kv</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unity sent: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">kv</span><span class="o">.</span><span class="n">message_received</span> <span class="o">+=</span> <span class="n">handle_kv</span>
+</pre></div>
+</div>
+<p><strong>Example Reporters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWallReporter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SequenceTargetManagerReporter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></p></li>
+</ul>
+<hr class="docutils" />
+<section id="message-ordering">
+<h3>Message Ordering<a class="headerlink" href="#message-ordering" title="Link to this heading">#</a></h3>
+<p>For KV, send configuration before <code class="docutils literal notranslate"><span class="pre">.start</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Good: Configure, then start</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=15&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.spawner=1&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>  <span class="c1"># Apply all</span>
+
+<span class="c1"># Avoid: Start, then configure (too late)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=15&quot;</span><span class="p">)</span>  <span class="c1"># Won&#39;t affect running episode</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
+<li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a></strong> - Manager configuration</p></li>
+<li><p><strong><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawner Reference</span></a></strong> - Spawner parameters</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Agents.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Agent System Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="VisualFeedback.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visual Feedback &amp; Utility Components</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-comparison">System Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-setup">Python Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-access">Unity Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-parameters">Global Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manager-specific-parameters">Manager-Specific Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-envparams-components">Spawner EnvParams Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-envparam-driven-components">Additional EnvParam-Driven Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawnerenvparams">SimpleTargetSpawnerEnvParams</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cameraenvconfig">CameraEnvConfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">KV Channel (Key-Value Side Channel)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kvmanagersdirector">Unity: KvManagersDirector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-format">Message Format</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-commands">Supported Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">SequenceTargetManager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-parameters">Spawner Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-reporting-unity-python">KV Reporting (Unity → Python)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#message-ordering">Message Ordering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

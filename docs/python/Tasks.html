@@ -1,0 +1,2185 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Task System Documentation &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/Tasks';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DLC Processor Documentation" href="DLCProcessors.html" />
+    <link rel="prev" title="Configuration System - TOML Profiles" href="ConfigSystem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Task Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/Tasks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/python/Tasks.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Task System Documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-responsibilities">Inheritance Responsibilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-base-hardware-communication-layer">Task (Base) — Hardware communication layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitymultibehaviortask-unity-environment-episode-orchestration-layer">UnityMultibehaviorTask — Unity environment &amp; episode orchestration layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unityagenttask-sensory-client-action-building-layer">UnityAgentTask — Sensory client &amp; action-building layer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-base-class">Task (Base Class)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-be-implemented-by-subclasses"><strong>Abstract Methods</strong> (Must be implemented by subclasses)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start"><strong>start()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stop"><strong>stop()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-bool"><strong>loop() → bool</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-control-methods"><strong>Hardware Control Methods</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int"><strong>give_reward(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-ttl"><strong>signal_ttl()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water-duration-ms-int"><strong>drain_water(duration_ms: int)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-utilities"><strong>Timing Utilities</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-tracking"><strong>State Tracking</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection"><strong>Data Collection</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data-dict"><strong>get_data() → dict</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-params-dict"><strong>get_params() → dict</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitymultibehaviortask">UnityMultibehaviorTask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-management"><strong>Behavior Management</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-names"><strong>Behavior Names</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-mapping"><strong>Behavior Mapping</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-routing"><strong>Action Routing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-action-for-behavior-name-str-np-ndarray"><strong>get_action_for(behavior_name: str) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-channels"><strong>Side Channels</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#environmentparameterschannel-training-time-configuration"><strong>EnvironmentParametersChannel</strong> (Training-time configuration)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kvchannel-runtime-parameter-updates"><strong>KvChannel</strong> (Runtime parameter updates)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-conditions"><strong>Reset Conditions</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-condition-any-default"><strong><code class="docutils literal notranslate"><span class="pre">reset_condition="any"</span></code></strong> (Default)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-condition-all"><strong><code class="docutils literal notranslate"><span class="pre">reset_condition="all"</span></code></strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-loop"><strong>Step Loop</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-logging"><strong>Data Logging</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>get_data() → dict</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unityagenttask">UnityAgentTask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters"><strong>Key Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-mode-selection"><strong>Dummy Mode Selection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-construction-methods"><strong>Action Construction Methods</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlc-action-spec-np-ndarray"><strong>_dlc_action(spec) → np.ndarray</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touch-action-spec-np-ndarray"><strong>_touch_action(spec) → np.ndarray</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttl-action-spec-np-ndarray"><strong>_ttl_action(spec) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-routing"><strong>Behavior Routing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-aggregation"><strong>Data Aggregation</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-examples">Configuration Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-dlc-pose-control-only"><strong>Example 1: DLC Pose Control Only</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-touchscreen-ttl-sync"><strong>Example 2: Touchscreen + TTL Sync</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-all-clients-with-dummy-modes-testing"><strong>Example 3: All Clients with Dummy Modes (Testing)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-runtime-parameter-updates"><strong>Example 4: Runtime Parameter Updates</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-patterns">Workflow Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-conditional-reward"><strong>Pattern 1: Conditional Reward</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-external-event-triggering"><strong>Pattern 2: External Event Triggering</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-multi-epoch-training"><strong>Pattern 3: Multi-Epoch Training</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-example">Data Analysis Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-unity-environment-doesn-t-start"><strong>Problem: Unity environment doesn’t start</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-no-actions-received-by-unity-agents"><strong>Problem: No actions received by Unity agents</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-episode-never-resets"><strong>Problem: Episode never resets</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-data-logging-is-incomplete"><strong>Problem: Data logging is incomplete</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task"><strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>UnityMultibehaviorTask</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>UnityAgentTask</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="task-system-documentation">
+<h1>Task System Documentation<a class="headerlink" href="#task-system-documentation" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The <strong>Task</strong> system provides a hierarchical framework for running behavioral experiments with Unity ML-Agents environments. The architecture consists of three layers:</p>
+<ol class="arabic simple">
+<li><p><strong>Task</strong> (Base class): Hardware integration (Teensy) and lifecycle management</p></li>
+<li><p><strong>UnityMultibehaviorTask</strong>: Multi-behavior ML-Agents environment orchestration</p></li>
+<li><p><strong>UnityAgentTask</strong>: Full integration with control clients (DLC, Touch, TTL)</p></li>
+</ol>
+<p>This layered design enables:</p>
+<ul class="simple">
+<li><p>Modular client integration (pose tracking, touchscreen, photodiode sync)</p></li>
+<li><p>Multi-agent/multi-behavior support</p></li>
+<li><p>Runtime parameter adjustment via side channels</p></li>
+<li><p>Comprehensive data logging with synchronized timestamps</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌───────────────────────────────────────────────────────────────────┐
+│                       UnityAgentTask                              │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  Control Clients Integration                                │  │
+│  │  - DLCClient (pose tracking)                                │  │
+│  │  - TouchClient (touchscreen input)                          │  │
+│  │  - TTLGenerator (photodiode sync)                           │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  get_action_for(behavior_name) → Routes to:                │  │
+│  │    - _dlc_action(spec)                                      │  │
+│  │    - _touch_action(spec)                                    │  │
+│  │    - _ttl_action(spec)                                      │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────┬───────────────────────────────────┘
+                                 │ inherits
+                                 ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                  UnityMultibehaviorTask                           │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  Unity ML-Agents Environment Management                     │  │
+│  │  - Multi-behavior support (behavior_list)                   │  │
+│  │  - EnvironmentParametersChannel (training-time config)      │  │
+│  │  - KvChannel (runtime parameter updates)                    │  │
+│  │  - Episode/step/epoch tracking                              │  │
+│  │  - LiveParamScheduler (adaptive rule engine)                │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  Step Loop:                                                  │  │
+│  │  1. Get actions for each behavior                           │  │
+│  │  2. Set actions via env.set_actions()                       │  │
+│  │  3. Step environment                                         │  │
+│  │  4. Collect observations, rewards, done flags               │  │
+│  │  5. Check terminal condition (any/all)                      │  │
+│  │  6. Fire scheduler hooks; reset episode if done             │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────┬───────────────────────────────────┘
+                                 │ inherits
+                                 ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                          Task (Base)                              │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  Hardware Communication (Teensy)                             │  │
+│  │  - Serial interface to Teensy microcontroller               │  │
+│  │  - Reward delivery: give_reward(duration_ms)                │  │
+│  │  - TTL signaling: signal_ttl()                              │  │
+│  │  - Water line draining: drain_water()                       │  │
+│  │  - Raw input/output data logging from Teensy                │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+│  ┌─────────────────────────────────────────────────────────────┐  │
+│  │  Lifecycle &amp; Timing                                          │  │
+│  │  - start() / stop() / loop() abstract interface             │  │
+│  │  - Configurable timing: time.time() or perf_counter()       │  │
+│  │  - Session metadata: subject_id, session_name, start_time   │  │
+│  └─────────────────────────────────────────────────────────────┘  │
+└───────────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="inheritance-responsibilities">
+<h2>Inheritance Responsibilities<a class="headerlink" href="#inheritance-responsibilities" title="Link to this heading">#</a></h2>
+<p>Each layer in the hierarchy has a clearly scoped responsibility. Understanding what each class owns is important when extending or debugging tasks.</p>
+<section id="task-base-hardware-communication-layer">
+<h3>Task (Base) — Hardware communication layer<a class="headerlink" href="#task-base-hardware-communication-layer" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Task</span></code> is the single point of contact with physical hardware. All Teensy commands go through this class and nowhere else.</p>
+<p><strong>Owns:</strong></p>
+<ul class="simple">
+<li><p>Teensy serial interface (<code class="docutils literal notranslate"><span class="pre">self.teensy</span></code>) — initialized and reset in <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">give_reward(duration_ms)</span></code> — opens the water solenoid via Teensy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">signal_ttl()</span></code> — pulses the TTL output pin via Teensy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drain_water()</span></code> — holds the solenoid open for priming/draining</p></li>
+<li><p>Raw Teensy data export: <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> returns <code class="docutils literal notranslate"><span class="pre">teensy_inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">teensy_outputs</span></code></p></li>
+<li><p>Timing infrastructure: <code class="docutils literal notranslate"><span class="pre">self.timing_func</span></code>, <code class="docutils literal notranslate"><span class="pre">self.start_time</span></code>, <code class="docutils literal notranslate"><span class="pre">self.cur_time</span></code></p></li>
+<li><p>Abstract lifecycle interface: <code class="docutils literal notranslate"><span class="pre">start()</span></code>, <code class="docutils literal notranslate"><span class="pre">stop()</span></code>, <code class="docutils literal notranslate"><span class="pre">loop()</span></code> — each subclass must implement or call <code class="docutils literal notranslate"><span class="pre">super()</span></code></p></li>
+</ul>
+<p><strong>Does NOT own:</strong></p>
+<ul class="simple">
+<li><p>Unity environment — delegated entirely to <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code></p></li>
+<li><p>Sensory input clients (DLC, Touch, TTL generator) — delegated to <code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code></p></li>
+<li><p>Session/episode logic — delegated to <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="unitymultibehaviortask-unity-environment-episode-orchestration-layer">
+<h3>UnityMultibehaviorTask — Unity environment &amp; episode orchestration layer<a class="headerlink" href="#unitymultibehaviortask-unity-environment-episode-orchestration-layer" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> manages the full lifecycle of a Unity ML-Agents session: starting the executable, communicating over side channels, running the per-frame step loop, tracking episodes and epochs, and writing data to disk.</p>
+<p><strong>Owns:</strong></p>
+<ul class="simple">
+<li><p>Unity environment startup and connection (<code class="docutils literal notranslate"><span class="pre">UnityEnvironment</span></code>, display args, port)</p></li>
+<li><p>Side channel management:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">self.channel</span></code>) — float parameters sent at reset time (e.g. <code class="docutils literal notranslate"><span class="pre">episode_length</span></code>, <code class="docutils literal notranslate"><span class="pre">iti_length</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">self.channel_kv</span></code>) — string key-value parameters sent at runtime (e.g. spawner config, distances)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EngineConfigurationChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">self.channel_engine</span></code>) — frame rate and physics settings</p></li>
+</ul>
+</li>
+<li><p>Multi-behavior support: discovers behaviors from Unity, validates against <code class="docutils literal notranslate"><span class="pre">behavior_list</span></code>, maintains per-behavior state in <code class="docutils literal notranslate"><span class="pre">self.behaviors</span></code></p></li>
+<li><p>Per-frame step loop (<code class="docutils literal notranslate"><span class="pre">loop()</span></code>):</p>
+<ol class="arabic simple">
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">get_action_for(bname)</span></code> for every behavior — overridden by subclasses to supply real actions</p></li>
+<li><p>Batches all actions and advances the environment with <code class="docutils literal notranslate"><span class="pre">env.step()</span></code></p></li>
+<li><p>Reads back states, rewards, and <code class="docutils literal notranslate"><span class="pre">done</span></code> flags per behavior</p></li>
+<li><p>Applies <code class="docutils literal notranslate"><span class="pre">reset_condition</span></code> policy (<code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code>) to decide when an episode ends</p></li>
+<li><p>Fires <code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code> hooks (<code class="docutils literal notranslate"><span class="pre">on_success</span></code>, <code class="docutils literal notranslate"><span class="pre">on_episode_end</span></code>, <code class="docutils literal notranslate"><span class="pre">on_epoch_advance</span></code>) and applies any resulting KV changes</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code> (scheduler changes + TTL sync pulse) or <code class="docutils literal notranslate"><span class="pre">reset_environment()</span></code> as needed</p></li>
+</ol>
+</li>
+<li><p>Epoch / session duration enforcement: <code class="docutils literal notranslate"><span class="pre">self.epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">self.epoch_trials</span></code>, <code class="docutils literal notranslate"><span class="pre">self.max_session_duration</span></code></p></li>
+<li><p>KV message capture: incoming Unity → Python KV messages are logged per step in <code class="docutils literal notranslate"><span class="pre">self.kv_messages</span></code></p></li>
+<li><p>Runtime parameter change log: <code class="docutils literal notranslate"><span class="pre">self.runtime_params</span></code> records every scheduler-driven or manual KV update</p></li>
+<li><p>Data collection: <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> aggregates all step-level arrays and merges with base <code class="docutils literal notranslate"><span class="pre">Task.get_data()</span></code></p></li>
+<li><p>Parameter introspection: <code class="docutils literal notranslate"><span class="pre">get_params()</span></code> serialises the full task configuration</p></li>
+<li><p>Default <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code> returns zero actions — subclasses override this</p></li>
+</ul>
+<p><strong>Does NOT own:</strong></p>
+<ul class="simple">
+<li><p>Physical hardware commands — calls <code class="docutils literal notranslate"><span class="pre">super().give_reward()</span></code> / <code class="docutils literal notranslate"><span class="pre">super().signal_ttl()</span></code> which go to <code class="docutils literal notranslate"><span class="pre">Task</span></code></p></li>
+<li><p>Sensory client connections (DLC, Touch, TTL generator) — delegated to <code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="unityagenttask-sensory-client-action-building-layer">
+<h3>UnityAgentTask — Sensory client &amp; action-building layer<a class="headerlink" href="#unityagenttask-sensory-client-action-building-layer" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code> is the production task class. It adds the external input pipelines that translate real-world sensor data into ML-Agents actions, while leaving all environment and hardware management to the parent classes.</p>
+<p><strong>Owns:</strong></p>
+<ul class="simple">
+<li><p><strong>DLC module communication</strong> (<code class="docutils literal notranslate"><span class="pre">DLCClient</span></code> / <code class="docutils literal notranslate"><span class="pre">DummyDLCClient</span></code>):</p>
+<ul>
+<li><p>Socket connection to the DLC pose-estimation server</p></li>
+<li><p>Coordinate normalisation, axis flipping/rotation, One-Euro filter application</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_dlc_action(spec)</span></code> — reads the latest pose packet and packs it into a continuous action vector</p></li>
+</ul>
+</li>
+<li><p><strong>Touchscreen communication</strong> (<code class="docutils literal notranslate"><span class="pre">TouchClient</span></code> / <code class="docutils literal notranslate"><span class="pre">DummyTouchClient</span></code>):</p>
+<ul>
+<li><p>Socket connection to the touchscreen server</p></li>
+<li><p>Velocity calculation, jitter removal, Y-axis inversion, speed scaling</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_touch_action(spec)</span></code> — reads the latest touch packet and packs position + velocity into a continuous action vector</p></li>
+</ul>
+</li>
+<li><p><strong>Photo-TTL sync</strong> (<code class="docutils literal notranslate"><span class="pre">TTLGenerator</span></code>):</p>
+<ul>
+<li><p>Generates an 8-bit counter encoded as a photodiode-readable light pulse sequence</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_ttl_action(spec)</span></code> — exposes the current bit value as a continuous action</p></li>
+</ul>
+</li>
+<li><p><strong>Action routing</strong> (<code class="docutils literal notranslate"><span class="pre">get_action_for(bname)</span></code>):</p>
+<ul>
+<li><p>Dispatches to the correct private method based on canonical behavior name:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;DLCInput&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">_dlc_action()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;TouchInput&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">_touch_action()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;TTLInput&quot;</span></code> → <code class="docutils literal notranslate"><span class="pre">_ttl_action()</span></code></p></li>
+<li><p>anything else → zeros (default from <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code>)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Data enrichment: <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> merges DLC, touch, and TTL client data on top of the parent’s data dict</p></li>
+</ul>
+<p><strong>Does NOT own:</strong></p>
+<ul class="simple">
+<li><p>Unity step loop — entirely in <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask.loop()</span></code>; <code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code> only overrides <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code></p></li>
+<li><p>Hardware reward/TTL — still in <code class="docutils literal notranslate"><span class="pre">Task</span></code></p></li>
+<li><p>Scheduler logic — still in <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="task-base-class">
+<h2>Task (Base Class)<a class="headerlink" href="#task-base-class" title="Link to this heading">#</a></h2>
+<section id="purpose">
+<h3><strong>Purpose</strong><a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<p>Provides common infrastructure for all behavioral tasks:</p>
+<ul class="simple">
+<li><p>Teensy hardware integration</p></li>
+<li><p>Abstract lifecycle methods</p></li>
+<li><p>State tracking</p></li>
+<li><p>Data aggregation</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="constructor">
+<h3><strong>Constructor</strong><a class="headerlink" href="#constructor" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Task</span><span class="p">(</span><span class="n">teensy</span><span class="p">:</span> <span class="n">Teensy</span> <span class="o">|</span> <span class="n">DummyTeensy</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="parameters">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">teensy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Teensy</span></code> or <code class="docutils literal notranslate"><span class="pre">DummyTeensy</span></code></p></td>
+<td><p>Hardware interface for reward/TTL/sensors</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="abstract-methods-must-be-implemented-by-subclasses">
+<h3><strong>Abstract Methods</strong> (Must be implemented by subclasses)<a class="headerlink" href="#abstract-methods-must-be-implemented-by-subclasses" title="Link to this heading">#</a></h3>
+<section id="start">
+<h4><strong>start()</strong><a class="headerlink" href="#start" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize task, start hardware, open connections.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="stop">
+<h4><strong>stop()</strong><a class="headerlink" href="#stop" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clean up, close connections, save data.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="loop-bool">
+<h4><strong>loop() → bool</strong><a class="headerlink" href="#loop-bool" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Execute one iteration of task logic.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True to continue, False to stop task</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hardware-control-methods">
+<h3><strong>Hardware Control Methods</strong><a class="headerlink" href="#hardware-control-methods" title="Link to this heading">#</a></h3>
+<section id="give-reward-duration-ms-int">
+<h4><strong>give_reward(duration_ms: int)</strong><a class="headerlink" href="#give-reward-duration-ms-int" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 ms water pulse</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;W&lt;duration&gt;&quot;</span></code> command to Teensy</p></li>
+<li><p>Opens solenoid valve for specified duration</p></li>
+<li><p>Typical range: 50-200 ms</p></li>
+</ul>
+</section>
+<section id="signal-ttl">
+<h4><strong>signal_ttl()</strong><a class="headerlink" href="#signal-ttl" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">signal_ttl</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;P&quot;</span></code> command to Teensy</p></li>
+<li><p>Triggers 5V TTL pulse on output pin</p></li>
+<li><p>Duration defined in Teensy firmware (typically 5-10 ms)</p></li>
+</ul>
+</section>
+<section id="drain-water-duration-ms-int">
+<h4><strong>drain_water(duration_ms: int)</strong><a class="headerlink" href="#drain-water-duration-ms-int" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">drain_water</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>  <span class="c1"># 5 seconds</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;D&lt;duration&gt;&quot;</span></code> command to Teensy</p></li>
+<li><p>Opens valve for extended period (priming/draining)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="timing-utilities">
+<h3><strong>Timing Utilities</strong><a class="headerlink" href="#timing-utilities" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">timing_func</span><span class="p">()</span>        <span class="c1"># Returns current time (time.time() or perf_counter)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start_time</span>           <span class="c1"># Timestamp when task started</span>
+<span class="n">task</span><span class="o">.</span><span class="n">cur_time</span>             <span class="c1"># Current time (updated in loop)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="state-tracking">
+<h3><strong>State Tracking</strong><a class="headerlink" href="#state-tracking" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">running</span>              <span class="c1"># bool: Task is actively running</span>
+<span class="n">task</span><span class="o">.</span><span class="n">paused</span>               <span class="c1"># bool: Task is paused</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stopped</span>              <span class="c1"># bool: Task has stopped</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="data-collection">
+<h3><strong>Data Collection</strong><a class="headerlink" href="#data-collection" title="Link to this heading">#</a></h3>
+<section id="get-data-dict">
+<h4><strong>get_data() → dict</strong><a class="headerlink" href="#get-data-dict" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="c1"># Returns teensy input/output logs:</span>
+<span class="p">{</span>
+    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_input_digital&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_output_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_output_command&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="get-params-dict">
+<h4><strong>get_params() → dict</strong><a class="headerlink" href="#get-params-dict" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="c1"># Returns task configuration (override in subclasses)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="unitymultibehaviortask">
+<h2>UnityMultibehaviorTask<a class="headerlink" href="#unitymultibehaviortask" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><strong>Purpose</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Manages Unity ML-Agents environments with multiple behaviors (agent types). Handles:</p>
+<ul class="simple">
+<li><p>Multi-behavior action routing</p></li>
+<li><p>Environment parameter channels (training + runtime)</p></li>
+<li><p>Episode/step/epoch tracking</p></li>
+<li><p>Reset conditions (any agent done vs all agents done)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3><strong>Constructor</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">UnityMultibehaviorTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="p">:</span> <span class="n">Teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UnnamedMouse&quot;</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.0</span><span class="p">]),</span>
+    <span class="n">epoch_trials</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">agent_group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+    <span class="n">display_args</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reset_condition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+    <span class="n">env_params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">env_kv_params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">reward_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">use_perf_counter</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="id3">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">teensy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Teensy</span></code></p></td>
+<td><p><em>required</em></p></td>
+<td><p>Hardware interface</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">env_path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><em>required</em></p></td>
+<td><p>Path to Unity executable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">behavior_list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list[str]</span></code></p></td>
+<td><p><em>required</em></p></td>
+<td><p>List of behavior names to control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subject_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;UnnamedMouse&quot;</span></code></p></td>
+<td><p>Subject identifier for data logging</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">epochs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[60.0]</span></code></p></td>
+<td><p>Epoch durations (seconds or trial counts)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">epoch_trials</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>If True, epochs are trial counts; if False, durations</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agent_group</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code></p></td>
+<td><p>ML-Agents agent group name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">display_args</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>Unity display config (width, height, etc.)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reset_condition</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code></p></td>
+<td><p>Episode reset policy: <code class="docutils literal notranslate"><span class="pre">&quot;any&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">env_params</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>EnvironmentParametersChannel (training-time)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">env_kv_params</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>KvChannel initial parameters (runtime)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reward_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.0</span></code></p></td>
+<td><p>Reward scaling factor</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_perf_counter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">time.perf_counter()</span></code> for timing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="behavior-management">
+<h3><strong>Behavior Management</strong><a class="headerlink" href="#behavior-management" title="Link to this heading">#</a></h3>
+<section id="behavior-names">
+<h4><strong>Behavior Names</strong><a class="headerlink" href="#behavior-names" title="Link to this heading">#</a></h4>
+<p>Unity behaviors may have query string suffixes (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;MouseAgent?team=0&quot;</span></code>). The task automatically canonicalizes names:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unity behavior spec: &quot;MouseAgent?team=0&quot;</span>
+<span class="c1"># Canonical name: &quot;MouseAgent&quot;</span>
+
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">]</span>  <span class="c1"># Use canonical name</span>
+</pre></div>
+</div>
+</section>
+<section id="behavior-mapping">
+<h4><strong>Behavior Mapping</strong><a class="headerlink" href="#behavior-mapping" title="Link to this heading">#</a></h4>
+<p>The task builds a <code class="docutils literal notranslate"><span class="pre">behavior_map</span></code> from canonical names to full names:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">behavior_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;MouseAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;MouseAgent?team=0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TTLAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;TTLAgent&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="action-routing">
+<h3><strong>Action Routing</strong><a class="headerlink" href="#action-routing" title="Link to this heading">#</a></h3>
+<section id="get-action-for-behavior-name-str-np-ndarray">
+<h4><strong>get_action_for(behavior_name: str) → np.ndarray</strong><a class="headerlink" href="#get-action-for-behavior-name-str-np-ndarray" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_action_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return action for specified behavior.</span>
+<span class="sd">    Override in subclasses to provide custom actions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        behavior_name: Canonical behavior name (e.g., &quot;MouseAgent&quot;)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: Action array matching behavior&#39;s action spec</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;spec&quot;</span><span class="p">]</span>
+    <span class="c1"># Default: zero action</span>
+    <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">discrete_branches</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="side-channels">
+<h3><strong>Side Channels</strong><a class="headerlink" href="#side-channels" title="Link to this heading">#</a></h3>
+<section id="environmentparameterschannel-training-time-configuration">
+<h4><strong>EnvironmentParametersChannel</strong> (Training-time configuration)<a class="headerlink" href="#environmentparameterschannel-training-time-configuration" title="Link to this heading">#</a></h4>
+<p>Set during environment initialization. Typically used for:</p>
+<ul class="simple">
+<li><p>Spawn rates</p></li>
+<li><p>Difficulty levels</p></li>
+<li><p>Environment dimensions</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;spawn_rate&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">&quot;arena_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
+<span class="p">}</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityMultibehaviorTask</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="kvchannel-runtime-parameter-updates">
+<h4><strong>KvChannel</strong> (Runtime parameter updates)<a class="headerlink" href="#kvchannel-runtime-parameter-updates" title="Link to this heading">#</a></h4>
+<p>Set during task execution via <code class="docutils literal notranslate"><span class="pre">set_runtime_param()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;target_speed&quot;</span><span class="p">,</span> <span class="s2">&quot;5.0&quot;</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;reward_delay&quot;</span><span class="p">,</span> <span class="s2">&quot;0.5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Unity C# Receiver:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RuntimeParamListener</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">HasMessage</span><span class="p">(</span><span class="s">&quot;target_speed&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="s">&quot;target_speed&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="c1">// Apply speed...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="reset-conditions">
+<h3><strong>Reset Conditions</strong><a class="headerlink" href="#reset-conditions" title="Link to this heading">#</a></h3>
+<section id="reset-condition-any-default">
+<h4><strong><code class="docutils literal notranslate"><span class="pre">reset_condition=&quot;any&quot;</span></code></strong> (Default)<a class="headerlink" href="#reset-condition-any-default" title="Link to this heading">#</a></h4>
+<p>Episode ends when <strong>any</strong> behavior reports <code class="docutils literal notranslate"><span class="pre">done=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># If MouseAgent OR TTLAgent is done → reset episode</span>
+</pre></div>
+</div>
+</section>
+<section id="reset-condition-all">
+<h4><strong><code class="docutils literal notranslate"><span class="pre">reset_condition=&quot;all&quot;</span></code></strong><a class="headerlink" href="#reset-condition-all" title="Link to this heading">#</a></h4>
+<p>Episode ends when <strong>all</strong> behaviors report <code class="docutils literal notranslate"><span class="pre">done=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wait until MouseAgent AND TTLAgent are both done → reset episode</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="step-loop">
+<h3><strong>Step Loop</strong><a class="headerlink" href="#step-loop" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="c1"># 1. Get actions for each behavior</span>
+    <span class="n">action_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">behavior_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">:</span>
+        <span class="n">action_dict</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_action_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">)</span>
+
+    <span class="c1"># 2. Set actions and step environment</span>
+    <span class="k">for</span> <span class="n">behavior_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">:</span>
+        <span class="n">full_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_map</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">set_actions</span><span class="p">(</span><span class="n">full_name</span><span class="p">,</span> <span class="n">ActionTuple</span><span class="p">(</span><span class="n">continuous</span><span class="o">=</span><span class="n">action_dict</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">]))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># 3. Collect observations</span>
+    <span class="k">for</span> <span class="n">behavior_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">:</span>
+        <span class="n">step_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_step_result_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">)</span>
+        <span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">step_result</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">done</span>
+
+    <span class="c1"># 4. Check terminal condition</span>
+    <span class="n">any_done</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
+    <span class="n">all_done</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="n">any_done</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_condition</span> <span class="o">==</span> <span class="s2">&quot;any&quot;</span> <span class="k">else</span> <span class="n">all_done</span>
+
+    <span class="c1"># 5. Reset episode if terminal</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">episode</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_episode</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># 6. Check epoch completion</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cur_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">epoch</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>  <span class="c1"># Stop task</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>  <span class="c1"># Continue</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="data-logging">
+<h3><strong>Data Logging</strong><a class="headerlink" href="#data-logging" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h4><strong>get_data() → dict</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="c1"># Returns:</span>
+<span class="p">{</span>
+    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Episode numbers</span>
+    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>          <span class="c1"># Step within episode</span>
+    <span class="s2">&quot;step_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># Timestamps</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">state0</span><span class="p">,</span> <span class="n">state1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># States per behavior (dict)</span>
+    <span class="s2">&quot;obs_states&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">vis0</span><span class="p">,</span> <span class="n">vis1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Visual observations</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">action0</span><span class="p">,</span> <span class="n">action1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>     <span class="c1"># Actions per behavior (dict)</span>
+    <span class="s2">&quot;reward&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>               <span class="c1"># Rewards</span>
+    <span class="s2">&quot;terminal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="c1"># Terminal flags</span>
+    <span class="s2">&quot;runtime_params&quot;</span><span class="p">:</span> <span class="p">[</span>                    <span class="c1"># Parameter changes</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">},</span>
+        <span class="o">...</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;kv_messages&quot;</span><span class="p">:</span> <span class="p">[</span>                       <span class="c1"># KV channel messages</span>
+        <span class="p">{</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}},</span>
+        <span class="o">...</span>
+    <span class="p">],</span>
+    <span class="c1"># Plus teensy data from base class:</span>
+    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="unityagenttask">
+<h2>UnityAgentTask<a class="headerlink" href="#unityagenttask" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><strong>Purpose</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Extends <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> with control client integration:</p>
+<ul class="simple">
+<li><p><strong>DLCClient</strong>: Pose tracking → Unity actions</p></li>
+<li><p><strong>TouchClient</strong>: Touchscreen input → Unity actions</p></li>
+<li><p><strong>TTLGenerator</strong>: Photodiode sync → Unity actions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h3><strong>Constructor</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="c1"># Base parameters (from UnityMultibehaviorTask)</span>
+    <span class="n">teensy</span><span class="p">:</span> <span class="n">Teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UnnamedMouse&quot;</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.0</span><span class="p">]),</span>
+    <span class="c1"># ... (all UnityMultibehaviorTask params)</span>
+
+    <span class="c1"># Control client parameters</span>
+    <span class="n">use_dlc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
+    <span class="n">dlc_filter_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
+    <span class="n">dlc_filter_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">dlc_flip_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dlc_flip_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dlc_rotate_90</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dlc_box_extents</span><span class="p">:</span> <span class="n">List</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+
+    <span class="n">use_touch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
+    <span class="n">touch_tx_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rate&quot;</span><span class="p">,</span>
+    <span class="n">touch_tx_hz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span>
+    <span class="n">touch_invert_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_speed_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">touch_vector_window_ms</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+
+    <span class="n">use_photottl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">photottl_half_cell_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">photottl_period_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">photottl_n_bits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="key-parameters">
+<h4><strong>Key Parameters:</strong><a class="headerlink" href="#key-parameters" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DLC Client</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">use_dlc</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Enable DLCClient</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_address</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;dummy_constant&quot;</span></code></p></td>
+<td><p>IP:port or dummy mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_filter_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;always&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;always&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;onread&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;never&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_filter_kwargs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>One-Euro filter params</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_flip_x</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Flip X coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_flip_y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Flip Y coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_rotate_90</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Rotate 90° clockwise</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dlc_box_extents</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>Crop region <code class="docutils literal notranslate"><span class="pre">[xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Touch Client</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_touch</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Enable TouchClient</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">touch_address</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;dummy_constant&quot;</span></code></p></td>
+<td><p>IP:port or dummy mode</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">touch_tx_mode</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;rate&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;event&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;rate&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;both&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">touch_tx_hz</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">60.0</span></code></p></td>
+<td><p>Rate transmission frequency</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">touch_invert_y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>Invert Y axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">touch_speed_gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
+<td><p>Velocity scaling</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">touch_vector_window_ms</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">200</span></code></p></td>
+<td><p>Velocity window duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TTL Generator</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_photottl</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Enable TTLGenerator</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">photottl_half_cell_sec</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.05</span></code></p></td>
+<td><p>Half-cell duration (50ms)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">photottl_period_sec</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5.0</span></code></p></td>
+<td><p>Burst period (5s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">photottl_n_bits</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+<td><p>Counter bit width</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dummy-mode-selection">
+<h3><strong>Dummy Mode Selection</strong><a class="headerlink" href="#dummy-mode-selection" title="Link to this heading">#</a></h3>
+<p>Instead of IP addresses, use strings to enable dummy clients:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DLC dummy modes</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>     <span class="c1"># Interactive pygame window</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span>   <span class="c1"># Static position/heading</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>     <span class="c1"># Random walk</span>
+
+<span class="c1"># Touch dummy modes</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>   <span class="c1"># Interactive pygame window (hold LMB)</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span> <span class="c1"># Static position/velocity</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>   <span class="c1"># Random positions</span>
+
+<span class="c1"># Real hardware</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">)</span>         <span class="c1"># DLC server</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">)</span>      <span class="c1"># Touchscreen server</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="action-construction-methods">
+<h3><strong>Action Construction Methods</strong><a class="headerlink" href="#action-construction-methods" title="Link to this heading">#</a></h3>
+<section id="dlc-action-spec-np-ndarray">
+<h4><strong>_dlc_action(spec) → np.ndarray</strong><a class="headerlink" href="#dlc-action-spec-np-ndarray" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_dlc_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span>
+    <span class="n">empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dlc_client</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">empty</span>
+
+    <span class="n">pkt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pkt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">empty</span>
+
+    <span class="c1"># Extract [x, y, heading, head_angle, action]</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vals&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Drop timestamp</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pack_and_clip</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Unity Receives:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>           <span class="c1"># Position X</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>           <span class="c1"># Position Y</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">heading</span>     <span class="c1"># Body direction</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">head_angle</span>  <span class="c1"># Head angle</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span>      <span class="c1"># Auxiliary action</span>
+</pre></div>
+</div>
+</section>
+<section id="touch-action-spec-np-ndarray">
+<h4><strong>_touch_action(spec) → np.ndarray</strong><a class="headerlink" href="#touch-action-spec-np-ndarray" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_touch_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span>
+    <span class="n">empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">empty</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Default to border</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">touch_client</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">empty</span>
+
+    <span class="n">pkt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">touch_client</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pkt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">empty</span>
+
+    <span class="c1"># Pack [px, py, heading, speed01]</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;py&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;speed01&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pack_and_clip</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Unity Receives:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">px</span>       <span class="c1"># Position X [-1, 1]</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">py</span>       <span class="c1"># Position Y [-1, 1]</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">heading</span>  <span class="c1"># Direction [-1, 1]</span>
+<span class="n">actions</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">speed01</span>  <span class="c1"># Speed [0, 1]</span>
+</pre></div>
+</div>
+</section>
+<section id="ttl-action-spec-np-ndarray">
+<h4><strong>_ttl_action(spec) → np.ndarray</strong><a class="headerlink" href="#ttl-action-spec-np-ndarray" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_ttl_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec</span><span class="p">):</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span>
+    <span class="n">empty</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl_generator</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">empty</span>
+
+    <span class="n">ttl_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl_generator</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>  <span class="c1"># [0.0] or [1.0]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pack_and_clip</span><span class="p">(</span><span class="n">ttl_val</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Unity Receives:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttl</span>  <span class="c1"># 0.0 or 1.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="behavior-routing">
+<h3><strong>Behavior Routing</strong><a class="headerlink" href="#behavior-routing" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code> method routes to the appropriate client based on behavior name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_action_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;spec&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="s2">&quot;dlc&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;mouse&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">&quot;touch&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;finger&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">&quot;ttl&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;photo&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Default: zero action</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="data-aggregation">
+<h3><strong>Data Aggregation</strong><a class="headerlink" href="#data-aggregation" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>  <span class="c1"># UnityMultibehaviorTask data</span>
+
+    <span class="c1"># Add DLC data</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dlc_client</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+
+    <span class="c1"># Add Touch data</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">touch_client</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">touch_client</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+
+    <span class="c1"># Add TTL data</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl_generator</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ttl_generator</span><span class="o">.</span><span class="n">get_data</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p><strong>Full Data Structure:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1"># Unity task data</span>
+    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;step_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;reward&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;terminal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+
+    <span class="c1"># Teensy data</span>
+    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_input_digital&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_output_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;teensy_output_command&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+
+    <span class="c1"># DLC data (if use_dlc=True)</span>
+    <span class="s2">&quot;dlc_read_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;dlc_x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;dlc_y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;dlc_heading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;dlc_head_angle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+
+    <span class="c1"># Touch data (if use_touch=True)</span>
+    <span class="s2">&quot;touch_read_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;touch_px&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;touch_py&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;touch_heading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;touch_speed01&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+
+    <span class="c1"># TTL data (if use_photottl=True)</span>
+    <span class="s2">&quot;ttl_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">&quot;ttl_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuration-examples">
+<h2>Configuration Examples<a class="headerlink" href="#configuration-examples" title="Link to this heading">#</a></h2>
+<section id="example-1-dlc-pose-control-only">
+<h3><strong>Example 1: DLC Pose Control Only</strong><a class="headerlink" href="#example-1-dlc-pose-control-only" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
+
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">],</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">300.0</span><span class="p">]),</span>  <span class="c1"># 5 minutes</span>
+
+    <span class="c1"># Enable DLC with real server</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
+    <span class="n">dlc_filter_mode</span><span class="o">=</span><span class="s2">&quot;onread&quot;</span><span class="p">,</span>
+    <span class="n">dlc_filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+    <span class="n">dlc_flip_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+    <span class="c1"># Disable other clients</span>
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">pass</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">task</span><span class="o">.</span><span class="n">save_data_to_json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="example-2-touchscreen-ttl-sync">
+<h3><strong>Example 2: Touchscreen + TTL Sync</strong><a class="headerlink" href="#example-2-touchscreen-ttl-sync" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TouchFingerAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLAgent&quot;</span><span class="p">],</span>
+
+    <span class="c1"># Enable Touch</span>
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>
+    <span class="n">touch_tx_mode</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>
+    <span class="n">touch_tx_hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">,</span>
+    <span class="n">touch_invert_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+    <span class="c1"># Enable TTL</span>
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">photottl_period_sec</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">photottl_half_cell_sec</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+
+    <span class="c1"># Disable DLC</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">pass</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="example-3-all-clients-with-dummy-modes-testing">
+<h3><strong>Example 3: All Clients with Dummy Modes (Testing)</strong><a class="headerlink" href="#example-3-all-clients-with-dummy-modes-testing" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TouchFingerAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLAgent&quot;</span><span class="p">],</span>
+
+    <span class="c1"># DLC dummy (pygame interactive)</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span><span class="p">,</span>
+
+    <span class="c1"># Touch dummy (constant position)</span>
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
+
+    <span class="c1"># TTL generator (always enabled for dummy)</span>
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1"># DLC pygame window opens; move mouse and press keys for control</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="example-4-runtime-parameter-updates">
+<h3><strong>Example 4: Runtime Parameter Updates</strong><a class="headerlink" href="#example-4-runtime-parameter-updates" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># Change spawn rate at 60s</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">cur_time</span> <span class="o">-</span> <span class="n">task</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="mf">60.0</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;spawn_rate&quot;</span><span class="p">,</span> <span class="s2">&quot;5.0&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="c1"># Change difficulty at 120s</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">cur_time</span> <span class="o">-</span> <span class="n">task</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="mf">120.0</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="workflow-patterns">
+<h2>Workflow Patterns<a class="headerlink" href="#workflow-patterns" title="Link to this heading">#</a></h2>
+<section id="pattern-1-conditional-reward">
+<h3><strong>Pattern 1: Conditional Reward</strong><a class="headerlink" href="#pattern-1-conditional-reward" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">RewardTask</span><span class="p">(</span><span class="n">UnityAgentTask</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+
+        <span class="c1"># Check for success event</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100ms water</span>
+
+        <span class="k">return</span> <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pattern-2-external-event-triggering">
+<h3><strong>Pattern 2: External Event Triggering</strong><a class="headerlink" href="#pattern-2-external-event-triggering" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EventTask</span><span class="p">(</span><span class="n">UnityAgentTask</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
+
+        <span class="c1"># Read Teensy digital input (e.g., barcode scanner)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">teensy</span><span class="o">.</span><span class="n">input_deque</span><span class="p">:</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">teensy</span><span class="o">.</span><span class="n">input_deque</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;digital&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">signal_ttl</span><span class="p">()</span>  <span class="c1"># Sync camera</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;trial_start&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pattern-3-multi-epoch-training">
+<h3><strong>Pattern 3: Multi-Epoch Training</strong><a class="headerlink" href="#pattern-3-multi-epoch-training" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3 epochs: 5 min warmup, 10 min training, 5 min cooldown</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">600.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">])</span>
+
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+    <span class="n">env_params</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="mf">0.2</span>  <span class="c1"># Start easy</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="c1"># Adjust difficulty per epoch</span>
+    <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">epoch</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.5&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">task</span><span class="o">.</span><span class="n">epoch</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.2&quot;</span><span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-analysis-example">
+<h2>Data Analysis Example<a class="headerlink" href="#data-analysis-example" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Load data</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;UnityData_Mouse42_20250130_120000.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># Plot reward over time</span>
+<span class="n">episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">])</span>
+<span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;reward&quot;</span><span class="p">])</span>
+<span class="n">step_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;step_time&quot;</span><span class="p">])</span>
+
+<span class="c1"># Cumulative reward per episode</span>
+<span class="n">unique_episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">episodes</span><span class="p">)</span>
+<span class="n">cumulative_rewards</span> <span class="o">=</span> <span class="p">[</span><span class="n">rewards</span><span class="p">[</span><span class="n">episodes</span> <span class="o">==</span> <span class="n">ep</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="n">unique_episodes</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unique_episodes</span><span class="p">,</span> <span class="n">cumulative_rewards</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Episode&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Reward&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Curve: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot DLC trajectory (if available)</span>
+<span class="k">if</span> <span class="s2">&quot;dlc_x&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">dlc_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;dlc_x&quot;</span><span class="p">])</span>
+    <span class="n">dlc_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;dlc_y&quot;</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dlc_x</span><span class="p">,</span> <span class="n">dlc_y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X Position&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y Position&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mouse Trajectory&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Analyze TTL bursts (if available)</span>
+<span class="k">if</span> <span class="s2">&quot;ttl_time&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">ttl_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ttl_time&quot;</span><span class="p">])</span>
+    <span class="n">ttl_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ttl_value&quot;</span><span class="p">])</span>
+
+    <span class="c1"># Detect burst starts (rising edges after idle)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ttl_value</span><span class="p">]))</span>
+    <span class="n">rising</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bursts</span> <span class="o">=</span> <span class="n">rising</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="kc">True</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">ttl_time</span><span class="p">[</span><span class="n">rising</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">])]</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bursts</span><span class="p">)</span><span class="si">}</span><span class="s2"> TTL bursts&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Burst times: </span><span class="si">{</span><span class="n">ttl_time</span><span class="p">[</span><span class="n">bursts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="problem-unity-environment-doesn-t-start">
+<h3><strong>Problem: Unity environment doesn’t start</strong><a class="headerlink" href="#problem-unity-environment-doesn-t-start" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">env_path</span></code> is correct:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify behavior names match Unity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">behavior_map</span><span class="p">)</span>  <span class="c1"># Should show available behaviors</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check display args:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="s2">&quot;quality_level&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;time_scale&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="problem-no-actions-received-by-unity-agents">
+<h3><strong>Problem: No actions received by Unity agents</strong><a class="headerlink" href="#problem-no-actions-received-by-unity-agents" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code> is returning correct shape:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_action_for</span><span class="p">(</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Action shape: </span><span class="si">{</span><span class="n">action</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s1">&#39;MouseAgent&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify clients are started:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">touch_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check client data availability:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pkt</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC packet: </span><span class="si">{</span><span class="n">pkt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="problem-episode-never-resets">
+<h3><strong>Problem: Episode never resets</strong><a class="headerlink" href="#problem-episode-never-resets" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check reset condition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reset condition: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">reset_condition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Behaviors done: </span><span class="si">{</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s1">&#39;done&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">task</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify Unity agents send <code class="docutils literal notranslate"><span class="pre">done=True</span></code>:</p>
+<ul class="simple">
+<li><p>Check Unity C# <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> is called</p></li>
+</ul>
+</li>
+<li><p>Adjust reset condition:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">reset_condition</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>  <span class="c1"># Wait for all agents</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="problem-data-logging-is-incomplete">
+<h3><strong>Problem: Data logging is incomplete</strong><a class="headerlink" href="#problem-data-logging-is-incomplete" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check clients are logging:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dlc_read_time&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;touch_read_time&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify clients are reading data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In loop:</span>
+<span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">step</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC deque size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">filtered_deque</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h2>
+<section id="task">
+<h3><strong>Task</strong><a class="headerlink" href="#task" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="n">teensy</span><span class="p">)</span>
+<span class="n">start</span><span class="p">()</span>                          <span class="c1"># Abstract</span>
+<span class="n">stop</span><span class="p">()</span>                           <span class="c1"># Abstract</span>
+<span class="n">loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>                   <span class="c1"># Abstract</span>
+<span class="n">give_reward</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">signal_ttl</span><span class="p">()</span>
+<span class="n">drain_water</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<span class="n">get_params</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><strong>UnityMultibehaviorTask</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="n">teensy</span><span class="p">,</span> <span class="n">env_path</span><span class="p">,</span> <span class="n">behavior_list</span><span class="p">,</span> <span class="n">subject_id</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">epoch_trials</span><span class="p">,</span>
+         <span class="n">agent_group</span><span class="p">,</span> <span class="n">display_args</span><span class="p">,</span> <span class="n">reset_condition</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">env_kv_params</span><span class="p">,</span>
+         <span class="n">reward_size</span><span class="p">,</span> <span class="n">use_perf_counter</span><span class="p">)</span>
+<span class="n">start</span><span class="p">()</span>
+<span class="n">stop</span><span class="p">()</span>
+<span class="n">loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+<span class="n">get_action_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">set_runtime_param</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+<span class="n">reset_episode</span><span class="p">()</span>
+<span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<span class="n">get_params</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+<span class="n">save_data_to_json</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h3><strong>UnityAgentTask</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="c1"># All UnityMultibehaviorTask params, plus:</span>
+    <span class="n">use_dlc</span><span class="p">,</span> <span class="n">dlc_address</span><span class="p">,</span> <span class="n">dlc_filter_mode</span><span class="p">,</span> <span class="n">dlc_filter_kwargs</span><span class="p">,</span> <span class="n">dlc_flip_x</span><span class="p">,</span>
+    <span class="n">dlc_flip_y</span><span class="p">,</span> <span class="n">dlc_rotate_90</span><span class="p">,</span> <span class="n">dlc_box_extents</span><span class="p">,</span>
+    <span class="n">use_touch</span><span class="p">,</span> <span class="n">touch_address</span><span class="p">,</span> <span class="n">touch_tx_mode</span><span class="p">,</span> <span class="n">touch_tx_hz</span><span class="p">,</span> <span class="n">touch_invert_y</span><span class="p">,</span>
+    <span class="n">touch_speed_gain</span><span class="p">,</span> <span class="n">touch_vector_window_ms</span><span class="p">,</span>
+    <span class="n">use_photottl</span><span class="p">,</span> <span class="n">photottl_half_cell_sec</span><span class="p">,</span> <span class="n">photottl_period_sec</span><span class="p">,</span> <span class="n">photottl_n_bits</span>
+<span class="p">)</span>
+<span class="n">start</span><span class="p">()</span>
+<span class="n">stop</span><span class="p">()</span>
+<span class="n">get_action_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="DLCClient.html"><span class="std std-doc">DLCClient Documentation</span></a></strong> - Pose tracking client details</p></li>
+<li><p><strong><a class="reference internal" href="TouchClient.html"><span class="std std-doc">TouchClient Documentation</span></a></strong> - Touchscreen client details</p></li>
+<li><p><strong><a class="reference internal" href="Teensy.html"><span class="std std-doc">Teensy Documentation</span></a></strong> - Hardware interface details</p></li>
+<li><p><strong><a class="reference internal" href="TTLGenerator.html"><span class="std std-doc">TTLGenerator Documentation</span></a></strong> - Photodiode sync details</p></li>
+<li><p><strong><a class="reference internal" href="../Unity/Agents.html"><span class="std std-doc">Unity Agents</span></a></strong> - Unity agent implementation</p></li>
+<li><p><strong><a class="reference internal" href="../Unity/EpisodeManagement.html"><span class="std std-doc">Unity Episode Management</span></a></strong> - Unity episode lifecycle</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ConfigSystem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Configuration System - TOML Profiles</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DLCProcessors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DLC Processor Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-responsibilities">Inheritance Responsibilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-base-hardware-communication-layer">Task (Base) — Hardware communication layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitymultibehaviortask-unity-environment-episode-orchestration-layer">UnityMultibehaviorTask — Unity environment &amp; episode orchestration layer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unityagenttask-sensory-client-action-building-layer">UnityAgentTask — Sensory client &amp; action-building layer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-base-class">Task (Base Class)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-be-implemented-by-subclasses"><strong>Abstract Methods</strong> (Must be implemented by subclasses)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start"><strong>start()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stop"><strong>stop()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-bool"><strong>loop() → bool</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-control-methods"><strong>Hardware Control Methods</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int"><strong>give_reward(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-ttl"><strong>signal_ttl()</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water-duration-ms-int"><strong>drain_water(duration_ms: int)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-utilities"><strong>Timing Utilities</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#state-tracking"><strong>State Tracking</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-collection"><strong>Data Collection</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data-dict"><strong>get_data() → dict</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-params-dict"><strong>get_params() → dict</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitymultibehaviortask">UnityMultibehaviorTask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-management"><strong>Behavior Management</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-names"><strong>Behavior Names</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-mapping"><strong>Behavior Mapping</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-routing"><strong>Action Routing</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#get-action-for-behavior-name-str-np-ndarray"><strong>get_action_for(behavior_name: str) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-channels"><strong>Side Channels</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#environmentparameterschannel-training-time-configuration"><strong>EnvironmentParametersChannel</strong> (Training-time configuration)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kvchannel-runtime-parameter-updates"><strong>KvChannel</strong> (Runtime parameter updates)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-conditions"><strong>Reset Conditions</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-condition-any-default"><strong><code class="docutils literal notranslate"><span class="pre">reset_condition="any"</span></code></strong> (Default)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-condition-all"><strong><code class="docutils literal notranslate"><span class="pre">reset_condition="all"</span></code></strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-loop"><strong>Step Loop</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-logging"><strong>Data Logging</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>get_data() → dict</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unityagenttask">UnityAgentTask</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters"><strong>Key Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-mode-selection"><strong>Dummy Mode Selection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-construction-methods"><strong>Action Construction Methods</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlc-action-spec-np-ndarray"><strong>_dlc_action(spec) → np.ndarray</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touch-action-spec-np-ndarray"><strong>_touch_action(spec) → np.ndarray</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttl-action-spec-np-ndarray"><strong>_ttl_action(spec) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-routing"><strong>Behavior Routing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-aggregation"><strong>Data Aggregation</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-examples">Configuration Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-dlc-pose-control-only"><strong>Example 1: DLC Pose Control Only</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-touchscreen-ttl-sync"><strong>Example 2: Touchscreen + TTL Sync</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-all-clients-with-dummy-modes-testing"><strong>Example 3: All Clients with Dummy Modes (Testing)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4-runtime-parameter-updates"><strong>Example 4: Runtime Parameter Updates</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-patterns">Workflow Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-conditional-reward"><strong>Pattern 1: Conditional Reward</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-external-event-triggering"><strong>Pattern 2: External Event Triggering</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-multi-epoch-training"><strong>Pattern 3: Multi-Epoch Training</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis-example">Data Analysis Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-unity-environment-doesn-t-start"><strong>Problem: Unity environment doesn’t start</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-no-actions-received-by-unity-agents"><strong>Problem: No actions received by Unity agents</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-episode-never-resets"><strong>Problem: Episode never resets</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-data-logging-is-incomplete"><strong>Problem: Data logging is incomplete</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task"><strong>Task</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>UnityMultibehaviorTask</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>UnityAgentTask</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

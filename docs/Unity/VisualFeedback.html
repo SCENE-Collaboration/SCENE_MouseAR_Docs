@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Visual Feedback &amp; Utility Components &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/VisualFeedback';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hockey Game Documentation" href="HockeyGame.html" />
+    <link rel="prev" title="Parameter Control System" href="ParameterSystem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/VisualFeedback.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/VisualFeedback.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Visual Feedback & Utility Components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback">Visual Feedback</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whitenoiseoverlaygpu">WhiteNoiseOverlayGPU</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-components">Interaction Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statefultarget">StatefulTarget</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statefulwall">StatefulWall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-components">Bridge Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiepisodetoagentbridge">MultiEpisodeToAgentBridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#itiflag">ITIFlag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-components">Utility Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillonplayerdwell">TargetKillOnPlayerDwell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillonarea">TargetKillOnArea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillondistance">TargetKillOnDistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbydistance">ColorByDistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbyrotation">ColorByRotation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jitterymovement">JitteryMovement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containmentinboxvolume">ContainmentInBoxVolume</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-object-inside-a-boxcollider-volume">Keep object inside a BoxCollider volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="visual-feedback-utility-components">
+<h1>Visual Feedback &amp; Utility Components<a class="headerlink" href="#visual-feedback-utility-components" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This document covers visual feedback systems, interaction components, and utility scripts used throughout the Unity game.</p>
+</section>
+<hr class="docutils" />
+<section id="visual-feedback">
+<h2>Visual Feedback<a class="headerlink" href="#visual-feedback" title="Link to this heading">#</a></h2>
+<section id="coloroverlay">
+<h3>ColorOverlay<a class="headerlink" href="#coloroverlay" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Display solid color overlay for visual feedback (success, checkpoints, etc.)</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Static color display (vs animated)</p></li>
+<li><p>Multi-display support</p></li>
+<li><p>Multiple playback modes: flash, fade in/out</p></li>
+<li><p>Configurable opacity and duration</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Color &amp; Opacity&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">overlayColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">;</span>
+<span class="na">[Range(0f,1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Displays&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">targetDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoActivateDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Region&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">RegionMode</span><span class="w"> </span><span class="n">regionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegionMode</span><span class="p">.</span><span class="n">Fullscreen</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="n">regionNormalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">public</span><span class="w"> </span><span class="n">RectInt</span><span class="w"> </span><span class="n">regionPixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RectInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">);</span>
+
+<span class="na">[Header(&quot;Default Duration&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">defaultDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Integration with Episode Managers:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// EpisodeManagerSingleWall</span>
+<span class="na">[Header(&quot;Reward Flash on Success&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+
+<span class="c1">// Automatic triggering in code:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayRewardFlash</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">ColorOverlay</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">rewardDisplayDuration</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="whitenoiseoverlaygpu">
+<h3>WhiteNoiseOverlayGPU<a class="headerlink" href="#whitenoiseoverlaygpu" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Animated noise overlay for punishment/failure feedback</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>GPU shader-based animated white noise</p></li>
+<li><p>Multi-display support</p></li>
+<li><p>Region control (fullscreen or partial)</p></li>
+<li><p>Configurable FPS and opacity</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Material &amp; Look&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">noiseMaterial</span><span class="p">;</span><span class="w">  </span><span class="c1">// Assign FullscreenNoise shader material</span>
+<span class="na">[Range(0f,1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseFps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60f</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Displays&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">targetDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoActivateDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Region&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">RegionMode</span><span class="w"> </span><span class="n">regionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegionMode</span><span class="p">.</span><span class="n">Fullscreen</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="n">regionNormalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="k">public</span><span class="w"> </span><span class="n">RectInt</span><span class="w"> </span><span class="n">regionPixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RectInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Integration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// EpisodeManagerSingleWall</span>
+<span class="na">[Header(&quot;Noise Overlay&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
+
+<span class="c1">// Automatic on timeout:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">displayNoiseOverlay</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">WhiteNoiseOverlayGPU</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">noiseDisplayDuration</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// SequenceTargetManager - on wall collision:</span>
+<span class="k">void</span><span class="w"> </span><span class="nf">HandleWallTriggered</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindObjectOfType</span><span class="o">&lt;</span><span class="n">WhiteNoiseOverlayGPU</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">overlay</span><span class="p">)</span><span class="w"> </span><span class="n">overlay</span><span class="p">.</span><span class="n">Play</span><span class="p">(</span><span class="n">noiseDisplayDuration</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EndEpisode</span><span class="p">(</span><span class="k">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="interaction-components">
+<h2>Interaction Components<a class="headerlink" href="#interaction-components" title="Link to this heading">#</a></h2>
+<section id="statefultarget">
+<h3>StatefulTarget<a class="headerlink" href="#statefultarget" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Interactive target with dwell-to-complete mechanic</p>
+<p><strong>States:</strong></p>
+<ul class="simple">
+<li><p><strong>Static:</strong> Visible but not interactive (sawdust material)</p></li>
+<li><p><strong>Active:</strong> Interactive, waiting for player (checked material)</p></li>
+<li><p><strong>Inactive:</strong> Hidden, no collision (disabled renderers)</p></li>
+</ul>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Materials / Visuals&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">matSawDust</span><span class="p">;</span><span class="w">     </span><span class="c1">// Static appearance</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">matChecked</span><span class="p">;</span><span class="w">     </span><span class="c1">// Active appearance</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">disableRenderersWhenInactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;Interaction&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dwellSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Required dwell time</span>
+
+<span class="na">[Header(&quot;Events&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnCompleted</span><span class="p">;</span><span class="w">  </span><span class="c1">// Fired when player completes dwell</span>
+</pre></div>
+</div>
+<p><strong>API:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="n">StatefulTarget</span><span class="w"> </span><span class="n">target</span><span class="p">;</span>
+
+<span class="c1">// State control</span>
+<span class="n">target</span><span class="p">.</span><span class="n">SetStatic</span><span class="p">();</span><span class="w">    </span><span class="c1">// Visible, not interactive</span>
+<span class="n">target</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span><span class="w">    </span><span class="c1">// Visible, interactive (start listening for player)</span>
+<span class="n">target</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span><span class="w">  </span><span class="c1">// Hidden, disabled</span>
+
+<span class="c1">// Check state</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">State</span><span class="p">;</span><span class="w">  </span><span class="c1">// TargetState.Static/Active/Inactive</span>
+
+<span class="c1">// Event subscription</span>
+<span class="n">target</span><span class="p">.</span><span class="n">OnCompleted</span><span class="p">.</span><span class="n">AddListener</span><span class="p">(</span><span class="n">HandleTargetCompleted</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Interaction Logic:</strong></p>
+<ol class="arabic simple">
+<li><p>Player enters trigger → Start dwell timer</p></li>
+<li><p>Player stays inside for <code class="docutils literal notranslate"><span class="pre">dwellSeconds</span></code> → Fire <code class="docutils literal notranslate"><span class="pre">OnCompleted</span></code></p></li>
+<li><p>Player exits before completion → Reset timer</p></li>
+<li><p>Multiple players tracked (count maintained)</p></li>
+</ol>
+<p><strong>Used By:</strong></p>
+<ul class="simple">
+<li><p>GridTargetsSpawner (sequence tasks)</p></li>
+<li><p>SequenceTargetManager (step-by-step progression)</p></li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>GameObject has <code class="docutils literal notranslate"><span class="pre">Collider</span></code> (isTrigger=true)</p></li>
+<li><p>Player tagged “Player”</p></li>
+<li><p>At least one has Rigidbody for trigger detection</p></li>
+</ul>
+</section>
+<section id="statefulwall">
+<h3>StatefulWall<a class="headerlink" href="#statefulwall" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Hazard wall with similar state system (not documented in provided files but referenced)</p>
+<p><strong>Similar to StatefulTarget:</strong></p>
+<ul class="simple">
+<li><p>States: Static, Active, Inactive</p></li>
+<li><p>Dwell mechanic (but much shorter, e.g., 0.1s)</p></li>
+<li><p>OnCompleted event (used for immediate fail)</p></li>
+</ul>
+<p><strong>Used By:</strong></p>
+<ul class="simple">
+<li><p>GridTargetsSpawner (hazard walls)</p></li>
+<li><p>SequenceTargetManager (parallel hazards)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bridge-components">
+<h2>Bridge Components<a class="headerlink" href="#bridge-components" title="Link to this heading">#</a></h2>
+<section id="multiepisodetoagentbridge">
+<h3>MultiEpisodeToAgentBridge<a class="headerlink" href="#multiepisodetoagentbridge" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Connect multiple episode managers to ML-Agents, translating episode outcomes to agent rewards/punishments</p>
+<p><strong>Responsibilities:</strong></p>
+<ol class="arabic simple">
+<li><p>Listen to episode manager events</p></li>
+<li><p>Detect success/failure conditions</p></li>
+<li><p>Call agent reward/punishment methods</p></li>
+<li><p>Prevent duplicate calls per episode</p></li>
+<li><p>Manage ITI flag for observations</p></li>
+</ol>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Listen to these managers&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EpisodeManagerSingleWall</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wallManagers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">SequenceTargetManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sequenceManagers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+
+<span class="na">[Header(&quot;Notify these agents&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TTLReceiverAgent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoFindAgentIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+
+<span class="na">[Header(&quot;ITI flag for observations&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">ITIFlag</span><span class="w"> </span><span class="n">itiFlag</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Integration:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene Hierarchy:
+└── BridgeManager (GameObject)
+    └── MultiEpisodeToAgentBridge
+        ├── wallManagers[0] → EpisodeManagerSingleWall
+        ├── wallManagers[1] → EpisodeManagerSingleWall
+        ├── sequenceManagers[0] → SequenceTargetManager
+        ├── agents[0] → TTLReceiverAgent (ML-Agents)
+        └── itiFlag → ITIFlag
+</pre></div>
+</div>
+<p><strong>Agent Interface (TTLReceiverAgent):</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TTLReceiverAgent</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Agent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnCorrect</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AddReward</span><span class="p">(</span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnIncorrect</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">AddReward</span><span class="p">(</span><span class="o">-</span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">        </span><span class="n">EndEpisode</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="itiflag">
+<h3>ITIFlag<a class="headerlink" href="#itiflag" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Provide ITI state as observation for ML-Agents</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">StartITI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">EndITI</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">InITI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="utility-components">
+<h2>Utility Components<a class="headerlink" href="#utility-components" title="Link to this heading">#</a></h2>
+<section id="targetkillonplayerdwell">
+<h3>TargetKillOnPlayerDwell<a class="headerlink" href="#targetkillonplayerdwell" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Destroy target when player remains inside trigger for configured dwell duration</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Automatically added by SimpleTargetSpawner:</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GameObject</span><span class="p">.</span><span class="n">CreatePrimitive</span><span class="p">(</span><span class="n">PrimitiveType</span><span class="p">.</span><span class="n">Cube</span><span class="p">);</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">dwell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">target</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">TargetKillOnPlayerDwell</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">dwell</span><span class="p">.</span><span class="n">dwellTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">;</span>
+
+<span class="c1">// On sustained player dwell → Destroy target</span>
+</pre></div>
+</div>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>Target has Collider (isTrigger=true)</p></li>
+<li><p>Player tagged “Player”</p></li>
+</ul>
+</section>
+<section id="targetkillonarea">
+<h3>TargetKillOnArea<a class="headerlink" href="#targetkillonarea" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Destroy object when it enters a “TargetArea” trigger</p>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Added to MoveObject by FloorTargetsSpawner:</span>
+<span class="n">moveObj</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">TargetKillOnArea</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="c1">// When MoveObject touches TargetArea → Destroy MoveObject</span>
+</pre></div>
+</div>
+<p><strong>Used For:</strong></p>
+<ul class="simple">
+<li><p>FloorTargetsSpawner: MoveObject reaches target zone</p></li>
+<li><p>SideTargetsSpawner: Floor objects reach wall zones</p></li>
+</ul>
+</section>
+<section id="targetkillondistance">
+<h3>TargetKillOnDistance<a class="headerlink" href="#targetkillondistance" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Destroy object if it travels certain distance</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">maxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0 = disabled</span>
+</pre></div>
+</div>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Added to MoveObject by spawners:</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">distKill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moveObj</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">TargetKillOnDistance</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">distKill</span><span class="p">.</span><span class="n">maxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="colorbydistance">
+<h3>ColorByDistance<a class="headerlink" href="#colorbydistance" title="Link to this heading">#</a></h3>
+<p>Change object color based on distance to target</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w">  </span><span class="c1">// What to measure distance from (default: Camera.main)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">maxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">closeColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">farColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Added by FloorTargetsSpawner when enableDistanceColor=true:</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">colorByDist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moveObj</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">ColorByDistance</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">colorByDist</span><span class="p">.</span><span class="n">minDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="n">colorByDist</span><span class="p">.</span><span class="n">maxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span>
+<span class="n">colorByDist</span><span class="p">.</span><span class="n">closeColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">;</span>
+<span class="n">colorByDist</span><span class="p">.</span><span class="n">farColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">;</span>
+<span class="n">colorByDist</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="colorbyrotation">
+<h3>ColorByRotation<a class="headerlink" href="#colorbyrotation" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Change object color based on Y-axis rotation</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">target</span><span class="p">;</span><span class="w">  </span><span class="c1">// Whose rotation to measure</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minRotationY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">maxRotationY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">360f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">minRotationColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">maxRotationColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">black</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">useLocalRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Added by FloorTargetsSpawner when enableRotationColor=true:</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">colorByRot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moveObj</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">ColorByRotation</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">colorByRot</span><span class="p">.</span><span class="n">minRotationY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="n">colorByRot</span><span class="p">.</span><span class="n">maxRotationY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">360f</span><span class="p">;</span>
+<span class="n">colorByRot</span><span class="p">.</span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Camera</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">transform</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="jitterymovement">
+<h3>JitteryMovement<a class="headerlink" href="#jitterymovement" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Add small random forces to Rigidbody for unpredictable movement</p>
+<p><strong>Configuration:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enabledJitter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">weightingFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span><span class="w">    </span><span class="c1">// Strength</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">frequencyHz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2f</span><span class="p">;</span><span class="w">        </span><span class="c1">// How often to apply force</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">baseAngleDeg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8f</span><span class="p">;</span><span class="w">       </span><span class="c1">// Direction change angle</span>
+</pre></div>
+</div>
+<p><strong>Usage:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Added by FloorTargetsSpawner when enableJitter=true:</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">jitter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">moveObj</span><span class="p">.</span><span class="n">AddComponent</span><span class="o">&lt;</span><span class="n">JitteryMovement</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">jitter</span><span class="p">.</span><span class="n">weightingFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span>
+<span class="n">jitter</span><span class="p">.</span><span class="n">frequencyHz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2f</span><span class="p">;</span>
+<span class="n">jitter</span><span class="p">.</span><span class="n">baseAngleDeg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="containmentinboxvolume">
+<h3>ContainmentInBoxVolume<a class="headerlink" href="#containmentinboxvolume" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="keep-object-inside-a-boxcollider-volume">
+<h2>Keep object inside a BoxCollider volume<a class="headerlink" href="#keep-object-inside-a-boxcollider-volume" title="Link to this heading">#</a></h2>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
+<li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a></strong> - Episode lifecycle</p></li>
+<li><p><strong><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawner Reference</span></a></strong> - Spawner components</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ParameterSystem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Parameter Control System</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HockeyGame.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hockey Game Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback">Visual Feedback</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whitenoiseoverlaygpu">WhiteNoiseOverlayGPU</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction-components">Interaction Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statefultarget">StatefulTarget</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statefulwall">StatefulWall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bridge-components">Bridge Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiepisodetoagentbridge">MultiEpisodeToAgentBridge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#itiflag">ITIFlag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-components">Utility Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillonplayerdwell">TargetKillOnPlayerDwell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillonarea">TargetKillOnArea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targetkillondistance">TargetKillOnDistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbydistance">ColorByDistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colorbyrotation">ColorByRotation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jitterymovement">JitteryMovement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#containmentinboxvolume">ContainmentInBoxVolume</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-object-inside-a-boxcollider-volume">Keep object inside a BoxCollider volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

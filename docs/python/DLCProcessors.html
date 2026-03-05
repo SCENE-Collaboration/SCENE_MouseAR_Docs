@@ -1,0 +1,1368 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DLC Processor Documentation &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/DLCProcessors';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Recording Control Documentation" href="DLCProcessor_recording_ctrl.html" />
+    <link rel="prev" title="Task System Documentation" href="Tasks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Tasks.html">Task Controllers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/DLCProcessors.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/python/DLCProcessors.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DLC Processor Documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class Hierarchy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseprocessor-socket">BaseProcessor_socket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features"><strong>Key Features</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods"><strong>Methods</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myprocessor-socket">MyProcessor_socket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-parameters"><strong>Additional Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-calculations"><strong>Pose Calculations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering"><strong>Filtering</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcast-format"><strong>Broadcast Format</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-export"><strong>Data Export</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-examples">Usage Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-basic-usage-with-dlclive"><strong>Example 1: Basic Usage with DLCLive</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-multiple-sessions"><strong>Example 2: Multiple Sessions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-custom-processor"><strong>Example 3: Custom Processor</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-control">Recording Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-flag-thread-safe"><strong>Recording Flag (Thread-Safe)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-workflow"><strong>Recording Workflow</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safety">Thread Safety</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safe-components"><strong>Thread-Safe Components</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-interactions"><strong>Thread Interactions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-race-conditions"><strong>Potential Race Conditions</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-tips">Configuration Tips</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-low-latency"><strong>For Low Latency</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-smooth-motion"><strong>For Smooth Motion</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-maximum-data-logging"><strong>For Maximum Data Logging</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-clients-can-t-connect"><strong>Problem: Clients can’t connect</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-recording-not-starting"><strong>Problem: Recording not starting</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-data-file-is-empty"><strong>Problem: Data file is empty</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-heading-jumps-at-0-360-boundary"><strong>Problem: Heading jumps at 0°/360° boundary</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>BaseProcessor_socket</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>MyProcessor_socket</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dlc-processor-documentation">
+<h1>DLC Processor Documentation<a class="headerlink" href="#dlc-processor-documentation" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p><strong>DLC Processors</strong> are server-side components that process pose estimation data from DLCLive and broadcast it to multiple clients. They provide:</p>
+<ul class="simple">
+<li><p>Multi-client broadcasting (no blocking on connection acceptance)</p></li>
+<li><p>Real-time pose calculations (center, heading, head angle)</p></li>
+<li><p>Optional One-Euro filtering</p></li>
+<li><p>Remote recording control from clients</p></li>
+<li><p>Thread-safe operation</p></li>
+<li><p>Session-based data logging</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────────────┐
+│                    DLCLive Pipeline                          │
+│  Camera → DLC Model → Processor.process(pose) → Return pose  │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+                          ▼
+        ┌─────────────────────────────────────┐
+        │    MyProcessor_socket (Server)       │
+        │                                      │
+        │  Main Thread:                        │
+        │  • process(pose) - called by DLCLive│
+        │  • Calculate center/heading/angle    │
+        │  • Optional filtering                │
+        │  • Broadcast to all clients          │
+        │  • Conditional logging (if recording)│
+        │                                      │
+        │  Background Threads:                 │
+        │  • _accept_loop() - accept new       │
+        │    connections (non-blocking)        │
+        │  • _rx_loop(client) - per-client     │
+        │    command receiver                  │
+        │                                      │
+        │  Thread-Safe:                        │
+        │  • self._recording (Event)           │
+        │  • self._stop (Event)                │
+        │  • self.conns (set with locks)       │
+        └────┬─────────────────┬────────────────┘
+             │                 │
+             │                 │ (Multiple clients)
+             ▼                 ▼
+        ┌─────────┐       ┌─────────┐
+        │ Client1 │       │ Client2 │
+        │ (Unity) │       │(Python) │
+        └─────────┘       └─────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="class-hierarchy">
+<h2>Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Processor (from dlclive)
+    │
+    ├─ BaseProcessor_socket
+    │   • Network setup (Listener, accept loop, broadcast)
+    │   • Timing function selection
+    │   • Basic data logging (timestamps, steps, original pose)
+    │   • Recording control (Event-based flag)
+    │   • Session name management
+    │
+    └─ MyProcessor_socket (inherits BaseProcessor_socket)
+        • Pose calculations (center, heading, head angle)
+        • One-Euro filtering (optional)
+        • Additional data storage (center_x, center_y, heading, head_angle)
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="baseprocessor-socket">
+<h2>BaseProcessor_socket<a class="headerlink" href="#baseprocessor-socket" title="Link to this heading">#</a></h2>
+<section id="purpose">
+<h3><strong>Purpose</strong><a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<p>Base class providing network infrastructure, timing, and basic data logging. Designed for easy extension with custom pose processing logic.</p>
+</section>
+<section id="constructor">
+<h3><strong>Constructor</strong><a class="headerlink" href="#constructor" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BaseProcessor_socket</span><span class="p">(</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;secret password&quot;</span><span class="p">,</span>
+    <span class="n">use_perf_counter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">save_original</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="parameters">
+<h4><strong>Parameters:</strong><a class="headerlink" href="#parameters" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bind</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tuple[str,</span> <span class="pre">int]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(&quot;0.0.0.0&quot;,</span> <span class="pre">6000)</span></code></p></td>
+<td><p>Server address and port</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">authkey</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bytes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">b&quot;secret</span> <span class="pre">password&quot;</span></code></p></td>
+<td><p>Authentication key for clients</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_perf_counter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Use <code class="docutils literal notranslate"><span class="pre">time.perf_counter()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">time.time()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">save_original</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Save raw DLC pose arrays (54 keypoints)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="key-features">
+<h3><strong>Key Features</strong><a class="headerlink" href="#key-features" title="Link to this heading">#</a></h3>
+<p><strong>1. Multi-Client Broadcasting</strong></p>
+<ul class="simple">
+<li><p>Non-blocking connection acceptance via background thread</p></li>
+<li><p>Automatic dead connection cleanup</p></li>
+<li><p>Thread-safe connection set</p></li>
+</ul>
+<p><strong>2. Recording Control</strong></p>
+<ul class="simple">
+<li><p>Thread-safe <code class="docutils literal notranslate"><span class="pre">_recording</span></code> Event flag</p></li>
+<li><p>Only logs data when recording is active</p></li>
+<li><p>Remote control via client commands</p></li>
+</ul>
+<p><strong>3. Session Management</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">session_name</span></code> property sets filename automatically</p></li>
+<li><p>Format: <code class="docutils literal notranslate"><span class="pre">{session_name}_dlc_processor_data.pkl</span></code></p></li>
+</ul>
+<p><strong>4. Command Handling</strong>
+Processes control messages from clients:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_session_name</span></code> - Updates session name and filename</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start_recording</span></code> - Sets recording flag, clears queues</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop_recording</span></code> - Clears recording flag</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save</span></code> - Triggers data save to file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_filter</span></code> - Enable/disable filtering (MyProcessor_socket only) ⭐ NEW</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_filter_params</span></code> - Update filter parameters (MyProcessor_socket only) ⭐ NEW</p></li>
+</ul>
+</section>
+<section id="methods">
+<h3><strong>Methods</strong><a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pose</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Base implementation: saves original pose, broadcasts raw pose</p></li>
+<li><p>Override in subclasses for custom processing</p></li>
+<li><p>Always returns unmodified pose (DLCLive requirement)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">broadcast</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends payload to all connected clients</p></li>
+<li><p>Automatically removes dead connections</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Stops accept loop</p></li>
+<li><p>Closes all client connections</p></li>
+<li><p>Cleans up resources</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Saves logged data to pickle file</p></li>
+<li><p>Returns: 1 (success), 0 (no file), -1 (error)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Returns dictionary with all logged data</p></li>
+<li><p>Keys: <code class="docutils literal notranslate"><span class="pre">time_stamp</span></code>, <code class="docutils literal notranslate"><span class="pre">step</span></code>, <code class="docutils literal notranslate"><span class="pre">frame_time</span></code>, <code class="docutils literal notranslate"><span class="pre">pose_time</span></code>, <code class="docutils literal notranslate"><span class="pre">original_pose</span></code></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="myprocessor-socket">
+<h2>MyProcessor_socket<a class="headerlink" href="#myprocessor-socket" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><strong>Purpose</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Production-ready processor that calculates mouse pose metrics (center, heading, head angle) with optional One-Euro filtering.</p>
+</section>
+<section id="id2">
+<h3><strong>Constructor</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MyProcessor_socket</span><span class="p">(</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;secret password&quot;</span><span class="p">,</span>
+    <span class="n">use_perf_counter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">filter_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">save_original</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<section id="additional-parameters">
+<h4><strong>Additional Parameters:</strong><a class="headerlink" href="#additional-parameters" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_filter</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Apply One-Euro filter to calculated values</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filter_kwargs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{&quot;min_cutoff&quot;:</span> <span class="pre">1.0,</span> <span class="pre">&quot;beta&quot;:</span> <span class="pre">0.02,</span> <span class="pre">&quot;d_cutoff&quot;:</span> <span class="pre">1.0}</span></code></p></td>
+<td><p>Filter parameters</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="pose-calculations">
+<h3><strong>Pose Calculations</strong><a class="headerlink" href="#pose-calculations" title="Link to this heading">#</a></h3>
+<p><strong>1. Weighted Center</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Head keypoints: nose, left/right ear, head base</span>
+<span class="n">head_xy</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span> <span class="p">:]</span>
+<span class="n">head_conf</span> <span class="o">=</span> <span class="n">conf</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">26</span><span class="p">]]</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">head_xy</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">head_conf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>2. Heading (Body Orientation)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Body axis: tail_base → neck</span>
+<span class="n">body_axis</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">-</span> <span class="n">xy</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span>
+<span class="n">body_axis</span> <span class="o">/=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">body_axis</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">heading</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">body_axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">body_axis</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">heading_degrees</span> <span class="o">=</span> <span class="n">degrees</span><span class="p">(</span><span class="n">heading</span><span class="p">)</span>  <span class="c1"># [0, 360)</span>
+</pre></div>
+</div>
+<p><strong>3. Head Angle (Head vs Body)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Head axis: neck → nose</span>
+<span class="n">head_axis</span> <span class="o">=</span> <span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">xy</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">head_axis</span> <span class="o">/=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">head_axis</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># Angle between body and head axes</span>
+<span class="n">head_angle</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="n">body_axis</span> <span class="o">@</span> <span class="n">head_axis</span><span class="p">)</span> <span class="o">*</span> <span class="n">sign</span>  <span class="c1"># radians</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering">
+<h3><strong>Filtering</strong><a class="headerlink" href="#filtering" title="Link to this heading">#</a></h3>
+<p><strong>One-Euro Filter Applied to:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">center_x</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center_y</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">heading</span></code> (filtered in unwrapped space, wrapped after)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">head_angle</span></code></p></li>
+</ul>
+<p><strong>Filtering Strategy:</strong></p>
+<ol class="arabic simple">
+<li><p>Filter calculated values (4 filters) NOT raw keypoints (54 filters)</p></li>
+<li><p>Confidence-weighted averaging happens BEFORE filtering</p></li>
+<li><p>Heading filtered in unwrapped space, wrapped to [0, 360) after</p></li>
+</ol>
+<p><strong>Why Filter Calculated Values?</strong></p>
+<ul class="simple">
+<li><p>More efficient (4 vs 54 filters)</p></li>
+<li><p>Better signal quality (weighted average vs individual noisy points)</p></li>
+<li><p>Easier parameter tuning</p></li>
+<li><p>More intuitive behavior</p></li>
+</ul>
+</section>
+<section id="broadcast-format">
+<h3><strong>Broadcast Format</strong><a class="headerlink" href="#broadcast-format" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">payload</span> <span class="o">=</span> <span class="p">[</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">heading_degrees</span><span class="p">,</span> <span class="n">head_angle_radians</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="data-export">
+<h3><strong>Data Export</strong><a class="headerlink" href="#data-export" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Base class data</span>
+    <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s2">&quot;time_stamp&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;pose_time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;use_perf_counter&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+
+    <span class="c1"># MyProcessor specific</span>
+    <span class="s2">&quot;x_pos&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;y_pos&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;heading_direction&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;head_angle&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">&quot;use_filter&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s2">&quot;filter_kwargs&quot;</span><span class="p">:</span> <span class="nb">dict</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading">#</a></h2>
+<section id="example-1-basic-usage-with-dlclive">
+<h3><strong>Example 1: Basic Usage with DLCLive</strong><a class="headerlink" href="#example-1-basic-usage-with-dlclive" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dlclive</span><span class="w"> </span><span class="kn">import</span> <span class="n">DLCLive</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dlc_processor_socket</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyProcessor_socket</span>
+
+<span class="c1"># Create processor</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">use_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;d_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Create DLCLive instance with processor</span>
+<span class="n">dlc_live</span> <span class="o">=</span> <span class="n">DLCLive</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;/path/to/dlc/model&quot;</span><span class="p">,</span>
+    <span class="n">processor</span><span class="o">=</span><span class="n">processor</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize</span>
+<span class="n">dlc_live</span><span class="o">.</span><span class="n">init_inference</span><span class="p">()</span>
+
+<span class="c1"># Process frames</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">video_stream</span><span class="p">:</span>
+    <span class="n">pose</span> <span class="o">=</span> <span class="n">dlc_live</span><span class="o">.</span><span class="n">get_pose</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+    <span class="c1"># Processor automatically broadcasts to clients</span>
+</pre></div>
+</div>
+</section>
+<section id="example-2-multiple-sessions">
+<h3><strong>Example 2: Multiple Sessions</strong><a class="headerlink" href="#example-2-multiple-sessions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Processor runs continuously, clients control recording</span>
+
+<span class="c1"># Client controls (from DLCClient):</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_001&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
+<span class="c1"># ... run trial ...</span>
+<span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves &quot;trial_001_dlc_processor_data.pkl&quot;</span>
+
+<span class="c1"># Next trial</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_002&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
+<span class="c1"># ... run trial ...</span>
+<span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
+<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves &quot;trial_002_dlc_processor_data.pkl&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="example-3-custom-processor">
+<h3><strong>Example 3: Custom Processor</strong><a class="headerlink" href="#example-3-custom-processor" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dlc_processor_socket</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseProcessor_socket</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomProcessor</span><span class="p">(</span><span class="n">BaseProcessor_socket</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom processor that only tracks nose position.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_clear_data_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear custom queues.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_clear_data_queues</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract and broadcast nose position.&quot;&quot;&quot;</span>
+        <span class="n">curr_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_func</span><span class="p">()</span>
+
+        <span class="c1"># Extract nose (keypoint 0)</span>
+        <span class="n">nose_x</span><span class="p">,</span> <span class="n">nose_y</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># Store if recording</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">recording</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nose_x</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nose_y</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">time_stamp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_time</span><span class="p">)</span>
+
+        <span class="c1"># Broadcast</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">[</span><span class="n">curr_time</span><span class="p">,</span> <span class="n">nose_x</span><span class="p">,</span> <span class="n">nose_y</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pose</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export custom data.&quot;&quot;&quot;</span>
+        <span class="n">save_dict</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+        <span class="n">save_dict</span><span class="p">[</span><span class="s2">&quot;nose_x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="p">)</span>
+        <span class="n">save_dict</span><span class="p">[</span><span class="s2">&quot;nose_y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">save_dict</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="recording-control">
+<h2>Recording Control<a class="headerlink" href="#recording-control" title="Link to this heading">#</a></h2>
+<section id="recording-flag-thread-safe">
+<h3><strong>Recording Flag (Thread-Safe)</strong><a class="headerlink" href="#recording-flag-thread-safe" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_recording</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>  <span class="c1"># Thread-safe flag</span>
+
+<span class="nd">@property</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">recording</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recording</span><span class="o">.</span><span class="n">is_set</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Why Event instead of bool?</strong></p>
+<ul class="simple">
+<li><p>Thread-safe atomic operations</p></li>
+<li><p>No race conditions between RX thread (commands) and main thread (processing)</p></li>
+<li><p>Python’s recommended pattern for inter-thread signaling</p></li>
+</ul>
+</section>
+<section id="recording-workflow">
+<h3><strong>Recording Workflow</strong><a class="headerlink" href="#recording-workflow" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Client] → set_session_name(&quot;exp_001&quot;)
+                ↓
+[Processor] session_name = &quot;exp_001&quot;
+            filename = &quot;exp_001_dlc_processor_data.pkl&quot;
+
+[Client] → start_recording()
+                ↓
+[Processor] _recording.set()  # Enable recording
+            _clear_data_queues()  # Clear all deques
+            curr_step = 0
+
+[DLCLive] calls process(pose) continuously
+                ↓
+[Processor] if self.recording:
+                self.time_stamp.append(time)
+                self.center_x.append(x)
+                # ... store data
+            self.broadcast(payload)  # Always broadcast
+
+[Client] → stop_recording()
+                ↓
+[Processor] _recording.clear()  # Disable recording
+
+[Client] → trigger_save()
+                ↓
+[Processor] pickle.dump(get_data(), file)
+            Saves to &quot;exp_001_dlc_processor_data.pkl&quot;
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="thread-safety">
+<h2>Thread Safety<a class="headerlink" href="#thread-safety" title="Link to this heading">#</a></h2>
+<section id="thread-safe-components">
+<h3><strong>Thread-Safe Components</strong><a class="headerlink" href="#thread-safe-components" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Recording Flag</strong>: <code class="docutils literal notranslate"><span class="pre">Event()</span></code> with atomic operations</p></li>
+<li><p><strong>Stop Flag</strong>: <code class="docutils literal notranslate"><span class="pre">Event()</span></code> for clean shutdown</p></li>
+<li><p><strong>Connection Set</strong>: Operations on <code class="docutils literal notranslate"><span class="pre">set</span></code> are atomic in CPython</p></li>
+</ol>
+</section>
+<section id="thread-interactions">
+<h3><strong>Thread Interactions</strong><a class="headerlink" href="#thread-interactions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thread</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Accesses</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Main (DLCLive)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">process(pose)</span></code></p></td>
+<td><p>Read <code class="docutils literal notranslate"><span class="pre">self.recording</span></code>, write to deques</p></td>
+</tr>
+<tr class="row-odd"><td><p>Accept Loop</p></td>
+<td><p>Accept new clients</p></td>
+<td><p>Write to <code class="docutils literal notranslate"><span class="pre">self.conns</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>RX Loop (per-client)</p></td>
+<td><p>Receive commands</p></td>
+<td><p>Call <code class="docutils literal notranslate"><span class="pre">_handle_client_message()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Command Handler</p></td>
+<td><p>Process commands</p></td>
+<td><p>Set/clear <code class="docutils literal notranslate"><span class="pre">self._recording</span></code>, call <code class="docutils literal notranslate"><span class="pre">_clear_data_queues()</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="potential-race-conditions">
+<h3><strong>Potential Race Conditions</strong><a class="headerlink" href="#potential-race-conditions" title="Link to this heading">#</a></h3>
+<p>✅ <strong>Safe</strong>: Reading <code class="docutils literal notranslate"><span class="pre">self.recording</span></code> while command thread sets it</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Event.is_set()</span></code> is atomic</p></li>
+</ul>
+<p>✅ <strong>Safe</strong>: Multiple clients sending commands</p>
+<ul class="simple">
+<li><p>Commands processed sequentially in each client’s RX thread</p></li>
+</ul>
+<p>⚠️ <strong>Not thread-safe</strong>: <code class="docutils literal notranslate"><span class="pre">deque</span></code> modifications</p>
+<ul class="simple">
+<li><p>But only modified in main thread when <code class="docutils literal notranslate"><span class="pre">recording=True</span></code></p></li>
+<li><p>Commands only clear queues when setting <code class="docutils literal notranslate"><span class="pre">recording=True</span></code></p></li>
+<li><p>No concurrent writes to deques</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
+<p><strong>Latency:</strong></p>
+<ul class="simple">
+<li><p>Pose calculation: ~0.5 ms</p></li>
+<li><p>Filtering (if enabled): ~0.1 ms</p></li>
+<li><p>Broadcast to 2 clients: ~0.5 ms</p></li>
+<li><p><strong>Total overhead</strong>: ~1-2 ms per frame</p></li>
+</ul>
+<p><strong>Throughput:</strong></p>
+<ul class="simple">
+<li><p>Supports up to 200 fps camera</p></li>
+<li><p>Limited by DLCLive inference speed, not processor</p></li>
+</ul>
+<p><strong>Memory:</strong></p>
+<ul class="simple">
+<li><p>Base: ~5 MB</p></li>
+<li><p>Per session (10 min &#64; 60 fps): ~20 MB</p></li>
+<li><p>Unbounded deques: grows until stopped</p></li>
+</ul>
+<p><strong>CPU:</strong></p>
+<ul class="simple">
+<li><p>Idle: &lt;1%</p></li>
+<li><p>Active (60 fps): ~2-3%</p></li>
+<li><p>Accept loop: negligible</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="configuration-tips">
+<h2>Configuration Tips<a class="headerlink" href="#configuration-tips" title="Link to this heading">#</a></h2>
+<section id="for-low-latency">
+<h3><strong>For Low Latency</strong><a class="headerlink" href="#for-low-latency" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
+    <span class="n">use_perf_counter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># More precise timing</span>
+    <span class="n">use_filter</span><span class="o">=</span><span class="kc">False</span>        <span class="c1"># No filtering delay</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="for-smooth-motion">
+<h3><strong>For Smooth Motion</strong><a class="headerlink" href="#for-smooth-motion" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
+    <span class="n">use_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">filter_kwargs</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># Lower = smoother</span>
+        <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>        <span class="c1"># Lower = less responsive</span>
+        <span class="s2">&quot;d_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="for-maximum-data-logging">
+<h3><strong>For Maximum Data Logging</strong><a class="headerlink" href="#for-maximum-data-logging" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
+    <span class="n">save_original</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># Save raw 54-keypoint poses</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<section id="problem-clients-can-t-connect">
+<h3><strong>Problem: Clients can’t connect</strong><a class="headerlink" href="#problem-clients-can-t-connect" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check processor is running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>netstat<span class="w"> </span>-an<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">6000</span>
+</pre></div>
+</div>
+</li>
+<li><p>Verify firewall allows port 6000</p></li>
+<li><p>Check bind address:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Allow external</span>
+<span class="c1"># vs</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Localhost only</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="problem-recording-not-starting">
+<h3><strong>Problem: Recording not starting</strong><a class="headerlink" href="#problem-recording-not-starting" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic">
+<li><p>Check client is connected before sending commands</p></li>
+<li><p>Verify command format:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;start_recording&quot;</span><span class="p">)</span>  <span class="c1"># Correct</span>
+<span class="c1"># NOT: client.send(&quot;start_recording&quot;)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check processor logs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Recording started, data queues cleared&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="problem-data-file-is-empty">
+<h3><strong>Problem: Data file is empty</strong><a class="headerlink" href="#problem-data-file-is-empty" title="Link to this heading">#</a></h3>
+<p><strong>Solutions:</strong></p>
+<ol class="arabic simple">
+<li><p>Ensure recording was started: <code class="docutils literal notranslate"><span class="pre">client.start_recording()</span></code></p></li>
+<li><p>Check recording flag: processor should log “Recording started”</p></li>
+<li><p>Verify session name was set: <code class="docutils literal notranslate"><span class="pre">client.set_session_name(&quot;...&quot;)</span></code></p></li>
+<li><p>Confirm trigger_save() was called after stop_recording()</p></li>
+</ol>
+</section>
+<section id="problem-heading-jumps-at-0-360-boundary">
+<h3><strong>Problem: Heading jumps at 0°/360° boundary</strong><a class="headerlink" href="#problem-heading-jumps-at-0-360-boundary" title="Link to this heading">#</a></h3>
+<p><strong>Solution:</strong></p>
+<ul>
+<li><p>Already handled! Heading is filtered in unwrapped space, then wrapped:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter in unwrapped space (e.g., -10° to 370°)</span>
+<span class="n">filtered_heading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">&quot;heading&quot;</span><span class="p">](</span><span class="n">t</span><span class="p">,</span> <span class="n">heading</span><span class="p">)</span>
+<span class="c1"># Then wrap to [0, 360)</span>
+<span class="n">heading</span> <span class="o">=</span> <span class="n">filtered_heading</span> <span class="o">%</span> <span class="mi">360</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><strong>BaseProcessor_socket</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="n">bind</span><span class="p">,</span> <span class="n">authkey</span><span class="p">,</span> <span class="n">use_perf_counter</span><span class="p">,</span> <span class="n">save_original</span><span class="p">)</span>
+<span class="n">process</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pose</span>
+<span class="n">broadcast</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">stop</span><span class="p">()</span>
+<span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+
+<span class="c1"># Properties</span>
+<span class="n">session_name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">recording</span><span class="p">:</span> <span class="nb">bool</span> <span class="p">(</span><span class="n">read</span><span class="o">-</span><span class="n">only</span><span class="p">)</span>
+
+<span class="c1"># Protected methods (override in subclasses)</span>
+<span class="n">_clear_data_queues</span><span class="p">()</span>
+<span class="n">_handle_client_message</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><strong>MyProcessor_socket</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="n">bind</span><span class="p">,</span> <span class="n">authkey</span><span class="p">,</span> <span class="n">use_perf_counter</span><span class="p">,</span> <span class="n">use_filter</span><span class="p">,</span> <span class="n">filter_kwargs</span><span class="p">,</span> <span class="n">save_original</span><span class="p">)</span>
+<span class="n">process</span><span class="p">(</span><span class="n">pose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pose</span>
+<span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
+
+<span class="c1"># Inherited from BaseProcessor_socket</span>
+<span class="n">broadcast</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">stop</span><span class="p">()</span>
+<span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<span class="n">session_name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="n">recording</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tasks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Task System Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DLCProcessor_recording_ctrl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Recording Control Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class Hierarchy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseprocessor-socket">BaseProcessor_socket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters"><strong>Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features"><strong>Key Features</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods"><strong>Methods</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myprocessor-socket">MyProcessor_socket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Purpose</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Constructor</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-parameters"><strong>Additional Parameters:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-calculations"><strong>Pose Calculations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering"><strong>Filtering</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcast-format"><strong>Broadcast Format</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-export"><strong>Data Export</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-examples">Usage Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-basic-usage-with-dlclive"><strong>Example 1: Basic Usage with DLCLive</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-multiple-sessions"><strong>Example 2: Multiple Sessions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-custom-processor"><strong>Example 3: Custom Processor</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-control">Recording Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-flag-thread-safe"><strong>Recording Flag (Thread-Safe)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recording-workflow"><strong>Recording Workflow</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safety">Thread Safety</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safe-components"><strong>Thread-Safe Components</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-interactions"><strong>Thread Interactions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-race-conditions"><strong>Potential Race Conditions</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-tips">Configuration Tips</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-low-latency"><strong>For Low Latency</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-smooth-motion"><strong>For Smooth Motion</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-maximum-data-logging"><strong>For Maximum Data Logging</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-clients-can-t-connect"><strong>Problem: Clients can’t connect</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-recording-not-starting"><strong>Problem: Recording not starting</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-data-file-is-empty"><strong>Problem: Data file is empty</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-heading-jumps-at-0-360-boundary"><strong>Problem: Heading jumps at 0°/360° boundary</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>BaseProcessor_socket</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>MyProcessor_socket</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1831 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spawner System Reference &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Spawners';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Agent System Reference" href="Agents.html" />
+    <link rel="prev" title="Episode Management System" href="EpisodeManagement.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/Spawners.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/Spawners.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spawner System Reference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iepisodespawner-interface">IEpisodeSpawner Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-pattern">Adapter Pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefabs">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-layout">Spatial Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moveobject-configuration">MoveObject Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-optional">Visual Feedback (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#object-jitter-optional">Object Jitter (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lock-until-action-optional">Lock Until Action (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-floortargetsspawneradapter">Adapter: FloorTargetsSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-floortargetsspawnerenvparams">EnvParams: FloorTargetsSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-example">Integration Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#target-properties">Target Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polka-dot-pattern-optional">Polka Dot Pattern (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-optional">Parent (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-tracking">Completion Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-api">Public API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-simpletargetspawneradapter">Adapter: SimpleTargetSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-simpletargetspawnerenvparams">EnvParams: SimpleTargetSpawnerEnvParams</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-layout">Grid Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-configuration">Wall Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-implementation">Interface Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-gridtargetsspawnerenvparams">EnvParams: GridTargetsSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-sequencetargetmanager">Integration with SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-placement">Counts &amp; Placement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlap">Non-Overlap</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-screenspawneradapter">Adapter: ScreenSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-screenspawnerenvparams">EnvParams: ScreenSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Integration Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts">Counts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#placement">Placement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Non-Overlap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destruction">Destruction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-sidetargetsspawneradapter">Adapter: SideTargetsSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-sidetargetsspawnerenvparams">EnvParams: SideTargetsSpawnerEnvParams</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="spawner-system-reference">
+<h1>Spawner System Reference<a class="headerlink" href="#spawner-system-reference" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Spawners are responsible for creating and placing game objects (players, targets, walls) in the Unity scene. They implement the <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> interface to provide a consistent API for episode managers, while internally handling spatial layout, collision avoidance, and physics configuration.</p>
+<p>For a high-level lifecycle/control-flow view of how managers call spawners during episodes, see the <strong>Managers ↔ Spawners Interaction Overview</strong> section in <a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a>.</p>
+</section>
+<section id="iepisodespawner-interface">
+<h2>IEpisodeSpawner Interface<a class="headerlink" href="#iepisodespawner-interface" title="Link to this heading">#</a></h2>
+<p>All spawners must implement this interface (directly or via adapter):</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">();</span><span class="w">         </span><span class="c1">// Remove all spawned objects</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">();</span><span class="w">         </span><span class="c1">// Create player + targets</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">();</span><span class="w">      </span><span class="c1">// Count remaining targets</span>
+<span class="w">    </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">();</span><span class="w">  </span><span class="c1">// Get player instance (or null)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="adapter-pattern">
+<h2>Adapter Pattern<a class="headerlink" href="#adapter-pattern" title="Link to this heading">#</a></h2>
+<p>Most spawners use a two-component architecture:</p>
+<p><strong>Implementation Component</strong> → Contains spawning logic
+<strong>Adapter Component</strong> → Implements <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> interface</p>
+<p><strong>Benefits:</strong></p>
+<ul class="simple">
+<li><p>Clean separation of concerns</p></li>
+<li><p>Reusable spawning logic without interface dependencies</p></li>
+<li><p>Easy to add new episode manager types</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="floortargetsspawner">
+<h2>FloorTargetsSpawner<a class="headerlink" href="#floortargetsspawner" title="Link to this heading">#</a></h2>
+<section id="purpose">
+<h3>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<p>Spawns vertical target areas on the floor and a movable physics object. Designed for 3D navigation tasks where the agent must push/chase an object into target zones.</p>
+</section>
+<section id="components">
+<h3>Components<a class="headerlink" href="#components" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject
+├── FloorTargetsSpawner (implementation)
+├── FloorTargetsSpawnerAdapter (IEpisodeSpawner)
+└── FloorTargetsSpawnerEnvParams (optional, ML-Agents params)
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<section id="prefabs">
+<h4>Prefabs<a class="headerlink" href="#prefabs" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">moveObjectPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// Rigidbody + Collider (the object to push)</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetAreaPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// BoxCollider (isTrigger), tag &quot;TargetArea&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="spatial-layout">
+<h4>Spatial Layout<a class="headerlink" href="#spatial-layout" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Range(1, 3)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTargetAreas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1-3 vertical zones</span>
+
+<span class="c1">// Target area placement</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">8f</span><span class="p">;</span><span class="w">           </span><span class="c1">// World X line (fixed)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaCenterY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Height (world Y)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaHeightY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Height span (meters)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaThicknessX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.12f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Thickness along X (meters)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaWidthZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.2f</span><span class="p">;</span><span class="w">       </span><span class="c1">// Width along Z (meters)</span>
+
+<span class="c1">// Z band &amp; spacing</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">zMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">6f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">zMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minGapZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">          </span><span class="c1">// Min distance between areas</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">jitterZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.35f</span><span class="p">;</span><span class="w">         </span><span class="c1">// Random Z offset</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">snapZToIntegers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// Snap to integer Z coords</span>
+</pre></div>
+</div>
+</section>
+<section id="moveobject-configuration">
+<h4>MoveObject Configuration<a class="headerlink" href="#moveobject-configuration" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Spawn position</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeStartZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">        </span><span class="c1">// Used if randomizeStartZ=false</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">objectMinDistanceFromAreasZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Safety margin</span>
+
+<span class="c1">// Physics</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Uniform scale (X,Z)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Rigidbody mass (kg)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectDrag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Linear drag</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectAngularDrag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Angular drag</span>
+
+<span class="c1">// Destruction</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMaxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Max travel distance (0 = infinite)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">spawnTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">       </span><span class="c1">// Enable/disable target spawning</span>
+</pre></div>
+</div>
+</section>
+<section id="visual-feedback-optional">
+<h4>Visual Feedback (Optional)<a class="headerlink" href="#visual-feedback-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Distance-based color</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableDistanceColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">distanceColorTarget</span><span class="p">;</span><span class="w">  </span><span class="c1">// Target to measure from (default: Camera.main)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">distanceColorMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">    </span><span class="c1">// Distance for close color</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">distanceColorMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Distance for far color</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">closeColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">farColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">red</span><span class="p">;</span>
+
+<span class="c1">// Rotation-based color</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableRotationColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">rotationColorTarget</span><span class="p">;</span><span class="w">  </span><span class="c1">// Target to measure from</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rotationColorMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">    </span><span class="c1">// Y rotation (degrees) for min color</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rotationColorMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">360f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Y rotation (degrees) for max color</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">minRotationColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">maxRotationColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">black</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">useLocalRotation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// Local vs world rotation</span>
+</pre></div>
+</div>
+</section>
+<section id="object-jitter-optional">
+<h4>Object Jitter (Optional)<a class="headerlink" href="#object-jitter-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableJitter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">jitterWeightingFactor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Jitter strength</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">jitterFrequency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2f</span><span class="p">;</span><span class="w">        </span><span class="c1">// Jitter Hz</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">jitterBaseAngleDeg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8f</span><span class="p">;</span><span class="w">     </span><span class="c1">// Direction change angle</span>
+</pre></div>
+</div>
+</section>
+<section id="lock-until-action-optional">
+<h4>Lock Until Action (Optional)<a class="headerlink" href="#lock-until-action-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableMoveByAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// Start kinematic, unlock on agent action</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spawning-algorithm">
+<h3>Spawning Algorithm<a class="headerlink" href="#spawning-algorithm" title="Link to this heading">#</a></h3>
+<p><strong>Target Areas:</strong></p>
+<ol class="arabic simple">
+<li><p>Compute N non-overlapping Z centers in [zMin, zMax]</p></li>
+<li><p>Snap to integers if enabled</p></li>
+<li><p>Add random jitter (±jitterZ)</p></li>
+<li><p>Resolve overlaps (iterative repulsion)</p></li>
+<li><p>Create BoxCollider trigger volumes at (targetX, areaCenterY, zc)</p></li>
+<li><p>Scale to world size: (areaThicknessX, areaHeightY, areaWidthZ)</p></li>
+</ol>
+<p><strong>MoveObject:</strong></p>
+<ol class="arabic simple">
+<li><p>Choose Z position:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">randomizeStartZ=true</span></code>: Random Z far from target areas</p></li>
+<li><p>Else: Use <code class="docutils literal notranslate"><span class="pre">moveObjectZ</span></code></p></li>
+</ul>
+</li>
+<li><p>Create at (moveObjectX, moveObjectY, Z)</p></li>
+<li><p>Add/configure components:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Rigidbody</span></code> (mass, drag, angularDrag)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code> (destroys on target collision)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code> (destroys if travels &gt; maxDistance)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColorByDistance</span></code> (if enableDistanceColor)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColorByRotation</span></code> (if enableRotationColor)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JitteryMovement</span></code> (if enableJitter)</p></li>
+</ul>
+</li>
+<li><p>Scale uniformly: (scale, 1, scale)</p></li>
+<li><p>Parent to neutralParent (if set)</p></li>
+</ol>
+</section>
+<section id="adapter-floortargetsspawneradapter">
+<h3>Adapter: FloorTargetsSpawnerAdapter<a class="headerlink" href="#adapter-floortargetsspawneradapter" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FloorTargetsSpawnerAdapter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">FloorTargetsSpawner</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">SpawnAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Count objects with TargetKillOnArea component (the MoveObject)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">killables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">GetComponentsInChildren</span><span class="o">&lt;</span><span class="n">TargetKillOnArea</span><span class="o">&gt;</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">alive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">killables</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">gameObject</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">activeInHierarchy</span><span class="p">)</span>
+<span class="w">                </span><span class="n">alive</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">alive</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w">  </span><span class="c1">// No player spawned by this spawner</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Success Condition:</strong> <code class="docutils literal notranslate"><span class="pre">TargetsAlive()</span> <span class="pre">==</span> <span class="pre">0</span></code> (MoveObject destroyed by TargetKillOnArea)</p>
+</section>
+<section id="envparams-floortargetsspawnerenvparams">
+<h3>EnvParams: FloorTargetsSpawnerEnvParams<a class="headerlink" href="#envparams-floortargetsspawnerenvparams" title="Link to this heading">#</a></h3>
+<p><strong>Supported Parameters:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable spawner</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.num_target_areas</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Number of target zones (1-3)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_x</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target X position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_center_y</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target Y center</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_height_y</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target height</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_thickness_x</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target thickness</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_width_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target width</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.z_min</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min Z coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.z_max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Max Z coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.min_gap_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min gap between targets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Random Z jitter</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_scale_multiplier</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Scale multiplier for targets (X,Z only)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.snap_z_to_integers</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Snap Z to integers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>MoveObject position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.randomize_start_z</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Random MoveObject Z</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.object_min_distance_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min distance from targets</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_scale</span></code></p></td>
+<td><p>float</p></td>
+<td><p>MoveObject scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_mass</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Rigidbody mass</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_drag</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Linear drag</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_angular_drag</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Angular drag</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_max_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Max travel distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.spawn_target</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable target spawning</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_jitter</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable jitter</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_base_angle_deg</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Jitter angle</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_weighting_factor</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Jitter strength</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_frequency</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Jitter Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_distance_color</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable distance coloring</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.distance_color_min/max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Distance color range</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_rotation_color</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable rotation coloring</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.rotation_color_min/max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Rotation color range</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.use_local_rotation</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Local rotation coloring</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_move_by_action</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Lock until action</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="integration-example">
+<h3>Integration Example<a class="headerlink" href="#integration-example" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene Hierarchy:
+└── FloorSpawner (GameObject)
+    ├── FloorTargetsSpawner
+    ├── FloorTargetsSpawnerAdapter
+    └── FloorTargetsSpawnerEnvParams (optional)
+
+EpisodeManagerSingleWall:
+└── spawnerComponents[0] → FloorTargetsSpawnerAdapter
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simpletargetspawner">
+<h2>SimpleTargetSpawner<a class="headerlink" href="#simpletargetspawner" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Purpose<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Spawns a single target (cube) at a specified position for initialization phases. Player must reach and dwell on target to complete. Supports invisible triggers, polka dot patterns, and completion tracking.</p>
+<p><strong>Typical Use:</strong> Init phase in <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code> where player must reach a “home” position before main episode begins.</p>
+</section>
+<section id="id2">
+<h3>Components<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject
+├── SimpleTargetSpawner (implementation)
+├── SimpleTargetSpawnerAdapter (optional, IEpisodeSpawner)
+└── SimpleTargetSpawnerEnvParams (optional, ML-Agents params)
+</pre></div>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code> itself does <strong>not</strong> implement <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code>.</p></li>
+<li><p>For init phase in <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code>, use <code class="docutils literal notranslate"><span class="pre">initSpawner</span></code> reference directly.</p></li>
+<li><p>If you want to use it in <code class="docutils literal notranslate"><span class="pre">spawnerComponents</span></code>, add <code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawnerAdapter</span></code>.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Configuration<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="target-properties">
+<h4>Target Properties<a class="headerlink" href="#target-properties" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Target Properties&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="mf">0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">5f</span><span class="p">);</span><span class="w">  </span><span class="c1">// World position</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span><span class="w">        </span><span class="c1">// World scale</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">targetLayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Invisible&quot;</span><span class="p">;</span><span class="w">                    </span><span class="c1">// Layer name</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dwellTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">;</span><span class="w">                              </span><span class="c1">// Dwell time (seconds)</span>
+</pre></div>
+</div>
+</section>
+<section id="polka-dot-pattern-optional">
+<h4>Polka Dot Pattern (Optional)<a class="headerlink" href="#polka-dot-pattern-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Polka Dot Pattern&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">usePolkaDotPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">       </span><span class="c1">// Enable shader</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">dotColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span><span class="w">         </span><span class="c1">// Dot color</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">black</span><span class="p">;</span><span class="w">   </span><span class="c1">// Background color</span>
+<span class="na">[Range(0.01f, 0.5f)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dotSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.4f</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Dot radius</span>
+<span class="na">[Range(0.1f, 2.0f)]</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dotSpacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1f</span><span class="p">;</span><span class="w">              </span><span class="c1">// Spacing between dots</span>
+</pre></div>
+</div>
+</section>
+<section id="parent-optional">
+<h4>Parent (Optional)<a class="headerlink" href="#parent-optional" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Optional Parent&quot;)]</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">neutralParent</span><span class="p">;</span><span class="w">  </span><span class="c1">// Parent transform for spawned target</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h3>Spawning Algorithm<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><strong>Target Creation:</strong></p>
+<ol class="arabic simple">
+<li><p>Clear any existing target</p></li>
+<li><p>Create cube primitive at <code class="docutils literal notranslate"><span class="pre">targetPosition</span></code> with <code class="docutils literal notranslate"><span class="pre">targetSize</span></code> scale</p></li>
+<li><p>Set layer to <code class="docutils literal notranslate"><span class="pre">targetLayer</span></code> (e.g., “Invisible”, “BottomView”)</p></li>
+<li><p>Configure collider as trigger</p></li>
+<li><p>Tag as “Target”</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code> component with <code class="docutils literal notranslate"><span class="pre">dwellTime</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">usePolkaDotPattern=true</span></code>: Apply polka dot shader material</p></li>
+<li><p>Set parent if <code class="docutils literal notranslate"><span class="pre">neutralParent</span></code> is assigned</p></li>
+<li><p>Reset <code class="docutils literal notranslate"><span class="pre">_completedByPlayer</span></code> flag to false</p></li>
+</ol>
+<p><strong>Polka Dot Shader:</strong></p>
+<ul class="simple">
+<li><p>Shader: <code class="docutils literal notranslate"><span class="pre">Custom/PolkaDotPattern</span></code></p></li>
+<li><p>Creates circular dots in a repeating grid pattern</p></li>
+<li><p>Properties: dot color, background color, dot size, spacing</p></li>
+<li><p>Applied via dynamically created Material</p></li>
+</ul>
+</section>
+<section id="completion-tracking">
+<h3>Completion Tracking<a class="headerlink" href="#completion-tracking" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">_completedByPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsCompletedByPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">_completedByPlayer</span><span class="p">;</span>
+
+<span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnTargetDestroyed</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">_completedByPlayer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Flow:</strong></p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SpawnAll()</span></code> resets <code class="docutils literal notranslate"><span class="pre">_completedByPlayer</span> <span class="pre">=</span> <span class="pre">false</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code> detects player entry and starts dwell timer</p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">dwellTime</span></code> seconds, <code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code> invokes <code class="docutils literal notranslate"><span class="pre">onDestroy</span></code> callback</p></li>
+<li><p>Callback sets <code class="docutils literal notranslate"><span class="pre">_completedByPlayer</span> <span class="pre">=</span> <span class="pre">true</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code> destroys GameObject</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.TickInit()</span></code> checks <code class="docutils literal notranslate"><span class="pre">IsCompletedByPlayer()</span></code> each frame</p></li>
+<li><p>When true, fires <code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> and transitions to Running state</p></li>
+</ol>
+</section>
+<section id="public-api">
+<h3>Public API<a class="headerlink" href="#public-api" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">();</span><span class="w">                  </span><span class="c1">// Create target</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">();</span><span class="w">                  </span><span class="c1">// Destroy target</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetTarget</span><span class="p">();</span><span class="w">           </span><span class="c1">// Get target GameObject (can be null)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsCompletedByPlayer</span><span class="p">();</span><span class="w">       </span><span class="c1">// True if player destroyed target</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsTargetAlive</span><span class="p">();</span><span class="w">             </span><span class="c1">// True if target exists and active</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>Integration Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene Hierarchy:
+└── InitPlatform (GameObject)
+    └── SimpleTargetSpawner
+        - targetPosition: (-2, 0, -4)
+        - targetSize: (4, 0.1, 4)
+        - targetLayer: &quot;BottomView&quot;
+        - dwellTime: 0.2
+        - usePolkaDotPattern: true
+        - dotColor: white
+        - backgroundColor: black
+
+EpisodeManagerSingleWall:
+└── initSpawner → SimpleTargetSpawner
+└── enableInitPhase: true
+
+MultiEpisodeToAgentBridge:
+└── initPhaseFlag → InitPhaseFlag component
+</pre></div>
+</div>
+</section>
+<section id="adapter-simpletargetspawneradapter">
+<h3>Adapter: SimpleTargetSpawnerAdapter<a class="headerlink" href="#adapter-simpletargetspawneradapter" title="Link to this heading">#</a></h3>
+<p>Use this adapter when <code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code> should participate as a standard episode spawner:</p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[RequireComponent(typeof(SimpleTargetSpawner))]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleTargetSpawnerAdapter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SimpleTargetSpawner</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">SpawnAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">IsTargetAlive</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="envparams-simpletargetspawnerenvparams">
+<h3>EnvParams: SimpleTargetSpawnerEnvParams<a class="headerlink" href="#envparams-simpletargetspawnerenvparams" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawnerEnvParams</span></code> reads parameters on <code class="docutils literal notranslate"><span class="pre">Academy</span></code> reset and applies them to the init target.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable spawner</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.position_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target world position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.size_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target world scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.visible</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Layer switch: <code class="docutils literal notranslate"><span class="pre">BottomView</span></code> vs <code class="docutils literal notranslate"><span class="pre">Invisible</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.dwell_time</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Required dwell duration</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Example prefix: <code class="docutils literal notranslate"><span class="pre">simpleTarget</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="gridtargetsspawner">
+<h2>GridTargetsSpawner<a class="headerlink" href="#gridtargetsspawner" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3>Purpose<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>Spawns an N×N grid of targets and optional walls between tiles. Used by <code class="docutils literal notranslate"><span class="pre">SequenceTargetManager</span></code> for sequential navigation tasks with hazards.</p>
+</section>
+<section id="id7">
+<h3>Components<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject
+├── GridTargetsSpawner (implementation + interface)
+├── GridTargetsSpawnerEnvParams (optional)
+</pre></div>
+</div>
+<p><strong>Note:</strong> GridTargetsSpawner directly implements IEpisodeSpawner (no adapter needed).</p>
+</section>
+<section id="id8">
+<h3>Configuration<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h4>Prefabs<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetPrefab</span><span class="p">;</span><span class="w">  </span><span class="c1">// Must have StatefulTarget + trigger collider</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">wallPrefab</span><span class="p">;</span><span class="w">    </span><span class="c1">// Must have StatefulWall + trigger BoxCollider(size 1,1,1)</span>
+</pre></div>
+</div>
+</section>
+<section id="grid-layout">
+<h4>Grid Layout<a class="headerlink" href="#grid-layout" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Range(2, 5)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">gridSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">    </span><span class="c1">// N in N×N (2-5)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">cellSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w">             </span><span class="c1">// Base cell size</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">gap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05f</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Extra spacing between cells</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">yLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5f</span><span class="p">;</span><span class="w">               </span><span class="c1">// Local Y for target centers</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">targetWorldScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">(</span><span class="mf">0.2f</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">);</span><span class="w">  </span><span class="c1">// Target size</span>
+</pre></div>
+</div>
+</section>
+<section id="wall-configuration">
+<h4>Wall Configuration<a class="headerlink" href="#wall-configuration" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">wallThickness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w">        </span><span class="c1">// Wall narrow dimension (meters)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">wallHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">           </span><span class="c1">// Wall height (meters)</span>
+<span class="na">[Range(0f, 10f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">wallLengthInsetFrac</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Trim fraction from ends</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h3>Spawning Algorithm<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p><strong>Targets (N×N grid):</strong></p>
+<ol class="arabic simple">
+<li><p>Compute grid layout in local space</p></li>
+<li><p>Center at origin: <code class="docutils literal notranslate"><span class="pre">pitch</span> <span class="pre">=</span> <span class="pre">cellSize</span> <span class="pre">+</span> <span class="pre">gap</span></code></p></li>
+<li><p>For each (row, col):</p>
+<ul class="simple">
+<li><p>Position: <code class="docutils literal notranslate"><span class="pre">topLeft</span> <span class="pre">+</span> <span class="pre">(col*pitch,</span> <span class="pre">0,</span> <span class="pre">-row*pitch)</span></code></p></li>
+<li><p>Instantiate targetPrefab as child</p></li>
+<li><p>Set world scale to targetWorldScale</p></li>
+<li><p>Add/configure StatefulTarget component</p></li>
+<li><p>Name: “Target_1” to “Target_N²”</p></li>
+</ul>
+</li>
+<li><p>Set layer to “BottomView” (or default)</p></li>
+</ol>
+<p><strong>Walls (between tiles):</strong></p>
+<ol class="arabic simple">
+<li><p>For each horizontal gap (N-1 per row, N rows):</p>
+<ul class="simple">
+<li><p>Create wall segment spanning cell width</p></li>
+<li><p>Trim ends by <code class="docutils literal notranslate"><span class="pre">wallLengthInsetFrac</span></code></p></li>
+<li><p>Scale: (length, wallHeight, wallThickness)</p></li>
+<li><p>Position between tiles</p></li>
+</ul>
+</li>
+<li><p>For each vertical gap (N-1 per col, N cols):</p>
+<ul class="simple">
+<li><p>Create wall segment spanning cell height</p></li>
+<li><p>Trim ends by <code class="docutils literal notranslate"><span class="pre">wallLengthInsetFrac</span></code></p></li>
+<li><p>Scale: (wallThickness, wallHeight, length)</p></li>
+<li><p>Position between tiles</p></li>
+</ul>
+</li>
+<li><p>Add/configure StatefulWall component</p></li>
+<li><p>Name: “Wall_A”, “Wall_B”, … (letter labels)</p></li>
+</ol>
+</section>
+<section id="interface-implementation">
+<h3>Interface Implementation<a class="headerlink" href="#interface-implementation" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">StatefulTarget</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SpawnGrid</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// ... create targets and walls ...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">_targets</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// IEpisodeSpawner methods</span>
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Destroy all children</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">childCount</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+<span class="w">        </span><span class="n">DestroyImmediate</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">GetChild</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="n">gameObject</span><span class="p">);</span>
+<span class="w">    </span><span class="n">_targets</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+<span class="w">    </span><span class="n">_walls</span><span class="p">.</span><span class="n">Clear</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">SpawnGrid</span><span class="p">();</span>
+
+<span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">_targets</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">gameObject</span><span class="p">.</span><span class="n">activeInHierarchy</span><span class="p">)</span>
+<span class="w">            </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w">  </span><span class="c1">// No player spawned</span>
+</pre></div>
+</div>
+</section>
+<section id="envparams-gridtargetsspawnerenvparams">
+<h3>EnvParams: GridTargetsSpawnerEnvParams<a class="headerlink" href="#envparams-gridtargetsspawnerenvparams" title="Link to this heading">#</a></h3>
+<p><strong>Supported Parameters:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable spawner</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.grid_size</span></code></p></td>
+<td><p>int</p></td>
+<td><p>N in N×N (2-5)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.cell_size</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Base cell size</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.gap</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Extra spacing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.y_level</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Local Y position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_scale_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target world scale</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.wall_thickness</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall narrow dimension</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.wall_height</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall height</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.wall_length_inset_frac</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall trim fraction</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="integration-with-sequencetargetmanager">
+<h3>Integration with SequenceTargetManager<a class="headerlink" href="#integration-with-sequencetargetmanager" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SequenceTargetManager:
+├── spawner: GridTargetsSpawner
+└── score: EpisodeScore
+
+// At StartEpisode():
+_targets = spawner.SpawnGrid();      // Get all targets
+_walls = spawner.Walls.ToList();     // Get all walls
+
+// Build sequence from targets
+_targetRun = BuildTargetSequence(...);  // Select subset in order
+
+// Activate hazard walls
+foreach (int wi in _hazardWalls)
+    _walls[wi].GetComponent&lt;StatefulWall&gt;().SetActive();
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="screenspawnerfromobject">
+<h2>ScreenSpawnerFromObject<a class="headerlink" href="#screenspawnerfromobject" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h3>Purpose<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<p>Spawns targets on a virtual wall surface (2D projection). Used for touchscreen-style tasks where the agent interacts with a flat surface.</p>
+</section>
+<section id="id12">
+<h3>Components<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject (with OrthoScreenFromObject)
+├── ScreenSpawnerFromObject (implementation)
+├── ScreenSpawnerAdapter (IEpisodeSpawner)
+└── ScreenSpawnerEnvParams (optional)
+</pre></div>
+</div>
+<p><strong>Required:</strong> <code class="docutils literal notranslate"><span class="pre">OrthoScreenFromObject</span></code> component (defines wall geometry)</p>
+</section>
+<section id="id13">
+<h3>Configuration<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h4>Prefabs<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">playerPrefab</span><span class="p">;</span><span class="w">        </span><span class="c1">// Tagged &quot;Player&quot;</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="p">[]</span><span class="w"> </span><span class="n">targetPrefabs</span><span class="p">;</span><span class="w">     </span><span class="c1">// Array of target variants</span>
+</pre></div>
+</div>
+</section>
+<section id="counts-placement">
+<h4>Counts &amp; Placement<a class="headerlink" href="#counts-placement" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTargets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="na">[Range(0f, 1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minYFraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0=bottom</span>
+<span class="na">[Range(0f, 1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">maxYFraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1=top</span>
+
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Offset from wall surface</span>
+</pre></div>
+</div>
+</section>
+<section id="non-overlap">
+<h4>Non-Overlap<a class="headerlink" href="#non-overlap" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxPlacementAttemptsPerTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">separationPadding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Extra spacing (meters)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h3>Spawning Algorithm<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<p><strong>Player:</strong></p>
+<ol class="arabic simple">
+<li><p>Measure planar half-extents (2D bounding box on wall)</p></li>
+<li><p>Sample random position fully inside screen bounds [minY, maxY]</p></li>
+<li><p>Orient: <code class="docutils literal notranslate"><span class="pre">LookRotation(screen.DirUp,</span> <span class="pre">screen.DirNormal)</span></code></p></li>
+<li><p>Offset by <code class="docutils literal notranslate"><span class="pre">faceOffset</span></code> along normal</p></li>
+<li><p>Attach to transform, assign layer</p></li>
+<li><p>Configure <code class="docutils literal notranslate"><span class="pre">PlayerAgent3DOnScreen</span></code> with screen reference</p></li>
+</ol>
+<p><strong>Targets (non-overlapping circles):</strong></p>
+<ol class="arabic simple">
+<li><p>For each target (i = 0 to numTargets-1):</p>
+<ul class="simple">
+<li><p>Choose random prefab from <code class="docutils literal notranslate"><span class="pre">targetPrefabs[]</span></code></p></li>
+<li><p>Measure planar half-extents → radius</p></li>
+<li><p>Attempt placement (max attempts):</p>
+<ul>
+<li><p>Sample random position in [minY, maxY] band</p></li>
+<li><p>Check no overlap with existing targets (circle test)</p></li>
+<li><p>Check no overlap with player</p></li>
+<li><p>If valid: Place and add to list</p></li>
+</ul>
+</li>
+<li><p>Orient: <code class="docutils literal notranslate"><span class="pre">LookRotation(screen.DirUp,</span> <span class="pre">screen.DirNormal)</span></code></p></li>
+<li><p>Offset by <code class="docutils literal notranslate"><span class="pre">faceOffset</span></code></p></li>
+</ul>
+</li>
+<li><p>Ensure trigger colliders, “Target” tag</p></li>
+<li><p>Optionally add <code class="docutils literal notranslate"><span class="pre">TargetKillOnPlayerDwell</span></code> component</p></li>
+</ol>
+</section>
+<section id="adapter-screenspawneradapter">
+<h3>Adapter: ScreenSpawnerAdapter<a class="headerlink" href="#adapter-screenspawneradapter" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ScreenSpawnerAdapter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ScreenSpawnerFromObject</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">SpawnAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">spawner</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">spawnedTargets</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">activeInHierarchy</span><span class="p">)</span>
+<span class="w">                </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">playerInstance</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="envparams-screenspawnerenvparams">
+<h3>EnvParams: ScreenSpawnerEnvParams<a class="headerlink" href="#envparams-screenspawnerenvparams" title="Link to this heading">#</a></h3>
+<p><strong>Supported Parameters:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.num_targets</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Target count</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.face_offset</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall offset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.min_y_fraction</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min Y (0-1)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.max_y_fraction</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Max Y (0-1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.max_attempts_per_target</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Placement attempts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.separation_padding</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Extra spacing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id16">
+<h3>Integration Example<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Wall (GameObject with OrthoScreenFromObject)
+├── ScreenSpawnerFromObject
+├── ScreenSpawnerAdapter
+└── ScreenSpawnerEnvParams
+
+EpisodeManagerSingleWall:
+└── spawnerComponents[0] → ScreenSpawnerAdapter
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="sidetargetsspawnerfromobject">
+<h2>SideTargetsSpawnerFromObject<a class="headerlink" href="#sidetargetsspawnerfromobject" title="Link to this heading">#</a></h2>
+<section id="id17">
+<h3>Purpose<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<p>Spawns target objects in floor area and target areas on side walls. Combines 3D floor navigation with wall-projected targets.</p>
+</section>
+<section id="use-cases">
+<h3>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Multi-surface interaction tasks</p></li>
+<li><p>Combined floor + wall navigation</p></li>
+<li><p>Complex spatial tasks</p></li>
+<li><p>Mixed 2D/3D training</p></li>
+</ul>
+</section>
+<section id="id18">
+<h3>Components<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject (with OrthoScreenFromObject)
+├── SideTargetsSpawnerFromObject (implementation)
+├── SideTargetsSpawnerAdapter (IEpisodeSpawner)
+└── SideTargetsSpawnerEnvParams (optional)
+</pre></div>
+</div>
+</section>
+<section id="id19">
+<h3>Configuration<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<section id="id20">
+<h4>Prefabs<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">playerPrefab</span><span class="p">;</span><span class="w">        </span><span class="c1">// Player (floor)</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetObjectPrefab</span><span class="p">;</span><span class="w">  </span><span class="c1">// Target objects (floor)</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetAreaPrefab</span><span class="p">;</span><span class="w">    </span><span class="c1">// Target areas (walls)</span>
+</pre></div>
+</div>
+</section>
+<section id="counts">
+<h4>Counts<a class="headerlink" href="#counts" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Range(1, 4)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTargetObjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Floor objects</span>
+<span class="na">[Range(1, 2)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTargetAreas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">    </span><span class="c1">// Wall areas (1=random side, 2=both)</span>
+</pre></div>
+</div>
+</section>
+<section id="scaling">
+<h4>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">areaScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="p">;</span><span class="w">        </span><span class="c1">// Target area scale (X,Y,Z)</span>
+<span class="k">public</span><span class="w"> </span><span class="n">Vector3</span><span class="w"> </span><span class="n">objectAreaScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">one</span><span class="p">;</span><span class="w">  </span><span class="c1">// Object scale (X,Y,Z)</span>
+</pre></div>
+</div>
+</section>
+<section id="placement">
+<h4>Placement<a class="headerlink" href="#placement" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Range(0f, 1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">yFraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Y level on wall</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">sideInset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span><span class="w">                  </span><span class="c1">// Border margin</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaSideoffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span><span class="w">               </span><span class="c1">// Area inset from side</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">                 </span><span class="c1">// Area height</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.02f</span><span class="p">;</span><span class="w">               </span><span class="c1">// Wall offset</span>
+</pre></div>
+</div>
+</section>
+<section id="id21">
+<h4>Non-Overlap<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxAttemptsPerTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">separationPadding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02f</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="destruction">
+<h4>Destruction<a class="headerlink" href="#destruction" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMaxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Max travel distance (0=infinite)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id22">
+<h3>Spawning Algorithm<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<p><strong>Target Areas (left/right walls):</strong></p>
+<ol class="arabic simple">
+<li><p>Determine which sides:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numTargetAreas=2</span></code>: Both left and right</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numTargetAreas=1</span></code>: Random side</p></li>
+</ul>
+</li>
+<li><p>For each side:</p>
+<ul class="simple">
+<li><p>Position at <code class="docutils literal notranslate"><span class="pre">yFraction</span></code> height on wall</p></li>
+<li><p>Inset from border by <code class="docutils literal notranslate"><span class="pre">areaSideoffset</span></code></p></li>
+<li><p>Scale: (areaScale.x, areaHeight, areaScale.z)</p></li>
+<li><p>Orient flush with wall</p></li>
+<li><p>Add trigger collider, “TargetArea” tag</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Player:</strong></p>
+<ol class="arabic simple">
+<li><p>Sample position at <code class="docutils literal notranslate"><span class="pre">yFraction</span></code> height, avoiding areas</p></li>
+<li><p>Orient flush with wall</p></li>
+<li><p>Configure <code class="docutils literal notranslate"><span class="pre">PlayerAgent3DOnScreen</span></code></p></li>
+</ol>
+<p><strong>Target Objects (floor, non-overlapping):</strong></p>
+<ol class="arabic simple">
+<li><p>For i = 0 to numTargetObjects-1:</p>
+<ul class="simple">
+<li><p>Measure half-extents</p></li>
+<li><p>Attempt placement:</p>
+<ul>
+<li><p>Sample at <code class="docutils literal notranslate"><span class="pre">yFraction</span></code> height</p></li>
+<li><p>Avoid player (circle overlap test)</p></li>
+<li><p>Avoid existing objects</p></li>
+<li><p>Keep away from side areas (<code class="docutils literal notranslate"><span class="pre">sideInset</span></code>)</p></li>
+</ul>
+</li>
+<li><p>Scale by <code class="docutils literal notranslate"><span class="pre">objectAreaScale</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code> (destroyed on wall area collision)</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code> (if maxDistance &gt; 0)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="adapter-sidetargetsspawneradapter">
+<h3>Adapter: SideTargetsSpawnerAdapter<a class="headerlink" href="#adapter-sidetargetsspawneradapter" title="Link to this heading">#</a></h3>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SideTargetsSpawnerAdapter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span><span class="p">,</span><span class="w"> </span><span class="n">IEpisodeSpawner</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SideTargetsSpawnerFromObject</span><span class="w"> </span><span class="n">spawner</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ClearAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">ClearAll</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnAll</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">SpawnAll</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">TargetsAlive</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">spawner</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="kt">var</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">spawner</span><span class="p">.</span><span class="n">targetObjects</span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">activeInHierarchy</span><span class="p">)</span>
+<span class="w">                </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="nf">GetPlayer</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">spawner</span><span class="o">?.</span><span class="n">playerInstance</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Success Condition:</strong> All target objects destroyed (reach wall areas)</p>
+</section>
+<section id="envparams-sidetargetsspawnerenvparams">
+<h3>EnvParams: SideTargetsSpawnerEnvParams<a class="headerlink" href="#envparams-sidetargetsspawnerenvparams" title="Link to this heading">#</a></h3>
+<p><strong>Supported Parameters:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.num_target_objects</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Floor objects (1-4)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.num_target_areas</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Wall areas (1-2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_scale_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Area scale</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.object_scale_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Object scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.y_fraction</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Y level (0-1)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.side_inset</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Border margin</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_sideoffset</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Area inset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_height</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Area height</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.face_offset</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Wall offset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.max_attempts</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Placement attempts</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.separation_padding</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Extra spacing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_max_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Max travel</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
+<li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a></strong> - Manager lifecycle</p></li>
+<li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a></strong> - Env params and KV control</p></li>
+<li><p><strong><a class="reference internal" href="Agents.html"><span class="std std-doc">Agent System</span></a></strong> - TTL observations and phase flags</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="EpisodeManagement.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Episode Management System</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Agents.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Agent System Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iepisodespawner-interface">IEpisodeSpawner Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-pattern">Adapter Pattern</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefabs">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-layout">Spatial Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moveobject-configuration">MoveObject Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-optional">Visual Feedback (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#object-jitter-optional">Object Jitter (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lock-until-action-optional">Lock Until Action (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-floortargetsspawneradapter">Adapter: FloorTargetsSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-floortargetsspawnerenvparams">EnvParams: FloorTargetsSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-example">Integration Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#target-properties">Target Properties</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#polka-dot-pattern-optional">Polka Dot Pattern (Optional)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-optional">Parent (Optional)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-tracking">Completion Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-api">Public API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-simpletargetspawneradapter">Adapter: SimpleTargetSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-simpletargetspawnerenvparams">EnvParams: SimpleTargetSpawnerEnvParams</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-layout">Grid Layout</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-configuration">Wall Configuration</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-implementation">Interface Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-gridtargetsspawnerenvparams">EnvParams: GridTargetsSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-sequencetargetmanager">Integration with SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-placement">Counts &amp; Placement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlap">Non-Overlap</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-screenspawneradapter">Adapter: ScreenSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-screenspawnerenvparams">EnvParams: ScreenSpawnerEnvParams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Integration Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts">Counts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#placement">Placement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Non-Overlap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destruction">Destruction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-sidetargetsspawneradapter">Adapter: SideTargetsSpawnerAdapter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-sidetargetsspawnerenvparams">EnvParams: SideTargetsSpawnerEnvParams</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1995 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python GUIs - User Guide &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/GUIs';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Transfer GUI (dj_pipeline/gui_transfer)" href="DataTransferGUI.html" />
+    <link rel="prev" title="Hockey Game Documentation" href="../Unity/HockeyGame.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Python GUIs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/GUIs.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/python/GUIs.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python GUIs - User Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui">UnityTaskGUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-features">UnityTaskGUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-unitytaskgui">Launching UnityTaskGUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-workflow">UnityTaskGUI Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-interface">UnityTaskGUI Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#config-status-tab"><strong>Config &amp; Status Tab</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-tab"><strong>Parameters Tab</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#config-detail-tabs"><strong>Config Detail Tabs</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-system">Profile System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-editing">Parameter Editing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-monitoring">Live Monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-saving">Data Saving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-troubleshooting">UnityTaskGUI Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-to-load-config-error"><strong>“Failed to load config” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-environment-failed-to-start-error"><strong>“Unity environment failed to start” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-not-updating-in-unity"><strong>Parameters not updating in Unity</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#serial-port-not-detected"><strong>Serial port not detected</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-freezes-when-starting-experiment"><strong>GUI freezes when starting experiment</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui">TeensyControlGUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-features">TeensyControlGUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-teensycontrolgui">Launching TeensyControlGUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-workflow">TeensyControlGUI Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-tab">Connection Tab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waterport-tab">WaterPort Tab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-procedure">Calibration Procedure</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-calibration-points"><strong>1. Prepare Calibration Points</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-calibration-workflow"><strong>2. Start Calibration Workflow</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-each-point"><strong>3. Measure Each Point</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finish-and-save"><strong>4. Finish and Save</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-troubleshooting">TeensyControlGUI Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#serial-port-permission-denied-linux"><strong>Serial port permission denied (Linux)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-data-in-incoming-display"><strong>No data in “Incoming” display</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-data-for-regression-error"><strong>“Degenerate data for regression” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r2-value-very-low-0-90"><strong>R² value very low (&lt;0.90)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#water-not-delivered-during-calibration"><strong>Water not delivered during calibration</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-gui">Data Transfer GUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-gui-features">Data Transfer GUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-data-transfer-gui">Launching Data Transfer GUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-based-auto-discovery">Dataset-Based Auto Discovery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-transfer-behavior">Remote Transfer Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues">Common Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyqt6-import-error"><strong>PyQt6 import error</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config-file-not-found"><strong>Config file not found</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-window-too-large-for-screen"><strong>GUI window too large for screen</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitycommunicatorstoppedexception-during-run"><strong>“UnityCommunicatorStoppedException” during run</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-gui-extensions"><strong>Custom GUI Extensions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation"><strong>Automation</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documentation">Related Documentation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-guis-user-guide">
+<h1>Python GUIs - User Guide<a class="headerlink" href="#python-guis-user-guide" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The <strong>mice_ar_tasks</strong> package includes three GUI workflows to simplify experiment setup, hardware calibration, runtime control, and data transfer:</p>
+<ol class="arabic simple">
+<li><p><strong>UnityTaskGUI</strong> - Configure and run Unity-based behavioral experiments with live monitoring</p></li>
+<li><p><strong>TeensyControlGUI</strong> - Hardware control, testing, and water delivery calibration</p></li>
+<li><p><strong>Data Transfer GUI</strong> - Session metadata entry, file attachment, and transfer to local/remote storage</p></li>
+</ol>
+<p>These GUIs provide visual interfaces for workflows that would otherwise require command-line configuration and Python scripting.</p>
+</section>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>UnityTaskGUI</p>
+<ul>
+<li><p>Features</p></li>
+<li><p>Launch Instructions</p></li>
+<li><p>Workflow</p></li>
+<li><p>Interface Components</p></li>
+<li><p>Profile System</p></li>
+<li><p>Parameter Editing</p></li>
+<li><p>Live Monitoring</p></li>
+<li><p>Data Saving</p></li>
+<li><p>Troubleshooting</p></li>
+</ul>
+</li>
+<li><p>TeensyControlGUI</p>
+<ul>
+<li><p>Features</p></li>
+<li><p>Launch Instructions</p></li>
+<li><p>Workflow</p></li>
+<li><p>Connection Tab</p></li>
+<li><p>WaterPort Tab</p></li>
+<li><p>Calibration Procedure</p></li>
+<li><p>Troubleshooting</p></li>
+</ul>
+</li>
+<li><p>Data Transfer GUI</p>
+<ul>
+<li><p>Features</p></li>
+<li><p>Launch Instructions</p></li>
+<li><p>Dataset-Based Auto Discovery</p></li>
+<li><p>Remote Transfer Behavior</p></li>
+</ul>
+</li>
+<li><p>Common Issues</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="unitytaskgui">
+<h2>UnityTaskGUI<a class="headerlink" href="#unitytaskgui" title="Link to this heading">#</a></h2>
+<section id="unitytaskgui-features">
+<h3>UnityTaskGUI Features<a class="headerlink" href="#unitytaskgui-features" title="Link to this heading">#</a></h3>
+<p>The <strong>UnityTaskGUI</strong> (<code class="docutils literal notranslate"><span class="pre">unity_task_gui.py</span></code>) provides a complete interface for running Unity ML-Agents experiments with integrated hardware control:</p>
+<p>✅ <strong>Config Management</strong></p>
+<ul class="simple">
+<li><p>Load and validate <code class="docutils literal notranslate"><span class="pre">*.game.toml</span></code> configuration files</p></li>
+<li><p>Switch between profiles (e.g., Training, Testing, RL) with one click</p></li>
+<li><p>Auto-populate parameters from config files</p></li>
+<li><p>Override default values with profile-specific settings</p></li>
+</ul>
+<p>✅ <strong>Hardware Integration</strong></p>
+<ul class="simple">
+<li><p>Automatic serial port detection for Teensy microcontroller</p></li>
+<li><p>Support for “dummy” mode (no hardware required)</p></li>
+<li><p>Real-time Teensy communication status</p></li>
+</ul>
+<p>✅ <strong>Parameter Control</strong></p>
+<ul class="simple">
+<li><p>Edit Unity environment parameters (<code class="docutils literal notranslate"><span class="pre">env_params</span></code>) in real-time</p></li>
+<li><p>Modify key-value parameters (<code class="docutils literal notranslate"><span class="pre">env_kv_params</span></code>) during experiments</p></li>
+<li><p>Visual indicators show modified values (red) and profile overrides (blue)</p></li>
+<li><p>Send parameter updates to running Unity environment</p></li>
+<li><p>Reset to original file values with one click</p></li>
+</ul>
+<p>✅ <strong>Mouse Metadata</strong></p>
+<ul class="simple">
+<li><p>Record subject name and weight</p></li>
+<li><p>Auto-saved with experimental data</p></li>
+</ul>
+<p>✅ <strong>Live Monitoring</strong></p>
+<ul class="simple">
+<li><p>Real-time epoch/episode/step counters</p></li>
+<li><p>Reward tracking (per-trial and cumulative)</p></li>
+<li><p>Session duration timer</p></li>
+<li><p>Automatic data logging</p></li>
+</ul>
+<p>✅ <strong>Config Inspection</strong></p>
+<ul class="simple">
+<li><p>Read-only tabs for all config sections (game, teensy, dlc, touchscreen, etc.)</p></li>
+<li><p>Hierarchical display of nested configuration</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="launching-unitytaskgui">
+<h3>Launching UnityTaskGUI<a class="headerlink" href="#launching-unitytaskgui" title="Link to this heading">#</a></h3>
+<p><strong>From command line:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/mice_ar_tasks
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_gui
+</pre></div>
+</div>
+<p><strong>From Python:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.gui.unity_task_gui</span><span class="w"> </span><span class="kn">import</span> <span class="n">main</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>PyQt6 (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">PyQt6</span></code>)</p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">mouse_ar</span></code> dependencies</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="unitytaskgui-workflow">
+<h3>UnityTaskGUI Workflow<a class="headerlink" href="#unitytaskgui-workflow" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
+│ 1. SETUP                                                    │
+│    • Enter mouse name and weight (optional)                 │
+│    • Select serial port for Teensy (or &quot;dummy&quot;)             │
+│    • Browse to *.game.toml config file                      │
+│    • Click &quot;Load Config&quot;                                    │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 2. CONFIGURE (Optional)                                     │
+│    • Select a profile (e.g., &quot;Training&quot;, &quot;RL&quot;)              │
+│    • Edit parameters in the Parameters tab                  │
+│    • Inspect config sections (game, teensy, dlc, etc.)      │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 3. RUN                                                      │
+│    • Click &quot;Start&quot; to begin experiment                      │
+│    • Monitor live statistics on Config &amp; Status tab         │
+│    • Adjust parameters during run (Parameters tab)          │
+│    • Click &quot;Send params (diff-only)&quot; to apply changes       │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 4. STOP &amp; SAVE                                              │
+│    • Click &quot;Stop&quot; when complete                             │
+│    • Data automatically saved as JSON                       │
+│    • Click &quot;Reset&quot; to start new session                     │
+└─────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="unitytaskgui-interface">
+<h3>UnityTaskGUI Interface<a class="headerlink" href="#unitytaskgui-interface" title="Link to this heading">#</a></h3>
+<section id="config-status-tab">
+<h4><strong>Config &amp; Status Tab</strong><a class="headerlink" href="#config-status-tab" title="Link to this heading">#</a></h4>
+<p><em>Unity Task GUI main tab screenshot (image not bundled in this docs build).</em></p>
+<p><strong>Top Section - Experiment Setup:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mouse Name</strong></p></td>
+<td><p>Subject identifier (saved in JSON output)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weight (g)</strong></p></td>
+<td><p>Subject weight in grams (saved in JSON output)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Config</strong></p></td>
+<td><p>Path to <code class="docutils literal notranslate"><span class="pre">*.game.toml</span></code> file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Browse…</strong></p></td>
+<td><p>File picker for config files (starts in <code class="docutils literal notranslate"><span class="pre">mouse_ar/tasks/configs/</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Profile</strong></p></td>
+<td><p>Dropdown to select config profile (e.g., Training, Testing, RL)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Serial Port</strong></p></td>
+<td><p>Teensy USB port or “dummy” for testing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Refresh</strong></p></td>
+<td><p>Re-scan for available serial ports</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Action Buttons:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>Enabled When</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Load Config</strong></p></td>
+<td><p>Parse config file and populate parameters</p></td>
+<td><p>Config path valid</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Start</strong></p></td>
+<td><p>Initialize Unity environment and begin experiment</p></td>
+<td><p>Config loaded</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stop</strong></p></td>
+<td><p>End experiment and save data</p></td>
+<td><p>Experiment running</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reset</strong></p></td>
+<td><p>Clear session and enable new experiment</p></td>
+<td><p>After stop completes</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Status Display:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicator</p></th>
+<th class="head"><p>Shows</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Epoch</strong></p></td>
+<td><p>Current epoch number</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Episode</strong></p></td>
+<td><p>Current episode within epoch</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Step</strong></p></td>
+<td><p>Step count within current episode</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Last trial reward</strong></p></td>
+<td><p>Reward received in most recent completed episode</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total Rewards</strong></p></td>
+<td><p>Cumulative reward across all episodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Duration</strong></p></td>
+<td><p>Session runtime (HH:MM:SS)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="parameters-tab">
+<h4><strong>Parameters Tab</strong><a class="headerlink" href="#parameters-tab" title="Link to this heading">#</a></h4>
+<p><em>Unity Task GUI parameters tab screenshot (image not bundled in this docs build).</em></p>
+<p>This tab displays all configurable parameters loaded from the TOML file:</p>
+<p><strong>KV Params (String Parameters):</strong></p>
+<ul class="simple">
+<li><p>Displayed in two columns for better visibility</p></li>
+<li><p>Used for categorical settings, file paths, behavior names</p></li>
+<li><p>Examples: <code class="docutils literal notranslate"><span class="pre">game.difficulty_level</span></code>, <code class="docutils literal notranslate"><span class="pre">dlc.model_path</span></code>, <code class="docutils literal notranslate"><span class="pre">task.reward_type</span></code></p></li>
+</ul>
+<p><strong>Env Params (Float Parameters):</strong></p>
+<ul class="simple">
+<li><p>Single column display</p></li>
+<li><p>Numeric parameters for Unity environment</p></li>
+<li><p>Examples: <code class="docutils literal notranslate"><span class="pre">spawn_radius</span></code>, <code class="docutils literal notranslate"><span class="pre">target_distance</span></code>, <code class="docutils literal notranslate"><span class="pre">reward_magnitude</span></code></p></li>
+</ul>
+<p><strong>Color Coding:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Color</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Black</strong></p></td>
+<td><p>Value matches file (no modifications)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Blue</strong></p></td>
+<td><p>Profile override (differs from default profile)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Red</strong></p></td>
+<td><p>User modified (differs from original file value)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Parameter Actions:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Reset to file values</strong></p></td>
+<td><p>Restore all parameters to original file values</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Send params (diff-only)</strong></p></td>
+<td><p>Send only changed parameters to running Unity environment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Usage Example:</strong></p>
+<ol class="arabic simple">
+<li><p>Start experiment with default parameters</p></li>
+<li><p>Switch to Parameters tab</p></li>
+<li><p>Modify <code class="docutils literal notranslate"><span class="pre">difficulty_level</span></code> from “0.5” to “0.8” (turns red)</p></li>
+<li><p>Click “Send params (diff-only)”</p></li>
+<li><p>Unity receives update without restarting</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="config-detail-tabs">
+<h4><strong>Config Detail Tabs</strong><a class="headerlink" href="#config-detail-tabs" title="Link to this heading">#</a></h4>
+<p>Read-only tabs display full configuration sections for reference:</p>
+<ul class="simple">
+<li><p><strong>Game</strong> - Unity environment settings, build path, display config</p></li>
+<li><p><strong>Teensy</strong> - Hardware serial port, baudrate, I/O pin mappings</p></li>
+<li><p><strong>DLC</strong> - DeepLabCut server settings, filtering parameters</p></li>
+<li><p><strong>Touchscreen</strong> - Touch input configuration</p></li>
+<li><p><strong>Touch</strong> - Touch behavior parameters</p></li>
+<li><p><em>(Additional tabs based on config file)</em></p></li>
+</ul>
+<p>These tabs help verify loaded settings without editing risks.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="profile-system">
+<h3>Profile System<a class="headerlink" href="#profile-system" title="Link to this heading">#</a></h3>
+<p>Profiles allow multiple parameter sets in one config file:</p>
+<p><strong>Example <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code>:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[meta]</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hockey Task&quot;</span>
+
+<span class="c1"># Default profile</span>
+<span class="k">[game]</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="n">time_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">300.0</span>
+
+<span class="c1"># Training profile (easy)</span>
+<span class="k">[profile.Training]</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Easy settings for initial training&quot;</span>
+
+<span class="k">[profile.Training.game]</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span>
+<span class="n">time_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">600.0</span>
+
+<span class="c1"># RL profile (fast)</span>
+<span class="k">[profile.RL]</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Fast execution for reinforcement learning&quot;</span>
+
+<span class="k">[profile.RL.game]</span>
+<span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7</span>
+<span class="n">time_limit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
+<span class="n">time_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20.0</span>
+</pre></div>
+</div>
+<p><strong>Using Profiles in GUI:</strong></p>
+<ol class="arabic simple">
+<li><p>Load config file (loads default profile)</p></li>
+<li><p>Select “Training” from Profile dropdown</p>
+<ul class="simple">
+<li><p>Parameters tab shows <code class="docutils literal notranslate"><span class="pre">difficulty</span> <span class="pre">=</span> <span class="pre">0.3</span></code> (blue if differs from default)</p></li>
+<li><p>Description shown in status bar</p></li>
+</ul>
+</li>
+<li><p>Select “RL” from Profile dropdown</p>
+<ul class="simple">
+<li><p>Parameters update to RL values</p></li>
+<li><p>All tabs refresh with new settings</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Profile Parameter Color:</strong></p>
+<ul class="simple">
+<li><p>Blue text indicates “this value differs from default profile”</p></li>
+<li><p>Helps identify which parameters a profile modifies</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="parameter-editing">
+<h3>Parameter Editing<a class="headerlink" href="#parameter-editing" title="Link to this heading">#</a></h3>
+<p><strong>Real-Time Parameter Updates:</strong></p>
+<p>The GUI supports runtime parameter modification via Unity ML-Agents’ <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> and <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code>:</p>
+<p><strong>Process:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># 1. User edits parameter in GUI
+difficulty: &quot;0.5&quot; → &quot;0.8&quot;  # Field turns red
+
+# 2. User clicks &quot;Send params (diff-only)&quot;
+# GUI calls: worker.enqueue_set_param(&quot;difficulty&quot;, &quot;0.8&quot;)
+
+# 3. Worker thread sends to Unity
+task.set_runtime_param(&quot;difficulty&quot;, &quot;0.8&quot;)
+
+# 4. Unity C# receives update
+float newDifficulty = float.Parse(
+    Academy.Instance.EnvironmentParameters.GetWithDefault(&quot;difficulty&quot;, 0.5f)
+);
+</pre></div>
+</div>
+<p><strong>Best Practices:</strong></p>
+<p>✅ <strong>DO:</strong></p>
+<ul class="simple">
+<li><p>Edit parameters between episodes (during reset)</p></li>
+<li><p>Send small batches of related parameters</p></li>
+<li><p>Verify Unity logs parameter reception</p></li>
+</ul>
+<p>❌ <strong>DON’T:</strong></p>
+<ul class="simple">
+<li><p>Modify parameters mid-episode (behavior undefined)</p></li>
+<li><p>Send too many parameters at once (check Unity processing)</p></li>
+<li><p>Change behavior-critical parameters without testing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="live-monitoring">
+<h3>Live Monitoring<a class="headerlink" href="#live-monitoring" title="Link to this heading">#</a></h3>
+<p><strong>Status Updates:</strong></p>
+<p>The GUI worker thread runs at ~5 Hz, updating displays with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># From UnityWorker.run():</span>
+<span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="mi">145</span><span class="p">,</span>
+    <span class="s2">&quot;last_reward&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;total_rewards&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+    <span class="s2">&quot;behavior_info&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Refresh Rate:</strong></p>
+<ul class="simple">
+<li><p>Status display: 5 Hz (200ms interval)</p></li>
+<li><p>Duration timer: 1 Hz (1s interval)</p></li>
+<li><p>Responsive to user interactions (non-blocking)</p></li>
+</ul>
+<p><strong>Performance:</strong></p>
+<ul class="simple">
+<li><p>Minimal CPU overhead (~1-2%)</p></li>
+<li><p>Non-blocking worker thread</p></li>
+<li><p>Safe shutdown handling</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="data-saving">
+<h3>Data Saving<a class="headerlink" href="#data-saving" title="Link to this heading">#</a></h3>
+<p><strong>Automatic Save on Stop:</strong></p>
+<p>When you click <strong>Stop</strong>, the GUI automatically:</p>
+<ol class="arabic simple">
+<li><p>Signals worker thread to stop</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">task.stop()</span></code> to clean up Unity environment</p></li>
+<li><p>Saves all logged data to JSON file</p></li>
+<li><p>Enables <strong>Reset</strong> button</p></li>
+</ol>
+<p><strong>Output File:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Format: UnityData_{MouseName}_{Timestamp}.json</span>
+UnityData_MusterMaus_20250930_101812.json
+</pre></div>
+</div>
+<p><strong>Saved Data Structure:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;params&quot;: {
+    &quot;subject_id&quot;: &quot;MusterMaus&quot;,
+    &quot;mouse_weight_g&quot;: 25.5,
+    &quot;env_path&quot;: &quot;Build/Hockey.exe&quot;,
+    &quot;config_file&quot;: &quot;/path/to/hockey.game.toml&quot;,
+    &quot;profile&quot;: &quot;Training&quot;,
+    ...
+  },
+
+  &quot;episode&quot;: [0, 0, 0, 1, 1, ...],
+  &quot;step&quot;: [0, 1, 2, 0, 1, ...],
+  &quot;step_time&quot;: [0.0, 0.016, 0.032, ...],
+
+  &quot;state&quot;: [{...}, {...}, ...],
+  &quot;action&quot;: [{...}, {...}, ...],
+  &quot;reward&quot;: [0.0, 0.0, 1.0, ...],
+
+  &quot;dlc_x&quot;: [0.5, 0.51, ...],
+  &quot;teensy_input_analog&quot;: [512, 515, ...],
+  &quot;runtime_params&quot;: [...],
+  &quot;kv_messages&quot;: [...]
+}
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="Overview.html"><span class="std std-doc">Data Logging</span></a> for complete structure.</p>
+</section>
+<hr class="docutils" />
+<section id="unitytaskgui-troubleshooting">
+<h3>UnityTaskGUI Troubleshooting<a class="headerlink" href="#unitytaskgui-troubleshooting" title="Link to this heading">#</a></h3>
+<section id="failed-to-load-config-error">
+<h4><strong>“Failed to load config” error</strong><a class="headerlink" href="#failed-to-load-config-error" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Red error dialog after clicking “Load Config”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Invalid TOML syntax</p></li>
+<li><p>Missing required sections (<code class="docutils literal notranslate"><span class="pre">[game]</span></code>, <code class="docutils literal notranslate"><span class="pre">[unity]</span></code>)</p></li>
+<li><p>Type mismatches (string vs float)</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate TOML syntax</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import tomli; tomli.load(open(&#39;path/to/config.toml&#39;, &#39;rb&#39;))&quot;</span>
+
+<span class="c1"># Check required sections</span>
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^\[game\]|\[unity\]&#39;</span><span class="w"> </span>path/to/config.toml
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="unity-environment-failed-to-start-error">
+<h4><strong>“Unity environment failed to start” error</strong><a class="headerlink" href="#unity-environment-failed-to-start-error" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Error dialog after clicking “Start”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Unity build path incorrect</p></li>
+<li><p>Port 5004 already in use</p></li>
+<li><p>Missing Unity ML-Agents DLL</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check build exists</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>Build/Hockey.x86_64<span class="w">  </span><span class="c1"># Linux</span>
+ls<span class="w"> </span>-lh<span class="w"> </span>Build/Hockey.exe<span class="w">     </span><span class="c1"># Windows</span>
+
+<span class="c1"># Check port availability</span>
+lsof<span class="w"> </span>-i<span class="w"> </span>:5004<span class="w">  </span><span class="c1"># Should be empty</span>
+
+<span class="c1"># Test Unity build manually</span>
+./Build/Hockey.x86_64<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="parameters-not-updating-in-unity">
+<h4><strong>Parameters not updating in Unity</strong><a class="headerlink" href="#parameters-not-updating-in-unity" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Changed parameters don’t affect Unity behavior</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Parameters sent mid-episode</p></li>
+<li><p>Unity C# not reading from <code class="docutils literal notranslate"><span class="pre">EnvironmentParameters</span></code></p></li>
+<li><p>Parameter name mismatch</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p><strong>Python side:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify parameter sent</span>
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">runtime_params</span><span class="p">)</span>  <span class="c1"># Should show update</span>
+</pre></div>
+</div>
+<p><strong>Unity C# side:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In Agent.OnEpisodeBegin():</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span>
+<span class="w">    </span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;difficulty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">);</span>
+<span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;Received difficulty: {difficulty}&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="serial-port-not-detected">
+<h4><strong>Serial port not detected</strong><a class="headerlink" href="#serial-port-not-detected" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Dropdown shows only “dummy”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Teensy not connected</p></li>
+<li><p>USB permissions (Linux)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyserial</span></code> not installed</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check USB devices</span>
+lsusb<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>teensy
+
+<span class="c1"># Fix permissions (Linux)</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span><span class="nv">$USER</span>
+<span class="c1"># Log out and back in</span>
+
+<span class="c1"># Install pyserial</span>
+pip<span class="w"> </span>install<span class="w"> </span>pyserial
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="gui-freezes-when-starting-experiment">
+<h4><strong>GUI freezes when starting experiment</strong><a class="headerlink" href="#gui-freezes-when-starting-experiment" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Window becomes unresponsive after “Start”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Unity environment hangs during initialization</p></li>
+<li><p>Worker thread exception</p></li>
+<li><p>Teensy serial timeout</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check terminal for exceptions</span>
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_gui
+
+<span class="c1"># Test Unity build separately</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from mouse_ar.tasks.unity_multibehavior_task import UnityMultibehaviorTask</span>
+<span class="s2">task = UnityMultibehaviorTask(env=&#39;Build/Hockey.x86_64&#39;)</span>
+<span class="s2">task.start()  # Should complete in &lt;5s</span>
+<span class="s2">task.stop()</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Test Teensy separately</span>
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_control_gui
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="teensycontrolgui">
+<h2>TeensyControlGUI<a class="headerlink" href="#teensycontrolgui" title="Link to this heading">#</a></h2>
+<section id="teensycontrolgui-features">
+<h3>TeensyControlGUI Features<a class="headerlink" href="#teensycontrolgui-features" title="Link to this heading">#</a></h3>
+<p>The <strong>TeensyControlGUI</strong> (<code class="docutils literal notranslate"><span class="pre">teensy_control_gui.py</span></code>) provides hardware testing and calibration tools:</p>
+<p>✅ <strong>Teensy Control</strong></p>
+<ul class="simple">
+<li><p>Load configuration from <code class="docutils literal notranslate"><span class="pre">*.hw.toml</span></code> files</p></li>
+<li><p>Connect to Teensy via USB serial or dummy mode</p></li>
+<li><p>Start/stop real-time data reading</p></li>
+<li><p>Monitor incoming sensor data and TTL signals</p></li>
+</ul>
+<p>✅ <strong>Water Delivery</strong></p>
+<ul class="simple">
+<li><p>Manual water pulse control (ms precision)</p></li>
+<li><p>Drain mode toggle (continuous valve opening)</p></li>
+<li><p>Instant pulse testing</p></li>
+</ul>
+<p>✅ <strong>Calibration System</strong></p>
+<ul class="simple">
+<li><p>Multi-point calibration table</p></li>
+<li><p>Non-blocking calibration workflow (measure, record, next)</p></li>
+<li><p>Linear regression analysis with R² quality metric</p></li>
+<li><p>Predictive opening time calculator</p></li>
+<li><p>JSON export of calibration data</p></li>
+</ul>
+<p>✅ <strong>Live Monitoring</strong></p>
+<ul class="simple">
+<li><p>Real-time TTL signal display</p></li>
+<li><p>Incoming data rate tracking</p></li>
+<li><p>Configurable TTL source selection</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="launching-teensycontrolgui">
+<h3>Launching TeensyControlGUI<a class="headerlink" href="#launching-teensycontrolgui" title="Link to this heading">#</a></h3>
+<p><strong>From command line:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/path/to/mice_ar_tasks
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_control_gui
+</pre></div>
+</div>
+<p><strong>From Python:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.gui.teensy_control_gui</span><span class="w"> </span><span class="kn">import</span> <span class="n">main</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p>PyQt6</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyserial</span></code> (for real hardware)</p></li>
+<li><p>Teensy microcontroller (or use “dummy” mode)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="teensycontrolgui-workflow">
+<h3>TeensyControlGUI Workflow<a class="headerlink" href="#teensycontrolgui-workflow" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
+│ 1. SETUP                                                    │
+│    • Load teensy.hw.toml config file                        │
+│    • Select serial port (or &quot;dummy&quot; for testing)            │
+│    • Click &quot;Connect&quot;                                        │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 2. TEST (Optional)                                          │
+│    • Click &quot;Start Reading&quot; to monitor sensors               │
+│    • Check TTL signal display                               │
+│    • Test water pulse with manual duration                  │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 3. CALIBRATE                                                │
+│    • Switch to WaterPort tab                                │
+│    • Add calibration points (opening times)                 │
+│    • Click &quot;Run All&quot; to start calibration                   │
+│    • For each step:                                         │
+│      - Water pulse delivered                                │
+│      - Weigh collected water                                │
+│      - Enter weight (mg) in table                           │
+│      - Click &quot;Next Step&quot;                                    │
+└─────────────────────────────────────────────────────────────┘
+                           ↓
+┌─────────────────────────────────────────────────────────────┐
+│ 4. SAVE                                                     │
+│    • Click &quot;Finish &amp; Save JSON&quot;                             │
+│    • Review regression R² value                             │
+│    • Use predicted opening time for desired water volume    │
+└─────────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="connection-tab">
+<h3>Connection Tab<a class="headerlink" href="#connection-tab" title="Link to this heading">#</a></h3>
+<p><em>Teensy Control GUI connection tab screenshot (image not bundled in this docs build).</em></p>
+<p><strong>Configuration Loading:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Teensy config</strong></p></td>
+<td><p>Path to <code class="docutils literal notranslate"><span class="pre">*.hw.toml</span></code> file with hardware settings</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Load Teensy Config</strong></p></td>
+<td><p>Parse config and populate serial settings</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Example <code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[teensy]</span>
+<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="w">  </span><span class="c1"># Auto-selected in GUI</span>
+<span class="n">baudrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span>
+<span class="n">csv_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="c1"># Number of comma-separated values</span>
+
+<span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;analog_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;analog_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;digital_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ttl_in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sync&quot;</span><span class="p">]</span>
+
+<span class="k">[teensy.outputs]</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">}</span>
+<span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Z&quot;</span><span class="p">}</span>
+<span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;W&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dur_ms&quot;</span><span class="p">]}</span>
+<span class="n">TTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="p">}</span>
+<span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;X&quot;</span><span class="p">}</span>
+<span class="n">drain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Serial Port Selection:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Port dropdown</strong></p></td>
+<td><p>Lists <code class="docutils literal notranslate"><span class="pre">ttyUSB*</span></code>, <code class="docutils literal notranslate"><span class="pre">ttyACM*</span></code>, <code class="docutils literal notranslate"><span class="pre">COM*</span></code>, and “dummy”</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Refresh</strong></p></td>
+<td><p>Re-scan for connected devices</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Baud</strong></p></td>
+<td><p>Serial baudrate (default: 115200)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CSV fields</strong></p></td>
+<td><p>Expected number of comma-separated input values</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Timeout (s)</strong></p></td>
+<td><p>Serial read timeout</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Connection Controls:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>State</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Connect</strong></p></td>
+<td><p>Open serial connection to Teensy</p></td>
+<td><p>Enabled when disconnected</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Disconnect</strong></p></td>
+<td><p>Close serial connection</p></td>
+<td><p>Enabled when connected</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Start Reading</strong></p></td>
+<td><p>Begin polling Teensy inputs</p></td>
+<td><p>Enabled when connected</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stop Reading</strong></p></td>
+<td><p>Stop polling inputs</p></td>
+<td><p>Enabled when reading</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Status Display:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Indicator</p></th>
+<th class="head"><p>Shows</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Status</strong></p></td>
+<td><p>Connection state (connected/disconnected/reading)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Incoming</strong></p></td>
+<td><p>Data rate (+N per update, total count)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>TTL src</strong></p></td>
+<td><p>Dropdown to select which input column to display</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TTL</strong></p></td>
+<td><p>Current value of selected TTL input</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="waterport-tab">
+<h3>WaterPort Tab<a class="headerlink" href="#waterport-tab" title="Link to this heading">#</a></h3>
+<p><em>Teensy Control GUI waterport tab screenshot (image not bundled in this docs build).</em></p>
+<p><strong>Water Control:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Drain toggle</strong></p></td>
+<td><p>Toggle continuous valve opening (green=ON, red=OFF)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Duration (ms)</strong></p></td>
+<td><p>Pulse duration for manual water delivery</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Send pulse</strong></p></td>
+<td><p>Deliver single water pulse</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Calibration Table:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Opening time (ms)</strong></p></td>
+<td><p>Valve opening duration</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Measured weight (mg)</strong></p></td>
+<td><p>Water weight collected (fill after delivery)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Table Actions:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Add row</strong></p></td>
+<td><p>Insert new calibration point (default 100ms)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Delete selected</strong></p></td>
+<td><p>Remove selected rows</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Run selected step</strong></p></td>
+<td><p>Deliver water for selected row only</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Run All</strong></p></td>
+<td><p>Start non-blocking calibration workflow</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Next Step</strong></p></td>
+<td><p>Deliver next calibration point (after weighing previous)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Finish &amp; Save JSON</strong></p></td>
+<td><p>Calculate regression and export calibration</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Prediction:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Desired water (mg)</strong></p></td>
+<td><p>Target water volume</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Predicted open time</strong></p></td>
+<td><p>Calculated opening duration (after calibration)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="calibration-procedure">
+<h3>Calibration Procedure<a class="headerlink" href="#calibration-procedure" title="Link to this heading">#</a></h3>
+<p><strong>Step-by-Step:</strong></p>
+<section id="prepare-calibration-points">
+<h4><strong>1. Prepare Calibration Points</strong><a class="headerlink" href="#prepare-calibration-points" title="Link to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Click &quot;Add row&quot; multiple times to create test points:
+┌──────────────┬────────────────┐
+│ Opening (ms) │ Weight (mg)    │
+├──────────────┼────────────────┤
+│ 50           │                │
+│ 100          │                │
+│ 150          │                │
+│ 200          │                │
+│ 250          │                │
+└──────────────┴────────────────┘
+</pre></div>
+</div>
+<p><strong>Recommended points:</strong> 5-10 values spanning expected range</p>
+</section>
+<hr class="docutils" />
+<section id="start-calibration-workflow">
+<h4><strong>2. Start Calibration Workflow</strong><a class="headerlink" href="#start-calibration-workflow" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Place collection container under water port</p></li>
+<li><p>Ensure scale is ready (0.001g precision recommended)</p></li>
+<li><p>Click <strong>“Run All”</strong></p></li>
+<li><p>Status bar shows: “Calibration mode: press Next Step after weighing.”</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="measure-each-point">
+<h4><strong>3. Measure Each Point</strong><a class="headerlink" href="#measure-each-point" title="Link to this heading">#</a></h4>
+<p><strong>For each calibration point:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Loop:
+1. Water pulse delivered (e.g., 50ms)
+2. Remove container and weigh water
+3. Enter measured weight in table
+   ┌──────────────┬────────────────┐
+   │ Opening (ms) │ Weight (mg)    │
+   ├──────────────┼────────────────┤
+   │ 50           │ 12.3          │  ← Enter here
+   │ 100          │               │
+   └──────────────┴────────────────┘
+4. Click &quot;Next Step&quot;
+5. Repeat for next point
+</pre></div>
+</div>
+<p><strong>Tips:</strong></p>
+<ul class="simple">
+<li><p>Wipe container between measurements</p></li>
+<li><p>Tare scale before each measurement</p></li>
+<li><p>Wait for water to fully drain before weighing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="finish-and-save">
+<h4><strong>4. Finish and Save</strong><a class="headerlink" href="#finish-and-save" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>Click <strong>“Finish &amp; Save JSON”</strong></p></li>
+<li><p>GUI computes linear regression:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>weight (mg) = slope × opening_time (ms) + intercept
+R² = quality metric (0.0-1.0)
+</pre></div>
+</div>
+</li>
+<li><p>Success dialog shows:</p>
+<ul class="simple">
+<li><p>Number of calibration points</p></li>
+<li><p>R² value (&gt;0.95 is excellent)</p></li>
+<li><p>Predicted opening time for desired water volume</p></li>
+</ul>
+</li>
+<li><p>JSON file saved: <code class="docutils literal notranslate"><span class="pre">water_calib_YYYYMMDD_HHMMSS.json</span></code></p></li>
+</ol>
+<hr class="docutils" />
+<p><strong>Example Calibration Output:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1696089123.456</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;points&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0123</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0254</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0381</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0508</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0635</span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;regression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;slope&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000254</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;intercept&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00005</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;r_squared&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9987</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;n_points&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;desired_mg&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;predicted_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Using Calibration Results:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In your task configuration:</span>
+<span class="c1"># To deliver 10mg water:</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">39</span><span class="p">)</span>  <span class="c1"># Use predicted_ms from calibration</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="teensycontrolgui-troubleshooting">
+<h3>TeensyControlGUI Troubleshooting<a class="headerlink" href="#teensycontrolgui-troubleshooting" title="Link to this heading">#</a></h3>
+<section id="serial-port-permission-denied-linux">
+<h4><strong>Serial port permission denied (Linux)</strong><a class="headerlink" href="#serial-port-permission-denied-linux" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> “Permission denied” when connecting to <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM0</span></code></p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add user to dialout group</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>dialout<span class="w"> </span><span class="nv">$USER</span>
+
+<span class="c1"># Log out and back in, then verify</span>
+groups<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>dialout
+
+<span class="c1"># Alternative: temporary permission</span>
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">666</span><span class="w"> </span>/dev/ttyACM0
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="no-data-in-incoming-display">
+<h4><strong>No data in “Incoming” display</strong><a class="headerlink" href="#no-data-in-incoming-display" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> “Incoming: +0 (total 0)” after “Start Reading”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Teensy not sending data</p></li>
+<li><p>Wrong CSV field count</p></li>
+<li><p>Baudrate mismatch</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p><strong>Test serial manually:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install screen</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>screen
+
+<span class="c1"># Connect to Teensy</span>
+screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m">115200</span>
+
+<span class="c1"># Type &#39;A&#39; to start, should see CSV output:</span>
+<span class="m">512</span>,513,0,1,12345
+<span class="m">513</span>,514,0,1,12346
+...
+
+<span class="c1"># Exit: Ctrl+A, then K</span>
+</pre></div>
+</div>
+<p><strong>Adjust CSV field count:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">If</span> <span class="n">you</span> <span class="n">see</span> <span class="mi">6</span> <span class="n">values</span> <span class="n">but</span> <span class="n">GUI</span> <span class="n">expects</span> <span class="mi">5</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Increase</span> <span class="s2">&quot;CSV fields&quot;</span> <span class="n">spinbox</span> <span class="n">to</span> <span class="mi">6</span>
+<span class="o">-</span> <span class="n">Disconnect</span> <span class="ow">and</span> <span class="n">reconnect</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="degenerate-data-for-regression-error">
+<h4><strong>“Degenerate data for regression” error</strong><a class="headerlink" href="#degenerate-data-for-regression-error" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Error when clicking “Finish &amp; Save JSON”</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>All calibration points have same opening time</p></li>
+<li><p>Fewer than 2 measured points</p></li>
+<li><p>All weights are identical</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Ensure at least 2 rows have both opening time AND measured weight</p></li>
+<li><p>Use different opening times for each point</p></li>
+<li><p>Verify weights are measured (not 0.0 for all)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="r2-value-very-low-0-90">
+<h4><strong>R² value very low (&lt;0.90)</strong><a class="headerlink" href="#r2-value-very-low-0-90" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> Calibration succeeds but R² &lt; 0.90</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Inconsistent water delivery (valve issue)</p></li>
+<li><p>Measurement errors (scale precision)</p></li>
+<li><p>Evaporation between delivery and weighing</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Check valve operation (listen for clicking sound)</p></li>
+<li><p>Use higher precision scale (±0.001g minimum)</p></li>
+<li><p>Measure quickly after delivery</p></li>
+<li><p>Increase number of calibration points (10+ recommended)</p></li>
+<li><p>Repeat outlier measurements</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="water-not-delivered-during-calibration">
+<h4><strong>Water not delivered during calibration</strong><a class="headerlink" href="#water-not-delivered-during-calibration" title="Link to this heading">#</a></h4>
+<p><strong>Symptom:</strong> No water appears when “Next Step” clicked</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Solenoid valve not connected</p></li>
+<li><p>Wrong Teensy output pin</p></li>
+<li><p>Insufficient power to valve</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p><strong>Test valve directly:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
+
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Should hear click and see water</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">teensy</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Check wiring:</strong></p>
+<ul class="simple">
+<li><p>Teensy GPIO → MOSFET gate</p></li>
+<li><p>MOSFET drain → Solenoid negative</p></li>
+<li><p>Solenoid positive → 12V power supply</p></li>
+<li><p>MOSFET source → Ground</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-transfer-gui">
+<h2>Data Transfer GUI<a class="headerlink" href="#data-transfer-gui" title="Link to this heading">#</a></h2>
+<section id="data-transfer-gui-features">
+<h3>Data Transfer GUI Features<a class="headerlink" href="#data-transfer-gui-features" title="Link to this heading">#</a></h3>
+<p>The Data Transfer GUI (<code class="docutils literal notranslate"><span class="pre">dj_pipeline/gui_transfer</span></code>) supports end-of-session handoff:</p>
+<ul class="simple">
+<li><p>session metadata from DataJoint dropdown menus,</p></li>
+<li><p>file attachment for Unity/DLC/video artifacts,</p></li>
+<li><p>local or remote transfer,</p></li>
+<li><p>optional video metadata-only export.</p></li>
+</ul>
+<p>Recent capabilities include dataset-based prefill and dataset-based file auto-discovery.</p>
+</section>
+<section id="launching-data-transfer-gui">
+<h3>Launching Data Transfer GUI<a class="headerlink" href="#launching-data-transfer-gui" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>dj_pipeline/gui_transfer/main.py
+</pre></div>
+</div>
+<p>With optional context prefill:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>dj_pipeline/gui_transfer/main.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mouse-name<span class="w"> </span>TestMouse<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--dataset-id<span class="w"> </span>TestMouse_20260116_144944<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--deltaweight<span class="w"> </span><span class="m">7</span>.5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task<span class="w"> </span>AR_visual_discrimination<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--opto<span class="w"> </span>none
+</pre></div>
+</div>
+</section>
+<section id="dataset-based-auto-discovery">
+<h3>Dataset-Based Auto Discovery<a class="headerlink" href="#dataset-based-auto-discovery" title="Link to this heading">#</a></h3>
+<p>If <code class="docutils literal notranslate"><span class="pre">dataset_name</span></code> or <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code> is passed, the transfer panel searches each datatype folder for matching files:</p>
+<ul class="simple">
+<li><p>Unity JSON</p></li>
+<li><p>DLC pkl/pickle</p></li>
+<li><p>DLC hdf5/h5</p></li>
+<li><p>videos</p></li>
+</ul>
+<p>If only a subset is found, the GUI warns and lists missing categories.</p>
+</section>
+<section id="remote-transfer-behavior">
+<h3>Remote Transfer Behavior<a class="headerlink" href="#remote-transfer-behavior" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">==</span> <span class="pre">&quot;localhost&quot;</span></code> → local copy</p></li>
+<li><p>non-localhost IP → <code class="docutils literal notranslate"><span class="pre">scp</span></code> to <code class="docutils literal notranslate"><span class="pre">host&#64;ip:&lt;remote_dst&gt;/&lt;datatype_subfolder&gt;</span></code></p></li>
+</ul>
+<p>For full setup and key-by-key configuration, see <a class="reference internal" href="DataTransferGUI.html"><span class="std std-doc">DataTransferGUI.md</span></a>.</p>
+</section>
+</section>
+<section id="common-issues">
+<h2>Common Issues<a class="headerlink" href="#common-issues" title="Link to this heading">#</a></h2>
+<section id="pyqt6-import-error">
+<h3><strong>PyQt6 import error</strong><a class="headerlink" href="#pyqt6-import-error" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">'PyQt6'</span></code></p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>PyQt6
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="config-file-not-found">
+<h3><strong>Config file not found</strong><a class="headerlink" href="#config-file-not-found" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> Browse dialog opens in wrong directory</p>
+<p><strong>Solution:</strong></p>
+<p><strong>Set explicit path in code:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In unity_task_gui.py, line ~450:</span>
+<span class="n">path</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Select *.game.toml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;/absolute/path/to/mice_ar_tasks/mouse_ar/tasks/configs&quot;</span><span class="p">,</span>  <span class="c1"># Absolute path</span>
+    <span class="s2">&quot;Game TOML (*.game.toml)&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="gui-window-too-large-for-screen">
+<h3><strong>GUI window too large for screen</strong><a class="headerlink" href="#gui-window-too-large-for-screen" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> GUI extends beyond screen edges</p>
+<p><strong>Solution:</strong></p>
+<p><strong>Resize window:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In __init__ methods:</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>  <span class="c1"># Reduce from 1100x800</span>
+</pre></div>
+</div>
+<p><strong>Enable scrolling:</strong></p>
+<ul class="simple">
+<li><p>All tabs use <code class="docutils literal notranslate"><span class="pre">QScrollArea</span></code> for long content</p></li>
+<li><p>Mouse wheel scrolls parameter lists</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="unitycommunicatorstoppedexception-during-run">
+<h3><strong>“UnityCommunicatorStoppedException” during run</strong><a class="headerlink" href="#unitycommunicatorstoppedexception-during-run" title="Link to this heading">#</a></h3>
+<p><strong>Symptom:</strong> Experiment stops unexpectedly with communicator exception</p>
+<p><strong>Causes:</strong></p>
+<ol class="arabic simple">
+<li><p>Unity build crashed</p></li>
+<li><p>Manual Unity window close</p></li>
+<li><p>Network timeout</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<ul class="simple">
+<li><p>Check Unity build logs: <code class="docutils literal notranslate"><span class="pre">~/.config/unity3d/&lt;Company&gt;/&lt;Product&gt;/Player.log</span></code></p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">timeout_wait=60</span></code> in <code class="docutils literal notranslate"><span class="pre">UnityEnvironment()</span></code> call</p></li>
+<li><p>Test Unity build stability before long experiments</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="advanced-usage">
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">#</a></h2>
+<section id="custom-gui-extensions">
+<h3><strong>Custom GUI Extensions</strong><a class="headerlink" href="#custom-gui-extensions" title="Link to this heading">#</a></h3>
+<p>Both GUIs are designed for extension:</p>
+<p><strong>Add custom control to UnityTaskGUI:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In _build_config_tab():</span>
+<span class="n">custom_row</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Custom Action&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_custom_action</span><span class="p">)</span>
+<span class="n">custom_row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span><span class="p">)</span>
+<span class="n">lay</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">custom_row</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_custom_action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Call custom task method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">custom_method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Add custom tab to TeensyControlGUI:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In __init__():</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">_build_tab_custom</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_build_tab_custom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">&quot;Custom&quot;</span><span class="p">)</span>
+    <span class="n">lay</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="c1"># Add custom widgets...</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="automation">
+<h3><strong>Automation</strong><a class="headerlink" href="#automation" title="Link to this heading">#</a></h3>
+<p><strong>Launch GUI with pre-loaded config:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.gui.unity_task_gui</span><span class="w"> </span><span class="kn">import</span> <span class="n">MainWindow</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+
+<span class="c1"># Auto-load config</span>
+<span class="n">window</span><span class="o">.</span><span class="n">config_path_edit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;/path/to/hockey.game.toml&quot;</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">on_load_config</span><span class="p">()</span>
+
+<span class="c1"># Auto-select profile</span>
+<span class="n">window</span><span class="o">.</span><span class="n">profile_combo</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s2">&quot;Training&quot;</span><span class="p">)</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Overview.html"><span class="std std-doc">Overview</span></a> - System architecture and workflow</p></li>
+<li><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks</span></a> - UnityAgentTask and UnityMultibehaviorTask details</p></li>
+<li><p><a class="reference internal" href="Teensy.html"><span class="std std-doc">Teensy</span></a> - Hardware control and serial protocol</p></li>
+<li><p><a class="reference internal" href="ConfigSystem.html"><span class="std std-doc">Config System</span></a> - TOML configuration structure</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Version:</strong> 1.0 (November 2025)</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Unity/HockeyGame.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hockey Game Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DataTransferGUI.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Transfer GUI (<code class="docutils literal notranslate"><span class="pre">dj_pipeline/gui_transfer</span></code>)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui">UnityTaskGUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-features">UnityTaskGUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-unitytaskgui">Launching UnityTaskGUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-workflow">UnityTaskGUI Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-interface">UnityTaskGUI Interface</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#config-status-tab"><strong>Config &amp; Status Tab</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-tab"><strong>Parameters Tab</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#config-detail-tabs"><strong>Config Detail Tabs</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profile-system">Profile System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-editing">Parameter Editing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#live-monitoring">Live Monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-saving">Data Saving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui-troubleshooting">UnityTaskGUI Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#failed-to-load-config-error"><strong>“Failed to load config” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-environment-failed-to-start-error"><strong>“Unity environment failed to start” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-not-updating-in-unity"><strong>Parameters not updating in Unity</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#serial-port-not-detected"><strong>Serial port not detected</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-freezes-when-starting-experiment"><strong>GUI freezes when starting experiment</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui">TeensyControlGUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-features">TeensyControlGUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-teensycontrolgui">Launching TeensyControlGUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-workflow">TeensyControlGUI Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-tab">Connection Tab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waterport-tab">WaterPort Tab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-procedure">Calibration Procedure</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-calibration-points"><strong>1. Prepare Calibration Points</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#start-calibration-workflow"><strong>2. Start Calibration Workflow</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-each-point"><strong>3. Measure Each Point</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finish-and-save"><strong>4. Finish and Save</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teensycontrolgui-troubleshooting">TeensyControlGUI Troubleshooting</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#serial-port-permission-denied-linux"><strong>Serial port permission denied (Linux)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#no-data-in-incoming-display"><strong>No data in “Incoming” display</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#degenerate-data-for-regression-error"><strong>“Degenerate data for regression” error</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r2-value-very-low-0-90"><strong>R² value very low (&lt;0.90)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#water-not-delivered-during-calibration"><strong>Water not delivered during calibration</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-gui">Data Transfer GUI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-gui-features">Data Transfer GUI Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#launching-data-transfer-gui">Launching Data Transfer GUI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-based-auto-discovery">Dataset-Based Auto Discovery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-transfer-behavior">Remote Transfer Behavior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-issues">Common Issues</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyqt6-import-error"><strong>PyQt6 import error</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#config-file-not-found"><strong>Config file not found</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gui-window-too-large-for-screen"><strong>GUI window too large for screen</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unitycommunicatorstoppedexception-during-run"><strong>“UnityCommunicatorStoppedException” during run</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-gui-extensions"><strong>Custom GUI Extensions</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automation"><strong>Automation</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documentation">Related Documentation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1001 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unity Game Documentation &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Overview';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Touchscreen Module - Quick Reference" href="../touchscreen/Overview.html" />
+    <link rel="prev" title="Python Control System - Overview" href="../python/Overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/Overview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/Overview.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unity Game Documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-python-data-handoff">Unity → Python Data Handoff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-structure">Documentation Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-overview"><span class="xref myst">Architecture Overview</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-management-system"><span class="xref myst">Episode Management System</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-system-reference"><span class="xref myst">Spawner System Reference</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iepisodespawner-interface">IEpisodeSpawner Interface</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-control-system"><span class="xref myst">Parameter Control System</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">KV Channel (Key-Value Side Channel)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-reporting-unity-python">KV Reporting (Unity → Python)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-system-reference"><span class="xref myst">Agent System Reference</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent">DlcAgent</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent">TouchFingerAgent</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen">PlayerAgent3DOnScreen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent">TTLReceiverAgent</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-game"><span class="xref myst">Hockey Game</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-utilities"><span class="xref myst">Visual Feedback &amp; Utilities</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#whitenoiseoverlaygpu">WhiteNoiseOverlayGPU</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statefultarget">StatefulTarget</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statefulwall">StatefulWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiepisodetoagentbridge">MultiEpisodeToAgentBridge</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#itiflag">ITIFlag</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-components">Utility Components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-workflows">Common Workflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-1-touchscreen-task">Workflow 1: Touchscreen Task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-2-hockey-floor-navigation">Workflow 2: Hockey Floor Navigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-3-grid-sequence-memory-task">Workflow 3: Grid Sequence Memory Task</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="unity-game-documentation">
+<h1>Unity Game Documentation<a class="headerlink" href="#unity-game-documentation" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This directory contains comprehensive documentation for the Unity-based MouseAR behavioral experiment framework. The system provides a modular architecture for closed loop behavioral experiments as well as reinforcement learning.</p>
+</section>
+<section id="core-concepts">
+<h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Link to this heading">#</a></h2>
+<p>The framework separates responsibilities into distinct layers:</p>
+<ul class="simple">
+<li><p><strong>Episode Managers</strong> orchestrate game lifecycle (timing, completion detection, ITI)</p></li>
+<li><p><strong>Spawners</strong> create and place game objects (targets, hazards)</p></li>
+<li><p><strong>Agents</strong> provide ML-Agents integration (observations, actions, rewards)</p></li>
+<li><p><strong>Parameter Systems</strong> enable external configuration (Python → Unity)</p></li>
+<li><p><strong>Visual Feedback</strong> provides feedback (success/failure indicators)</p></li>
+</ul>
+</section>
+<section id="unity-python-data-handoff">
+<h2>Unity → Python Data Handoff<a class="headerlink" href="#unity-python-data-handoff" title="Link to this heading">#</a></h2>
+<p>Unity session outputs are consumed by Python tooling for downstream processing and transfer.</p>
+<ul class="simple">
+<li><p>Runtime/session data is written to <code class="docutils literal notranslate"><span class="pre">UnityData_&lt;MouseName&gt;_&lt;Timestamp&gt;.json</span></code>.</p></li>
+<li><p>These files are typically attached in <code class="docutils literal notranslate"><span class="pre">dj_pipeline/gui_transfer</span></code> as <code class="docutils literal notranslate"><span class="pre">unity_json_path</span></code> entries.</p></li>
+<li><p>The Data Transfer GUI can prefill and auto-discover companion files from a shared <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code>/<code class="docutils literal notranslate"><span class="pre">dataset_name</span></code>.</p></li>
+</ul>
+<p>See <a class="reference internal" href="../python/DataTransferGUI.html"><span class="std std-doc">Python Data Transfer GUI</span></a> for transfer and remote-host configuration.</p>
+</section>
+<section id="documentation-structure">
+<h2>Documentation Structure<a class="headerlink" href="#documentation-structure" title="Link to this heading">#</a></h2>
+<section id="architecture-overview">
+<h3><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a><a class="headerlink" href="#architecture-overview" title="Link to this heading">#</a></h3>
+<p><strong>Core system design and relationships between components</strong></p>
+<ul class="simple">
+<li><p>Layered architecture diagram</p></li>
+<li><p>Component relationships and dependencies</p></li>
+<li><p>IEpisodeSpawner interface pattern</p></li>
+<li><p>Adapter pattern for spawners</p></li>
+<li><p>Parameter control systems (EnvironmentParameters vs KV Channel)</p></li>
+<li><p>Episode lifecycle flow</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="episode-management-system">
+<h3><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management System</span></a><a class="headerlink" href="#episode-management-system" title="Link to this heading">#</a></h3>
+<p><strong>Detailed documentation of episode managers</strong></p>
+<section id="episodemanagersinglewall">
+<h4>EpisodeManagerSingleWall<a class="headerlink" href="#episodemanagersinglewall" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>State machine (Idle → Running → ITI)</p></li>
+<li><p>Event system (OnEpisodeBegin, OnAllTargetsCleared, OnEpisodeEnd, etc.)</p></li>
+<li><p>Timing control (episode length, ITI)</p></li>
+<li><p>Visual feedback integration (ColorOverlay, WhiteNoiseOverlay)</p></li>
+<li><p>Spawner management (switching, multiple spawners)</p></li>
+<li><p>Environment parameters</p></li>
+<li><p>KV channel commands</p></li>
+<li><p>Inspector configuration</p></li>
+</ul>
+</section>
+<section id="sequencetargetmanager">
+<h4>SequenceTargetManager<a class="headerlink" href="#sequencetargetmanager" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Sequential task orchestration</p></li>
+<li><p>Step-by-step target progression</p></li>
+<li><p>Parallel hazard walls with grace period</p></li>
+<li><p>Scoring integration (EpisodeScore)</p></li>
+<li><p>Target sequence formats (compact, comma-separated, random)</p></li>
+<li><p>Wall sequence formats (letters, numbers, random)</p></li>
+<li><p>Per-step events and timeout handling</p></li>
+<li><p>Environment parameters</p></li>
+<li><p>KV channel commands</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spawner-system-reference">
+<h3><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawner System Reference</span></a><a class="headerlink" href="#spawner-system-reference" title="Link to this heading">#</a></h3>
+<p><strong>Complete guide to spawner implementations</strong></p>
+<section id="iepisodespawner-interface">
+<h4>IEpisodeSpawner Interface<a class="headerlink" href="#iepisodespawner-interface" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Interface definition and requirements</p></li>
+<li><p>Adapter pattern explanation</p></li>
+</ul>
+</section>
+<section id="floortargetsspawner">
+<h4>FloorTargetsSpawner<a class="headerlink" href="#floortargetsspawner" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>3D floor navigation with physics</p></li>
+<li><p>Vertical target areas + movable object</p></li>
+<li><p>Non-overlapping Z placement with jitter</p></li>
+<li><p>Physics configuration (mass, drag, forces)</p></li>
+<li><p>Optional features: distance/rotation-based coloring, jitter, lock-until-action</p></li>
+<li><p>EnvParams: 30+ configurable parameters</p></li>
+<li><p>Adapter implementation</p></li>
+</ul>
+</section>
+<section id="gridtargetsspawner">
+<h4>GridTargetsSpawner<a class="headerlink" href="#gridtargetsspawner" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>N×N grid of StatefulTarget objects</p></li>
+<li><p>Wall segments between tiles</p></li>
+<li><p>Local space layout</p></li>
+<li><p>Used exclusively by SequenceTargetManager</p></li>
+<li><p>EnvParams: Grid layout, target scale, wall dimensions</p></li>
+<li><p>Direct IEpisodeSpawner implementation (no adapter)</p></li>
+</ul>
+</section>
+<section id="screenspawnerfromobject">
+<h4>ScreenSpawnerFromObject<a class="headerlink" href="#screenspawnerfromobject" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>2D wall surface spawning</p></li>
+<li><p>Non-overlapping circular placement</p></li>
+<li><p>Player + N targets on OrthoScreenFromObject</p></li>
+<li><p>Vertical band control (minY, maxY fractions)</p></li>
+<li><p>PlayerAgent3DOnScreen integration</p></li>
+<li><p>EnvParams: Target count, placement constraints</p></li>
+</ul>
+</section>
+<section id="sidetargetsspawnerfromobject">
+<h4>SideTargetsSpawnerFromObject<a class="headerlink" href="#sidetargetsspawnerfromobject" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Mixed floor + wall spawning</p></li>
+<li><p>Target objects (floor) + target areas (side walls)</p></li>
+<li><p>Non-overlapping with padding</p></li>
+<li><p>Configurable scales and placement</p></li>
+<li><p>EnvParams: Counts, scales, positioning</p></li>
+</ul>
+</section>
+<section id="simpletargetspawner">
+<h4>SimpleTargetSpawner<a class="headerlink" href="#simpletargetspawner" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Single invisible trigger cube</p></li>
+<li><p>Fixed position and size</p></li>
+<li><p>Minimal configuration</p></li>
+<li><p>EnvParams: Position (XYZ), size (XYZ), enabled flag</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="parameter-control-system">
+<h3><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter Control System</span></a><a class="headerlink" href="#parameter-control-system" title="Link to this heading">#</a></h3>
+<p><strong>External configuration via Python</strong></p>
+<section id="ml-agents-environmentparameters">
+<h4>ML-Agents EnvironmentParameters<a class="headerlink" href="#ml-agents-environmentparameters" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Python setup (<code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code>)</p></li>
+<li><p>Unity access pattern (wait for Academy, <code class="docutils literal notranslate"><span class="pre">GetWithDefault</span></code>)</p></li>
+<li><p>Global parameters (<code class="docutils literal notranslate"><span class="pre">general.*</span></code>)</p></li>
+<li><p>Manager-specific parameters</p></li>
+<li><p>Spawner EnvParams components</p></li>
+<li><p>Complete Python example with all parameter types</p></li>
+</ul>
+</section>
+<section id="kv-channel-key-value-side-channel">
+<h4>KV Channel (Key-Value Side Channel)<a class="headerlink" href="#kv-channel-key-value-side-channel" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Python setup (<code class="docutils literal notranslate"><span class="pre">KvChannel</span></code>)</p></li>
+<li><p>Unity router (<code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code>)</p></li>
+<li><p>Message format: <code class="docutils literal notranslate"><span class="pre">&lt;namespace&gt;.&lt;property&gt;=&lt;value&gt;</span></code></p></li>
+<li><p>Supported commands for episode managers</p></li>
+<li><p>Supported commands for spawners</p></li>
+<li><p>Message batching and flush logic</p></li>
+<li><p>Complete Python example with real-time control</p></li>
+</ul>
+</section>
+<section id="kv-reporting-unity-python">
+<h4>KV Reporting (Unity → Python)<a class="headerlink" href="#kv-reporting-unity-python" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Reporter components</p></li>
+<li><p>Message receiving in Python</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="agent-system-reference">
+<h3><a class="reference internal" href="Agents.html"><span class="std std-doc">Agent System Reference</span></a><a class="headerlink" href="#agent-system-reference" title="Link to this heading">#</a></h3>
+<p><strong>ML-Agents integration and training</strong></p>
+<section id="dlcagent">
+<h4>DlcAgent<a class="headerlink" href="#dlcagent" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Action space, observation space details</p></li>
+<li><p>Optional camera sensor (visual observations)</p></li>
+<li><p>Environment parameter configuration</p></li>
+</ul>
+</section>
+<section id="touchfingeragent">
+<h4>TouchFingerAgent<a class="headerlink" href="#touchfingeragent" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Teleportation to NDC coordinates</p></li>
+<li><p>Action space: Continuous[2] (direct position)</p></li>
+<li><p>Observation space: UV,</p></li>
+</ul>
+</section>
+<section id="playeragent3donscreen">
+<h4>PlayerAgent3DOnScreen<a class="headerlink" href="#playeragent3donscreen" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Direct position control on wall surface</p></li>
+<li><p>Movement modes: Teleport vs smooth follow</p></li>
+<li><p>Clamping: Full object inside bounds</p></li>
+</ul>
+</section>
+<section id="ttlreceiveragent">
+<h4>TTLReceiverAgent<a class="headerlink" href="#ttlreceiveragent" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Reward/punishment from MultiEpisodeToAgentBridge</p></li>
+<li><p>Action space: Continuous[1] (TTL signal output)</p></li>
+<li><p>Observation space: Patch color, ITI flag</p></li>
+<li><p>Reward interface: <code class="docutils literal notranslate"><span class="pre">OnCorrect()</span></code>, <code class="docutils literal notranslate"><span class="pre">OnIncorrect()</span></code></p></li>
+<li><p>Hardware synchronization via photodiode patch</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hockey-game">
+<h3><a class="reference internal" href="HockeyGame.html"><span class="std std-doc">Hockey Game</span></a><a class="headerlink" href="#hockey-game" title="Link to this heading">#</a></h3>
+<p><strong>Complete documentation for the Hockey floor-navigation task</strong></p>
+<ul class="simple">
+<li><p>Involved Unity scripts and their roles</p></li>
+<li><p>Component relationships and how they work together</p></li>
+<li><p>Full episode lifecycle (session start → init phase → running → ITI → end)</p></li>
+<li><p>Data flow: Python → Unity (EnvironmentParameters + KvChannel reference tables)</p></li>
+<li><p>Data flow: Unity → Python (KV telemetry, agent observations, rewards)</p></li>
+<li><p>Required TOML configuration for all keys</p></li>
+<li><p>Training profiles (<code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code>, <code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code>)</p></li>
+<li><p>End-to-end data round-trip diagram</p></li>
+<li><p>Troubleshooting</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="visual-feedback-utilities">
+<h3><a class="reference internal" href="VisualFeedback.html"><span class="std std-doc">Visual Feedback &amp; Utilities</span></a><a class="headerlink" href="#visual-feedback-utilities" title="Link to this heading">#</a></h3>
+<p><strong>Visual feedback systems and helper components</strong></p>
+<section id="coloroverlay">
+<h4>ColorOverlay<a class="headerlink" href="#coloroverlay" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Static color overlay for success feedback</p></li>
+<li><p>Multi-display support</p></li>
+<li><p>Playback modes: Play, Flash, FadeIn, FadeOut</p></li>
+<li><p>Region control (fullscreen, normalized, pixels)</p></li>
+<li><p>Default: 1s green flash for success</p></li>
+</ul>
+</section>
+<section id="whitenoiseoverlaygpu">
+<h4>WhiteNoiseOverlayGPU<a class="headerlink" href="#whitenoiseoverlaygpu" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Animated noise overlay for punishment</p></li>
+<li><p>GPU shader-based rendering</p></li>
+<li><p>Configurable FPS and opacity</p></li>
+<li><p>Region control</p></li>
+<li><p>Used for: Timeouts, failures, wall collisions</p></li>
+</ul>
+</section>
+<section id="statefultarget">
+<h4>StatefulTarget<a class="headerlink" href="#statefultarget" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Interactive target with state machine (Static, Active, Inactive)</p></li>
+<li><p>Dwell-to-complete mechanic</p></li>
+<li><p>Material switching per state</p></li>
+<li><p>OnCompleted event</p></li>
+<li><p>Used by: GridTargetsSpawner, SequenceTargetManager</p></li>
+</ul>
+</section>
+<section id="statefulwall">
+<h4>StatefulWall<a class="headerlink" href="#statefulwall" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Similar to StatefulTarget but for hazards</p></li>
+<li><p>Used by: GridTargetsSpawner walls</p></li>
+</ul>
+</section>
+<section id="multiepisodetoagentbridge">
+<h4>MultiEpisodeToAgentBridge<a class="headerlink" href="#multiepisodetoagentbridge" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Connect multiple episode managers to agents</p></li>
+<li><p>ITIFlag integration</p></li>
+<li><p>Wiring: Managers → Bridge → Agents</p></li>
+</ul>
+</section>
+<section id="itiflag">
+<h4>ITIFlag<a class="headerlink" href="#itiflag" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Provide ITI state as observation</p></li>
+<li><p>Controlled by MultiEpisodeToAgentBridge</p></li>
+</ul>
+</section>
+<section id="utility-components">
+<h4>Utility Components<a class="headerlink" href="#utility-components" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>TargetKillOnPlayerDwell</strong>: Destroy target after sustained player dwell</p></li>
+<li><p><strong>TargetKillOnArea</strong>: Destroy object on TargetArea entry</p></li>
+<li><p><strong>TargetKillOnDistance</strong>: Destroy if travels certain distance</p></li>
+<li><p><strong>ColorByDistance</strong>: Dynamic coloring based on distance to player</p></li>
+<li><p><strong>ColorByRotation</strong>: Dynamic coloring based on rotation of player</p></li>
+<li><p><strong>JitteryMovement</strong>: Add random forces for unpredictability</p></li>
+<li><p><strong>ContainmentInBoxVolume</strong>: Keep objects inside bounds</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="common-workflows">
+<h2>Common Workflows<a class="headerlink" href="#common-workflows" title="Link to this heading">#</a></h2>
+<section id="workflow-1-touchscreen-task">
+<h3>Workflow 1: Touchscreen Task<a class="headerlink" href="#workflow-1-touchscreen-task" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Components</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">EpisodeManagerSingleWall</span>
+<span class="o">-</span> <span class="n">ScreenSpawnerFromObject</span> <span class="o">+</span> <span class="n">ScreenSpawnerAdapter</span>
+<span class="o">-</span> <span class="n">PlayerAgent3DOnScreen</span> <span class="p">(</span><span class="n">spawned</span> <span class="n">by</span> <span class="n">ScreenSpawner</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">TTLReceiverAgent</span>
+<span class="o">-</span> <span class="n">MultiEpisodeToAgentBridge</span>
+
+<span class="n">Success</span><span class="p">:</span> <span class="n">All</span> <span class="n">targets</span> <span class="n">cleared</span> <span class="p">(</span><span class="n">destroyed</span> <span class="n">by</span> <span class="n">player</span><span class="p">)</span>
+<span class="n">Failure</span><span class="p">:</span> <span class="n">Timeout</span>
+</pre></div>
+</div>
+</section>
+<section id="workflow-2-hockey-floor-navigation">
+<h3>Workflow 2: Hockey Floor Navigation<a class="headerlink" href="#workflow-2-hockey-floor-navigation" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Components</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">EpisodeManagerSingleWall</span>
+<span class="o">-</span> <span class="n">FloorTargetsSpawner</span> <span class="o">+</span> <span class="n">FloorTargetsSpawnerAdapter</span>
+<span class="o">-</span> <span class="n">DlcAgent</span> <span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">separate</span> <span class="n">GameObject</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">TTLReceiverAgent</span>
+<span class="o">-</span> <span class="n">MultiEpisodeToAgentBridge</span>
+<span class="o">-</span> <span class="n">ColorOverlay</span> <span class="p">(</span><span class="n">success</span><span class="p">),</span> <span class="n">WhiteNoiseOverlay</span> <span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="n">Success</span><span class="p">:</span> <span class="n">MoveObject</span> <span class="n">reaches</span> <span class="n">TargetArea</span> <span class="p">(</span><span class="n">TargetKillOnArea</span> <span class="n">destroys</span> <span class="n">it</span><span class="p">)</span>
+<span class="n">Failure</span><span class="p">:</span> <span class="n">Timeout</span>
+</pre></div>
+</div>
+</section>
+<section id="workflow-3-grid-sequence-memory-task">
+<h3>Workflow 3: Grid Sequence Memory Task<a class="headerlink" href="#workflow-3-grid-sequence-memory-task" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Components:
+- SequenceTargetManager
+- GridTargetsSpawner (N×N targets + walls)
+- DlcAgent (player)
+- EpisodeScore
+- TTLReceiverAgent
+- MultiEpisodeToAgentBridge
+- ColorOverlay (success), WhiteNoiseOverlay (timeout/wall)
+
+Success: Complete target sequence in order
+Failure: Timeout, wall collision (grace period)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../python/Overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python Control System - Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../touchscreen/Overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Touchscreen Module - Quick Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-concepts">Core Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-python-data-handoff">Unity → Python Data Handoff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-structure">Documentation Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-overview"><span class="xref myst">Architecture Overview</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-management-system"><span class="xref myst">Episode Management System</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#episodemanagersinglewall">EpisodeManagerSingleWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequencetargetmanager">SequenceTargetManager</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawner-system-reference"><span class="xref myst">Spawner System Reference</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iepisodespawner-interface">IEpisodeSpawner Interface</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#floortargetsspawner">FloorTargetsSpawner</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simpletargetspawner">SimpleTargetSpawner</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-control-system"><span class="xref myst">Parameter Control System</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-channel-key-value-side-channel">KV Channel (Key-Value Side Channel)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-reporting-unity-python">KV Reporting (Unity → Python)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agent-system-reference"><span class="xref myst">Agent System Reference</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlcagent">DlcAgent</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touchfingeragent">TouchFingerAgent</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#playeragent3donscreen">PlayerAgent3DOnScreen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttlreceiveragent">TTLReceiverAgent</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-game"><span class="xref myst">Hockey Game</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-utilities"><span class="xref myst">Visual Feedback &amp; Utilities</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#whitenoiseoverlaygpu">WhiteNoiseOverlayGPU</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statefultarget">StatefulTarget</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#statefulwall">StatefulWall</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiepisodetoagentbridge">MultiEpisodeToAgentBridge</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#itiflag">ITIFlag</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#utility-components">Utility Components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-workflows">Common Workflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-1-touchscreen-task">Workflow 1: Touchscreen Task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-2-hockey-floor-navigation">Workflow 2: Hockey Floor Navigation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-3-grid-sequence-memory-task">Workflow 3: Grid Sequence Memory Task</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

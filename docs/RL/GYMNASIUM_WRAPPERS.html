@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Gymnasium Wrappers for Unity ML-Agents &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/RL/GYMNASIUM_WRAPPERS';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Teensy Hardware Reference" href="../hardware/Teensy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/RL/GYMNASIUM_WRAPPERS.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/RL/GYMNASIUM_WRAPPERS.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gymnasium Wrappers for Unity ML-Agents</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-factory-functions">Using Factory Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-with-stable-baselines3">Training with Stable-Baselines3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-reference">Wrapper Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchdestroywrapper">TouchDestroyWrapper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeywrapper">HockeyWrapper</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basegymunitywrapper-api">BaseGymUnityWrapper API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-implement">Abstract Methods (Must Implement)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-methods-can-override">Optional Methods (Can Override)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provided-methods-use-as-is">Provided Methods (Use As-Is)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-unity-data">Accessing Unity Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-config-requirements">Unity Config Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-wrapper-config">Python Wrapper Config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headless-training">Headless Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-environments">Vectorized Environments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="gymnasium-wrappers-for-unity-ml-agents">
+<h1>Gymnasium Wrappers for Unity ML-Agents<a class="headerlink" href="#gymnasium-wrappers-for-unity-ml-agents" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The RL training system provides <strong>Gymnasium-compatible wrappers</strong> for Unity ML-Agents environments. The architecture uses inheritance-based design where each game type has its own specialized wrapper that handles game-specific action transformation and observation extraction.</p>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BaseGymUnityWrapper (abstract base class)
+│
+├── Common Functionality:
+│   ├── Unity task initialization &amp; lifecycle
+│   ├── Config loading from TOML files
+│   ├── Render mode handling (headless vs graphics)
+│   ├── Episode tracking &amp; info dict construction
+│   └── Multi-behavior action distribution
+│
+├── TouchDestroyWrapper
+│   ├── Game: Touch objects on screen to destroy them
+│   ├── Action: [x, y] direct position control
+│   ├── Observation: Object positions from KV channel
+│   └── Behavior: TouchInput (position teleportation)
+│
+├── HockeyWrapper
+│   ├── Game: Navigate to intercept moving objects
+│   ├── Action: [velocity, heading_change] velocity control
+│   ├── Observation: Agent state + object state + targets
+│   └── Behavior: DLCInput (velocity + heading)
+│
+└── [Your custom wrapper]
+    └── Implement: _setup_action_space(), _extract_observation(), etc.
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<section id="using-factory-functions">
+<h3>Using Factory Functions<a class="headerlink" href="#using-factory-functions" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_hockey_env</span><span class="p">,</span> <span class="n">create_touchdestroy_env</span>
+
+<span class="c1"># Hockey game with sensible defaults</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span>
+    <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">,</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+
+<span class="c1"># TouchDestroy game</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">create_touchdestroy_env</span><span class="p">(</span>
+    <span class="n">max_objects</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># headless for training</span>
+    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="p">)</span>
+
+<span class="c1"># Standard Gymnasium API</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="training-with-stable-baselines3">
+<h3>Training with Stable-Baselines3<a class="headerlink" href="#training-with-stable-baselines3" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">PPO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_hockey_env</span>
+
+<span class="c1"># Create environment</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Train PPO agent</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;hockey_ppo&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test trained agent</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">action</span><span class="p">,</span> <span class="n">_states</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="wrapper-reference">
+<h2>Wrapper Reference<a class="headerlink" href="#wrapper-reference" title="Link to this heading">#</a></h2>
+<section id="touchdestroywrapper">
+<h3>TouchDestroyWrapper<a class="headerlink" href="#touchdestroywrapper" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Touch-based game where agent destroys objects by moving to their positions.</p>
+<p><strong>Action Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=-1,</span> <span class="pre">high=1,</span> <span class="pre">shape=(2,))</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">action[0]</span></code>: X position in normalized device coordinates [-1, 1]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">action[1]</span></code>: Y position in normalized device coordinates [-1, 1]</p></li>
+</ul>
+<p><strong>Observation Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=0,</span> <span class="pre">high=1,</span> <span class="pre">shape=(max_objects*2,))</span></code></p>
+<ul class="simple">
+<li><p>Flat array of object positions: <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2,</span> <span class="pre">...,</span> <span class="pre">xN,</span> <span class="pre">yN]</span></code></p></li>
+<li><p>Zero-padded if fewer than <code class="docutils literal notranslate"><span class="pre">max_objects</span></code> exist</p></li>
+<li><p>Positions in screen coordinates [0, 1]</p></li>
+</ul>
+<p><strong>Unity Integration:</strong></p>
+<ul class="simple">
+<li><p><strong>Trainable Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TouchInput</span></code> (TouchFingerAgent or PlayerAgent3DOnScreen)</p></li>
+<li><p><strong>Reward Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TTLInput</span></code> (TTLReceiverAgent)</p></li>
+<li><p><strong>KV Channel:</strong> Reads <code class="docutils literal notranslate"><span class="pre">touchScreen.object_positions</span></code> for object tracking</p></li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TouchDestroyWrapper</span><span class="p">(</span>
+    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;mouse_ar/tasks/configs/touchdestroy.game.toml&quot;</span><span class="p">,</span>
+    <span class="n">max_objects</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>           <span class="c1"># Maximum objects to track</span>
+    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># &quot;human&quot; or None</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>    <span class="c1"># Truncation limit</span>
+    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>          <span class="c1"># Per-step penalty (e.g., -0.01)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_touchdestroy_env</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">create_touchdestroy_env</span><span class="p">(</span><span class="n">max_objects</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="c1"># obs = [x1, y1, x2, y2, ..., x12, y12]  # 24-dimensional</span>
+<span class="c1"># Move to first object</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Convert [0,1] to [-1,1]</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="hockeywrapper">
+<h3>HockeyWrapper<a class="headerlink" href="#hockeywrapper" title="Link to this heading">#</a></h3>
+<p><strong>Purpose:</strong> Navigation game where agent uses velocity control to intercept moving objects and reach targets.</p>
+<p><strong>Action Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=[-1,</span> <span class="pre">-π/4],</span> <span class="pre">high=[1,</span> <span class="pre">π/4],</span> <span class="pre">shape=(2,))</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">action[0]</span></code>: <strong>Velocity</strong> - forward/backward speed in [-1, 1]</p>
+<ul>
+<li><p>Positive: move forward along heading direction</p></li>
+<li><p>Negative: move backward</p></li>
+<li><p>Scaled by <code class="docutils literal notranslate"><span class="pre">velocity_scale</span></code> (default: 0.1) per step</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">action[1]</span></code>: <strong>Heading change</strong> - angular velocity in radians [-π/4, π/4]</p>
+<ul>
+<li><p>Positive: turn right (clockwise)</p></li>
+<li><p>Negative: turn left (counterclockwise)</p></li>
+<li><p>Maximum turn rate: ±45° per step</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Observation Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(shape=(5+4+max_objects*2,))</span></code></p>
+<p>Structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agent state (5D) - from DlcAgent.CollectObservations()</span>
+<span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">pos_x</span><span class="p">,</span>      <span class="c1"># Agent X position in world space (meters)</span>
+    <span class="n">pos_z</span><span class="p">,</span>      <span class="c1"># Agent Z position in world space (meters)</span>
+    <span class="n">screen_u</span><span class="p">,</span>   <span class="c1"># Screen U coordinate [0, 1]</span>
+    <span class="n">screen_v</span><span class="p">,</span>   <span class="c1"># Screen V coordinate [0, 1]</span>
+    <span class="n">heading</span>     <span class="c1"># Heading angle in radians [-π, π]</span>
+<span class="p">]</span>
+
+<span class="c1"># Moving object state (4D) - from KV &#39;hockey.object_position&#39;</span>
+<span class="n">obs</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">obj_pos_x</span><span class="p">,</span>  <span class="c1"># Object X position (meters)</span>
+    <span class="n">obj_pos_z</span><span class="p">,</span>  <span class="c1"># Object Z position (meters)</span>
+    <span class="n">obj_vel_x</span><span class="p">,</span>  <span class="c1"># Object X velocity (m/s)</span>
+    <span class="n">obj_vel_z</span>   <span class="c1"># Object Z velocity (m/s)</span>
+<span class="p">]</span>
+
+<span class="c1"># Target positions (max_objects*2) - from KV &#39;hockey.target_positions&#39;</span>
+<span class="n">obs</span><span class="p">[</span><span class="mi">9</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tgt1_x</span><span class="p">,</span> <span class="n">tgt1_z</span><span class="p">,</span>
+    <span class="n">tgt2_x</span><span class="p">,</span> <span class="n">tgt2_z</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Unity Integration:</strong></p>
+<ul class="simple">
+<li><p><strong>Trainable Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">DLCInput</span></code> (DlcAgent)</p></li>
+<li><p><strong>Reward Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TTLInput</span></code> (TTLReceiverAgent)</p></li>
+<li><p><strong>KV Channels:</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code>: Moving object state (updated every step)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hockey.target_positions</span></code>: Target locations (sent once per episode)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Internal State:</strong></p>
+<ul class="simple">
+<li><p>Tracks <code class="docutils literal notranslate"><span class="pre">_agent_heading</span></code> (accumulated heading angle)</p></li>
+<li><p>Caches <code class="docutils literal notranslate"><span class="pre">_cached_target_positions</span></code> (persists across episode)</p></li>
+</ul>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HockeyWrapper</span><span class="p">(</span>
+    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span><span class="p">,</span>
+    <span class="n">max_objects</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>             <span class="c1"># Number of targets to track</span>
+    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># &quot;human&quot; or None</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>    <span class="c1"># Truncation limit</span>
+    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>       <span class="c1"># Per-step penalty (time cost)</span>
+    <span class="n">velocity_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>        <span class="c1"># Velocity → position scaling</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Action Processing:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrapper converts [velocity, heading_change] to Unity format:</span>
+<span class="n">velocity</span><span class="p">,</span> <span class="n">heading_change</span> <span class="o">=</span> <span class="n">action</span>
+
+<span class="c1"># Update heading</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span> <span class="o">+=</span> <span class="n">heading_change</span>  <span class="c1"># Integrate angular velocity</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span><span class="p">)</span>  <span class="c1"># Keep in [-π, π]</span>
+
+<span class="c1"># Get current position from observations</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">obs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Screen coordinates [0, 1]</span>
+<span class="n">current_x</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Convert to [-1, 1]</span>
+<span class="n">current_y</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="c1"># Calculate position change</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">heading</span><span class="p">)</span> <span class="o">*</span> <span class="n">velocity_scale</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">heading</span><span class="p">)</span> <span class="o">*</span> <span class="n">velocity_scale</span>
+
+<span class="c1"># New position</span>
+<span class="n">new_x</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">current_x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">new_y</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">current_y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Convert to Unity format: [x, y, heading_deg, head_angle, emit_action]</span>
+<span class="n">unity_action</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">,</span> <span class="n">heading_deg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="basegymunitywrapper-api">
+<h2>BaseGymUnityWrapper API<a class="headerlink" href="#basegymunitywrapper-api" title="Link to this heading">#</a></h2>
+<section id="abstract-methods-must-implement">
+<h3>Abstract Methods (Must Implement)<a class="headerlink" href="#abstract-methods-must-implement" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyGameWrapper</span><span class="p">(</span><span class="n">BaseGymUnityWrapper</span><span class="p">):</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Space</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define action space for trainable behavior.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_observation_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Space</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define observation space structure.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_transform_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert RL action to Unity format.&quot;&quot;&quot;</span>
+        <span class="c1"># Your transformation logic</span>
+        <span class="k">return</span> <span class="n">unity_action</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_observation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract observation from Unity task.&quot;&quot;&quot;</span>
+        <span class="c1"># Read from self.task.behaviors and self.task.channel_kv</span>
+        <span class="k">return</span> <span class="n">obs_array</span>
+</pre></div>
+</div>
+</section>
+<section id="optional-methods-can-override">
+<h3>Optional Methods (Can Override)<a class="headerlink" href="#optional-methods-can-override" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_get_init_action</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return initialization action sent at episode start.</span>
+
+<span class="sd">    Default: None (no initialization)</span>
+<span class="sd">    Override to implement custom episode setup.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build info dictionary returned from step().</span>
+
+<span class="sd">    Default: Episode stats + KV messages</span>
+<span class="sd">    Override to add custom info.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
+    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;my_metric&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_metric</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">info</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reset environment.</span>
+
+<span class="sd">    Override to add custom reset logic.</span>
+<span class="sd">    Remember to call super().reset()!</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Clear your state</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_my_state</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># Call parent reset</span>
+    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="provided-methods-use-as-is">
+<h3>Provided Methods (Use As-Is)<a class="headerlink" href="#provided-methods-use-as-is" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></p></td>
+<td><p>Initialize Unity task, load config, setup spaces</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">step(action)</span></code></p></td>
+<td><p>Execute action, get reward/obs/done</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reset(seed,</span> <span class="pre">options)</span></code></p></td>
+<td><p>Reset environment to initial state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">close()</span></code></p></td>
+<td><p>Cleanup and shutdown Unity</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">render()</span></code></p></td>
+<td><p>Handled automatically by Unity window</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_send_init_action()</span></code></p></td>
+<td><p>Send initialization action at reset</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="accessing-unity-data">
+<h3>Accessing Unity Data<a class="headerlink" href="#accessing-unity-data" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside your wrapper methods (_extract_observation, etc.):</span>
+
+<span class="c1"># --- ML-Agents observations ---</span>
+<span class="n">behavior_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_behavior</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;state&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;obs&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">obs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">agent_obs</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># First agent&#39;s observations</span>
+
+<span class="c1"># --- KV channel messages ---</span>
+<span class="n">kv_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">channel_kv</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
+<span class="k">if</span> <span class="s2">&quot;my_key&quot;</span> <span class="ow">in</span> <span class="n">kv_dict</span><span class="p">:</span>
+    <span class="n">value_str</span> <span class="o">=</span> <span class="n">kv_dict</span><span class="p">[</span><span class="s2">&quot;my_key&quot;</span><span class="p">]</span>  <span class="c1"># String value</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+
+<span class="c1"># --- Reward and done ---</span>
+<span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reward_response_behavior</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span>
+<span class="n">done</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reward_response_behavior</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span>
+
+<span class="c1"># --- Episode tracking ---</span>
+<span class="n">episode_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">episode</span>
+<span class="n">step_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">step</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<section id="unity-config-requirements">
+<h3>Unity Config Requirements<a class="headerlink" href="#unity-config-requirements" title="Link to this heading">#</a></h3>
+<p>Your <code class="docutils literal notranslate"><span class="pre">.game.toml</span></code> must specify behaviors:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[game]</span>
+<span class="n">behavior_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MyBehavior&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;TTLInput&quot;</span><span class="p">]</span>
+
+<span class="k">[unity.kv.MyReporter]</span>
+<span class="n">kvPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mygame&quot;</span>
+<span class="n">enableReporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">updateInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
+</pre></div>
+</div>
+</section>
+<section id="python-wrapper-config">
+<h3>Python Wrapper Config<a class="headerlink" href="#python-wrapper-config" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">MyGameWrapper</span><span class="p">(</span>
+    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;path/to/config.toml&quot;</span><span class="p">,</span>  <span class="c1"># Required</span>
+    <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">,</span>                <span class="c1"># &quot;human&quot; or None</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>             <span class="c1"># Truncation limit</span>
+    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>                  <span class="c1"># Per-step cost</span>
+    <span class="c1"># ... custom parameters</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
+<section id="headless-training">
+<h3>Headless Training<a class="headerlink" href="#headless-training" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># no_graphics=True</span>
+</pre></div>
+</div>
+</section>
+<section id="vectorized-environments">
+<h3>Vectorized Environments<a class="headerlink" href="#vectorized-environments" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3.common.vec_env</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubprocVecEnv</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_env</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_init</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">create_hockey_env</span><span class="p">(</span>
+            <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">worker_id</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>  <span class="c1"># Different Unity port</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">_init</span>
+
+<span class="c1"># Train on 4 parallel environments</span>
+<span class="n">envs</span> <span class="o">=</span> <span class="n">SubprocVecEnv</span><span class="p">([</span><span class="n">make_env</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span> <span class="n">envs</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">400_000</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Wrapper</p></th>
+<th class="head"><p>Game</p></th>
+<th class="head"><p>Action Space</p></th>
+<th class="head"><p>Observation Space</p></th>
+<th class="head"><p>Behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TouchDestroyWrapper</p></td>
+<td><p>Touch objects</p></td>
+<td><p>[x, y] position</p></td>
+<td><p>Object positions</p></td>
+<td><p>TouchInput</p></td>
+</tr>
+<tr class="row-odd"><td><p>HockeyWrapper</p></td>
+<td><p>Navigate &amp; intercept</p></td>
+<td><p>[vel, heading_Δ]</p></td>
+<td><p>Agent + object + targets</p></td>
+<td><p>DLCInput</p></td>
+</tr>
+<tr class="row-even"><td><p>BaseGymUnityWrapper</p></td>
+<td><p>(abstract)</p></td>
+<td><p>Define in subclass</p></td>
+<td><p>Define in subclass</p></td>
+<td><p>Configurable</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="../Unity/Agents.html"><span class="std std-doc">Agents Documentation</span></a></strong> - Unity agent implementations</p></li>
+<li><p><strong><a class="reference download internal" download="" href="../../_downloads/70bcdc4c2ea8fd3824480d92e86fd3ac/unity_agent_task.py"><span class="xref download myst">Unity Agent Task</span></a></strong> - Task interface</p></li>
+<li><p><strong><a class="reference internal" href="#../../rl/train_touchdestroy_rl.py"><span class="xref myst">Training Examples</span></a></strong> - Example training scripts</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/RL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../hardware/Teensy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Teensy Hardware Reference</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-factory-functions">Using Factory Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-with-stable-baselines3">Training with Stable-Baselines3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-reference">Wrapper Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchdestroywrapper">TouchDestroyWrapper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeywrapper">HockeyWrapper</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basegymunitywrapper-api">BaseGymUnityWrapper API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-implement">Abstract Methods (Must Implement)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-methods-can-override">Optional Methods (Can Override)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provided-methods-use-as-is">Provided Methods (Use As-Is)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-unity-data">Accessing Unity Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-config-requirements">Unity Config Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-wrapper-config">Python Wrapper Config</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headless-training">Headless Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-environments">Vectorized Environments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python Control System - Overview &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/Overview';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Unity Game Documentation" href="../Unity/Overview.html" />
+    <link rel="prev" title="Overview" href="../../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/Overview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/python/Overview.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python Control System - Overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-user-interfaces-guis"><strong>Graphical User Interfaces (GUIs)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies"><strong>1. Install Dependencies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-task-setup"><strong>2. Basic Task Setup</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-dummy-clients"><strong>3. Testing with Dummy Clients</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-graphical-interface"><strong>4. Using the Graphical Interface</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-user-interfaces"><strong>Graphical User Interfaces</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-clients"><strong>Control Clients</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-system"><strong>Task System</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-control-loop"><strong>Real-Time Control Loop</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-patterns">Configuration Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-dlc-pose-control-only"><strong>Pattern 1: DLC Pose Control Only</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-touchscreen-photodiode-sync"><strong>Pattern 2: Touchscreen + Photodiode Sync</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-all-modalities"><strong>Pattern 3: All Modalities</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-modes-for-testing">Dummy Modes for Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-testing-pygame"><strong>Interactive Testing (Pygame)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-values"><strong>Constant Values</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk"><strong>Random Walk</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-control">Runtime Parameter Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-logging">Data Logging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logged-data-structure"><strong>Logged Data Structure</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-unity">Integration with Unity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-setup"><strong>Behavior Setup</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-receiving"><strong>Action Receiving</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-setup">Hardware Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-components"><strong>Required Components</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-topology"><strong>Network Topology</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documentation">Related Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-system"><strong>Python System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-system"><strong>Unity System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchscreen-system"><strong>Touchscreen System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-guides"><strong>Hardware Guides</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-quick-reference">API Quick Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-creation"><strong>Task Creation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-control"><strong>Task Control</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-control"><strong>Runtime Control</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access"><strong>Data Access</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-control-system-overview">
+<h1>Python Control System - Overview<a class="headerlink" href="#python-control-system-overview" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The <strong>Python Control System</strong> provides a complete framework for running behavioral neuroscience experiments with Unity ML-Agents environments. It integrates:</p>
+<ul class="simple">
+<li><p><strong>Pose Tracking</strong> (DeepLabCut)</p></li>
+<li><p><strong>Touchscreen Input</strong> (Raspberry Pi controller)</p></li>
+<li><p><strong>Hardware Control</strong> (Teensy microcontroller)</p></li>
+<li><p><strong>Photodiode Synchronization</strong> (TTL bursts)</p></li>
+<li><p><strong>Multi-behavior Tasks</strong> (Unity ML-Agents)</p></li>
+</ul>
+<p>This modular architecture enables researchers to:</p>
+<ul class="simple">
+<li><p>Run closed-loop experiments with real-time sensory input</p></li>
+<li><p>Synchronize behavior with neural recordings</p></li>
+<li><p>Control reward delivery and environmental parameters</p></li>
+<li><p>Log comprehensive multi-modal data</p></li>
+</ul>
+<section id="graphical-user-interfaces-guis">
+<h3><strong>Graphical User Interfaces (GUIs)</strong><a class="headerlink" href="#graphical-user-interfaces-guis" title="Link to this heading">#</a></h3>
+<p>Three PyQt-based GUIs simplify setup and operation:</p>
+<ul class="simple">
+<li><p><strong>UnityTaskGUI</strong> - Configure and run experiments with live monitoring, parameter editing, and automatic data saving</p></li>
+<li><p><strong>TeensyControlGUI</strong> - Hardware testing, water delivery calibration, and sensor monitoring</p></li>
+<li><p><strong>Data Transfer GUI</strong> (<code class="docutils literal notranslate"><span class="pre">dj_pipeline/gui_transfer</span></code>) - Session metadata entry, file attachment, and local/remote transfer</p></li>
+</ul>
+<p>See <a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs.md</span></a> for complete user guide.
+For transfer workflow details, see <a class="reference internal" href="DataTransferGUI.html"><span class="std std-doc">DataTransferGUI.md</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="system-architecture">
+<h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────────────┐
+│                        PYTHON CONTROL LAYER                         │
+│                                                                     │
+│  ┌────────────────────────────────────────────────────────────┐     │
+│  │                    UnityAgentTask                          │     │
+│  │  - Orchestrates all control clients                        │     │
+│  │  - Routes actions to Unity behaviors                       │     │
+│  │  - Aggregates multi-modal data                             │     │
+│  └────────────────────────────────────────────────────────────┘     │
+│                           │                                         │
+│         ┌─────────────────┼─────────────────┬─────────────┐         │
+│         │                 │                 │             │         │
+│         ▼                 ▼                 ▼             ▼         │
+│  ┌──────────┐    ┌──────────────┐   ┌──────────┐   ┌──────────┐     │
+│  │   DLC    │    │ TouchClient  │   │  Teensy  │   │   TTL    │     │
+│  │  Client  │    │              │   │  Serial  │   │Generator │     │
+│  │          │    │ (Touchscreen)│   │          │   │          │     │
+│  └────┬─────┘    └──────┬───────┘   └────┬─────┘   └────┬─────┘     │
+└───────┼─────────────────┼──────────────────┼────────────┼───────────┘
+        │                 │                  │            │
+        │ Socket          │ Socket           │ Serial     │ (Internal)
+        │ (multiproc)     │ (multiproc)      │ (USB)      │
+        │                 │                  │            │
+        ▼                 ▼                  ▼            ▼
+┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────┐
+│ DLC Server   │  │  Raspberry   │  │   Teensy     │  │  Unity   │
+│ (Pose Est.)  │  │  Pi Touch    │  │ Microctrl.   │  │ Display  │
+│              │  │ Controller   │  │              │  │ (Corner) │
+└──────────────┘  └──────────────┘  └──────────────┘  └────┬─────┘
+                                                           │
+                                                           ▼
+                                                    ┌────────────┐
+                                                    │ Photodiode │
+                                                    │  Circuit   │
+                                                    └────────────┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
+<section id="install-dependencies">
+<h3><strong>1. Install Dependencies</strong><a class="headerlink" href="#install-dependencies" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>SCENE_MouseAR
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="basic-task-setup">
+<h3><strong>2. Basic Task Setup</strong><a class="headerlink" href="#basic-task-setup" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Initialize hardware</span>
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create task with DLC pose control</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">],</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">300.0</span><span class="p">]),</span>
+
+    <span class="c1"># Enable DLC (real server)</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
+    <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
+
+<span class="c1"># Run task</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">pass</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="c1"># Save data</span>
+<span class="n">task</span><span class="o">.</span><span class="n">save_data_to_json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-with-dummy-clients">
+<h3><strong>3. Testing with Dummy Clients</strong><a class="headerlink" href="#testing-with-dummy-clients" title="Link to this heading">#</a></h3>
+<p>One can run the task without hardware by using dummy modes. Hereby we replace the input from DLC with an interactive pygame window:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use interactive pygame controls (no hardware needed)</span>
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">],</span>
+
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>  <span class="c1"># Opens interactive window</span>
+<span class="p">)</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="c1"># Control agent with mouse and keyboard in pygame window</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-graphical-interface">
+<h3><strong>4. Using the Graphical Interface</strong><a class="headerlink" href="#using-the-graphical-interface" title="Link to this heading">#</a></h3>
+<p>For easier setup and monitoring, use the UnityTaskGUI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch GUI</span>
+python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_gui
+
+<span class="c1"># In GUI:</span>
+<span class="c1"># 1. Load config file (*.game.toml)</span>
+<span class="c1"># 2. Select profile (e.g., &quot;Training&quot;)</span>
+<span class="c1"># 3. Enter mouse name and weight</span>
+<span class="c1"># 4. Click &quot;Start&quot;</span>
+<span class="c1"># 5. Monitor live statistics</span>
+<span class="c1"># 6. Click &quot;Stop&quot; to save data</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs.md</span></a> for complete GUI documentation.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="core-components">
+<h2>Core Components<a class="headerlink" href="#core-components" title="Link to this heading">#</a></h2>
+<section id="graphical-user-interfaces">
+<h3><strong>Graphical User Interfaces</strong><a class="headerlink" href="#graphical-user-interfaces" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>GUI</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Documentation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>UnityTaskGUI</strong></p></td>
+<td><p>Configure experiments, live monitoring, parameter editing</p></td>
+<td><p><a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs.md</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TeensyControlGUI</strong></p></td>
+<td><p>Hardware testing, water calibration, sensor monitoring</p></td>
+<td><p><a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs.md</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Data Transfer GUI</strong></p></td>
+<td><p>DataJoint dropdown metadata, dataset-based file auto-discovery, transfer to local/remote storage</p></td>
+<td><p><a class="reference internal" href="DataTransferGUI.html"><span class="std std-doc">DataTransferGUI.md</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="control-clients">
+<h3><strong>Control Clients</strong><a class="headerlink" href="#control-clients" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Client</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Documentation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DLCClient</strong></p></td>
+<td><p>DeepLabCut pose tracking → Unity</p></td>
+<td><p><a class="reference internal" href="DLCClient.html"><span class="std std-doc">DLCClient.md</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TouchClient</strong></p></td>
+<td><p>Touchscreen input → Unity</p></td>
+<td><p><a class="reference internal" href="TouchClient.html"><span class="std std-doc">TouchClient.md</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Teensy</strong></p></td>
+<td><p>Hardware control (reward, TTL, sensors)</p></td>
+<td><p><a class="reference internal" href="Teensy.html"><span class="std std-doc">Teensy.md</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TTLGenerator</strong></p></td>
+<td><p>Photodiode sync bursts → Unity</p></td>
+<td><p><a class="reference internal" href="TTLGenerator.html"><span class="std std-doc">TTLGenerator.md</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="task-system">
+<h3><strong>Task System</strong><a class="headerlink" href="#task-system" title="Link to this heading">#</a></h3>
+<p>We use an inheritance hierarchy for tasks:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Documentation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Task</strong></p></td>
+<td><p>Base class with hardware integration</p></td>
+<td><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks.md</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>UnityMultibehaviorTask</strong></p></td>
+<td><p>Multi-behavior ML-Agents orchestration</p></td>
+<td><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks.md</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>UnityAgentTask</strong></p></td>
+<td><p>Full client integration (DLC/Touch/TTL)</p></td>
+<td><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks.md</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-flow">
+<h2>Data Flow<a class="headerlink" href="#data-flow" title="Link to this heading">#</a></h2>
+<section id="real-time-control-loop">
+<h3><strong>Real-Time Control Loop</strong><a class="headerlink" href="#real-time-control-loop" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EVERY GAME STEP (e.g., 200 Hz):
+
+1. Read Control Clients (if enabled)
+   - DLCClient.read()      → [x, y, heading, head_angle]
+   - TouchClient.read()    → [px, py, dx, dy]
+   - TTLGenerator.read()   → [ttl_state]
+
+2. Route to Unity Behaviors
+   - DLCInput   ← DLC data
+   - TouchInput ← Touch data
+   - TTLInput   ← TTL data
+
+3. Step Unity Environment
+   - Unity.step()
+   - Collect observations, rewards, done flags
+
+4. Check Reward Conditions
+   - If reward &gt; 0 → teensy.give_reward(100ms)
+
+5. Log Data
+   - All client reads
+   - Unity states/actions/rewards
+   - Teensy commands/inputs
+   - Runtime parameter changes
+
+6. Check Terminal Conditions
+   - Episode done? → Reset episode (no env reset)
+   - Epoch done? → Stop or next epoch
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuration-patterns">
+<h2>Configuration Patterns<a class="headerlink" href="#configuration-patterns" title="Link to this heading">#</a></h2>
+<section id="pattern-1-dlc-pose-control-only">
+<h3><strong>Pattern 1: DLC Pose Control Only</strong><a class="headerlink" href="#pattern-1-dlc-pose-control-only" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">],</span>
+
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>
+    <span class="o">**</span><span class="n">dlckwargs</span><span class="p">,</span>
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Use Cases:</strong></p>
+<ul class="simple">
+<li><p>Freely moving mouse with overhead camera</p></li>
+<li><p>Closed-loop augmented reality navigation</p></li>
+<li><p>Position-triggered stimulus delivery</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pattern-2-touchscreen-photodiode-sync">
+<h3><strong>Pattern 2: Touchscreen + Photodiode Sync</strong><a class="headerlink" href="#pattern-2-touchscreen-photodiode-sync" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TouchInput&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLInput&quot;</span><span class="p">],</span>
+
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6002</span><span class="p">),</span>
+    <span class="n">touch_tx_hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">,</span>
+
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">photottl_period_sec</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pattern-3-all-modalities">
+<h3><strong>Pattern 3: All Modalities</strong><a class="headerlink" href="#pattern-3-all-modalities" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">,</span> <span class="s2">&quot;TouchInput&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLInput&quot;</span><span class="p">],</span>
+
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>
+
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6002</span><span class="p">),</span>
+
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="dummy-modes-for-testing">
+<h2>Dummy Modes for Testing<a class="headerlink" href="#dummy-modes-for-testing" title="Link to this heading">#</a></h2>
+<p>All clients support dummy modes for hardware-free development:</p>
+<section id="interactive-testing-pygame">
+<h3><strong>Interactive Testing (Pygame)</strong><a class="headerlink" href="#interactive-testing-pygame" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DLC: Control with mouse + keyboard (WASD, Q/E rotate)</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>
+
+<span class="c1"># Touch: Control with mouse (hold LMB to simulate touch)</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="constant-values">
+<h3><strong>Constant Values</strong><a class="headerlink" href="#constant-values" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DLC: Static position/heading</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span>
+
+<span class="c1"># Touch: Static position/velocity</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="random-walk">
+<h3><strong>Random Walk</strong><a class="headerlink" href="#random-walk" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DLC: Random positions/headings</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>
+
+<span class="c1"># Touch: Random positions/velocities</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="runtime-parameter-control">
+<h2>Runtime Parameter Control<a class="headerlink" href="#runtime-parameter-control" title="Link to this heading">#</a></h2>
+<p>Adjust Unity environment parameters during task execution using KvSidechannel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Unity C# Receiver:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">HasMessage</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="s">&quot;key&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// Apply value...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="data-logging">
+<h2>Data Logging<a class="headerlink" href="#data-logging" title="Link to this heading">#</a></h2>
+<section id="logged-data-structure">
+<h3><strong>Logged Data Structure</strong><a class="headerlink" href="#logged-data-structure" title="Link to this heading">#</a></h3>
+<p>All data saved to JSON file via <code class="docutils literal notranslate"><span class="pre">task.save_data_to_json()</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+  &quot;params&quot;: {
+    &quot;subject_id&quot;: &quot;Mouse42&quot;,
+    &quot;env_path&quot;: &quot;Build/MouseAR.exe&quot;,
+    &quot;epochs&quot;: [300.0],
+    &quot;use_dlc&quot;: true,
+    &quot;use_touch&quot;: true,
+    ...
+  },
+
+  &quot;episode&quot;: [0, 0, 0, 1, 1, ...],
+  &quot;step&quot;: [0, 1, 2, 0, 1, ...],
+  &quot;step_time&quot;: [0.0, 0.016, 0.032, ...],
+
+  &quot;state&quot;: [{...}, {...}, ...],
+  &quot;action&quot;: [{...}, {...}, ...],
+  &quot;reward&quot;: [0.0, 0.0, 1.0, ...],
+  &quot;terminal&quot;: [false, false, true, ...],
+
+  &quot;dlc_read_time&quot;: [0.0, 0.016, ...],
+  &quot;dlc_x&quot;: [0.5, 0.51, ...],
+  &quot;dlc_y&quot;: [0.3, 0.31, ...],
+  &quot;dlc_heading&quot;: [1.2, 1.21, ...],
+
+  &quot;touch_read_time&quot;: [0.0, 0.016, ...],
+  &quot;touch_px&quot;: [-0.2, -0.19, ...],
+  &quot;touch_py&quot;: [0.4, 0.41, ...],
+
+  &quot;teensy_input_time&quot;: [0.0, 0.01, ...],
+  &quot;teensy_input_analog&quot;: [512, 515, ...],
+  &quot;teensy_input_digital&quot;: [0, 0, 1, ...],
+  &quot;teensy_output_time&quot;: [5.2, 12.3, ...],
+  &quot;teensy_output_command&quot;: [&quot;W100&quot;, &quot;W100&quot;, ...],
+
+  &quot;ttl_time&quot;: [0.0, 0.05, 0.1, ...],
+  &quot;ttl_value&quot;: [0.0, 1.0, 0.0, ...],
+
+  &quot;runtime_params&quot;: [
+    {&quot;difficulty&quot;: &quot;0.8&quot;, &quot;time&quot;: 120.0, &quot;episode&quot;: 5, &quot;step&quot;: 240},
+    ...
+  ],
+
+  &quot;kv_messages&quot;: [
+    {&quot;timestamp&quot;: 120.0, &quot;episode&quot;: 5, &quot;step&quot;: 240, &quot;messages&quot;: {...}},
+    ...
+  ]
+}
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="integration-with-unity">
+<h2>Integration with Unity<a class="headerlink" href="#integration-with-unity" title="Link to this heading">#</a></h2>
+<section id="behavior-setup">
+<h3><strong>Behavior Setup</strong><a class="headerlink" href="#behavior-setup" title="Link to this heading">#</a></h3>
+<p>Unity agents must have matching behavior names:</p>
+<p><strong>Python:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">,</span> <span class="s2">&quot;TouchInput&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLInput&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Unity C#:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DlcAgent</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Agent</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Initialize</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Behavior name: &quot;DLCInput&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="action-receiving">
+<h3><strong>Action Receiving</strong><a class="headerlink" href="#action-receiving" title="Link to this heading">#</a></h3>
+<p><strong>Python sends:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DlcAgent actions (from DLC)</span>
+<span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">heading</span><span class="p">,</span> <span class="n">head_angle</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Unity receives:</strong></p>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">OnActionReceived</span><span class="p">(</span><span class="n">ActionBuffers</span><span class="w"> </span><span class="n">actions</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">headAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span><span class="p">.</span><span class="n">ContinuousActions</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="w">    </span><span class="c1">// Apply to agent transform...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hardware-setup">
+<h2>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Link to this heading">#</a></h2>
+<section id="required-components">
+<h3><strong>Required Components</strong><a class="headerlink" href="#required-components" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Connection</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Teensy 4.0</strong></p></td>
+<td><p>Reward, TTL, sensors</p></td>
+<td><p>USB Serial to PC</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Solenoid Valve</strong></p></td>
+<td><p>Water delivery</p></td>
+<td><p>Teensy GPIO → MOSFET</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DLC Server</strong></p></td>
+<td><p>Pose estimation using DLCLive-GUI</p></td>
+<td><p>Network (multiprocessing)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Raspberry Pi</strong></p></td>
+<td><p>Touchscreen controller</p></td>
+<td><p>Network (multiprocessing)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Photodiode</strong></p></td>
+<td><p>Frame sync</p></td>
+<td><p>Unity display → ADC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="network-topology">
+<h3><strong>Network Topology</strong><a class="headerlink" href="#network-topology" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────┐
+│        Experimental PC (Python)             │
+│  - UnityAgentTask                           │
+│  - DLCClient (client)                       │
+│  - TouchClient (client)                     │
+└───────┬───────────────────┬─────────────────┘
+        │ Ethernet          │ Ethernet
+        │ 0.0.0.0           │ 192.168.1.x
+        │                   │
+        ▼                   ▼
+┌──────────────────┐  ┌──────────────────────┐
+│  DLC Server PC   │  │  Raspberry Pi        │
+│  0.0.0.0         │  │  192.168.1.100       │
+│  Port: 6000      │  │  Port: 6001          │
+│                  │  │  TouchController     │
+└──────────────────┘  └──────────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading">#</a></h2>
+<section id="python-system">
+<h3><strong>Python System</strong><a class="headerlink" href="#python-system" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs</span></a> - Complete GUI user guide (UnityTaskGUI and TeensyControlGUI)</p></li>
+<li><p><a class="reference internal" href="ConfigSystem.html"><span class="std std-doc">Config System</span></a> - TOML profile system and configuration management</p></li>
+<li><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks</span></a> - Task system hierarchy and API</p></li>
+<li><p><a class="reference internal" href="DLCClient.html"><span class="std std-doc">DLCClient</span></a> - DeepLabCut integration</p></li>
+<li><p><a class="reference internal" href="TouchClient.html"><span class="std std-doc">TouchClient</span></a> - Touchscreen integration</p></li>
+<li><p><a class="reference internal" href="Teensy.html"><span class="std std-doc">Teensy</span></a> - Hardware control and serial protocol</p></li>
+<li><p><a class="reference internal" href="TTLGenerator.html"><span class="std std-doc">TTLGenerator</span></a> - Photodiode synchronization</p></li>
+</ul>
+</section>
+<section id="unity-system">
+<h3><strong>Unity System</strong><a class="headerlink" href="#unity-system" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../Unity/Overview.html"><span class="std std-doc">Unity Overview</span></a> - Unity game architecture</p></li>
+<li><p><a class="reference internal" href="../Unity/Agents.html"><span class="std std-doc">Unity Agents</span></a> - ML-Agents implementation</p></li>
+<li><p><a class="reference internal" href="../Unity/EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a> - Unity episode lifecycle</p></li>
+<li><p><a class="reference internal" href="../Unity/ParameterSystem.html"><span class="std std-doc">Parameter System</span></a> - Environment parameters and KV channels</p></li>
+</ul>
+</section>
+<section id="touchscreen-system">
+<h3><strong>Touchscreen System</strong><a class="headerlink" href="#touchscreen-system" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../touchscreen/Overview.html"><span class="std std-doc">Touchscreen Overview</span></a> - Quick reference</p></li>
+<li><p><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html"><span class="std std-doc">Touchscreen Architecture</span></a> - Complete system design</p></li>
+</ul>
+</section>
+<section id="hardware-guides">
+<h3><strong>Hardware Guides</strong><a class="headerlink" href="#hardware-guides" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="Teensy.html"><span class="std std-doc">Teensy Setup Guide</span></a> - Wiring and firmware</p></li>
+<li><p><a class="reference internal" href="DLCClient.html"><span class="std std-doc">DLC Server Setup</span></a> - Pose estimation server</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="api-quick-reference">
+<h2>API Quick Reference<a class="headerlink" href="#api-quick-reference" title="Link to this heading">#</a></h2>
+<section id="task-creation">
+<h3><strong>Task Creation</strong><a class="headerlink" href="#task-creation" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
+
+<span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
+    <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;path/to/unity.exe&quot;</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Behavior1&quot;</span><span class="p">,</span> <span class="s2">&quot;Behavior2&quot;</span><span class="p">],</span>
+
+    <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">),</span>
+
+    <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="n">port</span><span class="p">),</span>
+
+    <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="task-control">
+<h3><strong>Task Control</strong><a class="headerlink" href="#task-control" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>                              <span class="c1"># Initialize</span>
+<span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>                               <span class="c1"># Step once (returns (bool, dict))</span>
+<span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>                               <span class="c1"># Clean up</span>
+<span class="n">task</span><span class="o">.</span><span class="n">save_data_to_json</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>         <span class="c1"># Save data</span>
+</pre></div>
+</div>
+</section>
+<section id="runtime-control">
+<h3><strong>Runtime Control</strong><a class="headerlink" href="#runtime-control" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">)</span>            <span class="c1"># Water delivery</span>
+<span class="n">task</span><span class="o">.</span><span class="n">signal_ttl</span><span class="p">()</span>                        <span class="c1"># TTL pulse</span>
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>       <span class="c1"># Update Unity parameter</span>
+</pre></div>
+</div>
+</section>
+<section id="data-access">
+<h3><strong>Data Access</strong><a class="headerlink" href="#data-access" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>                   <span class="c1"># All logged data</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>               <span class="c1"># Configuration</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>                   <span class="c1"># Current state</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Unity/Overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unity Game Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-user-interfaces-guis"><strong>Graphical User Interfaces (GUIs)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies"><strong>1. Install Dependencies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-task-setup"><strong>2. Basic Task Setup</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-with-dummy-clients"><strong>3. Testing with Dummy Clients</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-graphical-interface"><strong>4. Using the Graphical Interface</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-user-interfaces"><strong>Graphical User Interfaces</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-clients"><strong>Control Clients</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-system"><strong>Task System</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow">Data Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#real-time-control-loop"><strong>Real-Time Control Loop</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-patterns">Configuration Patterns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-1-dlc-pose-control-only"><strong>Pattern 1: DLC Pose Control Only</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-2-touchscreen-photodiode-sync"><strong>Pattern 2: Touchscreen + Photodiode Sync</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pattern-3-all-modalities"><strong>Pattern 3: All Modalities</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dummy-modes-for-testing">Dummy Modes for Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-testing-pygame"><strong>Interactive Testing (Pygame)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constant-values"><strong>Constant Values</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-walk"><strong>Random Walk</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-parameter-control">Runtime Parameter Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-logging">Data Logging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logged-data-structure"><strong>Logged Data Structure</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-unity">Integration with Unity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-setup"><strong>Behavior Setup</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#action-receiving"><strong>Action Receiving</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-setup">Hardware Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-components"><strong>Required Components</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-topology"><strong>Network Topology</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-documentation">Related Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-system"><strong>Python System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-system"><strong>Unity System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchscreen-system"><strong>Touchscreen System</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-guides"><strong>Hardware Guides</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-quick-reference">API Quick Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-creation"><strong>Task Creation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-control"><strong>Task Control</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-control"><strong>Runtime Control</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access"><strong>Data Access</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

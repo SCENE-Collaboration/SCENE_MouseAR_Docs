@@ -1,0 +1,1058 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration System - TOML Profiles &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/ConfigSystem';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Task System Documentation" href="Tasks.html" />
+    <link rel="prev" title="Data Transfer GUI (dj_pipeline/gui_transfer)" href="DataTransferGUI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Unity/Architecture.html">Core Architecture</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Unity/HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/ConfigSystem.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/python/ConfigSystem.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Configuration System - TOML Profiles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-used-by-hockey">Config files used by Hockey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-names">Section names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-base-values">Hockey base values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-from-hockey-game-toml">Example from <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imported-base-values-used-by-hockey">Imported base values used by Hockey</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-profiles-actual-names-and-values">Hockey profiles (actual names and values)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-from-rl-config-toml"><code class="docutils literal notranslate"><span class="pre">RL</span></code> (from <code class="docutils literal notranslate"><span class="pre">rl.config.toml</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-profile-merge-works">How profile merge works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-configurations">Loading configurations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-loading">Programmatic loading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-scheduler-liveparamscheduler">Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-rules-in-toml">Defining rules in TOML</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-valued-rule-step-through-fixed-stages">List-valued rule (step through fixed stages)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rules-in-a-profile">Selecting rules in a profile</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-at-runtime">How it works at runtime</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example-hockey-trainingstage1">Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-docs">Related docs</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="configuration-system-toml-profiles">
+<h1>Configuration System - TOML Profiles<a class="headerlink" href="#configuration-system-toml-profiles" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">mice_ar_tasks</span></code> configuration system uses TOML files plus profile-based overrides.
+The examples below are based on values that are actually present in this repository, especially <code class="docutils literal notranslate"><span class="pre">mouse_ar/tasks/configs/hockey.game.toml</span></code> and its imports.</p>
+</section>
+<hr class="docutils" />
+<section id="config-files-used-by-hockey">
+<h2>Config files used by Hockey<a class="headerlink" href="#config-files-used-by-hockey" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code> imports these files:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[imports]</span>
+<span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;./teensy.hw.toml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;./dlc.hw.toml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;./game.config.toml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;./rl.config.toml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;./rules.lib.toml&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>So the effective config is the deep merge of imported files, then <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code>, then optional profile overrides.</p>
+</section>
+<hr class="docutils" />
+<section id="section-names">
+<h2>Section names<a class="headerlink" href="#section-names" title="Link to this heading">#</a></h2>
+<p>The loader in <code class="docutils literal notranslate"><span class="pre">mouse_ar/ctrl/utils/config_loader.py</span></code> expects these sections:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[unity.kv.*]</span></code> → flattened to string KV pairs for <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[unity.env.*]</span></code> → flattened to float env params for <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[game]</span></code> → python task settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[teensy]</span></code>, <code class="docutils literal notranslate"><span class="pre">[dlc]</span></code>, <code class="docutils literal notranslate"><span class="pre">[touchscreen]</span></code> → hardware/input settings</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[rules_lib.*]</span></code> and <code class="docutils literal notranslate"><span class="pre">[rules.use]</span></code> → adaptive rule templates and selected rules</p></li>
+</ul>
+<blockquote>
+<div><p>Note: the correct KV namespace is <code class="docutils literal notranslate"><span class="pre">unity.kv</span></code>, not <code class="docutils literal notranslate"><span class="pre">unity.env.kv</span></code>.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="hockey-base-values">
+<h2>Hockey base values<a class="headerlink" href="#hockey-base-values" title="Link to this heading">#</a></h2>
+<section id="example-from-hockey-game-toml">
+<h3>Example from <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code><a class="headerlink" href="#example-from-hockey-game-toml" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.env.general]</span>
+<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
+<span class="n">iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="n">enable_init_phase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[unity.kv.HockeyManager]</span>
+<span class="n">spawner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">display_reward_flash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reward_display_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span>
+<span class="n">display_noise_overlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">noise_display_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[game]</span>
+<span class="n">use_photottl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">use_touch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">use_dlc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">behavior_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="imported-base-values-used-by-hockey">
+<h3>Imported base values used by Hockey<a class="headerlink" href="#imported-base-values-used-by-hockey" title="Link to this heading">#</a></h3>
+<p>From <code class="docutils literal notranslate"><span class="pre">game.config.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[game]</span>
+<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">User</span><span class="se">\\</span><span class="s2">Repos</span><span class="se">\\</span><span class="s2">SCENE_MouseAR</span><span class="se">\\</span><span class="s2">UnityAR</span><span class="se">\\</span><span class="s2">Build</span><span class="se">\\</span><span class="s2">MouseAR.exe&quot;</span>
+<span class="n">monitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
+<span class="n">reward_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="n">use_perf_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[unity.env.general]</span>
+<span class="n">enable_reporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reporting_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">rotate_bottom_screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[unity.kv.general]</span>
+<span class="n">render_virtual_mouse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</pre></div>
+</div>
+<p>From <code class="docutils literal notranslate"><span class="pre">dlc.hw.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[dlc]</span>
+<span class="n">dlc_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">6000</span><span class="p">]</span>
+<span class="n">dlc_apply_filter_inprocessor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">dlc_box_extents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">115</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">577</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">]</span>
+<span class="n">dlc_flip_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">dlc_flip_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">dlc_rotate_90</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
+<p>From <code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[teensy]</span>
+<span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;COM3&quot;</span>
+<span class="n">baudrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span>
+<span class="n">csv_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hockey-profiles-actual-names-and-values">
+<h2>Hockey profiles (actual names and values)<a class="headerlink" href="#hockey-profiles-actual-names-and-values" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code> defines:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code></p></li>
+<li><p>and <code class="docutils literal notranslate"><span class="pre">RL</span></code> (from imported <code class="docutils literal notranslate"><span class="pre">rl.config.toml</span></code>)</p></li>
+</ul>
+<section id="trainingstage1">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code><a class="headerlink" href="#trainingstage1" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
+<span class="n">object_min_distance_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">spawn_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span>
+<span class="n">randomize_start_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="k">[profile.trainingstage1.game]</span>
+<span class="n">reward_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span>
+<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
+
+<span class="k">[profile.trainingstage1.unity.env.general]</span>
+<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+
+<span class="k">[profile.trainingstage1.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="trainingstage2">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code><a class="headerlink" href="#trainingstage2" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage2.unity.kv.hockeyFloor]</span>
+<span class="n">object_min_distance_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">spawn_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.5</span>
+<span class="n">randomize_start_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="k">[profile.trainingstage2.game]</span>
+<span class="n">reward_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
+<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="k">[profile.trainingstage2.unity.env.rewardAssociation]</span>
+<span class="n">size_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">size_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+
+<span class="k">[profile.trainingstage2.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="rl-from-rl-config-toml">
+<h3><code class="docutils literal notranslate"><span class="pre">RL</span></code> (from <code class="docutils literal notranslate"><span class="pre">rl.config.toml</span></code>)<a class="headerlink" href="#rl-from-rl-config-toml" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.RL.unity.env.general]</span>
+<span class="n">enable_reporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reporting_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
+<span class="n">iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+
+<span class="k">[profile.RL.unity.kv.general]</span>
+<span class="n">render_virtual_mouse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[profile.RL.teensy]</span>
+<span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+
+<span class="k">[profile.RL.game]</span>
+<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="n">use_touch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">use_dlc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-profile-merge-works">
+<h2>How profile merge works<a class="headerlink" href="#how-profile-merge-works" title="Link to this heading">#</a></h2>
+<p>Merge order in <code class="docutils literal notranslate"><span class="pre">load_config()</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Load file + recursively load imports</p></li>
+<li><p>Deep-merge imported/base values</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">profile</span></code> is provided, deep-merge <code class="docutils literal notranslate"><span class="pre">profile.&lt;name&gt;</span></code> on top</p></li>
+<li><p>Flatten:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code> → <code class="docutils literal notranslate"><span class="pre">env_kv</span></code> (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">str]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> → <code class="docutils literal notranslate"><span class="pre">env_params</span></code> (<code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">float]</span></code>)</p></li>
+</ul>
+</li>
+</ol>
+<p>Example (<code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code>, profile <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.iti_length</span></code> stays <code class="docutils literal notranslate"><span class="pre">3</span></code> (base, not overridden)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.episode_length</span></code> becomes <code class="docutils literal notranslate"><span class="pre">120</span></code> (profile override)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.kv.hockeyFloor.spawn_target</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">env_kv</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="loading-configurations">
+<h2>Loading configurations<a class="headerlink" href="#loading-configurations" title="Link to this heading">#</a></h2>
+<section id="programmatic-loading">
+<h3>Programmatic loading<a class="headerlink" href="#programmatic-loading" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.utils.config_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span><span class="p">,</span> <span class="n">get_available_profiles</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span>
+
+<span class="n">profiles</span> <span class="o">=</span> <span class="n">get_available_profiles</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="c1"># e.g. [&#39;RL&#39;, &#39;trainingstage1&#39;, &#39;trainingstage2&#39;]</span>
+
+<span class="n">env_kv</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># base</span>
+<span class="n">env_kv_s1</span><span class="p">,</span> <span class="n">env_params_s1</span><span class="p">,</span> <span class="n">cfg_s1</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;trainingstage1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="rules-scheduler-liveparamscheduler">
+<h2>Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)<a class="headerlink" href="#rules-scheduler-liveparamscheduler" title="Link to this heading">#</a></h2>
+<p>The <strong>Rules Scheduler</strong> is an adaptive difficulty engine embedded inside <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code>. It automatically modifies Unity environment parameters (KV or float) as a session progresses, without requiring any manual intervention in the task loop.</p>
+<section id="concept">
+<h3>Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h3>
+<p>A <em>rule</em> is a declarative instruction of the form:</p>
+<blockquote>
+<div><p>“Every N <strong>successes</strong> / <strong>episodes</strong> / <strong>epochs</strong>, apply operation <code class="docutils literal notranslate"><span class="pre">op</span></code> with value <code class="docutils literal notranslate"><span class="pre">value</span></code> to parameter <code class="docutils literal notranslate"><span class="pre">target</span></code>, clamped to <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.”</p>
+</div></blockquote>
+<p>Rules are loaded from the TOML config at startup and run silently in the background. After each episode the task calls scheduler hooks (<code class="docutils literal notranslate"><span class="pre">on_success</span></code>, <code class="docutils literal notranslate"><span class="pre">on_episode_end</span></code>, <code class="docutils literal notranslate"><span class="pre">on_epoch_advance</span></code>); the scheduler accumulates any resulting parameter changes and flushes them at the start of the next episode via <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="defining-rules-in-toml">
+<h3>Defining rules in TOML<a class="headerlink" href="#defining-rules-in-toml" title="Link to this heading">#</a></h3>
+<p>Rules are stored in two places:</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">rules_lib.*</span></code></strong> — a shared library of reusable rule templates (typically in <code class="docutils literal notranslate"><span class="pre">rules.lib.toml</span></code> which is imported by game configs).</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">[profile.&lt;name&gt;.rules]</span> <span class="pre">use</span> <span class="pre">=</span> <span class="pre">[...]</span></code></strong> — each profile selects which library rules are active for that session.</p></li>
+</ol>
+<section id="rule-fields">
+<h4>Rule fields<a class="headerlink" href="#rule-fields" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Parameter path. Use <code class="docutils literal notranslate"><span class="pre">unity.kv.&lt;section&gt;.&lt;key&gt;</span></code> for KV channel parameters or <code class="docutils literal notranslate"><span class="pre">unity.env.&lt;section&gt;.&lt;key&gt;</span></code> for float env parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Operation: <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, or <code class="docutils literal notranslate"><span class="pre">subtract</span></code>. String-valued targets only support <code class="docutils literal notranslate"><span class="pre">set</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">list</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Value to apply. A list cycles through its elements on consecutive triggers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">every</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Trigger cadence in the format <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;N&gt;</span></code> where unit is <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, or <code class="docutils literal notranslate"><span class="pre">epoch</span></code> and N is the integer count.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Lower bound applied after the operation (numeric targets only).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Upper bound applied after the operation (numeric targets only).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">window</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Sliding window size for rate-based rules (reserved for future use).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="minimal-example">
+<h4>Minimal example<a class="headerlink" href="#minimal-example" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.ramp_distance]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_max_distance&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;add&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span><span class="w">   </span><span class="c1"># trigger after every success</span>
+<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
+</pre></div>
+</div>
+<p>This adds 0.04 to <code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span></code> after every successful trial, clamped between 0.5 and 5.0.</p>
+</section>
+<section id="list-valued-rule-step-through-fixed-stages">
+<h4>List-valued rule (step through fixed stages)<a class="headerlink" href="#list-valued-rule-step-through-fixed-stages" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.stage_sequence]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.HockeyManager.spawner&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;set&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">]</span><span class="w">   </span><span class="c1"># cycles: 0 → 1 → 2 → 0 → ...</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;epoch:1&quot;</span>
+</pre></div>
+</div>
+<p>Each time an epoch advances the spawner index is incremented cyclically through the list.</p>
+</section>
+<section id="selecting-rules-in-a-profile">
+<h4>Selecting rules in a profile<a class="headerlink" href="#selecting-rules-in-a-profile" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
+
+<span class="k">[profile.trainingstage2.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;reduce_platform_sizex&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Only the named rules are activated; all other <code class="docutils literal notranslate"><span class="pre">rules_lib</span></code> entries are ignored for that profile.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-it-works-at-runtime">
+<h3>How it works at runtime<a class="headerlink" href="#how-it-works-at-runtime" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 ┌─────────────────────────────────┐
+                 │       UnityMultibehaviorTask      │
+                 │                                  │
+  per episode    │  loop() detects terminal=True    │
+  ─────────────► │  ep_reward &gt; 0 → on_success()   │
+                 │  on_episode_end()                │
+                 │  (epoch boundary) on_epoch_advance() │
+                 └──────────────┬──────────────────┘
+                                 │
+                    ┌────────────▼────────────┐
+                    │   LiveParamScheduler    │
+                    │                         │
+                    │  _maybe_apply(unit)      │
+                    │   increment tick counter │
+                    │   if tick % N == 0:      │
+                    │     _apply_rule(r)       │
+                    │     accumulate to        │
+                    │     _pending_kv /        │
+                    │     _pending_env         │
+                    └────────────┬────────────┘
+                                 │
+                 ┌───────────────▼──────────────────┐
+                 │  reset_episode()                  │
+                 │  calls get_changes()              │
+                 │  → _apply_scheduler_changes()     │
+                 │    channel_kv.set(key, val)       │  ──► Unity KV channel
+                 │    (env param update disabled)    │
+                 │  logs to runtime_params[]         │
+                 └──────────────────────────────────┘
+</pre></div>
+</div>
+<p>Key points:</p>
+<ul class="simple">
+<li><p><strong>Changes are batched</strong>: <code class="docutils literal notranslate"><span class="pre">_apply_rule()</span></code> writes immediately to the in-memory parameter dicts but changes are only sent to Unity when <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> is called at <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code>.</p></li>
+<li><p><strong>Only actual changes are sent</strong>: the scheduler compares old and new values; if a rule produced no change (e.g. already at <code class="docutils literal notranslate"><span class="pre">max</span></code>) nothing is transmitted.</p></li>
+<li><p><strong>Changes are logged</strong>: every scheduler-driven update is appended to <code class="docutils literal notranslate"><span class="pre">self.runtime_params</span></code> with a timestamp, episode number, and step, enabling post-hoc reconstruction of training history.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">window</span></code> counter</strong> is per-rule so multiple rules with different cadences run independently.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="supported-target-namespaces">
+<h3>Supported target namespaces<a class="headerlink" href="#supported-target-namespaces" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Target prefix</p></th>
+<th class="head"><p>Channel</p></th>
+<th class="head"><p>Value type</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unity.kv.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (string)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unity.kv.hockeyFloor.move_object_max_distance</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unity.env.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (float)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.episode_length</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.&lt;key&gt;</span></code> (shorthand)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (string)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">general.render_virtual_mouse</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Note</strong>: env parameter changes via the scheduler are currently accumulated but not transmitted (the <code class="docutils literal notranslate"><span class="pre">channel.set_float_parameter</span></code> call is commented out in <code class="docutils literal notranslate"><span class="pre">_apply_scheduler_changes</span></code>). Only KV channel changes are actively applied at runtime.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="full-example-hockey-trainingstage1">
+<h3>Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code><a class="headerlink" href="#full-example-hockey-trainingstage1" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># rules.lib.toml (imported)</span>
+<span class="k">[rules_lib.ramp_distance]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_max_distance&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;add&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
+
+<span class="c1"># hockey.game.toml profile</span>
+<span class="k">[profile.trainingstage1.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
+
+<span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w">   </span><span class="c1"># starting value</span>
+</pre></div>
+</div>
+<p>Session flow:</p>
+<ol class="arabic simple">
+<li><p>Session starts with <code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span> <span class="pre">=</span> <span class="pre">1.0</span></code>.</p></li>
+<li><p>After the first successful trial → scheduler adds 0.04 → <code class="docutils literal notranslate"><span class="pre">1.04</span></code>.</p></li>
+<li><p>After the 100th success → <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">100</span> <span class="pre">×</span> <span class="pre">0.04</span> <span class="pre">=</span> <span class="pre">5.0</span></code> (clamped at max).</p></li>
+<li><p>All subsequent successes leave the value at <code class="docutils literal notranslate"><span class="pre">5.0</span></code>.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="related-docs">
+<h2>Related docs<a class="headerlink" href="#related-docs" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="GUIs.html"><span class="std std-doc">GUIs</span></a> - Using profiles in UnityTaskGUI</p></li>
+<li><p><a class="reference internal" href="Overview.html"><span class="std std-doc">Overview</span></a> - System architecture</p></li>
+<li><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Tasks</span></a> - UnityAgentTask API</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DataTransferGUI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Transfer GUI (<code class="docutils literal notranslate"><span class="pre">dj_pipeline/gui_transfer</span></code>)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Tasks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Task System Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-used-by-hockey">Config files used by Hockey</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-names">Section names</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-base-values">Hockey base values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-from-hockey-game-toml">Example from <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imported-base-values-used-by-hockey">Imported base values used by Hockey</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hockey-profiles-actual-names-and-values">Hockey profiles (actual names and values)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rl-from-rl-config-toml"><code class="docutils literal notranslate"><span class="pre">RL</span></code> (from <code class="docutils literal notranslate"><span class="pre">rl.config.toml</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-profile-merge-works">How profile merge works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-configurations">Loading configurations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programmatic-loading">Programmatic loading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-scheduler-liveparamscheduler">Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-rules-in-toml">Defining rules in TOML</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-valued-rule-step-through-fixed-stages">List-valued rule (step through fixed stages)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rules-in-a-profile">Selecting rules in a profile</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-at-runtime">How it works at runtime</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example-hockey-trainingstage1">Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-docs">Related docs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

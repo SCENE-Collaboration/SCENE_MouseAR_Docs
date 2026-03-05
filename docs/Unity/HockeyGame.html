@@ -1,0 +1,1429 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hockey Game Documentation &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/HockeyGame';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python GUIs - User Guide" href="../python/GUIs.html" />
+    <link rel="prev" title="Visual Feedback &amp; Utility Components" href="VisualFeedback.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">MouseAR Documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/HockeyGame.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/HockeyGame.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hockey Game Documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#involved-unity-scripts">Involved Unity Scripts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships-how-they-work-together">Component Relationships &amp; How They Work Together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-lifecycle-in-detail">Episode Lifecycle in Detail</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-start">1. Session start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-start-startepisode">2. Episode start (<code class="docutils literal notranslate"><span class="pre">StartEpisode</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-phase">3. Running phase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-and-iti">4. Reward and ITI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-end">5. Session end</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-python-unity">Data Flow: Python → Unity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-1-environmentparameterschannel-unity-env-floats">Channel 1: <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> floats)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-2-kvchannel-unity-kv-strings">Channel 2: <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code> strings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeymanager-episodemanagersinglewall"><code class="docutils literal notranslate"><span class="pre">HockeyManager.*</span></code> → <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeyfloor-floortargetsspawnerenvparams-live-during-session"><code class="docutils literal notranslate"><span class="pre">hockeyFloor.*</span></code> → <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code> (live during session)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-global-kv-keys"><code class="docutils literal notranslate"><span class="pre">general.*</span></code> (global KV keys)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touchmanager-enabled-sequencemanager-enabled"><code class="docutils literal notranslate"><span class="pre">TouchManager.enabled</span></code> / <code class="docutils literal notranslate"><span class="pre">SequenceManager.enabled</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-unity-python">Data Flow: Unity → Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages-sent-by-floortargetsspawnerreporter">Messages sent by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-dlcagent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-ttlreceiveragent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-configuration-reference">Required Configuration Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-env-general-via-environmentparameterschannel"><code class="docutils literal notranslate"><span class="pre">[unity.env.general]</span></code> (via EnvironmentParametersChannel)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-env-rewardassociation-optional-init-phase-zone"><code class="docutils literal notranslate"><span class="pre">[unity.env.rewardAssociation]</span></code> (optional, init-phase zone)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kv-hockeymanager-controls-episodemanagersinglewall"><code class="docutils literal notranslate"><span class="pre">[unity.kv.HockeyManager]</span></code> (controls EpisodeManagerSingleWall)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kv-hockeyfloor-controls-floortargetsspawner"><code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> (controls FloorTargetsSpawner)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-python-task-configuration"><code class="docutils literal notranslate"><span class="pre">[game]</span></code> (Python task configuration)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabled-managers-must-be-turned-off">Disabled managers (must be turned off)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-profiles">Training Profiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-harder-init-zone-steeper-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-python-unity-python-data-round-trip">Complete Python → Unity → Python Data Round-Trip</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hockey-game-documentation">
+<h1>Hockey Game Documentation<a class="headerlink" href="#hockey-game-documentation" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The Hockey Game is a floor-based navigation task in which the mouse (tracked via DLC) pushes a movable puck-like object along a 3D arena floor until it enters one or more vertical target areas (“goal walls”). A second ML-Agents behavior sends a photodiode-synchronisation TTL signal each frame. Both behaviors run inside a single Unity ML-Agents environment and are driven entirely from Python.</p>
+</section>
+<hr class="docutils" />
+<section id="involved-unity-scripts">
+<h2>Involved Unity Scripts<a class="headerlink" href="#involved-unity-scripts" title="Link to this heading">#</a></h2>
+<p><strong>Episode management</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Script</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></p></td>
+<td><p>State machine (Idle → Init → Running → ITI); owns timing and success/failure detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWallReporter</span></code></p></td>
+<td><p>Sends KV telemetry (object positions) to Python while Running</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Spawners</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Script</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code></p></td>
+<td><p>Spawns the puck and vertical target areas at episode start</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerAdapter</span></code></p></td>
+<td><p>Adapts <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code> to the <code class="docutils literal notranslate"><span class="pre">IEpisodeSpawner</span></code> interface</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code></p></td>
+<td><p>Applies <code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> floats to <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code> on env reset</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></p></td>
+<td><p>Sends puck position/velocity KV messages to Python</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SimpleTargetSpawner</span></code></p></td>
+<td><p>Optional init-phase target the mouse must reach before the episode starts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Agents</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Script</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code></p></td>
+<td><p>Receives pose actions from Python; teleports virtual-mouse on the screen plane</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code></p></td>
+<td><p>Receives TTL bit from Python; drives the photodiode sync patch</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Utilities</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Script</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code></p></td>
+<td><p>Singleton KV router: Python → managers/spawners and Unity → Python</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code></p></td>
+<td><p>ML-Agents side channel for bidirectional string key-value transport</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code></p></td>
+<td><p>Destroys puck on <code class="docutils literal notranslate"><span class="pre">TargetArea</span></code> overlap → signals success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code></p></td>
+<td><p>Destroys puck after exceeding cumulative travel limit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume</span></code></p></td>
+<td><p>Clamps puck inside arena with elastic bounce</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ColorOverlay</span></code></p></td>
+<td><p>Full-screen color flash on success</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WhiteNoiseOverlayGPU</span></code></p></td>
+<td><p>Full-screen noise overlay on episode timeout</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="component-relationships-how-they-work-together">
+<h2>Component Relationships &amp; How They Work Together<a class="headerlink" href="#component-relationships-how-they-work-together" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># --- Python side channels ---
+
+UnityAgentTask
+  ├─ EnvParamsChannel [unity.env.*]
+  │     → FloorTargetsSpawnerEnvParams.OnEnvReset()
+  │
+  ├─ KvChannel [unity.kv.*]
+  │     → KvManagersDirector
+  │           ├─ HockeyManager.* → EpisodeManagerSingleWall
+  │           └─ hockeyFloor.*   → FloorTargetsSpawnerEnvParams
+  │
+  ├─ DLCInput behavior
+  │     actions [x, y, hdg, ha, act]
+  │     → DlcAgent.OnActionReceived()
+  │     ← DlcAgent.CollectObservations() [wx, wz, u, v, hdg]
+  │
+  └─ TTLInput behavior
+        actions [ttl_bit]
+        → TTLReceiverAgent.OnActionReceived()
+        ← TTLReceiverAgent.CollectObservations() [brightness, iti]
+
+# --- Unity episode loop ---
+
+KvManagersDirector: HockeyManager.enabled=1
+  └─► EpisodeManagerSingleWall.StartEpisode()
+        reads: episode_length, iti_length,
+               enable_init_phase, enable_reporting
+        │
+        ├─ [if enable_init_phase]
+        │    SimpleTargetSpawner.SpawnAll()
+        │    wait until init target destroyed
+        │    → OnInitPhaseComplete
+        │
+        └─► FloorTargetsSpawner.SpawnAll()
+              spawns ≥1 TargetArea (isTrigger, tag=Target)
+              spawns 1 puck (Rigidbody + kill components)
+              → SendKv(&quot;floor.target_positions&quot;, &quot;x0,z0,...&quot;)
+
+State = Running
+  ├─ FixedUpdate: FloorTargetsSpawnerReporter
+  │     → SendKv(&quot;floor.object_position&quot;,
+  │              &quot;pos_x,pos_z,vel_x,vel_z&quot;)
+  │
+  ├─ ContainmentInBoxVolume: clamp + bounce puck
+  ├─ TargetKillOnDistance: destroy puck if travel &gt; max
+  │
+  └─ puck.OnTriggerStay(TargetArea)
+        TargetKillOnArea destroys puck
+        TargetsAlive() == 0
+        → OnAllTargetsCleared
+        → [ColorOverlay if display_reward_flash]
+        → EndEpisode() → State = ITI
+
+State = ITI
+  wait itiLength (±25% jitter)
+  → StartEpisode()
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="episode-lifecycle-in-detail">
+<h2>Episode Lifecycle in Detail<a class="headerlink" href="#episode-lifecycle-in-detail" title="Link to this heading">#</a></h2>
+<section id="session-start">
+<h3>1. Session start<a class="headerlink" href="#session-start" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Python calls <code class="docutils literal notranslate"><span class="pre">task.start()</span></code> → Teensy starts, <code class="docutils literal notranslate"><span class="pre">UnityEnvironment</span></code> is opened.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_channel()</span></code> sends all <code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> floats via <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (episode length, ITI, init-phase flag, reporting toggle).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_channel()</span></code> sends all <code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code> strings in order: normal keys → <code class="docutils literal notranslate"><span class="pre">.start</span></code> keys → <code class="docutils literal notranslate"><span class="pre">.enabled</span></code> keys (the enabled key for <code class="docutils literal notranslate"><span class="pre">HockeyManager</span></code> comes last to ensure spawner config is applied before episode begins).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code> receives <code class="docutils literal notranslate"><span class="pre">HockeyManager.enabled=1</span></code>, calls <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.StartEpisode()</span></code>.</p></li>
+</ol>
+</section>
+<section id="episode-start-startepisode">
+<h3>2. Episode start (<code class="docutils literal notranslate"><span class="pre">StartEpisode</span></code>)<a class="headerlink" href="#episode-start-startepisode" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code> reads current EnvironmentParameters (episode_length, iti_length, randomize_iti_length, enable_init_phase, enable_reporting).</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">_active.ClearAll()</span></code> to remove any leftover objects from the previous episode.</p></li>
+<li><p><strong>Init phase</strong> (if <code class="docutils literal notranslate"><span class="pre">enable_init_phase=true</span></code>): spawns a single init target; waits for the DLC-controlled marker to overlap it. Once cleared → <code class="docutils literal notranslate"><span class="pre">OnInitPhaseComplete</span></code> → proceeds to the running phase.</p></li>
+<li><p><strong>Running phase</strong>: <code class="docutils literal notranslate"><span class="pre">_active.SpawnAll()</span></code> → <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner.SpawnAll()</span></code> places TargetArea(s) and the puck. <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter.OnSpawn()</span></code> immediately sends target positions to Python.</p></li>
+</ul>
+</section>
+<section id="running-phase">
+<h3>3. Running phase<a class="headerlink" href="#running-phase" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.TickRunning()</span></code> runs every Unity frame:</p>
+<ul>
+<li><p>Checks <code class="docutils literal notranslate"><span class="pre">TargetsAlive()</span></code> (number of living <code class="docutils literal notranslate"><span class="pre">TargetArea</span></code> GameObjects in the spawner).</p></li>
+<li><p>If 0: all targets cleared → success path → <code class="docutils literal notranslate"><span class="pre">OnAllTargetsCleared</span></code> → <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Elapsed</span> <span class="pre">&gt;=</span> <span class="pre">episodeLength</span></code>: timeout → <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> (with optional noise overlay).</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter.FixedUpdate()</span></code> sends puck position + velocity to Python every <code class="docutils literal notranslate"><span class="pre">reportingPeriod</span></code> physics steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume.FixedUpdate()</span></code> (on puck) keeps puck inside arena.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance.Update()</span></code> (on puck) accumulates travel distance; destroys puck when <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">moveObjectMaxDistance</span></code> (which also triggers TargetsAlive==0 → success on next frame tick).</p></li>
+</ul>
+</section>
+<section id="reward-and-iti">
+<h3>4. Reward and ITI<a class="headerlink" href="#reward-and-iti" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> clears all spawned objects, fires <code class="docutils literal notranslate"><span class="pre">OnEpisodeEnd</span></code>, enters ITI state.</p></li>
+<li><p>On the Python side: <code class="docutils literal notranslate"><span class="pre">ep_reward</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> (reward was non-zero during the episode) → <code class="docutils literal notranslate"><span class="pre">task.give_reward(reward_size)</span></code> sends water-solenoid pulse to Teensy.</p></li>
+<li><p>After ITI elapses (possibly randomized), <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code> is called again.</p></li>
+</ul>
+</section>
+<section id="session-end">
+<h3>5. Session end<a class="headerlink" href="#session-end" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Either <code class="docutils literal notranslate"><span class="pre">epoch</span></code> counter exceeds the epoch list, <code class="docutils literal notranslate"><span class="pre">max_session_duration</span></code> is exceeded, or the GUI stops the task.</p></li>
+<li><p>Python writes all data to <code class="docutils literal notranslate"><span class="pre">UnityData_&lt;SubjectId&gt;_&lt;Timestamp&gt;.json</span></code>.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-flow-python-unity">
+<h2>Data Flow: Python → Unity<a class="headerlink" href="#data-flow-python-unity" title="Link to this heading">#</a></h2>
+<section id="channel-1-environmentparameterschannel-unity-env-floats">
+<h3>Channel 1: <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> floats)<a class="headerlink" href="#channel-1-environmentparameterschannel-unity-env-floats" title="Link to this heading">#</a></h3>
+<p>Sent at <code class="docutils literal notranslate"><span class="pre">env.reset()</span></code>. Applied by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams.OnEnvReset()</span></code> and
+read directly by <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall.StartEpisode()</span></code>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Consumed by</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.episode_length</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></p></td>
+<td><p>Max running duration (s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.iti_length</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></p></td>
+<td><p>Base ITI duration (s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.randomize_iti_length</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></p></td>
+<td><p>±25% ITI jitter</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_init_phase</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></p></td>
+<td><p>Enable init target</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.enable_reporting</span></code></p></td>
+<td><p>Reporter + EnvParams</p></td>
+<td><p>Toggle KV reporting</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code></p></td>
+<td><p>Reporter interval (steps)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.position_x/y/z</span></code></p></td>
+<td><p>Init-phase spawner</p></td>
+<td><p>Init zone position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.size_x/y/z</span></code></p></td>
+<td><p>Init-phase spawner</p></td>
+<td><p>Init zone size</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.dwell_time</span></code></p></td>
+<td><p>Init-phase spawner</p></td>
+<td><p>Dwell before cleared (s)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="channel-2-kvchannel-unity-kv-strings">
+<h3>Channel 2: <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code> strings)<a class="headerlink" href="#channel-2-kvchannel-unity-kv-strings" title="Link to this heading">#</a></h3>
+<p>Sent at any time. Received by <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code> and routed by namespace prefix.</p>
+<section id="hockeymanager-episodemanagersinglewall">
+<h4><code class="docutils literal notranslate"><span class="pre">HockeyManager.*</span></code> → <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code><a class="headerlink" href="#hockeymanager-episodemanagersinglewall" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enabled</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Start (1) or disable (0) the manager</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spawner</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Active spawner index (0 = FloorTargets)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">display_reward_flash</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>ColorOverlay on success</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reward_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Flash duration (s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">display_noise_overlay</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Noise overlay on timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">noise_display_duration</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Noise duration (s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Trigger <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code> immediately</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="hockeyfloor-floortargetsspawnerenvparams-live-during-session">
+<h4><code class="docutils literal notranslate"><span class="pre">hockeyFloor.*</span></code> → <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code> (live during session)<a class="headerlink" href="#hockeyfloor-floortargetsspawnerenvparams-live-during-session" title="Link to this heading">#</a></h4>
+<p>These override <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code> fields and optionally respawn immediately.</p>
+<p><strong>Target zone layout</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_target_areas</span></code></p></td>
+<td><p>int 1–3</p></td>
+<td><p>Number of target zones</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target_x</span></code></p></td>
+<td><p>float</p></td>
+<td><p>World X of the goal wall</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_width_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Zone width along Z (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_thickness_x</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Zone trigger depth (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_center_y</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Zone height center (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_height_y</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Zone height (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_min</span></code> / <code class="docutils literal notranslate"><span class="pre">z_max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Z placement band</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">min_gap_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min gap between zone centers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jitter_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Random Z jitter on placement</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">snap_z_to_integers</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Snap zone Z to integer grid</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Puck spawn &amp; physics</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_x/y/z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Default spawn position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">randomize_start_z</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Random Z spawn (avoids targets)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">randomize_start_x</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Random X spawn</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_min_distance_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Min Z gap from target at spawn</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_scale</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Puck scale (X and Z; Y fixed)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_mass</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Rigidbody mass (kg)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_drag</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Linear drag</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_angular_drag</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Angular drag</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Travel limit (0 = disabled)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spawn_target</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Spawn goal zones (false = distance-only task)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Optional features</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_distance_color</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Colour puck by distance from camera</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_rotation_color</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Colour puck by camera Y-rotation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_move_by_action</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Lock puck until agent releases it</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_jitter</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Add random jitter force</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jitter_weighting_factor</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Jitter force magnitude</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">jitter_frequency</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Jitter frequency (Hz)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jitter_base_angle_deg</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Base angle for jitter direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Force respawn immediately</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="general-global-kv-keys">
+<h4><code class="docutils literal notranslate"><span class="pre">general.*</span></code> (global KV keys)<a class="headerlink" href="#general-global-kv-keys" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.render_virtual_mouse</span></code></p></td>
+<td><p>Show/hide DLC virtual-mouse GameObject (layer toggle)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="touchmanager-enabled-sequencemanager-enabled">
+<h4><code class="docutils literal notranslate"><span class="pre">TouchManager.enabled</span></code> / <code class="docutils literal notranslate"><span class="pre">SequenceManager.enabled</span></code><a class="headerlink" href="#touchmanager-enabled-sequencemanager-enabled" title="Link to this heading">#</a></h4>
+<p>Set to <code class="docutils literal notranslate"><span class="pre">false</span></code> in <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code> to disable non-hockey managers.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="data-flow-unity-python">
+<h2>Data Flow: Unity → Python<a class="headerlink" href="#data-flow-unity-python" title="Link to this heading">#</a></h2>
+<p>Unity sends data back to Python via the <strong>same <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code></strong> (bidirectional). Python buffers all incoming key-value pairs in <code class="docutils literal notranslate"><span class="pre">kv_messages_current</span></code> (per-step mirror dict) and <code class="docutils literal notranslate"><span class="pre">kv_messages</span></code> (timestamped list, saved to disk).</p>
+<section id="messages-sent-by-floortargetsspawnerreporter">
+<h3>Messages sent by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code><a class="headerlink" href="#messages-sent-by-floortargetsspawnerreporter" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Format</p></th>
+<th class="head"><p>When</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">floor.target_positions</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;x0,z0[,x1,z1,...]&quot;</span></code></p></td>
+<td><p>Once at spawn — world XZ of each TargetArea</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">floor.object_position</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;pos_x,pos_z,vel_x,vel_z&quot;</span></code></p></td>
+<td><p>Every <code class="docutils literal notranslate"><span class="pre">reportingPeriod</span></code> steps — puck XZ + velocity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="observations-from-dlcagent-collectobservations">
+<h3>Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code><a class="headerlink" href="#observations-from-dlcagent-collectobservations" title="Link to this heading">#</a></h3>
+<p>Sent as per-step ML-Agents vector observation (part of the <code class="docutils literal notranslate"><span class="pre">DLCInput</span></code> behavior step result read by <code class="docutils literal notranslate"><span class="pre">task._get_step_result_for(&quot;DLCInput&quot;)</span></code>).</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">world_x</span></code></p></td>
+<td><p>Virtual-mouse world X position</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">world_z</span></code></p></td>
+<td><p>Virtual-mouse world Z position</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">screen_u</span></code></p></td>
+<td><p>Screen-space U coordinate [0, 1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">screen_v</span></code></p></td>
+<td><p>Screen-space V coordinate [0, 1]</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">heading</span></code></p></td>
+<td><p>Body heading (radians, atan2(fwd.x, fwd.z))</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="observations-from-ttlreceiveragent-collectobservations">
+<h3>Observations from <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code><a class="headerlink" href="#observations-from-ttlreceiveragent-collectobservations" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Index</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">patch_blue</span></code></p></td>
+<td><p>Current photodiode patch brightness (0 or 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">iti_flag</span></code></p></td>
+<td><p>1.0 if episode is in ITI, 0.0 otherwise</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">init_flag</span></code></p></td>
+<td><p>1.0 if episode is in Init phase, 0.0 otherwise</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="rewards">
+<h3>Rewards<a class="headerlink" href="#rewards" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Behavior</p></th>
+<th class="head"><p>Reward</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DLCInput</span></code></p></td>
+<td><p>Non-zero positive on puck entering TargetArea</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TTLInput</span></code></p></td>
+<td><p>Always 0 (not used as reward signal)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Python detects <code class="docutils literal notranslate"><span class="pre">ep_reward</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> (sum across the episode) → triggers <code class="docutils literal notranslate"><span class="pre">task.give_reward(reward_size)</span></code> → Teensy water solenoid pulse.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="required-configuration-reference">
+<h2>Required Configuration Reference<a class="headerlink" href="#required-configuration-reference" title="Link to this heading">#</a></h2>
+<p>The complete set of config keys required for a working Hockey session, cross-referenced with the scripts that consume them.</p>
+<section id="unity-env-general-via-environmentparameterschannel">
+<h3><code class="docutils literal notranslate"><span class="pre">[unity.env.general]</span></code> (via EnvironmentParametersChannel)<a class="headerlink" href="#unity-env-general-via-environmentparameterschannel" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.env.general]</span>
+<span class="n">episode_length</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="w">       </span><span class="c1"># → EpisodeManagerSingleWall.episodeLength</span>
+<span class="n">iti_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">        </span><span class="c1"># → EpisodeManagerSingleWall.itiLength</span>
+<span class="n">enable_init_phase</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1"># → EpisodeManagerSingleWall.enableInitPhase</span>
+<span class="n">enable_reporting</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># → EpisodeManagerSingleWallReporter + FloorTargetsSpawnerEnvParams</span>
+<span class="n">reporting_period</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># → FloorTargetsSpawnerEnvParams.reportingPeriod</span>
+<span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1"># → EpisodeManagerSingleWall.randomizeItiLength</span>
+</pre></div>
+</div>
+</section>
+<section id="unity-env-rewardassociation-optional-init-phase-zone">
+<h3><code class="docutils literal notranslate"><span class="pre">[unity.env.rewardAssociation]</span></code> (optional, init-phase zone)<a class="headerlink" href="#unity-env-rewardassociation-optional-init-phase-zone" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.env.rewardAssociation]</span>
+<span class="n">position_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">position_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">position_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">size_x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">    </span><span class="c1"># width of init target zone (X)</span>
+<span class="n">size_y</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">  </span><span class="c1"># height (thin slab on floor)</span>
+<span class="n">size_z</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w">    </span><span class="c1"># depth of init target zone (Z)</span>
+<span class="n">dwell_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">  </span><span class="c1"># seconds mouse must remain in zone</span>
+</pre></div>
+</div>
+</section>
+<section id="unity-kv-hockeymanager-controls-episodemanagersinglewall">
+<h3><code class="docutils literal notranslate"><span class="pre">[unity.kv.HockeyManager]</span></code> (controls EpisodeManagerSingleWall)<a class="headerlink" href="#unity-kv-hockeymanager-controls-episodemanagersinglewall" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.kv.HockeyManager]</span>
+<span class="n">spawner</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># 0 = FloorTargetsSpawnerAdapter</span>
+<span class="n">display_reward_flash</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reward_display_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span>
+<span class="n">display_noise_overlay</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">noise_display_duration</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="n">enabled</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1"># sent last → starts the first episode</span>
+</pre></div>
+</div>
+</section>
+<section id="unity-kv-hockeyfloor-controls-floortargetsspawner">
+<h3><code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> (controls FloorTargetsSpawner)<a class="headerlink" href="#unity-kv-hockeyfloor-controls-floortargetsspawner" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.kv.hockeyFloor]</span>
+<span class="c1"># Target zone layout</span>
+<span class="n">num_target_areas</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">target_x</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
+<span class="n">area_thickness_x</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">area_width_z</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">area_center_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.099</span>
+<span class="n">area_height_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
+<span class="n">z_min</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
+<span class="n">z_max</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+<span class="n">min_gap_z</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">jitter_z</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">snap_z_to_integers</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c1"># Puck</span>
+<span class="n">move_object_scale</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span>
+<span class="n">move_object_mass</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_drag</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="n">move_object_angular_drag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
+<span class="n">move_object_x</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">move_object_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.14</span>
+<span class="n">randomize_start_z</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">randomize_start_x</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1"># 0 = disabled</span>
+<span class="n">spawn_target</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c1"># Optional features</span>
+<span class="n">enable_distance_color</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">enable_jitter</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">enable_move_by_action</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="game-python-task-configuration">
+<h3><code class="docutils literal notranslate"><span class="pre">[game]</span></code> (Python task configuration)<a class="headerlink" href="#game-python-task-configuration" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[game]</span>
+<span class="n">use_photottl</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">             </span><span class="c1"># enable TTLGenerator → TTLInput behavior</span>
+<span class="n">use_dlc</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">             </span><span class="c1"># enable DLCClient → DLCInput behavior</span>
+<span class="n">use_touch</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="n">behavior_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">reward_size</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">              </span><span class="c1"># water solenoid pulse duration (ms)</span>
+</pre></div>
+</div>
+</section>
+<section id="disabled-managers-must-be-turned-off">
+<h3>Disabled managers (must be turned off)<a class="headerlink" href="#disabled-managers-must-be-turned-off" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.kv.TouchManager]</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">    </span><span class="c1"># disables the TouchGame manager</span>
+
+<span class="k">[unity.kv.SequenceManager]</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">    </span><span class="c1"># disables the Sequence manager</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="training-profiles">
+<h2>Training Profiles<a class="headerlink" href="#training-profiles" title="Link to this heading">#</a></h2>
+<p>Profiles override the base configuration for staged training. See <a class="reference internal" href="../python/ConfigSystem.html"><span class="std std-doc">ConfigSystem.md</span></a> for how profiles and rule schedulers work.</p>
+<section id="trainingstage1-large-puck-short-task-automatic-distance-ramp">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp<a class="headerlink" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span><span class="w">   </span><span class="c1"># starting max travel (rules will increase this)</span>
+<span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="c1"># larger puck for easier early training</span>
+<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no goal wall — puck destruction IS the success signal</span>
+
+<span class="k">[profile.trainingstage1.unity.env.general]</span>
+<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+
+<span class="k">[profile.trainingstage1.game]</span>
+<span class="n">reward_size</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span>
+<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w">  </span><span class="c1"># minutes</span>
+
+<span class="k">[profile.trainingstage1.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span><span class="w">    </span><span class="c1"># adds 0.04 to move_object_max_distance per success, capped at 5.0</span>
+</pre></div>
+</div>
+</section>
+<section id="trainingstage2-harder-init-zone-steeper-ramp">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp<a class="headerlink" href="#trainingstage2-harder-init-zone-steeper-ramp" title="Link to this heading">#</a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage2.unity.kv.hockeyFloor]</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.5</span>
+<span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="k">[profile.trainingstage2.unity.env.rewardAssociation]</span>
+<span class="n">size_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">size_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+
+<span class="k">[profile.trainingstage2.game]</span>
+<span class="n">reward_size</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
+<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="k">[profile.trainingstage2.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1"># adds 0.1 per success, capped at 15.0</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="complete-python-unity-python-data-round-trip">
+<h2>Complete Python → Unity → Python Data Round-Trip<a class="headerlink" href="#complete-python-unity-python-data-round-trip" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>task.start()
+  ──[env params]──► FloorTargetsSpawnerEnvParams
+  ──[kv normal] ──► KvManagersDirector → FloorTargetsSpawner
+  ──[kv enabled]──► EpisodeManagerSingleWall.StartEpisode()
+                      └─► SpawnAll()
+  ◄──[floor.target_positions]──  (once per episode)
+
+loop():
+  DLCInput actions [x,y,hdg,ha,act]
+    ──────────────► DlcAgent.OnActionReceived()
+  ◄──────────────  DlcAgent.CollectObservations()
+                   [wx, wz, u, v, hdg]
+
+  TTLInput actions [ttl_bit]
+    ──────────────► TTLReceiverAgent.OnActionReceived()
+  ◄──────────────  TTLReceiverAgent.CollectObservations()
+                   [brightness, iti]
+
+  env.step()
+
+  ◄──[floor.object_position]──  (every N physics steps)
+
+  puck → TargetArea:
+    reward &gt; 0 in step result
+    task.give_reward() ──[Teensy]──► solenoid
+
+  saved: kv_messages, state_vec, reward_vec,
+         runtime_params, ...
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management System</span></a> — <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code> state machine and event system</p></li>
+<li><p><a class="reference internal" href="Spawners.html"><span class="std std-doc">Spawners Reference</span></a> — <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code> configuration in full detail</p></li>
+<li><p><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a> — KvChannel and EnvironmentParameters internals</p></li>
+<li><p><a class="reference internal" href="../python/Tasks.html"><span class="std std-doc">Python Tasks</span></a> — <code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code> and behavior routing</p></li>
+<li><p><a class="reference internal" href="../python/ConfigSystem.html"><span class="std std-doc">Config System</span></a> — TOML profiles and Rules Scheduler</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="VisualFeedback.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visual Feedback &amp; Utility Components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../python/GUIs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python GUIs - User Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#involved-unity-scripts">Involved Unity Scripts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships-how-they-work-together">Component Relationships &amp; How They Work Together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-lifecycle-in-detail">Episode Lifecycle in Detail</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-start">1. Session start</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#episode-start-startepisode">2. Episode start (<code class="docutils literal notranslate"><span class="pre">StartEpisode</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-phase">3. Running phase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reward-and-iti">4. Reward and ITI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#session-end">5. Session end</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-python-unity">Data Flow: Python → Unity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-1-environmentparameterschannel-unity-env-floats">Channel 1: <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code> floats)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-2-kvchannel-unity-kv-strings">Channel 2: <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (<code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code> strings)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeymanager-episodemanagersinglewall"><code class="docutils literal notranslate"><span class="pre">HockeyManager.*</span></code> → <code class="docutils literal notranslate"><span class="pre">EpisodeManagerSingleWall</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeyfloor-floortargetsspawnerenvparams-live-during-session"><code class="docutils literal notranslate"><span class="pre">hockeyFloor.*</span></code> → <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code> (live during session)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#general-global-kv-keys"><code class="docutils literal notranslate"><span class="pre">general.*</span></code> (global KV keys)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touchmanager-enabled-sequencemanager-enabled"><code class="docutils literal notranslate"><span class="pre">TouchManager.enabled</span></code> / <code class="docutils literal notranslate"><span class="pre">SequenceManager.enabled</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-unity-python">Data Flow: Unity → Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages-sent-by-floortargetsspawnerreporter">Messages sent by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-dlcagent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-ttlreceiveragent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-configuration-reference">Required Configuration Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-env-general-via-environmentparameterschannel"><code class="docutils literal notranslate"><span class="pre">[unity.env.general]</span></code> (via EnvironmentParametersChannel)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-env-rewardassociation-optional-init-phase-zone"><code class="docutils literal notranslate"><span class="pre">[unity.env.rewardAssociation]</span></code> (optional, init-phase zone)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kv-hockeymanager-controls-episodemanagersinglewall"><code class="docutils literal notranslate"><span class="pre">[unity.kv.HockeyManager]</span></code> (controls EpisodeManagerSingleWall)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-kv-hockeyfloor-controls-floortargetsspawner"><code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> (controls FloorTargetsSpawner)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#game-python-task-configuration"><code class="docutils literal notranslate"><span class="pre">[game]</span></code> (Python task configuration)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabled-managers-must-be-turned-off">Disabled managers (must be turned off)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-profiles">Training Profiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-harder-init-zone-steeper-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-python-unity-python-data-round-trip">Complete Python → Unity → Python Data Round-Trip</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
