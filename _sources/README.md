@@ -32,7 +32,9 @@ Development Setup
 pip install -e .[dev,docs]
 ```
 ## Documentation
-As the repo is currently private its not possible to build a public documentation site. However, you can build the documentation locally using Jupyter Book.
+Documentation can be found at [SCENE_MouseAR_Docs](https://scene-collaboration.github.io/SCENE_MouseAR_Docs/).
+
+To locally build the documentation, run:
 
 ```bash
 jupyter-book build .
