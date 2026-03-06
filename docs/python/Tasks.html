@@ -442,8 +442,11 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-control-methods"><strong>Hardware Control Methods</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int"><strong>give_reward(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward2-duration-ms-int"><strong>give_reward2(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-vibration-duration-ms-int"><strong>give_vibration(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-tone-duration-ms-int"><strong>give_tone(duration_ms: int)</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-ttl"><strong>signal_ttl()</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water-duration-ms-int"><strong>drain_water(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water"><strong>drain_water()</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-utilities"><strong>Timing Utilities</strong></a></li>
@@ -473,6 +476,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-channels"><strong>Side Channels</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#environmentparameterschannel-training-time-configuration"><strong>EnvironmentParametersChannel</strong> (Training-time configuration)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kvchannel-runtime-parameter-updates"><strong>KvChannel</strong> (Runtime parameter updates)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-kv-events-kv-dict-override-hook"><strong>_on_kv_events(kv: dict)</strong> — override hook</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-conditions"><strong>Reset Conditions</strong></a><ul class="nav section-nav flex-column">
@@ -498,6 +502,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlc-action-spec-np-ndarray"><strong>_dlc_action(spec) → np.ndarray</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touch-action-spec-np-ndarray"><strong>_touch_action(spec) → np.ndarray</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttl-action-spec-np-ndarray"><strong>_ttl_action(spec) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-event-handling"><strong>KV Event Handling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-kv-events-kv-dict"><strong>_on_kv_events(kv: dict)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-player-contact-contact-bool"><strong>on_player_contact(contact: bool)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int-override"><strong>give_reward(duration_ms: int)</strong> <em>(override)</em></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-routing"><strong>Behavior Routing</strong></a></li>
@@ -673,7 +683,7 @@ document.write(`
 </ol>
 </li>
 <li><p>Epoch / session duration enforcement: <code class="docutils literal notranslate"><span class="pre">self.epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">self.epoch_trials</span></code>, <code class="docutils literal notranslate"><span class="pre">self.max_session_duration</span></code></p></li>
-<li><p>KV message capture: incoming Unity → Python KV messages are logged per step in <code class="docutils literal notranslate"><span class="pre">self.kv_messages</span></code></p></li>
+<li><p>KV message capture: incoming Unity → Python KV messages are logged per step in <code class="docutils literal notranslate"><span class="pre">self.kv_messages</span></code>; subclasses can react to them by overriding <code class="docutils literal notranslate"><span class="pre">_on_kv_events(kv)</span></code></p></li>
 <li><p>Runtime parameter change log: <code class="docutils literal notranslate"><span class="pre">self.runtime_params</span></code> records every scheduler-driven or manual KV update</p></li>
 <li><p>Data collection: <code class="docutils literal notranslate"><span class="pre">get_data()</span></code> aggregates all step-level arrays and merges with base <code class="docutils literal notranslate"><span class="pre">Task.get_data()</span></code></p></li>
 <li><p>Parameter introspection: <code class="docutils literal notranslate"><span class="pre">get_params()</span></code> serialises the full task configuration</p></li>
@@ -809,13 +819,45 @@ document.write(`
 <h3><strong>Hardware Control Methods</strong><a class="headerlink" href="#hardware-control-methods" title="Link to this heading">#</a></h3>
 <section id="give-reward-duration-ms-int">
 <h4><strong>give_reward(duration_ms: int)</strong><a class="headerlink" href="#give-reward-duration-ms-int" title="Link to this heading">#</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 ms water pulse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 ms water pulse on primary solenoid</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;W&lt;duration&gt;&quot;</span></code> command to Teensy</p></li>
-<li><p>Opens solenoid valve for specified duration</p></li>
-<li><p>Typical range: 50-200 ms</p></li>
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">W</span></code> command with <code class="docutils literal notranslate"><span class="pre">int16</span></code> duration to Teensy</p></li>
+<li><p>Opens primary solenoid valve for specified duration</p></li>
+<li><p>Typical range: 50–200 ms</p></li>
+</ul>
+</section>
+<section id="give-reward2-duration-ms-int">
+<h4><strong>give_reward2(duration_ms: int)</strong><a class="headerlink" href="#give-reward2-duration-ms-int" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_reward2</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 ms water pulse on secondary solenoid</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">L</span></code> command with <code class="docutils literal notranslate"><span class="pre">int16</span></code> duration to Teensy</p></li>
+<li><p>Opens secondary solenoid valve for specified duration</p></li>
+</ul>
+</section>
+<section id="give-vibration-duration-ms-int">
+<h4><strong>give_vibration(duration_ms: int)</strong><a class="headerlink" href="#give-vibration-duration-ms-int" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_vibration</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>  <span class="c1"># 500 ms haptic pulse</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">V</span></code> command with <code class="docutils literal notranslate"><span class="pre">int16</span></code> duration to Teensy</p></li>
+<li><p>Activates vibration motor (e.g. Velleman WPM458) for specified duration</p></li>
+<li><p>Default duration: 500 ms</p></li>
+</ul>
+</section>
+<section id="give-tone-duration-ms-int">
+<h4><strong>give_tone(duration_ms: int)</strong><a class="headerlink" href="#give-tone-duration-ms-int" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">give_tone</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># 200 ms tone at 3 kHz</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">T</span></code> command with <code class="docutils literal notranslate"><span class="pre">int16</span></code> duration to Teensy</p></li>
+<li><p>Plays a 3 kHz tone via the speaker for specified duration (frequency hardcoded in firmware)</p></li>
+<li><p>Default duration: 200 ms</p></li>
 </ul>
 </section>
 <section id="signal-ttl">
@@ -824,19 +866,19 @@ document.write(`
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;P&quot;</span></code> command to Teensy</p></li>
-<li><p>Triggers 5V TTL pulse on output pin</p></li>
-<li><p>Duration defined in Teensy firmware (typically 5-10 ms)</p></li>
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">S</span></code> command to Teensy</p></li>
+<li><p>Triggers a 10 ms TTL pulse on the sync output pin</p></li>
 </ul>
 </section>
-<section id="drain-water-duration-ms-int">
-<h4><strong>drain_water(duration_ms: int)</strong><a class="headerlink" href="#drain-water-duration-ms-int" title="Link to this heading">#</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">drain_water</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>  <span class="c1"># 5 seconds</span>
+<section id="drain-water">
+<h4><strong>drain_water()</strong><a class="headerlink" href="#drain-water" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">drain_water</span><span class="p">()</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Sends <code class="docutils literal notranslate"><span class="pre">&quot;D&lt;duration&gt;&quot;</span></code> command to Teensy</p></li>
-<li><p>Opens valve for extended period (priming/draining)</p></li>
+<li><p>Sends <code class="docutils literal notranslate"><span class="pre">D</span></code> command to Teensy</p></li>
+<li><p>Toggles both water valves open/closed (call once to open, again to close)</p></li>
+<li><p>Used for priming and flushing reward lines</p></li>
 </ul>
 </section>
 </section>
@@ -1090,6 +1132,22 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="on-kv-events-kv-dict-override-hook">
+<h4><strong>_on_kv_events(kv: dict)</strong> — override hook<a class="headerlink" href="#on-kv-events-kv-dict-override-hook" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_on_kv_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="k">pass</span>  <span class="c1"># no-op in base class</span>
+</pre></div>
+</div>
+<p>Called every step with the dict of KV messages received from Unity during that step (empty if none arrived). Override in subclasses to react to game-side events without touching the step loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyTask</span><span class="p">(</span><span class="n">UnityMultibehaviorTask</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_on_kv_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_on_kv_events</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;hockey.player_contact&quot;</span> <span class="ow">in</span> <span class="n">kv</span><span class="p">:</span>
+            <span class="n">contact_on</span> <span class="o">=</span> <span class="n">kv</span><span class="p">[</span><span class="s2">&quot;hockey.player_contact&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">on_player_contact</span><span class="p">(</span><span class="n">contact_on</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="reset-conditions">
@@ -1231,7 +1289,12 @@ document.write(`
     <span class="n">use_photottl</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">photottl_half_cell_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
     <span class="n">photottl_period_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span>
-    <span class="n">photottl_n_bits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">photottl_n_bits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+
+    <span class="c1"># Haptic / auditory feedback (passed via **kwargs)</span>
+    <span class="n">vibration_on_interaction</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">use_tone_reward_cue</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">tone_duration</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1356,6 +1419,26 @@ document.write(`
 <td><p><code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
 <td><p>Counter bit width</p></td>
 </tr>
+<tr class="row-even"><td><p><strong>Haptic / Auditory</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vibration_on_interaction</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>If True, triggers <code class="docutils literal notranslate"><span class="pre">give_vibration()</span></code> whenever a <code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span> <span class="pre">=</span> <span class="pre">&quot;1&quot;</span></code> KV event arrives</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">use_tone_reward_cue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>If True, <code class="docutils literal notranslate"><span class="pre">give_reward()</span></code> also calls <code class="docutils literal notranslate"><span class="pre">give_tone(tone_duration)</span></code> as an auditory cue</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tone_duration</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">200</span></code></p></td>
+<td><p>Duration (ms) of the tone played when <code class="docutils literal notranslate"><span class="pre">use_tone_reward_cue</span></code> is True</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1461,6 +1544,40 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttl</span>  <span class="c1"># 0.0 or 1.0</span>
 </pre></div>
 </div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="kv-event-handling">
+<h3><strong>KV Event Handling</strong><a class="headerlink" href="#kv-event-handling" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">UnityAgentTask</span></code> overrides <code class="docutils literal notranslate"><span class="pre">_on_kv_events()</span></code> to dispatch game-side events to dedicated handler methods:</p>
+<section id="on-kv-events-kv-dict">
+<h4><strong>_on_kv_events(kv: dict)</strong><a class="headerlink" href="#on-kv-events-kv-dict" title="Link to this heading">#</a></h4>
+<p>Dispatches <code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code> KV messages to <code class="docutils literal notranslate"><span class="pre">on_player_contact()</span></code>. Calls <code class="docutils literal notranslate"><span class="pre">super()._on_kv_events(kv)</span></code> first.</p>
+</section>
+<section id="on-player-contact-contact-bool">
+<h4><strong>on_player_contact(contact: bool)</strong><a class="headerlink" href="#on-player-contact-contact-bool" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_player_contact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contact</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called on every contact state change (edge-triggered from Unity).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        contact: True = contact started, False = contact ended.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Player-puck contact: </span><span class="si">{</span><span class="s1">&#39;start&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">contact</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;end&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">contact</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">vibration_on_interaction</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">give_vibration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vibration_step_duration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Override this method in subclasses to add game-specific reactions to player-puck contact events. The default implementation optionally fires a vibration pulse when <code class="docutils literal notranslate"><span class="pre">vibration_on_interaction=True</span></code>.</p>
+</section>
+<section id="give-reward-duration-ms-int-override">
+<h4><strong>give_reward(duration_ms: int)</strong> <em>(override)</em><a class="headerlink" href="#give-reward-duration-ms-int-override" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">give_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>          <span class="c1"># primary solenoid via Task</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_tone_reward_cue</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">give_tone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tone_duration</span><span class="p">)</span>  <span class="c1"># auditory reward cue</span>
+</pre></div>
+</div>
+<p>Extends the base <code class="docutils literal notranslate"><span class="pre">give_reward()</span></code> with an optional simultaneous tone pulse when <code class="docutils literal notranslate"><span class="pre">use_tone_reward_cue=True</span></code>.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -1891,9 +2008,12 @@ document.write(`
 <span class="n">start</span><span class="p">()</span>                          <span class="c1"># Abstract</span>
 <span class="n">stop</span><span class="p">()</span>                           <span class="c1"># Abstract</span>
 <span class="n">loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span>                   <span class="c1"># Abstract</span>
-<span class="n">give_reward</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
-<span class="n">signal_ttl</span><span class="p">()</span>
-<span class="n">drain_water</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">give_reward</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>    <span class="c1"># Primary water solenoid</span>
+<span class="n">give_reward2</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>   <span class="c1"># Secondary water solenoid</span>
+<span class="n">give_vibration</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="c1"># Vibration motor</span>
+<span class="n">give_tone</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>      <span class="c1"># 3 kHz tone</span>
+<span class="n">signal_ttl</span><span class="p">()</span>                     <span class="c1"># 10 ms TTL sync pulse</span>
+<span class="n">drain_water</span><span class="p">()</span>                    <span class="c1"># Toggle both valves open/closed</span>
 <span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 <span class="n">get_params</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </pre></div>
@@ -1908,6 +2028,7 @@ document.write(`
 <span class="n">stop</span><span class="p">()</span>
 <span class="n">loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
 <span class="n">get_action_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">_on_kv_events</span><span class="p">(</span><span class="n">kv</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span>          <span class="c1"># Hook — override to handle Unity→Python KV events</span>
 <span class="n">set_runtime_param</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
 <span class="n">reset_episode</span><span class="p">()</span>
 <span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
@@ -1924,7 +2045,8 @@ document.write(`
     <span class="n">dlc_flip_y</span><span class="p">,</span> <span class="n">dlc_rotate_90</span><span class="p">,</span> <span class="n">dlc_box_extents</span><span class="p">,</span>
     <span class="n">use_touch</span><span class="p">,</span> <span class="n">touch_address</span><span class="p">,</span> <span class="n">touch_tx_mode</span><span class="p">,</span> <span class="n">touch_tx_hz</span><span class="p">,</span> <span class="n">touch_invert_y</span><span class="p">,</span>
     <span class="n">touch_speed_gain</span><span class="p">,</span> <span class="n">touch_vector_window_ms</span><span class="p">,</span>
-    <span class="n">use_photottl</span><span class="p">,</span> <span class="n">photottl_half_cell_sec</span><span class="p">,</span> <span class="n">photottl_period_sec</span><span class="p">,</span> <span class="n">photottl_n_bits</span>
+    <span class="n">use_photottl</span><span class="p">,</span> <span class="n">photottl_half_cell_sec</span><span class="p">,</span> <span class="n">photottl_period_sec</span><span class="p">,</span> <span class="n">photottl_n_bits</span><span class="p">,</span>
+    <span class="n">vibration_on_interaction</span><span class="p">,</span> <span class="n">use_tone_reward_cue</span><span class="p">,</span> <span class="n">tone_duration</span>
 <span class="p">)</span>
 <span class="n">start</span><span class="p">()</span>
 <span class="n">stop</span><span class="p">()</span>
@@ -1932,6 +2054,9 @@ document.write(`
 <span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 <span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="n">_on_kv_events</span><span class="p">(</span><span class="n">kv</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span>                 <span class="c1"># Dispatches hockey.player_contact</span>
+<span class="n">on_player_contact</span><span class="p">(</span><span class="n">contact</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span>        <span class="c1"># Override for contact-event reactions</span>
+<span class="n">give_reward</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>           <span class="c1"># Extends base with optional tone cue</span>
 <span class="n">get_data</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">dict</span>
 </pre></div>
 </div>
@@ -2040,8 +2165,11 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hardware-control-methods"><strong>Hardware Control Methods</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int"><strong>give_reward(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward2-duration-ms-int"><strong>give_reward2(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-vibration-duration-ms-int"><strong>give_vibration(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-tone-duration-ms-int"><strong>give_tone(duration_ms: int)</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-ttl"><strong>signal_ttl()</strong></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water-duration-ms-int"><strong>drain_water(duration_ms: int)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drain-water"><strong>drain_water()</strong></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timing-utilities"><strong>Timing Utilities</strong></a></li>
@@ -2071,6 +2199,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#side-channels"><strong>Side Channels</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#environmentparameterschannel-training-time-configuration"><strong>EnvironmentParametersChannel</strong> (Training-time configuration)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kvchannel-runtime-parameter-updates"><strong>KvChannel</strong> (Runtime parameter updates)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-kv-events-kv-dict-override-hook"><strong>_on_kv_events(kv: dict)</strong> — override hook</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reset-conditions"><strong>Reset Conditions</strong></a><ul class="nav section-nav flex-column">
@@ -2096,6 +2225,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dlc-action-spec-np-ndarray"><strong>_dlc_action(spec) → np.ndarray</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#touch-action-spec-np-ndarray"><strong>_touch_action(spec) → np.ndarray</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ttl-action-spec-np-ndarray"><strong>_ttl_action(spec) → np.ndarray</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kv-event-handling"><strong>KV Event Handling</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-kv-events-kv-dict"><strong>_on_kv_events(kv: dict)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-player-contact-contact-bool"><strong>on_player_contact(contact: bool)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#give-reward-duration-ms-int-override"><strong>give_reward(duration_ms: int)</strong> <em>(override)</em></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behavior-routing"><strong>Behavior Routing</strong></a></li>

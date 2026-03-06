@@ -108,6 +108,12 @@ class UnityAgentTask(UnityMultibehaviorTask):
         self.dlc_oneeuro_beta = kwargs.get("dlc_oneeuro_beta", None)
         self.dlc_oneeuro_d_cutoff = kwargs.get("dlc_oneeuro_d_cutoff", None)
 
+        # Interaction feedback parameters
+        self.vibration_on_interaction = kwargs.get("vibration_on_interaction", False)
+        self.vibration_step_duration = kwargs.get("vibration_step_duration", 200)
+        self.use_tone_reward_cue = kwargs.get("use_tone_reward_cue", False)
+        self.tone_duration = kwargs.get("tone_duration", 200)
+
         # Touch client parameters
         self.touch_tx_mode = kwargs.get("touch_tx_mode", "rate")
         self.touch_tx_hz = kwargs.get("touch_tx_hz", 60.0)
@@ -229,6 +235,25 @@ class UnityAgentTask(UnityMultibehaviorTask):
             branches = spec.action_spec.discrete_branches
             return ("discrete", np.zeros(len(branches), dtype=np.int32))
 
+    def _on_kv_events(self, kv: dict):
+        super()._on_kv_events(kv)
+        contact_val = kv.get("hockey.player_contact")
+        # TODO consider somehow setting the exact kvPrefix via parameters instead of hardcoding "hockey"
+        # the kvPrefix need to be set in the Unity environment and match what we look for here in order to trigger the contact events
+        if contact_val is not None:
+            self.on_player_contact(contact_val == "1")
+
+    def on_player_contact(self, contact: bool):
+        """Called when puck contact starts (True) or ends (False)."""
+        LOG.debug(f"Player-puck contact: {'start' if contact else 'end'}")
+        if contact and self.vibration_on_interaction:
+            self.give_vibration(self.vibration_step_duration)
+
+    def give_reward(self, duration=10):
+        super().give_reward(duration)
+        if self.use_tone_reward_cue:
+            self.give_tone(self.tone_duration)
+
     def get_info(self):
         """
         Returns:
@@ -336,6 +361,10 @@ class UnityAgentTask(UnityMultibehaviorTask):
                 "use_dlc": self.use_dlc,
                 "use_photottl": self.use_photottl,
                 "use_touch": self.use_touch,
+                "vibration_on_interaction": self.vibration_on_interaction,
+                "vibration_step_duration": self.vibration_step_duration,
+                "use_tone_reward_cue": self.use_tone_reward_cue,
+                "tone_duration": self.tone_duration,
             }
         )
 

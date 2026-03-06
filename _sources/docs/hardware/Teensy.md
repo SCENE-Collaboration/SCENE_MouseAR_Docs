@@ -11,7 +11,10 @@ scheduler.
 
 | Subsystem | Direction | Description |
 |-----------|-----------|-------------|
-| Water solenoid | OUT | Timed valve pulses for water reward delivery |
+| Water solenoid 1 | OUT | Timed valve pulses for primary water reward delivery |
+| Water solenoid 2 | OUT | Timed valve pulses for secondary water reward delivery |
+| Vibration motor | OUT | Timed haptic feedback pulse (e.g. puck-contact cue) |
+| Speaker / tone | OUT | Timed 3 kHz tone pulse (e.g. reward auditory cue) |
 | TTL sync pulse | OUT | 10 ms pulse for episode-sync with external devices |
 | Drain | OUT | Toggle valve open indefinitely (line flushing) |
 | Photodiode | IN | 10-bit ADC reading from screen photodiode |
@@ -27,10 +30,12 @@ scheduler.
 |-----|-----------|--------|-------|
 | 14 (A0) | IN | `PhotoDiode` | 10-bit ADC, 4× averaging, 500 Hz |
 | 12 | IN | `BarcodeTTL` | `INPUT_PULLUP` — active-low barcode signal |
-| 6 | OUT | `Water_pin` | Controls TIP120G base via 220 Ω |
+| 6 | OUT | `Water_pin` | Primary water solenoid — TIP120G via 220 Ω |
+| 0 | OUT | `Water_pin2` | Secondary water solenoid |
+| 9 | OUT | `Vibration_pin` | Vibration motor (e.g. Velleman WPM458) |
+| 1 | OUT | `speaker` | Speaker — 3 kHz tone via `tone()` / `noTone()` |
 | 11 | OUT | `TTL_pin` | Episode-sync TTL, 10 ms pulse |
-| 13 | OUT | `LED_pin` | Built-in LED, mirrors water valve state |
-| 1 | OUT | `speaker` | Speaker (defined, unused in current main loop) |
+| 13 | OUT | `LED_pin` | Built-in LED, mirrors primary water valve state |
 | 18 (SDA) | I²C | BH1750 data | Wire library default |
 | 19 (SCL) | I²C | BH1750 clock | Wire library default |
 
@@ -50,7 +55,10 @@ scheduler.
             LED ─────┤ pin 13        (built-in)             │
         TTL out ─────┤ pin 11   ──► external TTL device     │
                      │                                       │
-      Water ckt ─────┤ pin 6    ──► 220 Ω ──► TIP120G base │
+  Water ckt (1) ─────┤ pin 6    ──► 220 Ω ──► TIP120G base │
+  Water ckt (2) ─────┤ pin 0    ──► secondary solenoid      │
+Vibration motor ─────┤ pin 9    ──► Velleman WPM458 / relay │
+        Speaker ─────┤ pin 1    ──► speaker / amplifier     │
                      │                                       │
     BH1750 SDA ──────┤ pin 18  (SDA)                        │
     BH1750 SCL ──────┤ pin 19  (SCL)                        │
@@ -74,7 +82,7 @@ when the transistor pulls the solenoid's negative terminal to GND.
                                        │
                          TIP120G       │
                       ┌──────────┐     │
-Teensy pin 6 ─[220Ω]─┤ Base     │     │
+Teensy pin 6 ─[220Ω] ─┤ Base     │     │
                       │ Collector├─────┘
                       │ Emitter  ├──── GND
                       └──────────┘
@@ -109,7 +117,7 @@ Teensy pin 6 ─[220Ω]─┤ Base     │     │
 While `task_on`, the firmware emits one line per sample at 500 Hz over serial:
 
 ```
-<micros>,<analog>,<digital>,<W_on>,<TTL_on>,<lux>,<lux_timestamp>
+<micros>,<analog>,<digital>,<W_on>,<L_on>,<V_on>,<T_on>,<TTL_on>,<lux>,<lux_timestamp>
 ```
 
 | Field | Type | Description |
@@ -117,7 +125,10 @@ While `task_on`, the firmware emits one line per sample at 500 Hz over serial:
 | `micros` | uint64 | Device time in µs (64-bit, overflow-safe) |
 | `analog` | int | 10-bit ADC (0–1023) — photodiode |
 | `digital` | int | Pin 12 state (0/1) — barcode TTL |
-| `W_on` | 0/1 | Water valve active |
+| `W_on` | 0/1 | Primary water valve active |
+| `L_on` | 0/1 | Secondary water valve active |
+| `V_on` | 0/1 | Vibration motor active |
+| `T_on` | 0/1 | Tone (speaker) active |
 | `TTL_on` | 0/1 | TTL output active |
 | `lux` | uint | BH1750 lux (actual value when new reading available, else `4242`) |
 | `lux_timestamp` | uint64 | Device µs of the lux reading (0 when not new) |
@@ -132,14 +143,16 @@ integer payload (2 bytes) sent immediately after the command byte.
 
 | Command | Byte | Payload | Valid when | Effect |
 |---------|------|---------|------------|--------|
-| Start   | `A`  | —       | idle       | Enable streaming, reset timers |
-| Stop    | `Z`  | —       | running    | Disable streaming, close valve |
-| Water   | `W`  | `int16 ms` | both    | Open valve for N ms (≤0 = close) |
+| Start   | `A`  | —       | idle       | Enable streaming, reset all output timers |
+| Stop    | `Z`  | —       | running    | Disable streaming, turn off all outputs |
+| Water 1 | `W`  | `int16 ms` | both   | Open primary solenoid for N ms (≤0 = close immediately) |
+| Water 2 | `L`  | `int16 ms` | both   | Open secondary solenoid for N ms (≤0 = close immediately) |
+| Vibration | `V` | `int16 ms` | both  | Run vibration motor for N ms (≤0 = stop immediately) |
+| Tone    | `T`  | `int16 ms` | both   | Play 3 kHz tone for N ms (≤0 = stop immediately) |
 | TTL pulse | `S` | —      | running    | Raise TTL pin for 10 ms |
 | Clock sync | `X` | —    | both       | Reply `SYNC <t_dev_us>\n` |
-| Drain   | `D`  | —       | idle       | Toggle valve open/closed |
+| Drain   | `D`  | —       | idle       | Toggle both water valves open/closed (line flushing) |
 | Reboot  | `Y`  | —       | idle       | `_reboot_Teensyduino_()` |
-| Tone    | `T`  | `int16 Hz, int16 ms` | — | Speaker tone (ms < 0 = continuous) |
 
 ### Clock sync protocol
 
@@ -167,4 +180,4 @@ lowest-RTT samples, and stores their median as `self.offset`.
 ## See Also
 
 - [Teensy Python Driver](../python/Teensy.md) — `Teensy` class, configuration, data access
-- [Task Base Class](../python/Tasks.md) — `give_reward()`, `signal_ttl()`, `drain_water()`
+- [Task Base Class](../python/Tasks.md) — `give_reward()`, `give_reward2()`, `give_vibration()`, `give_tone()`, `signal_ttl()`, `drain_water()`

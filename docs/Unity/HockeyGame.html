@@ -559,19 +559,22 @@ document.write(`
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code></p></td>
 <td><p>ML-Agents side channel for bidirectional string key-value transport</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PlayerContactFlag</span></code></p></td>
+<td><p>Collision detector added to the puck — exposes <code class="docutils literal notranslate"><span class="pre">IsContact</span></code> bool (true while DlcAgent is touching)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code></p></td>
 <td><p>Destroys puck on <code class="docutils literal notranslate"><span class="pre">TargetArea</span></code> overlap → signals success</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code></p></td>
 <td><p>Destroys puck after exceeding cumulative travel limit</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume</span></code></p></td>
 <td><p>Clamps puck inside arena with elastic bounce</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ColorOverlay</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ColorOverlay</span></code></p></td>
 <td><p>Full-screen color flash on success</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WhiteNoiseOverlayGPU</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WhiteNoiseOverlayGPU</span></code></p></td>
 <td><p>Full-screen noise overlay on episode timeout</p></td>
 </tr>
 </tbody>
@@ -617,12 +620,13 @@ KvManagersDirector: HockeyManager.enabled=1
         └─► FloorTargetsSpawner.SpawnAll()
               spawns ≥1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
-              → SendKv(&quot;floor.target_positions&quot;, &quot;x0,z0,...&quot;)
+              → SendKv(&quot;hockey.target_positions&quot;, &quot;x0,z0,...&quot;)
 
 State = Running
   ├─ FixedUpdate: FloorTargetsSpawnerReporter
-  │     → SendKv(&quot;floor.object_position&quot;,
+  │     → SendKv(&quot;hockey.object_position&quot;,
   │              &quot;pos_x,pos_z,vel_x,vel_z&quot;)
+  │     → SendKv(&quot;hockey.player_contact&quot;, &quot;1&quot;/&quot;0&quot;)  ← edge-triggered only
   │
   ├─ ContainmentInBoxVolume: clamp + bounce puck
   ├─ TargetKillOnDistance: destroy puck if travel &gt; max
@@ -980,17 +984,22 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">floor.target_positions</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.target_positions</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;x0,z0[,x1,z1,...]&quot;</span></code></p></td>
 <td><p>Once at spawn — world XZ of each TargetArea</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">floor.object_position</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;pos_x,pos_z,vel_x,vel_z&quot;</span></code></p></td>
 <td><p>Every <code class="docutils literal notranslate"><span class="pre">reportingPeriod</span></code> steps — puck XZ + velocity</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code></p></td>
+<td><p>Edge-triggered: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> when DlcAgent first touches puck, <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> when contact ends or puck is destroyed during contact</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code> is sent only on state changes (not every frame). If the puck is destroyed while contact is active, a final <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> is synthesised in the next <code class="docutils literal notranslate"><span class="pre">FixedUpdate</span></code> to ensure Python always sees a clean contact-end. Python receives the event via <code class="docutils literal notranslate"><span class="pre">UnityAgentTask._on_kv_events()</span></code> → <code class="docutils literal notranslate"><span class="pre">on_player_contact(contact:</span> <span class="pre">bool)</span></code>.</p>
 </section>
 <section id="observations-from-dlcagent-collectobservations">
 <h3>Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code><a class="headerlink" href="#observations-from-dlcagent-collectobservations" title="Link to this heading">#</a></h3>
@@ -1158,6 +1167,11 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">use_touch</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <span class="n">behavior_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
 <span class="n">reward_size</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">              </span><span class="c1"># water solenoid pulse duration (ms)</span>
+
+<span class="c1"># Optional haptic / auditory feedback</span>
+<span class="n">vibration_on_interaction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1"># vibrate on every puck-contact start</span>
+<span class="n">use_tone_reward_cue</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1"># play 3 kHz tone alongside each reward</span>
+<span class="n">tone_duration</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="w">    </span><span class="c1"># tone duration (ms) when use_tone_reward_cue = true</span>
 </pre></div>
 </div>
 </section>
@@ -1226,7 +1240,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
   ──[kv normal] ──► KvManagersDirector → FloorTargetsSpawner
   ──[kv enabled]──► EpisodeManagerSingleWall.StartEpisode()
                       └─► SpawnAll()
-  ◄──[floor.target_positions]──  (once per episode)
+  ◄──[hockey.target_positions]──  (once per episode)
 
 loop():
   DLCInput actions [x,y,hdg,ha,act]
@@ -1241,11 +1255,20 @@ loop():
 
   env.step()
 
-  ◄──[floor.object_position]──  (every N physics steps)
+  ◄──[hockey.object_position]──  (every N physics steps)
+  ◄──[hockey.player_contact]───  (edge-triggered: &quot;1&quot; on start, &quot;0&quot; on end)
+         │
+         └─► UnityAgentTask._on_kv_events()
+               └─► on_player_contact(contact)
+                     ├─ [vibration_on_interaction=True]
+                     │    → task.give_vibration() ──[Teensy]──► vibration motor
+                     └─ (override for custom reactions)
 
   puck → TargetArea:
     reward &gt; 0 in step result
     task.give_reward() ──[Teensy]──► solenoid
+      └─ [use_tone_reward_cue=True]
+           → task.give_tone() ──[Teensy]──► speaker (3 kHz)
 
   saved: kv_messages, state_vec, reward_vec,
          runtime_params, ...

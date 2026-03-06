@@ -461,31 +461,43 @@ scheduler.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Water solenoid</p></td>
+<tr class="row-even"><td><p>Water solenoid 1</p></td>
 <td><p>OUT</p></td>
-<td><p>Timed valve pulses for water reward delivery</p></td>
+<td><p>Timed valve pulses for primary water reward delivery</p></td>
 </tr>
-<tr class="row-odd"><td><p>TTL sync pulse</p></td>
+<tr class="row-odd"><td><p>Water solenoid 2</p></td>
+<td><p>OUT</p></td>
+<td><p>Timed valve pulses for secondary water reward delivery</p></td>
+</tr>
+<tr class="row-even"><td><p>Vibration motor</p></td>
+<td><p>OUT</p></td>
+<td><p>Timed haptic feedback pulse (e.g. puck-contact cue)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Speaker / tone</p></td>
+<td><p>OUT</p></td>
+<td><p>Timed 3 kHz tone pulse (e.g. reward auditory cue)</p></td>
+</tr>
+<tr class="row-even"><td><p>TTL sync pulse</p></td>
 <td><p>OUT</p></td>
 <td><p>10 ms pulse for episode-sync with external devices</p></td>
 </tr>
-<tr class="row-even"><td><p>Drain</p></td>
+<tr class="row-odd"><td><p>Drain</p></td>
 <td><p>OUT</p></td>
 <td><p>Toggle valve open indefinitely (line flushing)</p></td>
 </tr>
-<tr class="row-odd"><td><p>Photodiode</p></td>
+<tr class="row-even"><td><p>Photodiode</p></td>
 <td><p>IN</p></td>
 <td><p>10-bit ADC reading from screen photodiode</p></td>
 </tr>
-<tr class="row-even"><td><p>Barcode TTL</p></td>
+<tr class="row-odd"><td><p>Barcode TTL</p></td>
 <td><p>IN</p></td>
 <td><p>Digital barcode channel from screen</p></td>
 </tr>
-<tr class="row-odd"><td><p>BH1750 lux</p></td>
+<tr class="row-even"><td><p>BH1750 lux</p></td>
 <td><p>IN</p></td>
 <td><p>I²C ambient-light sensor (50 Hz)</p></td>
 </tr>
-<tr class="row-even"><td><p>Clock sync</p></td>
+<tr class="row-odd"><td><p>Clock sync</p></td>
 <td><p>BOTH</p></td>
 <td><p>NTP-style offset calibration over USB-Serial</p></td>
 </tr>
@@ -517,22 +529,32 @@ scheduler.</p>
 <tr class="row-even"><td><p>6</p></td>
 <td><p>OUT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Water_pin</span></code></p></td>
-<td><p>Controls TIP120G base via 220 Ω</p></td>
+<td><p>Primary water solenoid — TIP120G via 220 Ω</p></td>
 </tr>
-<tr class="row-odd"><td><p>11</p></td>
+<tr class="row-odd"><td><p>0</p></td>
 <td><p>OUT</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">TTL_pin</span></code></p></td>
-<td><p>Episode-sync TTL, 10 ms pulse</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Water_pin2</span></code></p></td>
+<td><p>Secondary water solenoid</p></td>
 </tr>
-<tr class="row-even"><td><p>13</p></td>
+<tr class="row-even"><td><p>9</p></td>
 <td><p>OUT</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">LED_pin</span></code></p></td>
-<td><p>Built-in LED, mirrors water valve state</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Vibration_pin</span></code></p></td>
+<td><p>Vibration motor (e.g. Velleman WPM458)</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>OUT</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">speaker</span></code></p></td>
-<td><p>Speaker (defined, unused in current main loop)</p></td>
+<td><p>Speaker — 3 kHz tone via <code class="docutils literal notranslate"><span class="pre">tone()</span></code> / <code class="docutils literal notranslate"><span class="pre">noTone()</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>OUT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TTL_pin</span></code></p></td>
+<td><p>Episode-sync TTL, 10 ms pulse</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>OUT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LED_pin</span></code></p></td>
+<td><p>Built-in LED, mirrors primary water valve state</p></td>
 </tr>
 <tr class="row-even"><td><p>18 (SDA)</p></td>
 <td><p>I²C</p></td>
@@ -562,7 +584,10 @@ scheduler.</p>
             LED ─────┤ pin 13        (built-in)             │
         TTL out ─────┤ pin 11   ──► external TTL device     │
                      │                                       │
-      Water ckt ─────┤ pin 6    ──► 220 Ω ──► TIP120G base │
+  Water ckt (1) ─────┤ pin 6    ──► 220 Ω ──► TIP120G base │
+  Water ckt (2) ─────┤ pin 0    ──► secondary solenoid      │
+Vibration motor ─────┤ pin 9    ──► Velleman WPM458 / relay │
+        Speaker ─────┤ pin 1    ──► speaker / amplifier     │
                      │                                       │
     BH1750 SDA ──────┤ pin 18  (SDA)                        │
     BH1750 SCL ──────┤ pin 19  (SCL)                        │
@@ -585,7 +610,7 @@ when the transistor pulls the solenoid’s negative terminal to GND.</p>
                                        │
                          TIP120G       │
                       ┌──────────┐     │
-Teensy pin 6 ─[220Ω]─┤ Base     │     │
+Teensy pin 6 ─[220Ω] ─┤ Base     │     │
                       │ Collector├─────┘
                       │ Emitter  ├──── GND
                       └──────────┘
@@ -638,7 +663,7 @@ voltage spikes that can exceed its V_CE rating and destroy the transistor.</p>
 <section id="csv-output-format">
 <h3>CSV output format<a class="headerlink" href="#csv-output-format" title="Link to this heading">#</a></h3>
 <p>While <code class="docutils literal notranslate"><span class="pre">task_on</span></code>, the firmware emits one line per sample at 500 Hz over serial:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">micros</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">analog</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">digital</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">W_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">TTL_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">lux</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">lux_timestamp</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">micros</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">analog</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">digital</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">W_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">L_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">V_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">T_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">TTL_on</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">lux</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">lux_timestamp</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -663,17 +688,29 @@ voltage spikes that can exceed its V_CE rating and destroy the transistor.</p>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">W_on</span></code></p></td>
 <td><p>0/1</p></td>
-<td><p>Water valve active</p></td>
+<td><p>Primary water valve active</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TTL_on</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">L_on</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Secondary water valve active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V_on</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Vibration motor active</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T_on</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>Tone (speaker) active</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TTL_on</span></code></p></td>
 <td><p>0/1</p></td>
 <td><p>TTL output active</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lux</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lux</span></code></p></td>
 <td><p>uint</p></td>
 <td><p>BH1750 lux (actual value when new reading available, else <code class="docutils literal notranslate"><span class="pre">4242</span></code>)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lux_timestamp</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">lux_timestamp</span></code></p></td>
 <td><p>uint64</p></td>
 <td><p>Device µs of the lux reading (0 when not new)</p></td>
 </tr>
@@ -701,49 +738,61 @@ integer payload (2 bytes) sent immediately after the command byte.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
 <td><p>—</p></td>
 <td><p>idle</p></td>
-<td><p>Enable streaming, reset timers</p></td>
+<td><p>Enable streaming, reset all output timers</p></td>
 </tr>
 <tr class="row-odd"><td><p>Stop</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Z</span></code></p></td>
 <td><p>—</p></td>
 <td><p>running</p></td>
-<td><p>Disable streaming, close valve</p></td>
+<td><p>Disable streaming, turn off all outputs</p></td>
 </tr>
-<tr class="row-even"><td><p>Water</p></td>
+<tr class="row-even"><td><p>Water 1</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">W</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int16</span> <span class="pre">ms</span></code></p></td>
 <td><p>both</p></td>
-<td><p>Open valve for N ms (≤0 = close)</p></td>
+<td><p>Open primary solenoid for N ms (≤0 = close immediately)</p></td>
 </tr>
-<tr class="row-odd"><td><p>TTL pulse</p></td>
+<tr class="row-odd"><td><p>Water 2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int16</span> <span class="pre">ms</span></code></p></td>
+<td><p>both</p></td>
+<td><p>Open secondary solenoid for N ms (≤0 = close immediately)</p></td>
+</tr>
+<tr class="row-even"><td><p>Vibration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int16</span> <span class="pre">ms</span></code></p></td>
+<td><p>both</p></td>
+<td><p>Run vibration motor for N ms (≤0 = stop immediately)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tone</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int16</span> <span class="pre">ms</span></code></p></td>
+<td><p>both</p></td>
+<td><p>Play 3 kHz tone for N ms (≤0 = stop immediately)</p></td>
+</tr>
+<tr class="row-even"><td><p>TTL pulse</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
 <td><p>—</p></td>
 <td><p>running</p></td>
 <td><p>Raise TTL pin for 10 ms</p></td>
 </tr>
-<tr class="row-even"><td><p>Clock sync</p></td>
+<tr class="row-odd"><td><p>Clock sync</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">X</span></code></p></td>
 <td><p>—</p></td>
 <td><p>both</p></td>
 <td><p>Reply <code class="docutils literal notranslate"><span class="pre">SYNC</span> <span class="pre">&lt;t_dev_us&gt;\n</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>Drain</p></td>
+<tr class="row-even"><td><p>Drain</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
 <td><p>—</p></td>
 <td><p>idle</p></td>
-<td><p>Toggle valve open/closed</p></td>
+<td><p>Toggle both water valves open/closed (line flushing)</p></td>
 </tr>
-<tr class="row-even"><td><p>Reboot</p></td>
+<tr class="row-odd"><td><p>Reboot</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
 <td><p>—</p></td>
 <td><p>idle</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">_reboot_Teensyduino_()</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Tone</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">int16</span> <span class="pre">Hz,</span> <span class="pre">int16</span> <span class="pre">ms</span></code></p></td>
-<td><p>—</p></td>
-<td><p>Speaker tone (ms &lt; 0 = continuous)</p></td>
 </tr>
 </tbody>
 </table>
@@ -774,7 +823,7 @@ lowest-RTT samples, and stores their median as <code class="docutils literal not
 <h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="../python/Teensy.html"><span class="std std-doc">Teensy Python Driver</span></a> — <code class="docutils literal notranslate"><span class="pre">Teensy</span></code> class, configuration, data access</p></li>
-<li><p><a class="reference internal" href="../python/Tasks.html"><span class="std std-doc">Task Base Class</span></a> — <code class="docutils literal notranslate"><span class="pre">give_reward()</span></code>, <code class="docutils literal notranslate"><span class="pre">signal_ttl()</span></code>, <code class="docutils literal notranslate"><span class="pre">drain_water()</span></code></p></li>
+<li><p><a class="reference internal" href="../python/Tasks.html"><span class="std std-doc">Task Base Class</span></a> — <code class="docutils literal notranslate"><span class="pre">give_reward()</span></code>, <code class="docutils literal notranslate"><span class="pre">give_reward2()</span></code>, <code class="docutils literal notranslate"><span class="pre">give_vibration()</span></code>, <code class="docutils literal notranslate"><span class="pre">give_tone()</span></code>, <code class="docutils literal notranslate"><span class="pre">signal_ttl()</span></code>, <code class="docutils literal notranslate"><span class="pre">drain_water()</span></code></p></li>
 </ul>
 </section>
 </section>

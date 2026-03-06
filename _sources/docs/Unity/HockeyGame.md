@@ -38,6 +38,7 @@ The Hockey Game is a floor-based navigation task in which the mouse (tracked via
 |--------|------|
 | `KvManagersDirector` | Singleton KV router: Python → managers/spawners and Unity → Python |
 | `KvChannel` | ML-Agents side channel for bidirectional string key-value transport |
+| `PlayerContactFlag` | Collision detector added to the puck — exposes `IsContact` bool (true while DlcAgent is touching) |
 | `TargetKillOnArea` | Destroys puck on `TargetArea` overlap → signals success |
 | `TargetKillOnDistance` | Destroys puck after exceeding cumulative travel limit |
 | `ContainmentInBoxVolume` | Clamps puck inside arena with elastic bounce |
@@ -85,12 +86,13 @@ KvManagersDirector: HockeyManager.enabled=1
         └─► FloorTargetsSpawner.SpawnAll()
               spawns ≥1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
-              → SendKv("floor.target_positions", "x0,z0,...")
+              → SendKv("hockey.target_positions", "x0,z0,...")
 
 State = Running
   ├─ FixedUpdate: FloorTargetsSpawnerReporter
-  │     → SendKv("floor.object_position",
+  │     → SendKv("hockey.object_position",
   │              "pos_x,pos_z,vel_x,vel_z")
+  │     → SendKv("hockey.player_contact", "1"/"0")  ← edge-triggered only
   │
   ├─ ContainmentInBoxVolume: clamp + bounce puck
   ├─ TargetKillOnDistance: destroy puck if travel > max
@@ -250,8 +252,11 @@ Unity sends data back to Python via the **same `KvChannel`** (bidirectional). Py
 
 | Key | Format | When |
 |-----|--------|------|
-| `floor.target_positions` | `"x0,z0[,x1,z1,...]"` | Once at spawn — world XZ of each TargetArea |
-| `floor.object_position` | `"pos_x,pos_z,vel_x,vel_z"` | Every `reportingPeriod` steps — puck XZ + velocity |
+| `hockey.target_positions` | `"x0,z0[,x1,z1,...]"` | Once at spawn — world XZ of each TargetArea |
+| `hockey.object_position` | `"pos_x,pos_z,vel_x,vel_z"` | Every `reportingPeriod` steps — puck XZ + velocity |
+| `hockey.player_contact` | `"1"` or `"0"` | Edge-triggered: `"1"` when DlcAgent first touches puck, `"0"` when contact ends or puck is destroyed during contact |
+
+`hockey.player_contact` is sent only on state changes (not every frame). If the puck is destroyed while contact is active, a final `"0"` is synthesised in the next `FixedUpdate` to ensure Python always sees a clean contact-end. Python receives the event via `UnityAgentTask._on_kv_events()` → `on_player_contact(contact: bool)`.
 
 ### Observations from `DlcAgent.CollectObservations()`
 
@@ -369,6 +374,11 @@ use_dlc         = true             # enable DLCClient → DLCInput behavior
 use_touch       = false
 behavior_list   = ["TTLInput", "DLCInput"]
 reward_size     = 100              # water solenoid pulse duration (ms)
+
+# Optional haptic / auditory feedback
+vibration_on_interaction = false  # vibrate on every puck-contact start
+use_tone_reward_cue      = false  # play 3 kHz tone alongside each reward
+tone_duration            = 200    # tone duration (ms) when use_tone_reward_cue = true
 ```
 
 ### Disabled managers (must be turned off)
@@ -438,7 +448,7 @@ task.start()
   ──[kv normal] ──► KvManagersDirector → FloorTargetsSpawner
   ──[kv enabled]──► EpisodeManagerSingleWall.StartEpisode()
                       └─► SpawnAll()
-  ◄──[floor.target_positions]──  (once per episode)
+  ◄──[hockey.target_positions]──  (once per episode)
 
 loop():
   DLCInput actions [x,y,hdg,ha,act]
@@ -453,11 +463,20 @@ loop():
 
   env.step()
 
-  ◄──[floor.object_position]──  (every N physics steps)
+  ◄──[hockey.object_position]──  (every N physics steps)
+  ◄──[hockey.player_contact]───  (edge-triggered: "1" on start, "0" on end)
+         │
+         └─► UnityAgentTask._on_kv_events()
+               └─► on_player_contact(contact)
+                     ├─ [vibration_on_interaction=True]
+                     │    → task.give_vibration() ──[Teensy]──► vibration motor
+                     └─ (override for custom reactions)
 
   puck → TargetArea:
     reward > 0 in step result
     task.give_reward() ──[Teensy]──► solenoid
+      └─ [use_tone_reward_cue=True]
+           → task.give_tone() ──[Teensy]──► speaker (3 kHz)
 
   saved: kv_messages, state_vec, reward_vec,
          runtime_params, ...

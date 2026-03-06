@@ -122,7 +122,7 @@ Each layer in the hierarchy has a clearly scoped responsibility. Understanding w
   5. Fires `LiveParamScheduler` hooks (`on_success`, `on_episode_end`, `on_epoch_advance`) and applies any resulting KV changes
   6. Calls `reset_episode()` (scheduler changes + TTL sync pulse) or `reset_environment()` as needed
 - Epoch / session duration enforcement: `self.epochs`, `self.epoch_trials`, `self.max_session_duration`
-- KV message capture: incoming Unity → Python KV messages are logged per step in `self.kv_messages`
+- KV message capture: incoming Unity → Python KV messages are logged per step in `self.kv_messages`; subclasses can react to them by overriding `_on_kv_events(kv)`
 - Runtime parameter change log: `self.runtime_params` records every scheduler-driven or manual KV update
 - Data collection: `get_data()` aggregates all step-level arrays and merges with base `Task.get_data()`
 - Parameter introspection: `get_params()` serialises the full task configuration
@@ -224,26 +224,49 @@ def loop(self) -> bool:
 
 #### **give_reward(duration_ms: int)**
 ```python
-task.give_reward(100)  # 100 ms water pulse
+task.give_reward(100)  # 100 ms water pulse on primary solenoid
 ```
-- Sends `"W<duration>"` command to Teensy
-- Opens solenoid valve for specified duration
-- Typical range: 50-200 ms
+- Sends `W` command with `int16` duration to Teensy
+- Opens primary solenoid valve for specified duration
+- Typical range: 50–200 ms
+
+#### **give_reward2(duration_ms: int)**
+```python
+task.give_reward2(100)  # 100 ms water pulse on secondary solenoid
+```
+- Sends `L` command with `int16` duration to Teensy
+- Opens secondary solenoid valve for specified duration
+
+#### **give_vibration(duration_ms: int)**
+```python
+task.give_vibration(500)  # 500 ms haptic pulse
+```
+- Sends `V` command with `int16` duration to Teensy
+- Activates vibration motor (e.g. Velleman WPM458) for specified duration
+- Default duration: 500 ms
+
+#### **give_tone(duration_ms: int)**
+```python
+task.give_tone(200)  # 200 ms tone at 3 kHz
+```
+- Sends `T` command with `int16` duration to Teensy
+- Plays a 3 kHz tone via the speaker for specified duration (frequency hardcoded in firmware)
+- Default duration: 200 ms
 
 #### **signal_ttl()**
 ```python
 task.signal_ttl()
 ```
-- Sends `"P"` command to Teensy
-- Triggers 5V TTL pulse on output pin
-- Duration defined in Teensy firmware (typically 5-10 ms)
+- Sends `S` command to Teensy
+- Triggers a 10 ms TTL pulse on the sync output pin
 
-#### **drain_water(duration_ms: int)**
+#### **drain_water()**
 ```python
-task.drain_water(5000)  # 5 seconds
+task.drain_water()
 ```
-- Sends `"D<duration>"` command to Teensy
-- Opens valve for extended period (priming/draining)
+- Sends `D` command to Teensy
+- Toggles both water valves open/closed (call once to open, again to close)
+- Used for priming and flushing reward lines
 
 ---
 
@@ -430,6 +453,22 @@ public class RuntimeParamListener : MonoBehaviour
 }
 ```
 
+#### **_on_kv_events(kv: dict)** — override hook
+```python
+def _on_kv_events(self, kv: dict):
+    pass  # no-op in base class
+```
+Called every step with the dict of KV messages received from Unity during that step (empty if none arrived). Override in subclasses to react to game-side events without touching the step loop:
+
+```python
+class MyTask(UnityMultibehaviorTask):
+    def _on_kv_events(self, kv: dict):
+        super()._on_kv_events(kv)
+        if "hockey.player_contact" in kv:
+            contact_on = kv["hockey.player_contact"] == "1"
+            self.on_player_contact(contact_on)
+```
+
 ---
 
 ### **Reset Conditions**
@@ -569,7 +608,12 @@ UnityAgentTask(
     use_photottl: bool = False,
     photottl_half_cell_sec: float = 0.05,
     photottl_period_sec: float = 5.0,
-    photottl_n_bits: int = 8
+    photottl_n_bits: int = 8,
+
+    # Haptic / auditory feedback (passed via **kwargs)
+    vibration_on_interaction: bool = False,
+    use_tone_reward_cue: bool = False,
+    tone_duration: int = 200,
 )
 ```
 
@@ -599,6 +643,10 @@ UnityAgentTask(
 | `photottl_half_cell_sec` | `float` | `0.05` | Half-cell duration (50ms) |
 | `photottl_period_sec` | `float` | `5.0` | Burst period (5s) |
 | `photottl_n_bits` | `int` | `8` | Counter bit width |
+| **Haptic / Auditory** | | | |
+| `vibration_on_interaction` | `bool` | `False` | If True, triggers `give_vibration()` whenever a `hockey.player_contact = "1"` KV event arrives |
+| `use_tone_reward_cue` | `bool` | `False` | If True, `give_reward()` also calls `give_tone(tone_duration)` as an auditory cue |
+| `tone_duration` | `int` | `200` | Duration (ms) of the tone played when `use_tone_reward_cue` is True |
 
 ---
 
@@ -703,6 +751,38 @@ def _ttl_action(self, spec):
 ```
 actions[0] = ttl  # 0.0 or 1.0
 ```
+
+---
+
+### **KV Event Handling**
+
+`UnityAgentTask` overrides `_on_kv_events()` to dispatch game-side events to dedicated handler methods:
+
+#### **_on_kv_events(kv: dict)**
+Dispatches `hockey.player_contact` KV messages to `on_player_contact()`. Calls `super()._on_kv_events(kv)` first.
+
+#### **on_player_contact(contact: bool)**
+```python
+def on_player_contact(self, contact: bool):
+    """Called on every contact state change (edge-triggered from Unity).
+
+    Args:
+        contact: True = contact started, False = contact ended.
+    """
+    LOG.debug(f"Player-puck contact: {'start' if contact else 'end'}")
+    if contact and self.vibration_on_interaction:
+        self.give_vibration(self.vibration_step_duration)
+```
+Override this method in subclasses to add game-specific reactions to player-puck contact events. The default implementation optionally fires a vibration pulse when `vibration_on_interaction=True`.
+
+#### **give_reward(duration_ms: int)** *(override)*
+```python
+def give_reward(self, duration=10):
+    super().give_reward(duration)          # primary solenoid via Task
+    if self.use_tone_reward_cue:
+        self.give_tone(self.tone_duration)  # auditory reward cue
+```
+Extends the base `give_reward()` with an optional simultaneous tone pulse when `use_tone_reward_cue=True`.
 
 ---
 
@@ -1117,9 +1197,12 @@ __init__(teensy)
 start()                          # Abstract
 stop()                           # Abstract
 loop() -> bool                   # Abstract
-give_reward(duration_ms: int)
-signal_ttl()
-drain_water(duration_ms: int)
+give_reward(duration_ms: int)    # Primary water solenoid
+give_reward2(duration_ms: int)   # Secondary water solenoid
+give_vibration(duration_ms: int) # Vibration motor
+give_tone(duration_ms: int)      # 3 kHz tone
+signal_ttl()                     # 10 ms TTL sync pulse
+drain_water()                    # Toggle both valves open/closed
 get_data() -> dict
 get_params() -> dict
 ```
@@ -1133,6 +1216,7 @@ start()
 stop()
 loop() -> (bool, dict)
 get_action_for(behavior_name: str) -> np.ndarray
+_on_kv_events(kv: dict)          # Hook — override to handle Unity→Python KV events
 set_runtime_param(key: str, value: str)
 reset_episode()
 get_data() -> dict
@@ -1148,7 +1232,8 @@ __init__(
     dlc_flip_y, dlc_rotate_90, dlc_box_extents,
     use_touch, touch_address, touch_tx_mode, touch_tx_hz, touch_invert_y,
     touch_speed_gain, touch_vector_window_ms,
-    use_photottl, photottl_half_cell_sec, photottl_period_sec, photottl_n_bits
+    use_photottl, photottl_half_cell_sec, photottl_period_sec, photottl_n_bits,
+    vibration_on_interaction, use_tone_reward_cue, tone_duration
 )
 start()
 stop()
@@ -1156,6 +1241,9 @@ get_action_for(behavior_name: str) -> np.ndarray
 _dlc_action(spec) -> np.ndarray
 _touch_action(spec) -> np.ndarray
 _ttl_action(spec) -> np.ndarray
+_on_kv_events(kv: dict)                 # Dispatches hockey.player_contact
+on_player_contact(contact: bool)        # Override for contact-event reactions
+give_reward(duration_ms: int)           # Extends base with optional tone cue
 get_data() -> dict
 ```
 
