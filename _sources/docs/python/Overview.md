@@ -491,6 +491,7 @@ public override void OnActionReceived(ActionBuffers actions)
 - [TouchClient](TouchClient.md) - Touchscreen integration
 - [Teensy](Teensy.md) - Hardware control and serial protocol
 - [TTLGenerator](TTLGenerator.md) - Photodiode synchronization
+- [Chunked Buffers](ChunkedBuffers.md) - GC-safe data collection pattern (performance)
 
 ### **Unity System**
 - [Unity Overview](../Unity/Overview.md) - Unity game architecture
