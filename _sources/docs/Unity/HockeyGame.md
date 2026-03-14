@@ -373,6 +373,7 @@ use_photottl    = true             # enable TTLGenerator → TTLInput behavior
 use_dlc         = true             # enable DLCClient → DLCInput behavior
 use_touch       = false
 behavior_list   = ["TTLInput", "DLCInput"]
+random_seed     = -1               # -1 = choose a fresh Unity seed on each run; any other int is used as-is
 reward_size     = 100              # water solenoid pulse duration (ms)
 
 # Optional haptic / auditory feedback
