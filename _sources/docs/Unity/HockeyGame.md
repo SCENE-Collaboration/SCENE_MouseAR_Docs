@@ -84,9 +84,10 @@ KvManagersDirector: HockeyManager.enabled=1
         │    → OnInitPhaseComplete
         │
         └─► FloorTargetsSpawner.SpawnAll()
-              spawns ≥1 TargetArea (isTrigger, tag=Target)
+              positions target + puck based on spawn_mode (0/1/2)
+              spawns 1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
-              → SendKv("hockey.target_positions", "x0,z0,...")
+              → SendKv("hockey.target_positions", "x,z")
 
 State = Running
   ├─ FixedUpdate: FloorTargetsSpawnerReporter
@@ -189,35 +190,63 @@ Sent at any time. Received by `KvManagersDirector` and routed by namespace prefi
 
 These override `FloorTargetsSpawner` fields and optionally respawn immediately.
 
-**Target zone layout**
+**Spawn mode** — Controls how the target zone and puck are positioned each episode.
 
 | Key suffix | Type | Effect |
 |---|---|---|
-| `num_target_areas` | int 1–3 | Number of target zones |
-| `target_x` | float | World X of the goal wall |
+| `spawn_mode` | int 0–2 | Positioning strategy (see below) |
+
+- **Mode 0 — Random** (default): Target zone placed at `(target_x, random Z within z_min..z_max)`. If `randomize_target_x=1`, target X is also randomized within `x_min..x_max` instead of using `target_x`. Puck placed randomly (controlled by `randomize_start_x/z` flags), enforcing `min_separation` (2D XZ distance) from the target and, when a Player-tagged object is present, from the player as well. When `randomize_start_x=0` or `randomize_start_z=0`, the corresponding `move_object_x/z` value is used directly.
+- **Mode 1 — Fixed**: Target placed at `(target_x, target_z)`, puck at `(move_object_x, move_object_z)`. Same parameters as Mode 0 but used as exact positions — `randomize_start_x/z` flags are ignored. Python has full control over placement for deterministic experiments.
+- **Mode 2 — Player-aware**: Puck spawns at `player_spawn_distance` from the Player-tagged object (virtual mouse) at `player_spawn_angle` relative to the mouse-facing direction used by the current scene setup, or within a forward-facing `player_spawn_angle ± 100°` arc when `player_spawn_angle_random=1`. The puck position is then clamped into `x_min..x_max` and `z_min..z_max`. The target no longer mirrors to the opposite side of the player; it is sampled with the same random-placement rules as Mode 0 and must satisfy `min_separation` from the puck. Falls back to Mode 0 if no Player object is found.
+
+Compared with the previous implementation (before march 2026), the current spawner no longer builds up to three Z-spaced goal walls or derives player-aware target placement by mirroring the goal across the mouse. The current behavior always spawns a single target area, uses a shared random target sampler, extends Mode 0 separation checks so randomized puck placement also avoids the player, and changes Mode 2 so the puck is the player-aware object while the goal is sampled independently under the usual random-goal rules. In the same refactor, player-aware angle randomization changed from full 360 degree sampling to a forward-facing 200 degree window, and the player-facing basis was flipped to match the virtual mouse orientation used in this project.
+
+**Target zone position & dimensions**
+
+| Key suffix | Type | Effect |
+|---|---|---|
+| `target_x` | float | Target world X (Mode 0: used when `randomize_target_x=0`; Mode 1: exact X) |
+| `target_z` | float | Target world Z (Mode 1 only; Mode 0 randomizes Z) |
+| `randomize_target_x` | bool | Randomize target X within `x_min..x_max` (Mode 0 only; default false) |
 | `area_width_z` | float | Zone width along Z (m) |
 | `area_thickness_x` | float | Zone trigger depth (m) |
 | `area_center_y` | float | Zone height center (m) |
 | `area_height_y` | float | Zone height (m) |
-| `z_min` / `z_max` | float | Z placement band |
-| `min_gap_z` | float | Min gap between zone centers |
-| `jitter_z` | float | Random Z jitter on placement |
-| `snap_z_to_integers` | bool | Snap zone Z to integer grid |
+
+**Arena bounds**
+
+| Key suffix | Type | Effect |
+|---|---|---|
+| `z_min` / `z_max` | float | Arena Z bounds (Mode 0 random range, Mode 2 clamping) |
+| `x_min` / `x_max` | float | Arena X bounds (Mode 0 random range when `randomize_start_x=1`, Mode 2 clamping) |
+| `min_separation` | float | Min XZ distance between target and puck at spawn |
 
 **Puck spawn & physics**
 
 | Key suffix | Type | Effect |
 |---|---|---|
-| `move_object_x/y/z` | float | Default spawn position |
-| `randomize_start_z` | bool | Random Z spawn (avoids targets) |
-| `randomize_start_x` | bool | Random X spawn |
-| `object_min_distance_z` | float | Min Z gap from target at spawn |
+| `move_object_x` | float | Puck X position (Mode 0: default when `randomize_start_x=0`; Mode 1: exact) |
+| `move_object_y` | float | Puck Y position (all modes) |
+| `move_object_z` | float | Puck Z position (Mode 0: default when `randomize_start_z=0`; Mode 1: exact) |
+| `randomize_start_z` | bool | Random Z spawn within `z_min..z_max` (Mode 0 only) |
+| `randomize_start_x` | bool | Random X spawn within `x_min..x_max` (Mode 0 only) |
 | `move_object_scale` | float | Puck scale (X and Z; Y fixed) |
 | `move_object_mass` | float | Rigidbody mass (kg) |
 | `move_object_drag` | float | Linear drag |
 | `move_object_angular_drag` | float | Angular drag |
 | `move_object_max_distance` | float | Travel limit (0 = disabled) |
-| `spawn_target` | bool | Spawn goal zones (false = distance-only task) |
+| `spawn_target` | bool | Spawn goal zone (false = distance-only task) |
+
+**Player-aware spawn (Mode 2)**
+
+| Key suffix | Type | Effect |
+|---|---|---|
+| `player_spawn_distance` | float | Distance from Player to spawn puck |
+| `player_spawn_angle` | float | Angle (deg) relative to Player's forward |
+| `player_spawn_angle_random` | bool | Randomize angle within a forward-facing `player_spawn_angle ± 100°` arc |
+
+The Player reference is resolved by `FindWithTag("Player")` at spawn time (the DLC-controlled virtual mouse avatar). Can also be set via Inspector (`playerTransform` field) for explicit wiring.
 
 **Optional features**
 
@@ -252,7 +281,7 @@ Unity sends data back to Python via the **same `KvChannel`** (bidirectional). Py
 
 | Key | Format | When |
 |-----|--------|------|
-| `hockey.target_positions` | `"x0,z0[,x1,z1,...]"` | Once at spawn — world XZ of each TargetArea |
+| `hockey.target_positions` | `"x,z"` | Once at spawn — world XZ of the target area |
 | `hockey.object_position` | `"pos_x,pos_z,vel_x,vel_z"` | Every `reportingPeriod` steps — puck XZ + velocity |
 | `hockey.player_contact` | `"1"` or `"0"` | Edge-triggered: `"1"` when DlcAgent first touches puck, `"0"` when contact ends or puck is destroyed during contact |
 
@@ -334,30 +363,46 @@ enabled                 = true  # sent last → starts the first episode
 
 ```toml
 [unity.kv.hockeyFloor]
-# Target zone layout
-num_target_areas       = 1
-target_x               = -7
+# Spawn mode: 0=random, 1=fixed, 2=player-aware
+spawn_mode             = 0
+
+# Target zone position & dimensions
+target_x               = -7       # world X (Mode 0 & 1)
+target_z               = 0        # world Z (Mode 1 only; Mode 0 randomizes)
+randomize_target_x     = 0        # Mode 0: randomize target X in x_min..x_max
 area_thickness_x       = 2
 area_width_z           = 2
 area_center_y          = -0.099
 area_height_y          = 0.1
+
+# Arena bounds
 z_min                  = -7
 z_max                  = 7
-min_gap_z              = 1
-jitter_z               = 10
-snap_z_to_integers     = 1
+x_min                  = -8       # X bounds for random spawn / clamping
+x_max                  = 8
 
-# Puck
+# Separation
+min_separation         = 1.5      # min XZ distance between target and puck
+
+# Puck position & physics
+# Mode 0: default position (or random if randomize_start_x/z = 1)
+# Mode 1: exact position (randomize flags ignored)
+move_object_x          = 4
+move_object_y          = -0.14
+move_object_z          = 0
+randomize_start_z      = 1        # Mode 0 only
+randomize_start_x      = 0        # Mode 0 only
 move_object_scale      = 1.0
 move_object_mass       = 1
 move_object_drag       = 10
 move_object_angular_drag = 0.1
-move_object_x          = 4
-move_object_y          = -0.14
-randomize_start_z      = 1
-randomize_start_x      = 0
-move_object_max_distance = 0   # 0 = disabled
+move_object_max_distance = 0      # 0 = disabled
 spawn_target           = 1
+
+# Player-aware spawn (Mode 2 only)
+player_spawn_distance      = 3.0
+player_spawn_angle         = 0    # degrees from player's forward
+player_spawn_angle_random  = 1    # randomize angle
 
 # Optional features
 enable_distance_color  = 0
@@ -402,10 +447,11 @@ Profiles override the base configuration for staged training. See [ConfigSystem.
 
 ```toml
 [profile.trainingstage1.unity.kv.hockeyFloor]
+min_separation           = 0     # no separation needed (no target)
+spawn_target             = 0     # no goal wall — puck destruction IS the success signal
 move_object_max_distance = 2.3   # starting max travel (rules will increase this)
 randomize_start_x        = 1
 move_object_scale        = 2     # larger puck for easier early training
-spawn_target             = 0     # no goal wall — puck destruction IS the success signal
 
 [profile.trainingstage1.unity.env.general]
 episode_length = 120
@@ -422,10 +468,11 @@ use = ["ramp_distance"]    # adds 0.04 to move_object_max_distance per success, 
 
 ```toml
 [profile.trainingstage2.unity.kv.hockeyFloor]
+min_separation           = 0
+spawn_target             = 0
 move_object_max_distance = 4.5
 randomize_start_x        = 1
 move_object_scale        = 2
-spawn_target             = 0
 
 [profile.trainingstage2.unity.env.rewardAssociation]
 size_x = 5

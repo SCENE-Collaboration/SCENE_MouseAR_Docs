@@ -604,9 +604,10 @@ KvManagersDirector: HockeyManager.enabled=1
         │    → OnInitPhaseComplete
         │
         └─► FloorTargetsSpawner.SpawnAll()
-              spawns ≥1 TargetArea (isTrigger, tag=Target)
+              positions target + puck based on spawn_mode (0/1/2)
+              spawns 1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
-              → SendKv(&quot;hockey.target_positions&quot;, &quot;x0,z0,...&quot;)
+              → SendKv(&quot;hockey.target_positions&quot;, &quot;x,z&quot;)
 
 State = Running
   ├─ FixedUpdate: FloorTargetsSpawnerReporter
@@ -785,7 +786,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="hockeyfloor-floortargetsspawnerenvparams-live-during-session">
 <h4><code class="docutils literal notranslate"><span class="pre">hockeyFloor.*</span></code> → <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code> (live during session)<a class="headerlink" href="#hockeyfloor-floortargetsspawnerenvparams-live-during-session" title="Link to this heading">#</a></h4>
 <p>These override <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawner</span></code> fields and optionally respawn immediately.</p>
-<p><strong>Target zone layout</strong></p>
+<p><strong>Spawn mode</strong> — Controls how the target zone and puck are positioned each episode.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Key suffix</p></th>
@@ -794,45 +795,79 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">num_target_areas</span></code></p></td>
-<td><p>int 1–3</p></td>
-<td><p>Number of target zones</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spawn_mode</span></code></p></td>
+<td><p>int 0–2</p></td>
+<td><p>Positioning strategy (see below)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target_x</span></code></p></td>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Mode 0 — Random</strong> (default): Target zone placed at <code class="docutils literal notranslate"><span class="pre">(target_x,</span> <span class="pre">random</span> <span class="pre">Z</span> <span class="pre">within</span> <span class="pre">z_min..z_max)</span></code>. If <code class="docutils literal notranslate"><span class="pre">randomize_target_x=1</span></code>, target X is also randomized within <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> instead of using <code class="docutils literal notranslate"><span class="pre">target_x</span></code>. Puck placed randomly (controlled by <code class="docutils literal notranslate"><span class="pre">randomize_start_x/z</span></code> flags), enforcing <code class="docutils literal notranslate"><span class="pre">min_separation</span></code> (2D XZ distance) from the target and, when a Player-tagged object is present, from the player as well. When <code class="docutils literal notranslate"><span class="pre">randomize_start_x=0</span></code> or <code class="docutils literal notranslate"><span class="pre">randomize_start_z=0</span></code>, the corresponding <code class="docutils literal notranslate"><span class="pre">move_object_x/z</span></code> value is used directly.</p></li>
+<li><p><strong>Mode 1 — Fixed</strong>: Target placed at <code class="docutils literal notranslate"><span class="pre">(target_x,</span> <span class="pre">target_z)</span></code>, puck at <code class="docutils literal notranslate"><span class="pre">(move_object_x,</span> <span class="pre">move_object_z)</span></code>. Same parameters as Mode 0 but used as exact positions — <code class="docutils literal notranslate"><span class="pre">randomize_start_x/z</span></code> flags are ignored. Python has full control over placement for deterministic experiments.</p></li>
+<li><p><strong>Mode 2 — Player-aware</strong>: Puck spawns at <code class="docutils literal notranslate"><span class="pre">player_spawn_distance</span></code> from the Player-tagged object (virtual mouse) at <code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span></code> relative to the mouse-facing direction used by the current scene setup, or within a forward-facing <code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span> <span class="pre">±</span> <span class="pre">100°</span></code> arc when <code class="docutils literal notranslate"><span class="pre">player_spawn_angle_random=1</span></code>. The puck position is then clamped into <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> and <code class="docutils literal notranslate"><span class="pre">z_min..z_max</span></code>. The target no longer mirrors to the opposite side of the player; it is sampled with the same random-placement rules as Mode 0 and must satisfy <code class="docutils literal notranslate"><span class="pre">min_separation</span></code> from the puck. Falls back to Mode 0 if no Player object is found.</p></li>
+</ul>
+<p>Compared with the previous implementation (before march 2026), the current spawner no longer builds up to three Z-spaced goal walls or derives player-aware target placement by mirroring the goal across the mouse. The current behavior always spawns a single target area, uses a shared random target sampler, extends Mode 0 separation checks so randomized puck placement also avoids the player, and changes Mode 2 so the puck is the player-aware object while the goal is sampled independently under the usual random-goal rules. In the same refactor, player-aware angle randomization changed from full 360 degree sampling to a forward-facing 200 degree window, and the player-facing basis was flipped to match the virtual mouse orientation used in this project.</p>
+<p><strong>Target zone position &amp; dimensions</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_x</span></code></p></td>
 <td><p>float</p></td>
-<td><p>World X of the goal wall</p></td>
+<td><p>Target world X (Mode 0: used when <code class="docutils literal notranslate"><span class="pre">randomize_target_x=0</span></code>; Mode 1: exact X)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_width_z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target world Z (Mode 1 only; Mode 0 randomizes Z)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">randomize_target_x</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Randomize target X within <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> (Mode 0 only; default false)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_width_z</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Zone width along Z (m)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_thickness_x</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_thickness_x</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Zone trigger depth (m)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_center_y</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_center_y</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Zone height center (m)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">area_height_y</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">area_height_y</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Zone height (m)</p></td>
 </tr>
+</tbody>
+</table>
+</div>
+<p><strong>Arena bounds</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_min</span></code> / <code class="docutils literal notranslate"><span class="pre">z_max</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Z placement band</p></td>
+<td><p>Arena Z bounds (Mode 0 random range, Mode 2 clamping)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">min_gap_z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x_min</span></code> / <code class="docutils literal notranslate"><span class="pre">x_max</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Min gap between zone centers</p></td>
+<td><p>Arena X bounds (Mode 0 random range when <code class="docutils literal notranslate"><span class="pre">randomize_start_x=1</span></code>, Mode 2 clamping)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">jitter_z</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_separation</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Random Z jitter on placement</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">snap_z_to_integers</span></code></p></td>
-<td><p>bool</p></td>
-<td><p>Snap zone Z to integer grid</p></td>
+<td><p>Min XZ distance between target and puck at spawn</p></td>
 </tr>
 </tbody>
 </table>
@@ -846,49 +881,78 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_x/y/z</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_x</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Default spawn position</p></td>
+<td><p>Puck X position (Mode 0: default when <code class="docutils literal notranslate"><span class="pre">randomize_start_x=0</span></code>; Mode 1: exact)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_y</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Puck Y position (all modes)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Puck Z position (Mode 0: default when <code class="docutils literal notranslate"><span class="pre">randomize_start_z=0</span></code>; Mode 1: exact)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">randomize_start_z</span></code></p></td>
 <td><p>bool</p></td>
-<td><p>Random Z spawn (avoids targets)</p></td>
+<td><p>Random Z spawn within <code class="docutils literal notranslate"><span class="pre">z_min..z_max</span></code> (Mode 0 only)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">randomize_start_x</span></code></p></td>
 <td><p>bool</p></td>
-<td><p>Random X spawn</p></td>
+<td><p>Random X spawn within <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> (Mode 0 only)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_min_distance_z</span></code></p></td>
-<td><p>float</p></td>
-<td><p>Min Z gap from target at spawn</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_scale</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_scale</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Puck scale (X and Z; Y fixed)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_mass</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_mass</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Rigidbody mass (kg)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_drag</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_drag</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Linear drag</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_angular_drag</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_angular_drag</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Angular drag</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Travel limit (0 = disabled)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spawn_target</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spawn_target</span></code></p></td>
 <td><p>bool</p></td>
-<td><p>Spawn goal zones (false = distance-only task)</p></td>
+<td><p>Spawn goal zone (false = distance-only task)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p><strong>Player-aware spawn (Mode 2)</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">player_spawn_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Distance from Player to spawn puck</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Angle (deg) relative to Player’s forward</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">player_spawn_angle_random</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Randomize angle within a forward-facing <code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span> <span class="pre">±</span> <span class="pre">100°</span></code> arc</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The Player reference is resolved by <code class="docutils literal notranslate"><span class="pre">FindWithTag(&quot;Player&quot;)</span></code> at spawn time (the DLC-controlled virtual mouse avatar). Can also be set via Inspector (<code class="docutils literal notranslate"><span class="pre">playerTransform</span></code> field) for explicit wiring.</p>
 <p><strong>Optional features</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -971,8 +1035,8 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.target_positions</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;x0,z0[,x1,z1,...]&quot;</span></code></p></td>
-<td><p>Once at spawn — world XZ of each TargetArea</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;x,z&quot;</span></code></p></td>
+<td><p>Once at spawn — world XZ of the target area</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;pos_x,pos_z,vel_x,vel_z&quot;</span></code></p></td>
@@ -1113,30 +1177,46 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="unity-kv-hockeyfloor-controls-floortargetsspawner">
 <h3><code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> (controls FloorTargetsSpawner)<a class="headerlink" href="#unity-kv-hockeyfloor-controls-floortargetsspawner" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.kv.hockeyFloor]</span>
-<span class="c1"># Target zone layout</span>
-<span class="n">num_target_areas</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">target_x</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
+<span class="c1"># Spawn mode: 0=random, 1=fixed, 2=player-aware</span>
+<span class="n">spawn_mode</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="c1"># Target zone position &amp; dimensions</span>
+<span class="n">target_x</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span><span class="w">       </span><span class="c1"># world X (Mode 0 &amp; 1)</span>
+<span class="n">target_z</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1"># world Z (Mode 1 only; Mode 0 randomizes)</span>
+<span class="n">randomize_target_x</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1"># Mode 0: randomize target X in x_min..x_max</span>
 <span class="n">area_thickness_x</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
 <span class="n">area_width_z</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
 <span class="n">area_center_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.099</span>
 <span class="n">area_height_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
+
+<span class="c1"># Arena bounds</span>
 <span class="n">z_min</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
 <span class="n">z_max</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
-<span class="n">min_gap_z</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">jitter_z</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
-<span class="n">snap_z_to_integers</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">x_min</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">-8</span><span class="w">       </span><span class="c1"># X bounds for random spawn / clamping</span>
+<span class="n">x_max</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span>
 
-<span class="c1"># Puck</span>
+<span class="c1"># Separation</span>
+<span class="n">min_separation</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="w">      </span><span class="c1"># min XZ distance between target and puck</span>
+
+<span class="c1"># Puck position &amp; physics</span>
+<span class="c1"># Mode 0: default position (or random if randomize_start_x/z = 1)</span>
+<span class="c1"># Mode 1: exact position (randomize flags ignored)</span>
+<span class="n">move_object_x</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
+<span class="n">move_object_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.14</span>
+<span class="n">move_object_z</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">randomize_start_z</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># Mode 0 only</span>
+<span class="n">randomize_start_x</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">        </span><span class="c1"># Mode 0 only</span>
 <span class="n">move_object_scale</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span>
 <span class="n">move_object_mass</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <span class="n">move_object_drag</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
 <span class="n">move_object_angular_drag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
-<span class="n">move_object_x</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span>
-<span class="n">move_object_y</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mf">-0.14</span>
-<span class="n">randomize_start_z</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">randomize_start_x</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c1"># 0 = disabled</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">      </span><span class="c1"># 0 = disabled</span>
 <span class="n">spawn_target</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="c1"># Player-aware spawn (Mode 2 only)</span>
+<span class="n">player_spawn_distance</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
+<span class="n">player_spawn_angle</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1"># degrees from player&#39;s forward</span>
+<span class="n">player_spawn_angle_random</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1"># randomize angle</span>
 
 <span class="c1"># Optional features</span>
 <span class="n">enable_distance_color</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -1180,10 +1260,11 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="trainingstage1-large-puck-short-task-automatic-distance-ramp">
 <h3><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp<a class="headerlink" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
+<span class="n">min_separation</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no separation needed (no target)</span>
+<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no goal wall — puck destruction IS the success signal</span>
 <span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span><span class="w">   </span><span class="c1"># starting max travel (rules will increase this)</span>
 <span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="c1"># larger puck for easier early training</span>
-<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no goal wall — puck destruction IS the success signal</span>
 
 <span class="k">[profile.trainingstage1.unity.env.general]</span>
 <span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
@@ -1200,10 +1281,11 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="trainingstage2-harder-init-zone-steeper-ramp">
 <h3><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp<a class="headerlink" href="#trainingstage2-harder-init-zone-steeper-ramp" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage2.unity.kv.hockeyFloor]</span>
+<span class="n">min_separation</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.5</span>
 <span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
-<span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 
 <span class="k">[profile.trainingstage2.unity.env.rewardAssociation]</span>
 <span class="n">size_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
