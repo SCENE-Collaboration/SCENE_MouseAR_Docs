@@ -1,0 +1,834 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mouse Visual Observations &#8212; MouseAR Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/MouseVision';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hockey Game Documentation" href="HockeyGame.html" />
+    <link rel="prev" title="Visual Feedback &amp; Utility Components" href="VisualFeedback.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="MouseAR Documentation - Home"/>
+    <img src="../../_static/logo.png" class="logo__image only-dark pst-js-only" alt="MouseAR Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Unity Framework Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Unity Game Framework</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="Architecture.html">Core Architecture</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EpisodeManagement.html">Episode Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spawners.html">Spawners &amp; Object Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Agents.html">ML-Agents Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParameterSystem.html">Parameter Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="VisualFeedback.html">Visual Feedback &amp; Utilities</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mouse Visual Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HockeyGame.html">Hockey Game</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../touchscreen/TouchscreenArchitecture.html">Architecture &amp; Implementation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../hardware/Teensy.html">Teensy Microcontroller</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reinforcement Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/Unity/MouseVision.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Unity/MouseVision.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mouse Visual Observations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-simulation-pipeline-mouseeyeimageeffect">Visual Simulation Pipeline (<code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dichromatic-filter-applydichromatic">1. Dichromatic filter (<code class="docutils literal notranslate"><span class="pre">applyDichromatic</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scotopic-rod-response-applyscotopic">2. Scotopic rod response (<code class="docutils literal notranslate"><span class="pre">applyScotopic</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-blur-blurpasses-blursize">3. Gaussian blur (<code class="docutils literal notranslate"><span class="pre">blurPasses</span></code>, <code class="docutils literal notranslate"><span class="pre">blurSize</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circular-visual-field-mask-applycircularmask">4. Circular visual field mask (<code class="docutils literal notranslate"><span class="pre">applyCircularMask</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-parameters">Inspector parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-visual-observations">Enabling Visual Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera-mode">Single-camera mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-camera-binocular-mode">Multi-camera (binocular) mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-mousevisuals-parameter-reference">Complete <code class="docutils literal notranslate"><span class="pre">MouseVisuals</span></code> parameter reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-side">Python side</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mouse-visual-observations">
+<h1>Mouse Visual Observations<a class="headerlink" href="#mouse-visual-observations" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>The mouse vision system lets <code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code> send camera frames to Python as ML-Agents visual observations. Two complementary pieces work together:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code></strong> — a post-process image effect (Built-in RP) attached to the egocentric eye cameras that warps the rendered image to approximate mouse visual perception.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code> camera sensor</strong> — creates a <code class="docutils literal notranslate"><span class="pre">CameraSensorComponent</span></code> at runtime (controlled via <code class="docutils literal notranslate"><span class="pre">MouseVisuals.*</span></code> env params) so the selected camera’s frames are included in the agent’s observation.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="visual-simulation-pipeline-mouseeyeimageeffect">
+<h2>Visual Simulation Pipeline (<code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code>)<a class="headerlink" href="#visual-simulation-pipeline-mouseeyeimageeffect" title="Link to this heading">#</a></h2>
+<p>The effect runs four optional stages in order each frame. Every stage can be disabled independently.</p>
+<section id="dichromatic-filter-applydichromatic">
+<h3>1. Dichromatic filter (<code class="docutils literal notranslate"><span class="pre">applyDichromatic</span></code>)<a class="headerlink" href="#dichromatic-filter-applydichromatic" title="Link to this heading">#</a></h3>
+<p>Zeros the red channel. Mice have M-cones (~511 nm) and S-cones (~360 nm UV, proxied by blue) but no L-cones, so they cannot distinguish reds from greens of equal luminance.</p>
+</section>
+<section id="scotopic-rod-response-applyscotopic">
+<h3>2. Scotopic rod response (<code class="docutils literal notranslate"><span class="pre">applyScotopic</span></code>)<a class="headerlink" href="#scotopic-rod-response-applyscotopic" title="Link to this heading">#</a></h3>
+<p>Models the rod-dominant retina (~97 % rods):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sub-step</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Scotopic luminance</p></td>
+<td><p>Weights channels toward rod peak (~507 nm, blue-green).</p></td>
+</tr>
+<tr class="row-odd"><td><p>High gain</p></td>
+<td><p>Multiplies luminance by <code class="docutils literal notranslate"><span class="pre">lowLightGain</span></code> (default 3×) to simulate large photon catch and single-photon sensitivity.</p></td>
+</tr>
+<tr class="row-even"><td><p>Naka-Rushton compression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">/</span> <span class="pre">(L</span> <span class="pre">+</span> <span class="pre">sigma)</span></code> saturation curve (<code class="docutils literal notranslate"><span class="pre">rodSigma</span></code> default 0.35) matching rod phototransduction.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Achromatic tint</p></td>
+<td><p>Blends toward a faint blue-green tint (507 nm peak) controlled by <code class="docutils literal notranslate"><span class="pre">scotopicTint</span></code> (default 0.35).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="gaussian-blur-blurpasses-blursize">
+<h3>3. Gaussian blur (<code class="docutils literal notranslate"><span class="pre">blurPasses</span></code>, <code class="docutils literal notranslate"><span class="pre">blurSize</span></code>)<a class="headerlink" href="#gaussian-blur-blurpasses-blursize" title="Link to this heading">#</a></h3>
+<p>Each pass runs a separable H + V Gaussian kernel. Mouse spatial acuity is ~0.5 cyc/deg vs ~60 cyc/deg for humans, so 2 passes at <code class="docutils literal notranslate"><span class="pre">blurSize</span> <span class="pre">=</span> <span class="pre">2.5</span></code> texels is the default. Set <code class="docutils literal notranslate"><span class="pre">blurPasses</span> <span class="pre">=</span> <span class="pre">0</span></code> to disable.</p>
+</section>
+<section id="circular-visual-field-mask-applycircularmask">
+<h3>4. Circular visual field mask (<code class="docutils literal notranslate"><span class="pre">applyCircularMask</span></code>)<a class="headerlink" href="#circular-visual-field-mask-applycircularmask" title="Link to this heading">#</a></h3>
+<p>Masks the output to a circle (each eye’s visual field is roughly circular). Edge softness is controlled by <code class="docutils literal notranslate"><span class="pre">circleEdge</span></code> (default 0.08). Disabled by default.</p>
+</section>
+<section id="inspector-parameters">
+<h3>Inspector parameters<a class="headerlink" href="#inspector-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">applyDichromatic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Zero red channel</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">applyScotopic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>Rod gain + compression + tint</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lowLightGain</span></code></p></td>
+<td><p>3.0</p></td>
+<td><p>Linear luminance multiplier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rodSigma</span></code></p></td>
+<td><p>0.35</p></td>
+<td><p>Naka-Rushton half-saturation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scotopicTint</span></code></p></td>
+<td><p>0.35</p></td>
+<td><p>Blend toward 507 nm blue-green</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">blurSize</span></code></p></td>
+<td><p>2.5</p></td>
+<td><p>Texels per blur pass</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">blurPasses</span></code></p></td>
+<td><p>2</p></td>
+<td><p>H+V iterations (0 = no blur)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">applyCircularMask</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Circular field vignette</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">circleEdge</span></code></p></td>
+<td><p>0.08</p></td>
+<td><p>Edge softness (0 = hard)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="enabling-visual-observations">
+<h2>Enabling Visual Observations<a class="headerlink" href="#enabling-visual-observations" title="Link to this heading">#</a></h2>
+<p>All visual observation settings are set via ML-Agents <code class="docutils literal notranslate"><span class="pre">EnvironmentParameters</span></code> under the <code class="docutils literal notranslate"><span class="pre">MouseVisuals</span></code> namespace. In TOML configs this maps to <code class="docutils literal notranslate"><span class="pre">[unity.env.MouseVisuals]</span></code>.</p>
+<section id="single-camera-mode">
+<h3>Single-camera mode<a class="headerlink" href="#single-camera-mode" title="Link to this heading">#</a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">camera_enabled</span> <span class="pre">=</span> <span class="pre">1</span></code> and select the desired camera with <code class="docutils literal notranslate"><span class="pre">camera_index</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">camera_index</span></code></p></th>
+<th class="head"><p>Camera</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Bird’s-eye (top-down orthographic)</p></td>
+<td><p>No <code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code>, clear overhead view</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>Egocentric (mouse-eye perspective)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code> applied</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The observation is delivered to Python as sensor <strong><code class="docutils literal notranslate"><span class="pre">obs_cam</span></code></strong>.</p>
+<p><strong>TOML:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.env.MouseVisuals]</span>
+<span class="n">camera_enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">camera_index</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1"># egocentric mouse-eye camera</span>
+<span class="n">camera_width</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="n">camera_height</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="n">camera_grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-camera-binocular-mode">
+<h3>Multi-camera (binocular) mode<a class="headerlink" href="#multi-camera-binocular-mode" title="Link to this heading">#</a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">camera_multi</span> <span class="pre">=</span> <span class="pre">1</span></code> to receive simultaneous frames from both eye cameras (left + right). <code class="docutils literal notranslate"><span class="pre">camera_index</span></code> is ignored in this mode.</p>
+<p>The two observations are delivered as separate sensors:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor name</p></th>
+<th class="head"><p>Camera</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">obs_cam_left</span></code></p></td>
+<td><p>Left eye</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">obs_cam_right</span></code></p></td>
+<td><p>Right eye</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code> is applied independently on each camera.</p>
+<p><strong>TOML:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.env.MouseVisuals]</span>
+<span class="n">camera_enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">camera_multi</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">   </span><span class="c1"># binocular mode</span>
+<span class="n">camera_width</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="n">camera_height</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
+<span class="n">camera_grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-mousevisuals-parameter-reference">
+<h3>Complete <code class="docutils literal notranslate"><span class="pre">MouseVisuals</span></code> parameter reference<a class="headerlink" href="#complete-mousevisuals-parameter-reference" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_enabled</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>0</p></td>
+<td><p>Master switch — attach camera sensor to DlcAgent</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_multi</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>0</p></td>
+<td><p>0 = single camera, 1 = binocular (left + right)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_index</span></code></p></td>
+<td><p>int</p></td>
+<td><p>0</p></td>
+<td><p>Camera to use in single-camera mode (0 = birdeye, 1 = egocentric)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_width</span></code></p></td>
+<td><p>int</p></td>
+<td><p>64</p></td>
+<td><p>Sensor output width in pixels</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_height</span></code></p></td>
+<td><p>int</p></td>
+<td><p>64</p></td>
+<td><p>Sensor output height in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.camera_grayscale</span></code></p></td>
+<td><p>0/1</p></td>
+<td><p>1</p></td>
+<td><p>1 = grayscale output, 0 = RGB</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.birdeye.ortho_size</span></code></p></td>
+<td><p>float</p></td>
+<td><p>4</p></td>
+<td><p>Orthographic half-size for the bird’s-eye camera</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MouseVisuals.mouseeye.fov</span></code></p></td>
+<td><p>float</p></td>
+<td><p>50</p></td>
+<td><p>Perspective field-of-view (degrees) for the egocentric camera</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Camera projection keys (<code class="docutils literal notranslate"><span class="pre">birdeye.*</span></code>, <code class="docutils literal notranslate"><span class="pre">mouseeye.*</span></code>) are read by <code class="docutils literal notranslate"><span class="pre">CameraEnvConfig</span></code> components attached to the respective camera GameObjects.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="python-side">
+<h2>Python side<a class="headerlink" href="#python-side" title="Link to this heading">#</a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">camera_enabled</span> <span class="pre">=</span> <span class="pre">1</span></code>, the <code class="docutils literal notranslate"><span class="pre">DlcAgent</span></code> observation dict will contain extra visual entries alongside the standard vector observation. With stable-baselines3 or raw mlagents-envs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Single-camera mode — one extra sensor</span>
+<span class="n">obs</span> <span class="o">=</span> <span class="n">decision_steps</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span>
+<span class="c1"># obs[0]: vector obs (shape [5])</span>
+<span class="c1"># obs[1]: camera frames (shape [N, H, W, C])  sensor name: obs_cam</span>
+
+<span class="c1"># Multi-camera mode — two extra sensors</span>
+<span class="c1"># obs[1]: left-eye frames   sensor name: obs_cam_left</span>
+<span class="c1"># obs[2]: right-eye frames  sensor name: obs_cam_right</span>
+</pre></div>
+</div>
+<p>The sensor order matches the order in which <code class="docutils literal notranslate"><span class="pre">DlcAgent.Awake()</span></code> adds <code class="docutils literal notranslate"><span class="pre">CameraSensorComponent</span></code>s: vector observations first, then cameras in array order.</p>
+</section>
+<hr class="docutils" />
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference internal" href="Agents.html"><span class="std std-doc">Agent System Reference</span></a></strong> — DlcAgent action/observation space</p></li>
+<li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a></strong> — how env params are set from Python/TOML</p></li>
+<li><p><strong><span class="xref myst">RL Gymnasium Wrappers</span></strong> — wrapping visual observations for training</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Unity"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="VisualFeedback.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visual Feedback &amp; Utility Components</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HockeyGame.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hockey Game Documentation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-simulation-pipeline-mouseeyeimageeffect">Visual Simulation Pipeline (<code class="docutils literal notranslate"><span class="pre">MouseEyeImageEffect</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dichromatic-filter-applydichromatic">1. Dichromatic filter (<code class="docutils literal notranslate"><span class="pre">applyDichromatic</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scotopic-rod-response-applyscotopic">2. Scotopic rod response (<code class="docutils literal notranslate"><span class="pre">applyScotopic</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-blur-blurpasses-blursize">3. Gaussian blur (<code class="docutils literal notranslate"><span class="pre">blurPasses</span></code>, <code class="docutils literal notranslate"><span class="pre">blurSize</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circular-visual-field-mask-applycircularmask">4. Circular visual field mask (<code class="docutils literal notranslate"><span class="pre">applyCircularMask</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspector-parameters">Inspector parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-visual-observations">Enabling Visual Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-camera-mode">Single-camera mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-camera-binocular-mode">Multi-camera (binocular) mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-mousevisuals-parameter-reference">Complete <code class="docutils literal notranslate"><span class="pre">MouseVisuals</span></code> parameter reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-side">Python side</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By M Lab of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>Powered by <a href="https://jupyterbook.org/">Jupyter Book</a>.</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

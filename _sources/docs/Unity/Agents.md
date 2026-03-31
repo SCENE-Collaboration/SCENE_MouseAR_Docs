@@ -90,7 +90,7 @@ public int emitAction = 42;  // Action emission tracking
 
 [Header("Visual Sensor")]
 public Camera obsCamera;
-public string cameraEnvKey = "DlcAgent.camera_enabled";
+public string cameraEnvKey = "MouseVisuals.camera_enabled";
 public bool cameraEnabledDefault = false;
 public int cameraWidth = 84;
 public int cameraHeight = 84;
@@ -101,7 +101,7 @@ public string cameraSensorName = "obs_cam";
 **Visual Observations (Optional):**
 - Camera sensor can be enabled via env param
 - Configurable resolution and grayscale
-- Auto-attached at Awake() based on `camera_enabled` param
+- Auto-attached at Awake() based on `MouseVisuals.camera_enabled` param. See [Mouse Visual Observations](MouseVision.md) for full configuration.
 
 
 ### TouchFingerAgent
