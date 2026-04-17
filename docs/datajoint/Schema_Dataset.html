@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Teensy Python Driver &#8212; MouseAR Documentation</title>
+    <title>Schema - mousear_dataset &#8212; MouseAR Documentation</title>
   
   
   
@@ -60,11 +60,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/Teensy';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datajoint/Schema_Dataset';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="TTL Generator Documentation" href="TTLGenerator.html" />
-    <link rel="prev" title="Touch Client Documentation" href="TouchClient.html" />
+    <link rel="next" title="Schema - mousear_behavior" href="Schema_Behavior.html" />
+    <link rel="prev" title="Infrastructure (Docker &amp; MySQL)" href="Infrastructure.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -170,7 +170,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Overview.html">System Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Overview.html">System Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Unity/Overview.html">Unity Framework Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../touchscreen/Overview.html">Touchscreen System Overview</a></li>
 </ul>
@@ -188,21 +188,21 @@
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Control System</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="DataTransferGUI.html">Data Transfer GUI</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/GUIs.html">Python GUIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DataTransferGUI.html">Data Transfer GUI</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="ConfigSystem.html">Configuration System</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="DLCProcessors.html">DLC Processors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DLCProcessor_recording_ctrl.html">Recording Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DLCClient.html">DLC Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/ConfigSystem.html">Configuration System</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python/Tasks.html">Task Controllers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessors.html">DLC Processors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCProcessor_recording_ctrl.html">Recording Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../python/DLCClient.html">DLC Client</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="TouchClient.html">Touchscreen Client</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Teensy Hardware Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TTLGenerator.html">TTL Signal Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TouchClient.html">Touchscreen Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/Teensy.html">Teensy Hardware Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/TTLGenerator.html">TTL Signal Generation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Touchscreen Interface</span></p>
 <ul class="nav bd-sidenav">
@@ -217,16 +217,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html">Gymnasium Wrappers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataJoint Pipeline</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Overview.html">Pipeline Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Connections.html">Database Connections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Population.html">Populating the Pipeline</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Infrastructure.html">Infrastructure (Docker &amp; MySQL)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Schema_Dataset.html">Schema - Dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Schema_Behavior.html">Schema - Behavior</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Schema_Video.html">Schema - Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Schema_DLCLive.html">Schema - DLC Live</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../datajoint/Schema_ScreenSync.html">Schema - Screen Sync</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">Pipeline Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Connections.html">Database Connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Population.html">Populating the Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Infrastructure.html">Infrastructure (Docker &amp; MySQL)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Schema - Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Schema_Behavior.html">Schema - Behavior</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Schema_Video.html">Schema - Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Schema_DLCLive.html">Schema - DLC Live</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Schema_ScreenSync.html">Schema - Screen Sync</a></li>
 </ul>
 
     </div>
@@ -303,7 +303,7 @@
       
       
       
-      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/python/Teensy.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/issues/new?title=Issue%20on%20page%20%2Fdocs/datajoint/Schema_Dataset.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +333,7 @@
       
       
       
-      <li><a href="../../_sources/docs/python/Teensy.md" target="_blank"
+      <li><a href="../../_sources/docs/datajoint/Schema_Dataset.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +409,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Teensy Python Driver</h1>
+    <h1>Schema - mousear_dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,14 +419,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-driver-teensy-class">Python Driver (<code class="docutils literal notranslate"><span class="pre">Teensy</span></code> class)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factory-method">Factory method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle">Lifecycle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-columns">Data columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenttype">ExperimentType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-populate-from-files">Method: <code class="docutils literal notranslate"><span class="pre">populate_from_files()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-teensy-hw-toml">Configuration (<code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessiondataset">SessionDataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-logic-find-session-for-dataset">Matching Logic (<code class="docutils literal notranslate"><span class="pre">find_session_for_dataset</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-register-dataset-session-key-dataset-key">Method: <code class="docutils literal notranslate"><span class="pre">register_dataset(session_key,</span> <span class="pre">dataset_key)</span></code></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -438,99 +440,129 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="teensy-python-driver">
-<h1>Teensy Python Driver<a class="headerlink" href="#teensy-python-driver" title="Link to this heading">#</a></h1>
-<p>Source: <code class="docutils literal notranslate"><span class="pre">mouse_ar/ctrl/teensy_python.py</span></code>
-Hardware reference (pin assignments, wiring, firmware): <a class="reference internal" href="../hardware/Teensy.html"><span class="std std-doc">Hardware → Teensy</span></a></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Teensy</span></code> class manages the USB-Serial connection to the Teensy board,
-runs a background reader thread, calibrates a host↔device clock offset, and
-exposes a simple command API used by the <code class="docutils literal notranslate"><span class="pre">Task</span></code> base class.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="schema-mousear-dataset">
+<h1>Schema - mousear_dataset<a class="headerlink" href="#schema-mousear-dataset" title="Link to this heading">#</a></h1>
+<p><strong>Module</strong>: <code class="docutils literal notranslate"><span class="pre">dj_pipeline/schemas/mousear_dataset.py</span></code></p>
+<p>This schema is the entry point for the pipeline. It registers experimental datasets and links them to the institutional session registry provided by <code class="docutils literal notranslate"><span class="pre">base_schemas</span></code>.</p>
 <hr class="docutils" />
-<section id="python-driver-teensy-class">
-<h2>Python Driver (<code class="docutils literal notranslate"><span class="pre">Teensy</span></code> class)<a class="headerlink" href="#python-driver-teensy-class" title="Link to this heading">#</a></h2>
-<section id="factory-method">
-<h3>Factory method<a class="headerlink" href="#factory-method" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">serial_port</span> <span class="o">=</span> <span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">,</span>   <span class="c1"># or &quot;COM3&quot; on Windows</span>
-    <span class="n">baudrate</span>    <span class="o">=</span> <span class="mi">115200</span><span class="p">,</span>
-    <span class="n">inputs</span>      <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>            <span class="c1"># column names (see teensy.hw.toml)</span>
-    <span class="n">outputs</span>     <span class="o">=</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>            <span class="c1"># command dict (see teensy.hw.toml)</span>
-    <span class="n">csv_expected</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>               <span class="c1"># must match firmware CSV column count</span>
-    <span class="n">dummy</span>       <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>            <span class="c1"># True → returns DummyTeensy</span>
+<section id="experimenttype">
+<h2>ExperimentType<a class="headerlink" href="#experimenttype" title="Link to this heading">#</a></h2>
+<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Lookup</span></code></p>
+<p>Defines the category of experiment.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">experiment_type</span></code></p></td>
+<td><p>varchar(64) PK</p></td>
+<td><p>Unique name of the experiment type</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">description</span></code></p></td>
+<td><p>varchar(256)</p></td>
+<td><p>Description of the experiment type</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Contents</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;Behavioral&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Ephys&quot;</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Manual</span></code></p>
+<p>Core registry of experimental sessions. Each entry corresponds to one <code class="docutils literal notranslate"><span class="pre">UnityData_*.json</span></code> file.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+<td><p>varchar(64) PK</p></td>
+<td><p>Unique session identifier, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Tick_20260210_141820&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">session_date</span></code></p></td>
+<td><p>datetime</p></td>
+<td><p>Date and time of the session, parsed from <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">notes</span></code></p></td>
+<td><p>varchar(256)</p></td>
+<td><p>Optional notes about the session</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="method-populate-from-files">
+<h3>Method: <code class="docutils literal notranslate"><span class="pre">populate_from_files()</span></code><a class="headerlink" href="#method-populate-from-files" title="Link to this heading">#</a></h3>
+<p>Scans <code class="docutils literal notranslate"><span class="pre">RAW_DATA_PATH</span></code> for <code class="docutils literal notranslate"><span class="pre">UnityData_*.json</span></code> files and inserts new entries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="n">Dataset</span><span class="o">.</span><span class="n">populate_from_files</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code> is the filename stem with <code class="docutils literal notranslate"><span class="pre">UnityData_</span></code> stripped. The <code class="docutils literal notranslate"><span class="pre">session_date</span></code> is parsed from the <code class="docutils literal notranslate"><span class="pre">&lt;YYYYMMDD&gt;_&lt;HHMMSS&gt;</span></code> portion of the name.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="sessiondataset">
+<h2>SessionDataset<a class="headerlink" href="#sessiondataset" title="Link to this heading">#</a></h2>
+<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Computed</span></code></p>
+<p>Links each <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> to an entry in <code class="docutils literal notranslate"><span class="pre">base_schemas.exp.Session</span></code>. This enables joining the pipeline data with the institutional subject and session registry.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+<td><p>FK → Dataset</p></td>
+<td><p>Session dataset identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mouse_name</span></code></p></td>
+<td><p>FK → Session</p></td>
+<td><p>Subject identifier (from base_schemas)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">doe</span></code></p></td>
+<td><p>FK → Session</p></td>
+<td><p>Date of experiment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">attempt</span></code></p></td>
+<td><p>FK → Session</p></td>
+<td><p>Session attempt number</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="matching-logic-find-session-for-dataset">
+<h3>Matching Logic (<code class="docutils literal notranslate"><span class="pre">find_session_for_dataset</span></code>)<a class="headerlink" href="#matching-logic-find-session-for-dataset" title="Link to this heading">#</a></h3>
+<p>Datasets and sessions are matched <strong>positionally within a day</strong>:</p>
+<ol class="arabic simple">
+<li><p>All datasets for the same mouse on the same day are sorted by recording time</p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">base_schemas</span></code> sessions for that mouse on that day are sorted by <code class="docutils literal notranslate"><span class="pre">attempt</span></code></p></li>
+<li><p>The i-th dataset is assigned to the i-th session</p></li>
+</ol>
+<p>If fewer sessions than datasets exist for a day, the extra datasets are left unlinked (warning logged).</p>
+</section>
+<section id="method-register-dataset-session-key-dataset-key">
+<h3>Method: <code class="docutils literal notranslate"><span class="pre">register_dataset(session_key,</span> <span class="pre">dataset_key)</span></code><a class="headerlink" href="#method-register-dataset-session-key-dataset-key" title="Link to this heading">#</a></h3>
+<p>Manually override the automatic matching for a specific dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionDataset</span>
+
+<span class="n">SessionDataset</span><span class="o">.</span><span class="n">register_dataset</span><span class="p">(</span>
+    <span class="n">session_key</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mouse_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tick&quot;</span><span class="p">,</span> <span class="s2">&quot;doe&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-02-10&quot;</span><span class="p">,</span> <span class="s2">&quot;attempt&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">dataset_key</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataset_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Tick_20260210_141820&quot;</span><span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Pass <code class="docutils literal notranslate"><span class="pre">dummy=True</span></code> (or <code class="docutils literal notranslate"><span class="pre">serial_port=&quot;dummy&quot;</span></code>) to get a <code class="docutils literal notranslate"><span class="pre">DummyTeensy</span></code> that
-silently no-ops all calls — useful for development without hardware.</p>
 </section>
-<section id="lifecycle">
-<h3>Lifecycle<a class="headerlink" href="#lifecycle" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Teensy.create()
-  └─ connect_serial()   open port, clear buffers, send &#39;stop&#39;
-
-teensy.start()
-  ├─ calibrate_offset()  15 sync round-trips, keep 5 best
-  ├─ start_read_buffer() launch background reader thread
-  └─ write(&quot;start&quot;)      send &#39;A&#39; → device begins streaming
-
-teensy.write(&quot;water&quot;, [dur_ms])   → sends &#39;W&#39; + int16 payload
-teensy.write(&quot;TTL&quot;)               → sends &#39;S&#39;
-teensy.write(&quot;drain&quot;)             → sends &#39;D&#39;
-
-teensy.stop()
-  ├─ write(&quot;stop&quot;)       send &#39;Z&#39;
-  └─ stop_event.set()    terminate reader thread
-</pre></div>
-</div>
-</section>
-<section id="data-columns">
-<h3>Data columns<a class="headerlink" href="#data-columns" title="Link to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">get_input_data()</span></code> returns a NumPy array with columns in order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t_recv</span> <span class="o">|</span> <span class="n">t_host_est</span> <span class="o">|</span> <span class="n">t_host</span> <span class="o">|</span> <span class="n">t_dev_est</span> <span class="o">|</span> <span class="n">t_dev_us</span> <span class="o">|</span>
-<span class="n">PhotoDiode</span> <span class="o">|</span> <span class="n">BarcodeTTL</span> <span class="o">|</span> <span class="n">WaterValve</span> <span class="o">|</span> <span class="n">SyncTTL</span> <span class="o">|</span> <span class="n">Lux</span> <span class="o">|</span> <span class="n">LuxTimestamp</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">t_host_est</span> <span class="pre">=</span> <span class="pre">offset</span> <span class="pre">+</span> <span class="pre">t_dev_us</span> <span class="pre">/</span> <span class="pre">1e6</span></code> — the device timestamp mapped onto the
-host clock using the calibrated offset.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="configuration-teensy-hw-toml">
-<h2>Configuration (<code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>)<a class="headerlink" href="#configuration-teensy-hw-toml" title="Link to this heading">#</a></h2>
-<p>The full Teensy configuration is loaded from TOML and passed to <code class="docutils literal notranslate"><span class="pre">Teensy.create()</span></code>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[teensy]</span>
-<span class="n">dummy</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="n">serial_port</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;COM3&quot;</span>
-<span class="n">baudrate</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span>
-<span class="n">csv_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
-
-<span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="s2">&quot;t_host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;t_dev_est&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;t_dev_us&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;PhotoDiode&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;BarcodeTTL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;WaterValve&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;SyncTTL&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="s2">&quot;Lux&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;LuxTimestamp&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="k">[teensy.outputs]</span>
-<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">stop</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Z&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;W&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dur_ms&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="n">TTL</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">sync</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;X&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">drain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-<p>Set <code class="docutils literal notranslate"><span class="pre">dummy</span> <span class="pre">=</span> <span class="pre">true</span></code> to run without hardware.</p>
-</section>
-<hr class="docutils" />
-<section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="../hardware/Teensy.html"><span class="std std-doc">Teensy Hardware Reference</span></a> — pin assignments, wiring diagram, firmware</p></li>
-<li><p><a class="reference internal" href="Tasks.html"><span class="std std-doc">Task Base Class</span></a> — <code class="docutils literal notranslate"><span class="pre">give_reward()</span></code>, <code class="docutils literal notranslate"><span class="pre">signal_ttl()</span></code>, <code class="docutils literal notranslate"><span class="pre">drain_water()</span></code></p></li>
-<li><p><a class="reference internal" href="TTLGenerator.html"><span class="std std-doc">TTL Generator</span></a> — software-timed TTL from the host side</p></li>
-<li><p><a class="reference internal" href="../Unity/Agents.html"><span class="std std-doc">Unity Agents</span></a> — <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent</span></code> sync patch in Unity</p></li>
-</ul>
 </section>
 </section>
 
@@ -547,7 +579,7 @@ host clock using the calibrated offset.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/python"
+            path: "./docs/datajoint"
         },
         predefinedOutput: true
     }
@@ -565,20 +597,20 @@ host clock using the calibrated offset.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="TouchClient.html"
+       href="Infrastructure.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Touch Client Documentation</p>
+        <p class="prev-next-title">Infrastructure (Docker &amp; MySQL)</p>
       </div>
     </a>
     <a class="right-next"
-       href="TTLGenerator.html"
+       href="Schema_Behavior.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">TTL Generator Documentation</p>
+        <p class="prev-next-title">Schema - mousear_behavior</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -600,14 +632,16 @@ host clock using the calibrated offset.</p>
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-driver-teensy-class">Python Driver (<code class="docutils literal notranslate"><span class="pre">Teensy</span></code> class)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factory-method">Factory method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle">Lifecycle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-columns">Data columns</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimenttype">ExperimentType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-populate-from-files">Method: <code class="docutils literal notranslate"><span class="pre">populate_from_files()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-teensy-hw-toml">Configuration (<code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sessiondataset">SessionDataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-logic-find-session-for-dataset">Matching Logic (<code class="docutils literal notranslate"><span class="pre">find_session_for_dataset</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-register-dataset-session-key-dataset-key">Method: <code class="docutils literal notranslate"><span class="pre">register_dataset(session_key,</span> <span class="pre">dataset_key)</span></code></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
