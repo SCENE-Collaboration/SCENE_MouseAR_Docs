@@ -440,16 +440,17 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-scheduler-liveparamscheduler">Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-rules-in-toml">Defining rules in TOML</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal example</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-valued-rule-step-through-fixed-stages">List-valued rule (step through fixed stages)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rules-in-a-profile">Selecting rules in a profile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-rules-come-from">Where rules come from</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-behavior">Runtime behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-task-layer-currently-applies">What the task layer currently applies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#increment-a-kv-parameter-after-every-success">Increment a KV parameter after every success</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-a-fresh-value-from-a-range">Sample a fresh value from a range</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-among-fixed-states">Alternate among fixed states</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-at-runtime">How it works at runtime</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example-hockey-trainingstage1">Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-docs">Related docs</a></li>
@@ -685,99 +686,30 @@ The examples below are based on values that are actually present in this reposit
 <hr class="docutils" />
 <section id="rules-scheduler-liveparamscheduler">
 <h2>Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)<a class="headerlink" href="#rules-scheduler-liveparamscheduler" title="Link to this heading">#</a></h2>
-<p>The <strong>Rules Scheduler</strong> is an adaptive difficulty engine embedded inside <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code>. It automatically modifies Unity environment parameters (KV or float) as a session progresses, without requiring any manual intervention in the task loop.</p>
+<p>The Rules Scheduler is a small rule engine used by <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> to mutate runtime parameters between episodes. It operates on two in-memory dictionaries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">env_kv</span></code> for Unity KV-channel values (stored as strings)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env_params</span></code> for Unity environment parameter values (stored as floats)</p></li>
+</ul>
+<p>Current integration detail: the scheduler can produce both KV and env changes, but <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> currently only pushes KV changes back to Unity and only logs KV changes to <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code>.</p>
 <section id="concept">
 <h3>Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h3>
-<p>A <em>rule</em> is a declarative instruction of the form:</p>
+<p>A rule says:</p>
 <blockquote>
-<div><p>“Every N <strong>successes</strong> / <strong>episodes</strong> / <strong>epochs</strong>, apply operation <code class="docutils literal notranslate"><span class="pre">op</span></code> with value <code class="docutils literal notranslate"><span class="pre">value</span></code> to parameter <code class="docutils literal notranslate"><span class="pre">target</span></code>, clamped to <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.”</p>
+<div><p>“On every <code class="docutils literal notranslate"><span class="pre">N</span></code>th <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, or <code class="docutils literal notranslate"><span class="pre">epoch</span></code>, update <code class="docutils literal notranslate"><span class="pre">target</span></code> using <code class="docutils literal notranslate"><span class="pre">op</span></code>.”</p>
 </div></blockquote>
-<p>Rules are loaded from the TOML config at startup and run silently in the background. After each episode the task calls scheduler hooks (<code class="docutils literal notranslate"><span class="pre">on_success</span></code>, <code class="docutils literal notranslate"><span class="pre">on_episode_end</span></code>, <code class="docutils literal notranslate"><span class="pre">on_epoch_advance</span></code>); the scheduler accumulates any resulting parameter changes and flushes them at the start of the next episode via <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code>.</p>
+<p>The task does not run rules continuously inside an episode. Instead it calls scheduler hooks at episode/epoch boundaries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">on_success()</span></code> when a terminal episode ended with positive cumulative episode reward</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on_episode_end()</span></code> on every terminal episode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">on_epoch_advance()</span></code> when the task advances to the next epoch</p></li>
+</ul>
+<p>The scheduler applies the rule immediately to its internal dictionaries, accumulates the resulting deltas in pending buffers, and those pending changes are consumed on the next <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code> through <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code>.</p>
 </section>
 <hr class="docutils" />
-<section id="defining-rules-in-toml">
-<h3>Defining rules in TOML<a class="headerlink" href="#defining-rules-in-toml" title="Link to this heading">#</a></h3>
-<p>Rules are stored in two places:</p>
-<ol class="arabic simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">rules_lib.*</span></code></strong> — a shared library of reusable rule templates (typically in <code class="docutils literal notranslate"><span class="pre">rules.lib.toml</span></code> which is imported by game configs).</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">[profile.&lt;name&gt;.rules]</span> <span class="pre">use</span> <span class="pre">=</span> <span class="pre">[...]</span></code></strong> — each profile selects which library rules are active for that session.</p></li>
-</ol>
-<section id="rule-fields">
-<h4>Rule fields<a class="headerlink" href="#rule-fields" title="Link to this heading">#</a></h4>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Field</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Required</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>✓</p></td>
-<td><p>Parameter path. Use <code class="docutils literal notranslate"><span class="pre">unity.kv.&lt;section&gt;.&lt;key&gt;</span></code> for KV channel parameters or <code class="docutils literal notranslate"><span class="pre">unity.env.&lt;section&gt;.&lt;key&gt;</span></code> for float env parameters.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>✓</p></td>
-<td><p>Operation: <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, or <code class="docutils literal notranslate"><span class="pre">subtract</span></code>. String-valued targets only support <code class="docutils literal notranslate"><span class="pre">set</span></code>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">list</span></code></p></td>
-<td><p>✓</p></td>
-<td><p>Value to apply. A list cycles through its elements on consecutive triggers.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">every</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>✓</p></td>
-<td><p>Trigger cadence in the format <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;N&gt;</span></code> where unit is <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, or <code class="docutils literal notranslate"><span class="pre">epoch</span></code> and N is the integer count.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td><p>—</p></td>
-<td><p>Lower bound applied after the operation (numeric targets only).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td><p>—</p></td>
-<td><p>Upper bound applied after the operation (numeric targets only).</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">window</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
-<td><p>—</p></td>
-<td><p>Sliding window size for rate-based rules (reserved for future use).</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="minimal-example">
-<h4>Minimal example<a class="headerlink" href="#minimal-example" title="Link to this heading">#</a></h4>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.ramp_distance]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_max_distance&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;add&quot;</span>
-<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span>
-<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span><span class="w">   </span><span class="c1"># trigger after every success</span>
-<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
-<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
-</pre></div>
-</div>
-<p>This adds 0.04 to <code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span></code> after every successful trial, clamped between 0.5 and 5.0.</p>
-</section>
-<section id="list-valued-rule-step-through-fixed-stages">
-<h4>List-valued rule (step through fixed stages)<a class="headerlink" href="#list-valued-rule-step-through-fixed-stages" title="Link to this heading">#</a></h4>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.stage_sequence]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.HockeyManager.spawner&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;set&quot;</span>
-<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">]</span><span class="w">   </span><span class="c1"># cycles: 0 → 1 → 2 → 0 → ...</span>
-<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;epoch:1&quot;</span>
-</pre></div>
-</div>
-<p>Each time an epoch advances the spawner index is incremented cyclically through the list.</p>
-</section>
-<section id="selecting-rules-in-a-profile">
-<h4>Selecting rules in a profile<a class="headerlink" href="#selecting-rules-in-a-profile" title="Link to this heading">#</a></h4>
+<section id="where-rules-come-from">
+<h3>Where rules come from<a class="headerlink" href="#where-rules-come-from" title="Link to this heading">#</a></h3>
+<p>Rules are typically defined in shared <code class="docutils literal notranslate"><span class="pre">rules_lib.*</span></code> entries and activated by profile selection:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.rules]</span>
 <span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
 
@@ -785,112 +717,192 @@ The examples below are based on values that are actually present in this reposit
 <span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;reduce_platform_sizex&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Only the named rules are activated; all other <code class="docutils literal notranslate"><span class="pre">rules_lib</span></code> entries are ignored for that profile.</p>
+<p>By the time <code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code> is constructed, it receives the already-selected <code class="docutils literal notranslate"><span class="pre">rules_cfg</span></code> dictionary for the active session.</p>
 </section>
-</section>
-<hr class="docutils" />
-<section id="how-it-works-at-runtime">
-<h3>How it works at runtime<a class="headerlink" href="#how-it-works-at-runtime" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 ┌─────────────────────────────────┐
-                 │       UnityMultibehaviorTask      │
-                 │                                  │
-  per episode    │  loop() detects terminal=True    │
-  ─────────────► │  ep_reward &gt; 0 → on_success()   │
-                 │  on_episode_end()                │
-                 │  (epoch boundary) on_epoch_advance() │
-                 └──────────────┬──────────────────┘
-                                 │
-                    ┌────────────▼────────────┐
-                    │   LiveParamScheduler    │
-                    │                         │
-                    │  _maybe_apply(unit)      │
-                    │   increment tick counter │
-                    │   if tick % N == 0:      │
-                    │     _apply_rule(r)       │
-                    │     accumulate to        │
-                    │     _pending_kv /        │
-                    │     _pending_env         │
-                    └────────────┬────────────┘
-                                 │
-                 ┌───────────────▼──────────────────┐
-                 │  reset_episode()                  │
-                 │  calls get_changes()              │
-                 │  → _apply_scheduler_changes()     │
-                 │    channel_kv.set(key, val)       │  ──► Unity KV channel
-                 │    (env param update disabled)    │
-                 │  logs to runtime_params[]         │
-                 └──────────────────────────────────┘
-</pre></div>
-</div>
-<p>Key points:</p>
-<ul class="simple">
-<li><p><strong>Changes are batched</strong>: <code class="docutils literal notranslate"><span class="pre">_apply_rule()</span></code> writes immediately to the in-memory parameter dicts but changes are only sent to Unity when <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> is called at <code class="docutils literal notranslate"><span class="pre">reset_episode()</span></code>.</p></li>
-<li><p><strong>Only actual changes are sent</strong>: the scheduler compares old and new values; if a rule produced no change (e.g. already at <code class="docutils literal notranslate"><span class="pre">max</span></code>) nothing is transmitted.</p></li>
-<li><p><strong>Changes are logged</strong>: every scheduler-driven update is appended to <code class="docutils literal notranslate"><span class="pre">self.runtime_params</span></code> with a timestamp, episode number, and step, enabling post-hoc reconstruction of training history.</p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">window</span></code> counter</strong> is per-rule so multiple rules with different cadences run independently.</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="supported-target-namespaces">
-<h3>Supported target namespaces<a class="headerlink" href="#supported-target-namespaces" title="Link to this heading">#</a></h3>
+<section id="rule-fields">
+<h3>Rule fields<a class="headerlink" href="#rule-fields" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Target prefix</p></th>
-<th class="head"><p>Channel</p></th>
-<th class="head"><p>Value type</p></th>
-<th class="head"><p>Example</p></th>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Current behavior</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unity.kv.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (string)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code> or <code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">unity.kv.hockeyFloor.move_object_max_distance</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Parameter path to read and write. See namespaces below.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unity.env.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> (float)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.episode_length</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Supported ops: <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, <code class="docutils literal notranslate"><span class="pre">subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">rand</span></code>, <code class="docutils literal notranslate"><span class="pre">random_choice</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.&lt;key&gt;</span></code> (shorthand)</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> (string)</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">list</span></code></p></td>
+<td><p>For <code class="docutils literal notranslate"><span class="pre">set</span></code>/<code class="docutils literal notranslate"><span class="pre">add</span></code>/<code class="docutils literal notranslate"><span class="pre">mul</span></code>/<code class="docutils literal notranslate"><span class="pre">subtract</span></code></p></td>
+<td><p>Single value or list of values. Lists cycle on repeated triggers. String values are only valid with <code class="docutils literal notranslate"><span class="pre">set</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">every</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Format <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;N&gt;</span></code>, where unit is currently <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, or <code class="docutils literal notranslate"><span class="pre">epoch</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">general.render_virtual_mouse</span></code></p></td>
+<td><p>Optional for arithmetic ops; required for <code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code></p></td>
+<td><p>Lower clamp for numeric results.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Optional for arithmetic ops; required for <code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code></p></td>
+<td><p>Upper clamp for numeric results.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">window</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Parsed and stored, but not currently used by rule evaluation.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<blockquote>
-<div><p><strong>Note</strong>: env parameter changes via the scheduler are currently accumulated but not transmitted (the <code class="docutils literal notranslate"><span class="pre">channel.set_float_parameter</span></code> call is commented out in <code class="docutils literal notranslate"><span class="pre">_apply_scheduler_changes</span></code>). Only KV channel changes are actively applied at runtime.</p>
-</div></blockquote>
+<p>Notes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rand</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and samples <code class="docutils literal notranslate"><span class="pre">random.uniform(min,</span> <span class="pre">max)</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_choice</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and currently chooses one of <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.</p></li>
+<li><p>Comments in some TOML files mention <code class="docutils literal notranslate"><span class="pre">trial:N</span></code>, but the current implementation only emits <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, and <code class="docutils literal notranslate"><span class="pre">epoch</span></code> ticks.</p></li>
+</ul>
 </section>
-<hr class="docutils" />
-<section id="full-example-hockey-trainingstage1">
-<h3>Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code><a class="headerlink" href="#full-example-hockey-trainingstage1" title="Link to this heading">#</a></h3>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># rules.lib.toml (imported)</span>
-<span class="k">[rules_lib.ramp_distance]</span>
+<section id="supported-target-namespaces">
+<h3>Supported target namespaces<a class="headerlink" href="#supported-target-namespaces" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Target form</p></th>
+<th class="head"><p>Backing store</p></th>
+<th class="head"><p>Stored type</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">unity.kv.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_kv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Numeric results are stringified before storage.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">unity.env.&lt;section&gt;.&lt;key&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_params</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Stored as float in the scheduler.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.&lt;key&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_kv</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Convenience shorthand for KV targets.</p></td>
+</tr>
+<tr class="row-odd"><td><p>any other unprefixed key</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">env_params</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Falls back to env-parameter storage.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.kv.hockeyFloor.move_object_max_distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.episode_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">general.render_virtual_mouse</span></code></p></li>
+</ul>
+</section>
+<section id="runtime-behavior">
+<h3>Runtime behavior<a class="headerlink" href="#runtime-behavior" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                 ┌────────────────────────────────────┐
+                 │       UnityMultibehaviorTask       │
+                 │                                    │
+  terminal step  │  if ep_reward &gt; 0: on_success()   │
+  ─────────────► │  on_episode_end()                 │
+                 │  maybe on_epoch_advance()         │
+                 └───────────────┬────────────────────┘
+                                 │
+                    ┌────────────▼─────────────┐
+                    │    LiveParamScheduler    │
+                    │                          │
+                    │  per matching rule:      │
+                    │  - increment tick count  │
+                    │  - if tick % N == 0      │
+                    │    apply rule            │
+                    │  - record changed keys   │
+                    │    in pending buffers    │
+                    └────────────┬─────────────┘
+                                 │
+                    ┌────────────▼─────────────┐
+                    │     reset_episode()      │
+                    │  changes = get_changes() │
+                    │  apply KV changes only   │
+                    │  log KV changes only     │
+                    └──────────────────────────┘
+</pre></div>
+</div>
+<p>Key points:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_apply_rule()</span></code> mutates the scheduler’s internal parameter dictionaries immediately.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> returns the pending delta as <code class="docutils literal notranslate"><span class="pre">{&quot;kv&quot;:</span> <span class="pre">{...},</span> <span class="pre">&quot;env&quot;:</span> <span class="pre">{...}}</span></code> and then clears the pending buffers.</p></li>
+<li><p>If multiple triggers happen before <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> is called, the pending buffer keeps the latest value per key.</p></li>
+<li><p>No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound.</p></li>
+<li><p>Per-rule cadence is tracked through an internal tick counter; <code class="docutils literal notranslate"><span class="pre">window</span></code> does not currently participate in scheduling.</p></li>
+</ul>
+</section>
+<section id="what-the-task-layer-currently-applies">
+<h3>What the task layer currently applies<a class="headerlink" href="#what-the-task-layer-currently-applies" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask._apply_scheduler_changes()</span></code> currently does this:</p>
+<ul class="simple">
+<li><p>Sends KV changes with <code class="docutils literal notranslate"><span class="pre">channel_kv.set(key,</span> <span class="pre">value)</span></code></p></li>
+<li><p>Appends one <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code> entry with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">=</span> <span class="pre">&quot;scheduler&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">kv.&lt;key&gt;</span></code> fields</p></li>
+<li><p>Does not send <code class="docutils literal notranslate"><span class="pre">env</span></code> changes to Unity because the <code class="docutils literal notranslate"><span class="pre">set_float_parameter(...)</span></code> branch is still disabled</p></li>
+<li><p>Does not log env changes to <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code></p></li>
+</ul>
+<p>That means env-targeted rules are valid inside <code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code> and appear in <code class="docutils literal notranslate"><span class="pre">get_changes()[&quot;env&quot;]</span></code>, but they do not yet affect the running Unity task through the current task integration.</p>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
+<section id="increment-a-kv-parameter-after-every-success">
+<h4>Increment a KV parameter after every success<a class="headerlink" href="#increment-a-kv-parameter-after-every-success" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.ramp_distance]</span>
 <span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_max_distance&quot;</span>
 <span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;add&quot;</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span>
 <span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
 <span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
 <span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
-
-<span class="c1"># hockey.game.toml profile</span>
-<span class="k">[profile.trainingstage1.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
-
-<span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
-<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="w">   </span><span class="c1"># starting value</span>
 </pre></div>
 </div>
-<p>Session flow:</p>
-<ol class="arabic simple">
-<li><p>Session starts with <code class="docutils literal notranslate"><span class="pre">move_object_max_distance</span> <span class="pre">=</span> <span class="pre">1.0</span></code>.</p></li>
-<li><p>After the first successful trial → scheduler adds 0.04 → <code class="docutils literal notranslate"><span class="pre">1.04</span></code>.</p></li>
-<li><p>After the 100th success → <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">100</span> <span class="pre">×</span> <span class="pre">0.04</span> <span class="pre">=</span> <span class="pre">5.0</span></code> (clamped at max).</p></li>
-<li><p>All subsequent successes leave the value at <code class="docutils literal notranslate"><span class="pre">5.0</span></code>.</p></li>
-</ol>
+<p>If the starting value is <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, successive rewarded terminal episodes produce <code class="docutils literal notranslate"><span class="pre">1.04</span></code>, <code class="docutils literal notranslate"><span class="pre">1.08</span></code>, <code class="docutils literal notranslate"><span class="pre">1.12</span></code>, and so on until the <code class="docutils literal notranslate"><span class="pre">max</span></code> clamp is reached.</p>
+</section>
+<section id="sample-a-fresh-value-from-a-range">
+<h4>Sample a fresh value from a range<a class="headerlink" href="#sample-a-fresh-value-from-a-range" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_x_puck_position]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_x&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">-5</span>
+<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+</pre></div>
+</div>
+<p>On each successful episode, the scheduler samples a new uniform random value in <code class="docutils literal notranslate"><span class="pre">[-5,</span> <span class="pre">5]</span></code> and stores it in the KV buffer.</p>
+</section>
+<section id="alternate-among-fixed-states">
+<h4>Alternate among fixed states<a class="headerlink" href="#alternate-among-fixed-states" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.stage_sequence]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.HockeyManager.spawner&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;set&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">]</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;epoch:1&quot;</span>
+</pre></div>
+</div>
+<p>Each epoch advance writes the next list element, then wraps back to the start.</p>
+</section>
 </section>
 </section>
 <hr class="docutils" />
@@ -991,16 +1003,17 @@ The examples below are based on values that are actually present in this reposit
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-scheduler-liveparamscheduler">Rules Scheduler (<code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code>)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept">Concept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-rules-in-toml">Defining rules in TOML</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-example">Minimal example</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#list-valued-rule-step-through-fixed-stages">List-valued rule (step through fixed stages)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rules-in-a-profile">Selecting rules in a profile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-rules-come-from">Where rules come from</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-behavior">Runtime behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-task-layer-currently-applies">What the task layer currently applies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#increment-a-kv-parameter-after-every-success">Increment a KV parameter after every success</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-a-fresh-value-from-a-range">Sample a fresh value from a range</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-among-fixed-states">Alternate among fixed states</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works-at-runtime">How it works at runtime</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-example-hockey-trainingstage1">Full example: Hockey <code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-docs">Related docs</a></li>

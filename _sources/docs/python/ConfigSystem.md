@@ -225,64 +225,32 @@ env_kv_s1, env_params_s1, cfg_s1 = load_config(path, profile="trainingstage1")
 
 ## Rules Scheduler (`LiveParamScheduler`)
 
-The **Rules Scheduler** is an adaptive difficulty engine embedded inside `UnityMultibehaviorTask`. It automatically modifies Unity environment parameters (KV or float) as a session progresses, without requiring any manual intervention in the task loop.
+The Rules Scheduler is a small rule engine used by `UnityMultibehaviorTask` to mutate runtime parameters between episodes. It operates on two in-memory dictionaries:
+
+- `env_kv` for Unity KV-channel values (stored as strings)
+- `env_params` for Unity environment parameter values (stored as floats)
+
+Current integration detail: the scheduler can produce both KV and env changes, but `UnityMultibehaviorTask` currently only pushes KV changes back to Unity and only logs KV changes to `runtime_params`.
 
 ### Concept
 
-A *rule* is a declarative instruction of the form:
+A rule says:
 
-> "Every N **successes** / **episodes** / **epochs**, apply operation `op` with value `value` to parameter `target`, clamped to `[min, max]`."
+> "On every `N`th `success`, `episode`, or `epoch`, update `target` using `op`."
 
-Rules are loaded from the TOML config at startup and run silently in the background. After each episode the task calls scheduler hooks (`on_success`, `on_episode_end`, `on_epoch_advance`); the scheduler accumulates any resulting parameter changes and flushes them at the start of the next episode via `reset_episode()`.
+The task does not run rules continuously inside an episode. Instead it calls scheduler hooks at episode/epoch boundaries:
+
+- `on_success()` when a terminal episode ended with positive cumulative episode reward
+- `on_episode_end()` on every terminal episode
+- `on_epoch_advance()` when the task advances to the next epoch
+
+The scheduler applies the rule immediately to its internal dictionaries, accumulates the resulting deltas in pending buffers, and those pending changes are consumed on the next `reset_episode()` through `get_changes()`.
 
 ---
 
-### Defining rules in TOML
+### Where rules come from
 
-Rules are stored in two places:
-
-1. **`rules_lib.*`** — a shared library of reusable rule templates (typically in `rules.lib.toml` which is imported by game configs).
-2. **`[profile.<name>.rules] use = [...]`** — each profile selects which library rules are active for that session.
-
-#### Rule fields
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `target` | `str` | ✓ | Parameter path. Use `unity.kv.<section>.<key>` for KV channel parameters or `unity.env.<section>.<key>` for float env parameters. |
-| `op` | `str` | ✓ | Operation: `set`, `add`, `mul`, or `subtract`. String-valued targets only support `set`. |
-| `value` | `float \| str \| list` | ✓ | Value to apply. A list cycles through its elements on consecutive triggers. |
-| `every` | `str` | ✓ | Trigger cadence in the format `<unit>:<N>` where unit is `success`, `episode`, or `epoch` and N is the integer count. |
-| `min` | `float` | — | Lower bound applied after the operation (numeric targets only). |
-| `max` | `float` | — | Upper bound applied after the operation (numeric targets only). |
-| `window` | `int` | — | Sliding window size for rate-based rules (reserved for future use). |
-
-#### Minimal example
-
-```toml
-[rules_lib.ramp_distance]
-target = "unity.kv.hockeyFloor.move_object_max_distance"
-op     = "add"
-value  = 0.04
-every  = "success:1"   # trigger after every success
-min    = 0.5
-max    = 5.0
-```
-
-This adds 0.04 to `move_object_max_distance` after every successful trial, clamped between 0.5 and 5.0.
-
-#### List-valued rule (step through fixed stages)
-
-```toml
-[rules_lib.stage_sequence]
-target = "unity.kv.HockeyManager.spawner"
-op     = "set"
-value  = ["0", "1", "2"]   # cycles: 0 → 1 → 2 → 0 → ...
-every  = "epoch:1"
-```
-
-Each time an epoch advances the spawner index is incremented cyclically through the list.
-
-#### Selecting rules in a profile
+Rules are typically defined in shared `rules_lib.*` entries and activated by profile selection:
 
 ```toml
 [profile.trainingstage1.rules]
@@ -292,68 +260,95 @@ use = ["ramp_distance"]
 use = ["ramp_distance_middlesteps", "reduce_platform_sizex"]
 ```
 
-Only the named rules are activated; all other `rules_lib` entries are ignored for that profile.
+By the time `LiveParamScheduler` is constructed, it receives the already-selected `rules_cfg` dictionary for the active session.
 
----
+### Rule fields
 
-### How it works at runtime
+| Field | Type | Required | Current behavior |
+|-------|------|----------|------------------|
+| `target` | `str` | ✓ | Parameter path to read and write. See namespaces below. |
+| `op` | `str` | ✓ | Supported ops: `set`, `add`, `mul`, `subtract`, `rand`, `random_choice`. |
+| `value` | `float \| str \| list` | For `set`/`add`/`mul`/`subtract` | Single value or list of values. Lists cycle on repeated triggers. String values are only valid with `set`. |
+| `every` | `str` | ✓ | Format `<unit>:<N>`, where unit is currently `success`, `episode`, or `epoch`. |
+| `min` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Lower clamp for numeric results. |
+| `max` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Upper clamp for numeric results. |
+| `window` | `int` | — | Parsed and stored, but not currently used by rule evaluation. |
 
-```
-                 ┌─────────────────────────────────┐
-                 │       UnityMultibehaviorTask      │
-                 │                                  │
-  per episode    │  loop() detects terminal=True    │
-  ─────────────► │  ep_reward > 0 → on_success()   │
-                 │  on_episode_end()                │
-                 │  (epoch boundary) on_epoch_advance() │
-                 └──────────────┬──────────────────┘
-                                 │
-                    ┌────────────▼────────────┐
-                    │   LiveParamScheduler    │
-                    │                         │
-                    │  _maybe_apply(unit)      │
-                    │   increment tick counter │
-                    │   if tick % N == 0:      │
-                    │     _apply_rule(r)       │
-                    │     accumulate to        │
-                    │     _pending_kv /        │
-                    │     _pending_env         │
-                    └────────────┬────────────┘
-                                 │
-                 ┌───────────────▼──────────────────┐
-                 │  reset_episode()                  │
-                 │  calls get_changes()              │
-                 │  → _apply_scheduler_changes()     │
-                 │    channel_kv.set(key, val)       │  ──► Unity KV channel
-                 │    (env param update disabled)    │
-                 │  logs to runtime_params[]         │
-                 └──────────────────────────────────┘
-```
+Notes:
 
-Key points:
-- **Changes are batched**: `_apply_rule()` writes immediately to the in-memory parameter dicts but changes are only sent to Unity when `get_changes()` is called at `reset_episode()`.
-- **Only actual changes are sent**: the scheduler compares old and new values; if a rule produced no change (e.g. already at `max`) nothing is transmitted.
-- **Changes are logged**: every scheduler-driven update is appended to `self.runtime_params` with a timestamp, episode number, and step, enabling post-hoc reconstruction of training history.
-- **`window` counter** is per-rule so multiple rules with different cadences run independently.
-
----
+- `rand` ignores `value` and samples `random.uniform(min, max)`.
+- `random_choice` ignores `value` and currently chooses one of `[min, max]`.
+- Comments in some TOML files mention `trial:N`, but the current implementation only emits `success`, `episode`, and `epoch` ticks.
 
 ### Supported target namespaces
 
-| Target prefix | Channel | Value type | Example |
-|---------------|---------|------------|---------|
-| `unity.kv.<section>.<key>` | `KvChannel` (string) | `float` or `str` | `unity.kv.hockeyFloor.move_object_max_distance` |
-| `unity.env.<section>.<key>` | `EnvironmentParametersChannel` (float) | `float` | `unity.env.general.episode_length` |
-| `general.<key>` (shorthand) | `KvChannel` (string) | `float` | `general.render_virtual_mouse` |
+| Target form | Backing store | Stored type | Notes |
+|-------------|---------------|-------------|-------|
+| `unity.kv.<section>.<key>` | `env_kv` | `str` | Numeric results are stringified before storage. |
+| `unity.env.<section>.<key>` | `env_params` | `float` | Stored as float in the scheduler. |
+| `general.<key>` | `env_kv` | `str` | Convenience shorthand for KV targets. |
+| any other unprefixed key | `env_params` | `float` | Falls back to env-parameter storage. |
 
-> **Note**: env parameter changes via the scheduler are currently accumulated but not transmitted (the `channel.set_float_parameter` call is commented out in `_apply_scheduler_changes`). Only KV channel changes are actively applied at runtime.
+Examples:
 
----
+- `unity.kv.hockeyFloor.move_object_max_distance`
+- `unity.env.general.episode_length`
+- `general.render_virtual_mouse`
 
-### Full example: Hockey `trainingstage1`
+### Runtime behavior
+
+```
+                 ┌────────────────────────────────────┐
+                 │       UnityMultibehaviorTask       │
+                 │                                    │
+  terminal step  │  if ep_reward > 0: on_success()   │
+  ─────────────► │  on_episode_end()                 │
+                 │  maybe on_epoch_advance()         │
+                 └───────────────┬────────────────────┘
+                                 │
+                    ┌────────────▼─────────────┐
+                    │    LiveParamScheduler    │
+                    │                          │
+                    │  per matching rule:      │
+                    │  - increment tick count  │
+                    │  - if tick % N == 0      │
+                    │    apply rule            │
+                    │  - record changed keys   │
+                    │    in pending buffers    │
+                    └────────────┬─────────────┘
+                                 │
+                    ┌────────────▼─────────────┐
+                    │     reset_episode()      │
+                    │  changes = get_changes() │
+                    │  apply KV changes only   │
+                    │  log KV changes only     │
+                    └──────────────────────────┘
+```
+
+Key points:
+
+- `_apply_rule()` mutates the scheduler's internal parameter dictionaries immediately.
+- `get_changes()` returns the pending delta as `{"kv": {...}, "env": {...}}` and then clears the pending buffers.
+- If multiple triggers happen before `get_changes()` is called, the pending buffer keeps the latest value per key.
+- No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound.
+- Per-rule cadence is tracked through an internal tick counter; `window` does not currently participate in scheduling.
+
+### What the task layer currently applies
+
+`UnityMultibehaviorTask._apply_scheduler_changes()` currently does this:
+
+- Sends KV changes with `channel_kv.set(key, value)`
+- Appends one `runtime_params` entry with `source = "scheduler"` and `kv.<key>` fields
+- Does not send `env` changes to Unity because the `set_float_parameter(...)` branch is still disabled
+- Does not log env changes to `runtime_params`
+
+That means env-targeted rules are valid inside `LiveParamScheduler` and appear in `get_changes()["env"]`, but they do not yet affect the running Unity task through the current task integration.
+
+### Examples
+
+#### Increment a KV parameter after every success
 
 ```toml
-# rules.lib.toml (imported)
 [rules_lib.ramp_distance]
 target = "unity.kv.hockeyFloor.move_object_max_distance"
 op     = "add"
@@ -361,20 +356,34 @@ value  = 0.04
 every  = "success:1"
 min    = 0.5
 max    = 5.0
-
-# hockey.game.toml profile
-[profile.trainingstage1.rules]
-use = ["ramp_distance"]
-
-[profile.trainingstage1.unity.kv.hockeyFloor]
-move_object_max_distance = 1.0   # starting value
 ```
 
-Session flow:
-1. Session starts with `move_object_max_distance = 1.0`.
-2. After the first successful trial → scheduler adds 0.04 → `1.04`.
-3. After the 100th success → `1.0 + 100 × 0.04 = 5.0` (clamped at max).
-4. All subsequent successes leave the value at `5.0`.
+If the starting value is `1.0`, successive rewarded terminal episodes produce `1.04`, `1.08`, `1.12`, and so on until the `max` clamp is reached.
+
+#### Sample a fresh value from a range
+
+```toml
+[rules_lib.random_x_puck_position]
+target = "unity.kv.hockeyFloor.move_object_x"
+op     = "rand"
+every  = "success:1"
+min    = -5
+max    = 5
+```
+
+On each successful episode, the scheduler samples a new uniform random value in `[-5, 5]` and stores it in the KV buffer.
+
+#### Alternate among fixed states
+
+```toml
+[rules_lib.stage_sequence]
+target = "unity.kv.HockeyManager.spawner"
+op     = "set"
+value  = ["0", "1", "2"]
+every  = "epoch:1"
+```
+
+Each epoch advance writes the next list element, then wraps back to the start.
 
 ---
 
