@@ -25,7 +25,9 @@ Defines the keypoints tracked by the DLC model.
 
 **Type**: `dj.Manual`
 
-Registry of DLC models used for pose estimation. Must be populated before `DlcLiveData` can be imported.
+Registry of DLC models used for pose estimation.
+
+Register models here before populating `DlcLiveData` or `SyncedDlcLiveData`. This is the recommended workflow even though `DlcLiveData.populate(..., make_kwargs={"init_from_file": True})` can create a fallback entry from processor metadata. Manual registration keeps `model_id` assignment stable, makes model provenance explicit, and avoids silently creating placeholder entries when a processor file cannot be matched cleanly.
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -69,9 +71,21 @@ Imports raw DLC output files for a session.
 | `processor_file` | varchar(256) | Name of the `*_dlcproc.pkl` file |
 | `pose_estimate_file` | varchar(256) | Name of the `*_dlcproc_DLC.hdf5` file (if available) |
 
-### Model Auto-Detection
+### Model Selection During Population
 
-If `model_id` is not specified at population time, the pipeline attempts to match an existing `DlcModel` by comparing bodyparts, `net_type`, and `detector`. If no match is found, a new model entry is created automatically from the processor file metadata.
+If `model_id` is not specified at population time, the pipeline attempts to match an existing `DlcModel` using metadata extracted from the DLC processor file.
+
+In the current implementation, processor-derived matching reliably uses `bodyparts` and `net_type`. The matching code also checks the `detector` field, but `get_dlc_model_info(proc_data)` does not currently extract a detector value from the processor pickle, so this comparison effectively only matches rows whose `detector` is unset (`NULL` / `None`).
+
+If no match is found, population does **not** create a new model entry by default. Instead, it raises an error and asks you to register the model first. This is the intended path for routine use.
+
+Only when `init_from_file=True` is passed to `populate()` will the table create a new fallback `DlcModel` entry from processor metadata.
+
+Recommended workflow:
+
+1. Insert the model explicitly into `DlcModel`
+2. Reuse that registry entry during `DlcLiveData.populate()`
+3. Use `init_from_file=True` only as a recovery path when backfilling legacy data or when the exact model file was not registered ahead of time
 
 To specify a model explicitly:
 
@@ -79,6 +93,15 @@ To specify a model explicitly:
 DlcLiveData.populate(
     make_kwargs={"model_id": 2},
     suppress_errors=True
+)
+```
+
+Fallback auto-initialization from processor metadata:
+
+```python
+DlcLiveData.populate(
+    make_kwargs={"init_from_file": True},
+    suppress_errors=True,
 )
 ```
 
@@ -114,6 +137,65 @@ Timestamps for the DLC-processed frames (may be a subset of all video frames if 
 |-------|------|-------------|
 | `frame_timestamp` | blob | Timestamps of DLC-processed frames |
 | `pose_timestamp` | blob | Timestamps of pose estimate outputs |
+
+---
+
+## PosthocDlcData
+
+**Type**: `dj.Imported`  **Depends on**: `VideoRecording`, `DlcModel`
+
+Stores pose estimates generated post hoc from saved video files rather than from the online DLC-live processor output.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `video_id` | FK → VideoRecording | Associated camera recording |
+| `model_id` | FK → DlcModel | Model used for posthoc inference |
+| `pose_estimate_file` | varchar(256) | Name of the `.h5` pose-estimate file matched to the video |
+
+Population looks for `*DLC*_meta.pickle` files that match the video stem, compares the stored metadata against the selected `DlcModel.config`, and then imports the corresponding `.h5` file when a match is found.
+
+### PosthocDlcData.PoseData
+
+Raw per-keypoint pose estimates extracted from the posthoc DLC `.h5` file.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `bodypart_name` | FK → BodyPart | Keypoint name |
+| `x` | blob | X-coordinates per frame |
+| `y` | blob | Y-coordinates per frame |
+| `likelihood` | blob | Detection likelihood per frame |
+
+### Method: `get_video_clip(key, steps, ...)`
+
+Extract a clip from a posthoc DLC result set with keypoints overlaid:
+
+```python
+from dj_pipeline.schemas.mousear_dlc_live import PosthocDlcData
+
+clip = PosthocDlcData.get_video_clip(
+    key={"dataset_id": "Tick_20260210_141820", "video_id": 0, "model_id": 2},
+    steps=(1200, 1600),
+    show_keypoints=True,
+    keypoints_subset=["nose", "left_ear", "right_ear"],
+    p_cutoff=0.6,
+)
+```
+
+If `video_id` is omitted, the helper defaults to `0`. If `model_id` is omitted, it uses the latest available model for that key.
+
+### Method: `get_trial_video(key, trial_id, ...)`
+
+Extract a trial clip with posthoc pose overlay using `TrialInfo` boundaries:
+
+```python
+clip = PosthocDlcData.get_trial_video(
+    key={"dataset_id": "Tick_20260210_141820", "video_id": 0, "model_id": 2},
+    trial_id=5,
+    include_init=False,
+    include_iti=True,
+    output_path="/tmp/trial5_posthoc.mp4",
+)
+```
 
 ---
 

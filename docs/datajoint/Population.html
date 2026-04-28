@@ -520,7 +520,10 @@ python<span class="w"> </span>populate.py
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DlcLiveData</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span><span class="n">suppress_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reserve_jobs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Reads <code class="docutils literal notranslate"><span class="pre">*_dlcproc.pkl</span></code> (processor data) and <code class="docutils literal notranslate"><span class="pre">*_dlcproc_DLC.hdf5</span></code> (raw pose) files from <code class="docutils literal notranslate"><span class="pre">DLC_DATA_PATH</span></code>. Automatically matches or creates a <code class="docutils literal notranslate"><span class="pre">DlcModel</span></code> entry based on bodyparts and network type.</p>
+<p>Reads <code class="docutils literal notranslate"><span class="pre">*_dlcproc.pkl</span></code> (processor data) and <code class="docutils literal notranslate"><span class="pre">*_dlcproc_DLC.hdf5</span></code> (raw pose) files from <code class="docutils literal notranslate"><span class="pre">DLC_DATA_PATH</span></code>. It tries to match an existing <code class="docutils literal notranslate"><span class="pre">DlcModel</span></code> entry using metadata from the processor file.</p>
+<p>In the current implementation, that matching uses <code class="docutils literal notranslate"><span class="pre">bodyparts</span></code> and <code class="docutils literal notranslate"><span class="pre">net_type</span></code> from the processor pickle. The code also compares the <code class="docutils literal notranslate"><span class="pre">detector</span></code> field, but the processor-metadata helper does not currently populate a detector value, so detector-aware matching is not available from this path yet.</p>
+<p>Recommended workflow: insert each DLC model into <code class="docutils literal notranslate"><span class="pre">DlcModel</span></code> manually before running <code class="docutils literal notranslate"><span class="pre">DlcLiveData.populate()</span></code>. This keeps <code class="docutils literal notranslate"><span class="pre">model_id</span></code> values stable and makes it obvious which trained model produced each session. If no matching model exists, population raises an error by default rather than silently creating one.</p>
+<p>Only use <code class="docutils literal notranslate"><span class="pre">make_kwargs={&quot;init_from_file&quot;:</span> <span class="pre">True}</span></code> when you intentionally want the pipeline to create a fallback model entry from processor metadata, for example while backfilling older sessions.</p>
 </section>
 <section id="step-8-synchronize-video-and-behavior">
 <h3>Step 8 — Synchronize video and behavior<a class="headerlink" href="#step-8-synchronize-video-and-behavior" title="Link to this heading">#</a></h3>
@@ -567,6 +570,15 @@ make<span class="w"> </span>add-cron
     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mice_resnet50_v1&quot;</span><span class="p">,</span>   <span class="c1"># optional, defaults to filename</span>
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted model with ID: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This manual registration step should be treated as the normal path, not an optional cleanup step after population. Populate the model registry first, then run <code class="docutils literal notranslate"><span class="pre">DlcLiveData.populate()</span></code>, then <code class="docutils literal notranslate"><span class="pre">SyncedDlcLiveData.populate()</span></code>. That ordering is more reproducible than relying on inferred metadata from processor files.</p>
+<p>If you still need the fallback path, run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DlcLiveData</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span>
+    <span class="n">suppress_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">reserve_jobs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">make_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_from_file&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </section>

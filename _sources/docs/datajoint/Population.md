@@ -77,7 +77,13 @@ Decodes the lux sensor (BH1750) recordings from `TeensyData` to detect TTL barco
 DlcLiveData.populate(suppress_errors=True, reserve_jobs=True)
 ```
 
-Reads `*_dlcproc.pkl` (processor data) and `*_dlcproc_DLC.hdf5` (raw pose) files from `DLC_DATA_PATH`. Automatically matches or creates a `DlcModel` entry based on bodyparts and network type.
+Reads `*_dlcproc.pkl` (processor data) and `*_dlcproc_DLC.hdf5` (raw pose) files from `DLC_DATA_PATH`. It tries to match an existing `DlcModel` entry using metadata from the processor file.
+
+In the current implementation, that matching uses `bodyparts` and `net_type` from the processor pickle. The code also compares the `detector` field, but the processor-metadata helper does not currently populate a detector value, so detector-aware matching is not available from this path yet.
+
+Recommended workflow: insert each DLC model into `DlcModel` manually before running `DlcLiveData.populate()`. This keeps `model_id` values stable and makes it obvious which trained model produced each session. If no matching model exists, population raises an error by default rather than silently creating one.
+
+Only use `make_kwargs={"init_from_file": True}` when you intentionally want the pipeline to create a fallback model entry from processor metadata, for example while backfilling older sessions.
 
 ### Step 8 — Synchronize video and behavior
 
@@ -129,6 +135,18 @@ model_id = DlcModel.insert_dlc_live_model_from_file(
     model_name="mice_resnet50_v1",   # optional, defaults to filename
 )
 print(f"Inserted model with ID: {model_id}")
+```
+
+This manual registration step should be treated as the normal path, not an optional cleanup step after population. Populate the model registry first, then run `DlcLiveData.populate()`, then `SyncedDlcLiveData.populate()`. That ordering is more reproducible than relying on inferred metadata from processor files.
+
+If you still need the fallback path, run:
+
+```python
+DlcLiveData.populate(
+    suppress_errors=True,
+    reserve_jobs=True,
+    make_kwargs={"init_from_file": True},
+)
 ```
 
 ### Assigning Models to Legacy Data
