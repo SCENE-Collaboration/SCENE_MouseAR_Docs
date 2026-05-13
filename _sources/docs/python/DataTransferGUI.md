@@ -150,19 +150,20 @@ Minimal keys:
   - `ip`
   - `host`
   - `remote_dst`
+  - `remote_subfolders`
 - menu and cache:
   - `remote_dropdown_menu`
   - `host_dropdown_menu`
   - `cache`
+  - `menu_filters`
 - local outputs:
   - `gui_output_folder`
-  - `processed_path`
 - discovery roots:
   - `raw_data_src`
-  - `unity_json_path`
-  - `dlc_live_pkl_path`
-  - `dlc_live_hdf5_path`
-  - `video_paths`
+  - `host_unity_data_path`
+  - `host_dlc_live_pkl_path`
+  - `host_dlc_live_hdf5_path`
+  - `host_video_paths`
 
 Example local-only setup:
 
@@ -171,16 +172,30 @@ Example local-only setup:
   "ip": "localhost",
   "host": "",
   "remote_dst": "/tmp/test_transfer",
+  "menu_filters": {
+    "MouseDict": {
+      "exclude": ["test*"]
+    },
+    "Task": {
+      "match_key": "task_name",
+      "include": ["AR_*"]
+    },
+    "task_type": {
+      "include": ["AR_*"]
+    }
+  },
+  "remote_subfolders": {
+    "gui_output": "mice_metadata"
+  },
   "remote_dropdown_menu": "dj_pipeline/gui_transfer/menu.npy",
   "host_dropdown_menu": "dj_pipeline/gui_transfer/menu.npy",
   "gui_output_folder": "dj_pipeline/gui_transfer/out_files",
   "cache": "default",
   "raw_data_src": "/data/raw",
-  "unity_json_path": "/data/raw",
-  "dlc_live_pkl_path": "/data/dlc_video_raw",
-  "dlc_live_hdf5_path": "/data/dlc_video_raw",
-  "video_paths": "/data/dlc_video_raw",
-  "processed_path": "/data/processed_rig"
+  "host_unity_data_path": "/data/raw",
+  "host_dlc_live_pkl_path": "/data/dlc_video_raw",
+  "host_dlc_live_hdf5_path": "/data/dlc_video_raw",
+  "host_video_paths": "/data/dlc_video_raw"
 }
 ```
 
@@ -196,3 +211,5 @@ Example local-only setup:
   verify datatype folder paths and dataset naming consistency.
 - **Missing fields during submit**:
   required GUI metadata and each transfer datatype must be present.
+- **Unexpected dropdown entries appear**:
+  use `menu_filters` to include or exclude menu items by glob pattern.

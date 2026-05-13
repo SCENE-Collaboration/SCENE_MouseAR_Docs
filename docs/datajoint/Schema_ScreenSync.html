@@ -442,7 +442,7 @@
 <hr class="docutils" />
 <section id="screensync">
 <h2>ScreenSync<a class="headerlink" href="#screensync" title="Link to this heading">#</a></h2>
-<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Computed</span></code>  <strong>Depends on</strong>: <code class="docutils literal notranslate"><span class="pre">UnitySession</span></code> (requires <code class="docutils literal notranslate"><span class="pre">TeensyData</span></code> and <code class="docutils literal notranslate"><span class="pre">ScreenTTLData</span></code>)</p>
+<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Computed</span></code>  <strong>Depends on</strong>: <code class="docutils literal notranslate"><span class="pre">UnitySession</span></code> (requires <code class="docutils literal notranslate"><span class="pre">ScreenTTLData</span></code> and normalized <code class="docutils literal notranslate"><span class="pre">TeensyStream</span></code> rows)</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -459,27 +459,52 @@
 <td><p>int32</p></td>
 <td><p>Number of TTL barcodes sent by Unity (from <code class="docutils literal notranslate"><span class="pre">ScreenTTLData.ttl_counters</span></code>)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nr_barcodes_detected</span></code></p></td>
-<td><p>int32</p></td>
-<td><p>Number of barcodes detected by the Teensy (from lux sensor decoding)</p></td>
+</tbody>
+</table>
+</div>
+<p>Per-screen metrics live in the <code class="docutils literal notranslate"><span class="pre">ScreenSync.Screen</span></code> part table:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fraction_barcodes_matched</span></code></p></td>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+<td><p>FK → ScreenSync</p></td>
+<td><p>Session identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">screen_id</span></code></p></td>
+<td><p>int16</p></td>
+<td><p>Screen index taken from <code class="docutils literal notranslate"><span class="pre">TeensyStream.stream_id</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">raw_key</span></code></p></td>
+<td><p>varchar(255)</p></td>
+<td><p>Original Teensy stream key used to derive this matching row</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nr_barcodes_detected</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>Number of barcodes detected from that screen’s analog stream</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fraction_barcodes_matched</span></code></p></td>
 <td><p>float32</p></td>
 <td><p>Fraction of sent barcodes matched to a detected barcode</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">median_lag</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">median_lag</span></code></p></td>
 <td><p>float32</p></td>
 <td><p>Median temporal lag between sent and detected barcodes (milliseconds)</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">ScreenSync</span></code> reads normalized rows from <code class="docutils literal notranslate"><span class="pre">UnitySession.TeensyStream</span></code> and inserts one <code class="docutils literal notranslate"><span class="pre">Screen</span></code> row per selected stream. <code class="docutils literal notranslate"><span class="pre">SCREEN_SYNC_SOURCE=lux</span></code> selects <code class="docutils literal notranslate"><span class="pre">stream_family='lux'</span></code>, which carries per-stream <code class="docutils literal notranslate"><span class="pre">timestamps_us</span></code>. <code class="docutils literal notranslate"><span class="pre">SCREEN_SYNC_SOURCE=photodiode</span></code> selects <code class="docutils literal notranslate"><span class="pre">stream_family='photodiode'</span></code>, which is packet-aligned and uses the shared packet clock source recorded in <code class="docutils literal notranslate"><span class="pre">packet_time_source</span></code>. <code class="docutils literal notranslate"><span class="pre">screen_id=1</span></code> corresponds to the unsuffixed stream and higher IDs follow the normalized stream ID.</p>
 <section id="synchronization-mechanism">
 <h3>Synchronization Mechanism<a class="headerlink" href="#synchronization-mechanism" title="Link to this heading">#</a></h3>
 <p>The screen displays brief TTL barcode patterns (sequences of bright/dark frames) at regular intervals. These are:</p>
 <ol class="arabic simple">
 <li><p><strong>Sent</strong> — Unity generates an 8-bit barcode and records its timestamp in <code class="docutils literal notranslate"><span class="pre">ScreenTTLData</span></code></p></li>
-<li><p><strong>Detected</strong> — The Teensy reads the BH1750 lux sensor at high frequency; the <code class="docutils literal notranslate"><span class="pre">decode_session_lux_dj()</span></code> utility decodes the lux trace to identify barcode bursts</p></li>
+<li><p><strong>Detected</strong> — The Teensy reads the BH1750 lux sensor at high frequency; the <code class="docutils literal notranslate"><span class="pre">decode_session_analog_dj()</span></code> utility decodes the lux trace to identify barcode bursts</p></li>
 <li><p><strong>Matched</strong> — Detected barcodes are compared to sent barcodes; timing offset is measured</p></li>
 </ol>
 </section>
@@ -514,12 +539,14 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_screen_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScreenSync</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">datajoint</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dj</span>
 
-<span class="c1"># Sessions with poor sync quality</span>
-<span class="n">poor_sync</span> <span class="o">=</span> <span class="p">(</span><span class="n">ScreenSync</span> <span class="o">&amp;</span> <span class="s2">&quot;fraction_barcodes_matched &lt; 0.9&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Per-screen rows with poor sync quality</span>
+<span class="n">poor_sync</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ScreenSync</span><span class="o">.</span><span class="n">Screen</span> <span class="o">&amp;</span> <span class="s2">&quot;fraction_barcodes_matched &lt; 0.9&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">as_dict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Summary statistics across all sessions</span>
+<span class="c1"># Summary statistics across all screens</span>
 <span class="n">stats</span> <span class="o">=</span> <span class="n">dj</span><span class="o">.</span><span class="n">U</span><span class="p">()</span><span class="o">.</span><span class="n">aggr</span><span class="p">(</span>
-    <span class="n">ScreenSync</span><span class="p">,</span>
+    <span class="n">ScreenSync</span><span class="o">.</span><span class="n">Screen</span><span class="p">,</span>
     <span class="n">mean_match</span><span class="o">=</span><span class="s2">&quot;AVG(fraction_barcodes_matched)&quot;</span><span class="p">,</span>
     <span class="n">mean_lag</span><span class="o">=</span><span class="s2">&quot;AVG(median_lag)&quot;</span><span class="p">,</span>
 <span class="p">)</span><span class="o">.</span><span class="n">fetch1</span><span class="p">()</span>

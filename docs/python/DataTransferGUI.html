@@ -587,6 +587,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">ip</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">remote_dst</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remote_subfolders</span></code></p></li>
 </ul>
 </li>
 <li><p>menu and cache:</p>
@@ -594,21 +595,21 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">remote_dropdown_menu</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">host_dropdown_menu</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cache</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">menu_filters</span></code></p></li>
 </ul>
 </li>
 <li><p>local outputs:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">gui_output_folder</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">processed_path</span></code></p></li>
 </ul>
 </li>
 <li><p>discovery roots:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">raw_data_src</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unity_json_path</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dlc_live_pkl_path</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dlc_live_hdf5_path</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">video_paths</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_unity_data_path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_dlc_live_pkl_path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_dlc_live_hdf5_path</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_video_paths</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -617,16 +618,30 @@
 <span class="w">  </span><span class="nt">&quot;ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;remote_dst&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/tmp/test_transfer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;menu_filters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;MouseDict&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;test*&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;Task&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;match_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task_name&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AR_*&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;task_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;AR_*&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;remote_subfolders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;gui_output&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mice_metadata&quot;</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;remote_dropdown_menu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dj_pipeline/gui_transfer/menu.npy&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;host_dropdown_menu&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dj_pipeline/gui_transfer/menu.npy&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;gui_output_folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dj_pipeline/gui_transfer/out_files&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;raw_data_src&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/raw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;unity_json_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/raw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;dlc_live_pkl_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;dlc_live_hdf5_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;video_paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;processed_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/processed_rig&quot;</span>
+<span class="w">  </span><span class="nt">&quot;host_unity_data_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/raw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;host_dlc_live_pkl_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;host_dlc_live_hdf5_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;host_video_paths&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/data/dlc_video_raw&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -643,6 +658,8 @@ verify SSH connectivity and write permissions to <code class="docutils literal n
 verify datatype folder paths and dataset naming consistency.</p></li>
 <li><p><strong>Missing fields during submit</strong>:
 required GUI metadata and each transfer datatype must be present.</p></li>
+<li><p><strong>Unexpected dropdown entries appear</strong>:
+use <code class="docutils literal notranslate"><span class="pre">menu_filters</span></code> to include or exclude menu items by glob pattern.</p></li>
 </ul>
 </section>
 </section>
