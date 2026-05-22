@@ -63,6 +63,7 @@ diagram.save('ERD.png')
 | [mousear_video](Schema_Video.md) | Video | MP4 metadata, frame timestamps, step↔frame synchronization |
 | [mousear_dlc_live](Schema_DLCLive.md) | Pose | DeepLabCutLive! pose estimates, synchronized to video frames |
 | [mousear_screen_sync](Schema_ScreenSync.md) | Sync QC | TTL barcode detection; validates hardware timing alignment |
+| [mousear_summary_email](Schema_SummaryEmail.md) | Summary | Composite diagnostic figure and text summary per session |
 
 ## Population Flow
 
@@ -88,6 +89,9 @@ UnitySession.populate()          ← imports behavioral data from JSON
         └──► DlcLiveData.populate()      ← imports DLC pose data
                   │
                   └──► SyncedDlcLiveData.populate()  ← syncs DLC to video grid
+
+SummaryInfo.populate()           ← aggregates all upstream diagnostics into a
+                                    composite figure (depends on UnitySession)
 ```
 
 ## Schema Prefix (TAG)
