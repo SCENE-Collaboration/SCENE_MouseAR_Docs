@@ -443,12 +443,14 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-rules-come-from">Where rules come from</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-rules-scenario-choice">Scenario rules (<code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code>)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-behavior">Runtime behavior</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-task-layer-currently-applies">What the task layer currently applies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#increment-a-kv-parameter-after-every-success">Increment a KV parameter after every success</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-a-fresh-value-from-a-range">Sample a fresh value from a range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-among-fixed-states">Alternate among fixed states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-a-coordinated-set-of-parameters-scenario">Apply a coordinated set of parameters (scenario)</a></li>
 </ul>
 </li>
 </ul>
@@ -732,13 +734,13 @@ The examples below are based on values that are actually present in this reposit
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td><p>✓</p></td>
-<td><p>Parameter path to read and write. See namespaces below.</p></td>
+<td><p>✓ except <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code></p></td>
+<td><p>Parameter path to read and write. See namespaces below. <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> reads its targets from each scenario param instead.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
 <td><p>✓</p></td>
-<td><p>Supported ops: <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, <code class="docutils literal notranslate"><span class="pre">subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">rand</span></code>, <code class="docutils literal notranslate"><span class="pre">random_choice</span></code>.</p></td>
+<td><p>Supported ops: <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, <code class="docutils literal notranslate"><span class="pre">subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">rand</span></code>, <code class="docutils literal notranslate"><span class="pre">random_choice</span></code>, <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">list</span></code></p></td>
@@ -765,6 +767,11 @@ The examples below are based on values that are actually present in this reposit
 <td><p>—</p></td>
 <td><p>Parsed and stored, but not currently used by rule evaluation.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scenarios</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td><p>Required for <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code></p></td>
+<td><p>List of scenarios; each scenario is a list of param specs applied together. See <a class="reference internal" href="#scenario-rules-scenario_choice"><span class="xref myst">Scenario rules</span></a>.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -772,6 +779,7 @@ The examples below are based on values that are actually present in this reposit
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">rand</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and samples <code class="docutils literal notranslate"><span class="pre">random.uniform(min,</span> <span class="pre">max)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">random_choice</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and currently chooses one of <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> ignores <code class="docutils literal notranslate"><span class="pre">target</span></code>/<code class="docutils literal notranslate"><span class="pre">value</span></code>/<code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code> at the top level and instead applies a randomly chosen <code class="docutils literal notranslate"><span class="pre">scenarios</span></code> entry — see below.</p></li>
 <li><p>Comments in some TOML files mention <code class="docutils literal notranslate"><span class="pre">trial:N</span></code>, but the current implementation only emits <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, and <code class="docutils literal notranslate"><span class="pre">epoch</span></code> ticks.</p></li>
 </ul>
 </section>
@@ -815,6 +823,58 @@ The examples below are based on values that are actually present in this reposit
 <li><p><code class="docutils literal notranslate"><span class="pre">unity.env.general.episode_length</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">general.render_virtual_mouse</span></code></p></li>
 </ul>
+</section>
+<section id="scenario-rules-scenario-choice">
+<h3>Scenario rules (<code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code>)<a class="headerlink" href="#scenario-rules-scenario-choice" title="Link to this heading">#</a></h3>
+<p>The ops described so far each touch a single <code class="docutils literal notranslate"><span class="pre">target</span></code>. <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> exists for the case where several parameters must change <strong>together</strong> to stay coherent — for example moving a goal and resizing the arena at the same time, where applying only one of the two would leave the environment in an invalid state.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> rule does not use the top-level <code class="docutils literal notranslate"><span class="pre">target</span></code>/<code class="docutils literal notranslate"><span class="pre">value</span></code>/<code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code> fields. Instead it carries a list of <strong>scenarios</strong>, and each scenario is a list of <strong>param specs</strong>. On each trigger the scheduler picks one scenario uniformly at random (<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>) and applies <em>all</em> of its param specs in order.</p>
+<p>Each param spec is a self-contained mini-rule with its own namespaced <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">op</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Param-spec field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>✓</p></td>
+<td><p>Same namespaces as a normal rule (<code class="docutils literal notranslate"><span class="pre">unity.kv.*</span></code>, <code class="docutils literal notranslate"><span class="pre">unity.env.*</span></code>, <code class="docutils literal notranslate"><span class="pre">general.*</span></code>, or unprefixed).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">op</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>—</p></td>
+<td><p>Defaults to <code class="docutils literal notranslate"><span class="pre">set</span></code>. Supports <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">mul</span></code>, <code class="docutils literal notranslate"><span class="pre">subtract</span></code>, <code class="docutils literal notranslate"><span class="pre">rand</span></code>, <code class="docutils literal notranslate"><span class="pre">random_choice</span></code>. Nested <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> is not allowed.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span> <span class="pre">|</span> <span class="pre">str</span></code></p></td>
+<td><p>For non-<code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code> ops</p></td>
+<td><p>Single value only — <strong>lists are rejected</strong>. String values require <code class="docutils literal notranslate"><span class="pre">op</span> <span class="pre">=</span> <span class="pre">&quot;set&quot;</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Required for <code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code></p></td>
+<td><p>Also acts as the lower clamp for arithmetic ops.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>Required for <code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code></p></td>
+<td><p>Also acts as the upper clamp for arithmetic ops.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Validation happens when the rule is constructed (<code class="docutils literal notranslate"><span class="pre">_make_rule</span></code>), so a malformed scenario config fails fast with a clear <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scenarios</span></code> must be present and non-empty.</p></li>
+<li><p>Each scenario must be a table with a non-empty <code class="docutils literal notranslate"><span class="pre">params</span></code> list.</p></li>
+<li><p>Each param spec must be a table (dict) and must include a <code class="docutils literal notranslate"><span class="pre">target</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code> param specs require both <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> with <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">&gt;=</span> <span class="pre">min</span></code>.</p></li>
+<li><p>Non-<code class="docutils literal notranslate"><span class="pre">rand</span></code> param specs require a non-list <code class="docutils literal notranslate"><span class="pre">value</span></code>; string values are only valid with <code class="docutils literal notranslate"><span class="pre">op</span> <span class="pre">=</span> <span class="pre">&quot;set&quot;</span></code>.</p></li>
+</ul>
+<p>At trigger time, <code class="docutils literal notranslate"><span class="pre">_maybe_apply()</span></code> chooses a scenario, routes every param spec through the same apply/clamp path as ordinary rules, and records a pending change for each touched target whose value actually changed, so each produces its own pending KV or env change. The usual KV-vs-env integration caveat still applies: only KV changes are pushed back to Unity and logged.</p>
 </section>
 <section id="runtime-behavior">
 <h3>Runtime behavior<a class="headerlink" href="#runtime-behavior" title="Link to this heading">#</a></h3>
@@ -902,6 +962,54 @@ The examples below are based on values that are actually present in this reposit
 </pre></div>
 </div>
 <p>Each epoch advance writes the next list element, then wraps back to the start.</p>
+</section>
+<section id="apply-a-coordinated-set-of-parameters-scenario">
+<h4>Apply a coordinated set of parameters (scenario)<a class="headerlink" href="#apply-a-coordinated-set-of-parameters-scenario" title="Link to this heading">#</a></h4>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_large_goal_scenario]</span>
+<span class="n">op</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
+<span class="n">every</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+
+<span class="c1"># Scenario 1: goal on the +z wall, puck z fixed, puck x randomised</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios]]</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_thickness_x&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_width_z&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.target_z&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">7.5</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_x&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
+<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">-5.5</span>
+<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.5</span>
+
+<span class="c1"># Scenario 2: goal on the +x wall (arena rotated), puck x fixed, puck z randomised</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios]]</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_thickness_x&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_width_z&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.target_x&quot;</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">5.5</span>
+<span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_z&quot;</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
+<span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
+<span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
+</pre></div>
+</div>
+<p>On each successful episode the scheduler picks one of the two scenarios at random and applies <em>all</em> of its params together, so the arena dimensions, goal position, and puck spawn stay mutually consistent. (Note that TOML arrays-of-tables make the nesting verbose: <code class="docutils literal notranslate"><span class="pre">[[...scenarios]]</span></code> opens a new scenario and each following <code class="docutils literal notranslate"><span class="pre">[[...scenarios.params]]</span></code> adds a param spec to it.)</p>
+<p>Activate it through a profile like any other rule:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage4c.rules]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;random_large_goal_scenario&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -1006,12 +1114,14 @@ The examples below are based on values that are actually present in this reposit
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-rules-come-from">Where rules come from</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rule-fields">Rule fields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-target-namespaces">Supported target namespaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-rules-scenario-choice">Scenario rules (<code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code>)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runtime-behavior">Runtime behavior</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-task-layer-currently-applies">What the task layer currently applies</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#increment-a-kv-parameter-after-every-success">Increment a KV parameter after every success</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-a-fresh-value-from-a-range">Sample a fresh value from a range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-among-fixed-states">Alternate among fixed states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-a-coordinated-set-of-parameters-scenario">Apply a coordinated set of parameters (scenario)</a></li>
 </ul>
 </li>
 </ul>

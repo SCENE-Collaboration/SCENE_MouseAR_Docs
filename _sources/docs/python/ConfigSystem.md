@@ -266,18 +266,20 @@ By the time `LiveParamScheduler` is constructed, it receives the already-selecte
 
 | Field | Type | Required | Current behavior |
 |-------|------|----------|------------------|
-| `target` | `str` | ✓ | Parameter path to read and write. See namespaces below. |
-| `op` | `str` | ✓ | Supported ops: `set`, `add`, `mul`, `subtract`, `rand`, `random_choice`. |
+| `target` | `str` | ✓ except `scenario_choice` | Parameter path to read and write. See namespaces below. `scenario_choice` reads its targets from each scenario param instead. |
+| `op` | `str` | ✓ | Supported ops: `set`, `add`, `mul`, `subtract`, `rand`, `random_choice`, `scenario_choice`. |
 | `value` | `float \| str \| list` | For `set`/`add`/`mul`/`subtract` | Single value or list of values. Lists cycle on repeated triggers. String values are only valid with `set`. |
 | `every` | `str` | ✓ | Format `<unit>:<N>`, where unit is currently `success`, `episode`, or `epoch`. |
 | `min` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Lower clamp for numeric results. |
 | `max` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Upper clamp for numeric results. |
 | `window` | `int` | — | Parsed and stored, but not currently used by rule evaluation. |
+| `scenarios` | `list` | Required for `scenario_choice` | List of scenarios; each scenario is a list of param specs applied together. See [Scenario rules](#scenario-rules-scenario_choice). |
 
 Notes:
 
 - `rand` ignores `value` and samples `random.uniform(min, max)`.
 - `random_choice` ignores `value` and currently chooses one of `[min, max]`.
+- `scenario_choice` ignores `target`/`value`/`min`/`max` at the top level and instead applies a randomly chosen `scenarios` entry — see below.
 - Comments in some TOML files mention `trial:N`, but the current implementation only emits `success`, `episode`, and `epoch` ticks.
 
 ### Supported target namespaces
@@ -294,6 +296,32 @@ Examples:
 - `unity.kv.hockeyFloor.move_object_max_distance`
 - `unity.env.general.episode_length`
 - `general.render_virtual_mouse`
+
+### Scenario rules (`scenario_choice`)
+
+The ops described so far each touch a single `target`. `scenario_choice` exists for the case where several parameters must change **together** to stay coherent — for example moving a goal and resizing the arena at the same time, where applying only one of the two would leave the environment in an invalid state.
+
+A `scenario_choice` rule does not use the top-level `target`/`value`/`min`/`max` fields. Instead it carries a list of **scenarios**, and each scenario is a list of **param specs**. On each trigger the scheduler picks one scenario uniformly at random (`random.choice`) and applies *all* of its param specs in order.
+
+Each param spec is a self-contained mini-rule with its own namespaced `target` and `op`:
+
+| Param-spec field | Type | Required | Notes |
+|------------------|------|----------|-------|
+| `target` | `str` | ✓ | Same namespaces as a normal rule (`unity.kv.*`, `unity.env.*`, `general.*`, or unprefixed). |
+| `op` | `str` | — | Defaults to `set`. Supports `set`, `add`, `mul`, `subtract`, `rand`, `random_choice`. Nested `scenario_choice` is not allowed. |
+| `value` | `float \| str` | For non-`rand`/`random_choice` ops | Single value only — **lists are rejected**. String values require `op = "set"`. |
+| `min` | `float` | Required for `rand`/`random_choice` | Also acts as the lower clamp for arithmetic ops. |
+| `max` | `float` | Required for `rand`/`random_choice` | Also acts as the upper clamp for arithmetic ops. |
+
+Validation happens when the rule is constructed (`_make_rule`), so a malformed scenario config fails fast with a clear `ValueError`:
+
+- `scenarios` must be present and non-empty.
+- Each scenario must be a table with a non-empty `params` list.
+- Each param spec must be a table (dict) and must include a `target`.
+- `rand`/`random_choice` param specs require both `min` and `max` with `max >= min`.
+- Non-`rand` param specs require a non-list `value`; string values are only valid with `op = "set"`.
+
+At trigger time, `_maybe_apply()` chooses a scenario, routes every param spec through the same apply/clamp path as ordinary rules, and records a pending change for each touched target whose value actually changed, so each produces its own pending KV or env change. The usual KV-vs-env integration caveat still applies: only KV changes are pushed back to Unity and logged.
 
 ### Runtime behavior
 
@@ -384,6 +412,57 @@ every  = "epoch:1"
 ```
 
 Each epoch advance writes the next list element, then wraps back to the start.
+
+#### Apply a coordinated set of parameters (scenario)
+
+```toml
+[rules_lib.random_large_goal_scenario]
+op    = "scenario_choice"
+every = "success:1"
+
+# Scenario 1: goal on the +z wall, puck z fixed, puck x randomised
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.area_thickness_x"
+value  = 14
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.area_width_z"
+value  = 3
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.target_z"
+value  = 7.5
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_x"
+op     = "rand"
+min    = -5.5
+max    = 5.5
+
+# Scenario 2: goal on the +x wall (arena rotated), puck x fixed, puck z randomised
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.area_thickness_x"
+value  = 3
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.area_width_z"
+value  = 18
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.target_x"
+value  = 5.5
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_z"
+op     = "rand"
+min    = -7
+max    = 7
+```
+
+On each successful episode the scheduler picks one of the two scenarios at random and applies *all* of its params together, so the arena dimensions, goal position, and puck spawn stay mutually consistent. (Note that TOML arrays-of-tables make the nesting verbose: `[[...scenarios]]` opens a new scenario and each following `[[...scenarios.params]]` adds a param spec to it.)
+
+Activate it through a profile like any other rule:
+
+```toml
+[profile.trainingstage4c.rules]
+use = ["random_large_goal_scenario"]
+```
 
 ---
 
