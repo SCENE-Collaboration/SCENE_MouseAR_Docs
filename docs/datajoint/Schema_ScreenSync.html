@@ -424,6 +424,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-sync-quality">Querying Sync Quality</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teensybarcodes">TeensyBarcodes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-logic">Population Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Interpreting Results</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -555,6 +560,128 @@
 </div>
 </section>
 </section>
+<hr class="docutils" />
+<section id="teensybarcodes">
+<h2>TeensyBarcodes<a class="headerlink" href="#teensybarcodes" title="Link to this heading">#</a></h2>
+<p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">dj.Computed</span></code>  <strong>Depends on</strong>: <code class="docutils literal notranslate"><span class="pre">UnitySession</span></code> (requires <code class="docutils literal notranslate"><span class="pre">TeensyStream</span></code> with <code class="docutils literal notranslate"><span class="pre">stream_family='barcodettl'</span></code>, <code class="docutils literal notranslate"><span class="pre">TeensyData</span></code>, and <code class="docutils literal notranslate"><span class="pre">UnityData</span></code>)</p>
+<p>Decodes the 32-bit rolling barcode sequence emitted by the Teensy <code class="docutils literal notranslate"><span class="pre">barcodes.ino</span></code> firmware over a dedicated <code class="docutils literal notranslate"><span class="pre">BarcodeTTL</span></code> stream. This signal is shared with electrophysiology recording systems and serves as the cross-system temporal anchor: each decoded barcode maps to a host timestamp, a device microsecond timestamp, and (where available) an aligned game step — enabling post-hoc alignment of ephys spike times to behavioral events.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+<td><p>FK → UnitySession</p></td>
+<td><p>Session identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nr_barcodes_detected</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>Total number of successfully decoded barcodes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">nr_missed_barcodes</span></code></p></td>
+<td><p>int64</p></td>
+<td><p>Estimated count of barcodes missing from the sequence (plausible forward gaps only; corrupt/out-of-order detections are excluded)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ids_monotonic</span></code></p></td>
+<td><p>bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> iff every consecutive <code class="docutils literal notranslate"><span class="pre">decoded_id</span></code> increases by exactly 1; <code class="docutils literal notranslate"><span class="pre">False</span></code> signals corrupt or misdecoded barcodes</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">aligned</span></code></p></td>
+<td><p>bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> iff <code class="docutils literal notranslate"><span class="pre">task_start_time_ref</span></code> was available and <code class="docutils literal notranslate"><span class="pre">t_task</span></code>/<code class="docutils literal notranslate"><span class="pre">game_step</span></code> are populated in part rows</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code></p></td>
+<td><p>float32</p></td>
+<td><p>Inferred packet sampling rate (Hz), derived from median <code class="docutils literal notranslate"><span class="pre">t_dev_us</span></code> inter-packet interval</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Per-barcode detections live in the <code class="docutils literal notranslate"><span class="pre">TeensyBarcodes.Barcode</span></code> part table:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dataset_id</span></code></p></td>
+<td><p>FK → TeensyBarcodes</p></td>
+<td><p>Session identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">barcode_idx</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>0-based detection order within the stream</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">decoded_id</span></code></p></td>
+<td><p>int64</p></td>
+<td><p>32-bit barcode value (0 – 2³²−1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stream_idx</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>Sample index in the barcode stream where the barcode starts</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t_host</span></code></p></td>
+<td><p>float64</p></td>
+<td><p>Host clock timestamp at detection (same timebase as <code class="docutils literal notranslate"><span class="pre">task_start_time_ref</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">t_dev_us</span></code></p></td>
+<td><p>float64</p></td>
+<td><p>Device microsecond timestamp at detection</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t_task</span></code></p></td>
+<td><p>float64</p></td>
+<td><p>Detection time relative to task start (same timebase as <code class="docutils literal notranslate"><span class="pre">step_time</span></code>); <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if <code class="docutils literal notranslate"><span class="pre">task_start_time_ref</span></code> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">game_step</span></code></p></td>
+<td><p>int32</p></td>
+<td><p>Nearest aligned game step; <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if outside the session step-time range or unaligned</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="population-logic">
+<h3>Population Logic<a class="headerlink" href="#population-logic" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Reads the single <code class="docutils literal notranslate"><span class="pre">barcodettl</span></code> <code class="docutils literal notranslate"><span class="pre">TeensyStream</span></code> row for the session; warns and uses the first if multiple are present.</p></li>
+<li><p>Aligns the barcode signal with shared per-packet clocks (<code class="docutils literal notranslate"><span class="pre">t_host</span></code>, <code class="docutils literal notranslate"><span class="pre">t_dev_us</span></code>) from <code class="docutils literal notranslate"><span class="pre">TeensyData</span></code>, truncating to the shortest array if lengths mismatch.</p></li>
+<li><p>Infers <code class="docutils literal notranslate"><span class="pre">sample_rate_hz</span></code> from the median inter-packet interval in <code class="docutils literal notranslate"><span class="pre">t_dev_us</span></code>.</p></li>
+<li><p>Calls <code class="docutils literal notranslate"><span class="pre">decode_barcodes(values,</span> <span class="pre">sample_rate_hz)</span></code> to extract barcode events.</p></li>
+<li><p>Maps each detection to a <code class="docutils literal notranslate"><span class="pre">game_step</span></code> via nearest-neighbour lookup into <code class="docutils literal notranslate"><span class="pre">UnityData.step_time</span></code>, offset by <code class="docutils literal notranslate"><span class="pre">task_start_time_ref</span></code>.</p></li>
+<li><p>Counts missed barcodes using plausible forward gaps only (<code class="docutils literal notranslate"><span class="pre">diffs</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">≤</span> <span class="pre">max_possible_gap</span></code>), where <code class="docutils literal notranslate"><span class="pre">max_possible_gap</span></code> is derived from <code class="docutils literal notranslate"><span class="pre">BARCODE_INTERVAL_S</span> <span class="pre">=</span> <span class="pre">5.0</span> <span class="pre">s</span></code>. Corrupt or out-of-order IDs are counted separately and flagged via <code class="docutils literal notranslate"><span class="pre">ids_monotonic=False</span></code> rather than inflating <code class="docutils literal notranslate"><span class="pre">nr_missed_barcodes</span></code>.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h3>Interpreting Results<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Good value</p></th>
+<th class="head"><p>Concern</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ids_monotonic</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code> indicates misdecoded or corrupt barcode IDs</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nr_missed_barcodes</span></code></p></td>
+<td><p>0–2</p></td>
+<td><p>Large values suggest recording gaps or barcode generator resets mid-session</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">aligned</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code> means <code class="docutils literal notranslate"><span class="pre">task_start_time_ref</span></code> was missing (legacy sessions); <code class="docutils literal notranslate"><span class="pre">t_task</span></code> and <code class="docutils literal notranslate"><span class="pre">game_step</span></code> will be <code class="docutils literal notranslate"><span class="pre">NULL</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -618,6 +745,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synchronization-mechanism">Synchronization Mechanism</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-results">Interpreting Results</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#querying-sync-quality">Querying Sync Quality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teensybarcodes">TeensyBarcodes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-logic">Population Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Interpreting Results</a></li>
 </ul>
 </li>
 </ul>
