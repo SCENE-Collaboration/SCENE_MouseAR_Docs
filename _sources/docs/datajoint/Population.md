@@ -105,18 +105,80 @@ Remaps all DLC pose arrays from the DLC processing frame grid to the full video 
 
 ## Automated Population (Cron)
 
-The pipeline can run automatically on a schedule using the cron script:
+The pipeline can run automatically via a cron job that wraps
+`dj_pipeline/cron_script.sh`. The script:
+
+1. `cd`s into `$DJ_PIPELINE_DIR` (read from the cron command env var).
+2. Runs `docker compose up -d client` (no-op if already running).
+3. Inside the container, runs `populate_base` (from `base_schemas`) against
+   `$RAW_DATA_PATH/mice_metadata`.
+4. Inside the container, runs `python populate.py`, which also calls
+   `post_populate.py` and sends the summary email (see
+   [Schema_SummaryEmail § Email Delivery](Schema_SummaryEmail.md#email-delivery)).
+
+### Install the cron job (one-time, on the server)
+
+Must be run on the **host**, not inside the Docker container — cron lives on
+the host and the cron command itself talks to the host docker daemon.
 
 ```bash
-# Add a cron job (from within the Docker container)
-cd dj_pipeline
+ssh leonardo@mathis-server2
+cd /mnt/md0/mouse_hockey/code/SCENE_MouseAR/dj_pipeline
+
+# install the cron entry
 make add-cron
 ```
 
-This installs `cron_script.sh` as a cron job that:
-1. Sets the required environment variables
-2. Calls `python populate.py`
-3. Calls `python post_populate.py` (sends summary email)
+`make add-cron` reads `DJ_PIPELINE_DIR` from `.env`, errors out clearly if
+unset, creates `$DJ_PIPELINE_DIR/logs/`, and writes a crontab line:
+
+```cron
+0 2 * * * DJ_PIPELINE_DIR=/mnt/md0/.../dj_pipeline bash /mnt/md0/.../cron_script.sh >> /mnt/md0/.../logs/cron.log 2>&1
+```
+
+Schedule: **2 AM local time, daily.** To change the time, edit the `0 2 * * *`
+prefix in `dj_pipeline/Makefile`'s `add-cron` target and re-run.
+
+### Inspect, remove, or test the cron job
+
+```bash
+# View the currently installed crontab
+crontab -l
+
+# Remove all of the current user's cron entries
+crontab -r
+
+# Manual one-off test run (same env as cron, output goes to your terminal)
+DJ_PIPELINE_DIR=/mnt/md0/.../dj_pipeline bash dj_pipeline/cron_script.sh
+
+# Manual run that exercises the log redirect too
+DJ_PIPELINE_DIR=/mnt/md0/.../dj_pipeline bash dj_pipeline/cron_script.sh \
+    >> /mnt/md0/.../logs/cron.log 2>&1
+tail -f /mnt/md0/.../logs/cron.log
+```
+
+### Logs
+
+- `$DJ_PIPELINE_DIR/logs/cron.log` — shell-level log captured via
+  `>> ... 2>&1`. Contains `docker compose` output and the populate steps'
+  stdout/stderr. Append-only across runs.
+- `$DJ_PIPELINE_DIR/logs/log_YYMMDD_HHMMSS.log` — Python-level log written
+  by the `populate.py` logger, one file per invocation.
+
+To keep `cron.log` from growing unbounded, configure logrotate (one-time):
+
+```bash
+sudo tee /etc/logrotate.d/mouse_hockey >/dev/null <<'EOF'
+/mnt/md0/mouse_hockey/code/SCENE_MouseAR/dj_pipeline/logs/cron.log {
+    weekly
+    rotate 8
+    compress
+    missingok
+    notifempty
+}
+EOF
+sudo logrotate -d /etc/logrotate.d/mouse_hockey   # dry-run sanity check
+```
 
 ---
 

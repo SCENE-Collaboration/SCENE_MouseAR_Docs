@@ -432,7 +432,12 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-sync-dlc-to-video-frame-grid">Step 9 — Sync DLC to video frame grid</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-population-cron">Automated Population (Cron)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-population-cron">Automated Population (Cron)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cron-job-one-time-on-the-server">Install the cron job (one-time, on the server)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-remove-or-test-the-cron-job">Inspect, remove, or test the cron job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">Logs</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-population">Manual Population</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting-dlc-models">Inserting DLC Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-models-to-legacy-data">Assigning Models to Legacy Data</a></li>
@@ -543,18 +548,77 @@ python<span class="w"> </span>populate.py
 <hr class="docutils" />
 <section id="automated-population-cron">
 <h2>Automated Population (Cron)<a class="headerlink" href="#automated-population-cron" title="Link to this heading">#</a></h2>
-<p>The pipeline can run automatically on a schedule using the cron script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a cron job (from within the Docker container)</span>
-<span class="nb">cd</span><span class="w"> </span>dj_pipeline
+<p>The pipeline can run automatically via a cron job that wraps
+<code class="docutils literal notranslate"><span class="pre">dj_pipeline/cron_script.sh</span></code>. The script:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code>s into <code class="docutils literal notranslate"><span class="pre">$DJ_PIPELINE_DIR</span></code> (read from the cron command env var).</p></li>
+<li><p>Runs <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">-d</span> <span class="pre">client</span></code> (no-op if already running).</p></li>
+<li><p>Inside the container, runs <code class="docutils literal notranslate"><span class="pre">populate_base</span></code> (from <code class="docutils literal notranslate"><span class="pre">base_schemas</span></code>) against
+<code class="docutils literal notranslate"><span class="pre">$RAW_DATA_PATH/mice_metadata</span></code>.</p></li>
+<li><p>Inside the container, runs <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">populate.py</span></code>, which also calls
+<code class="docutils literal notranslate"><span class="pre">post_populate.py</span></code> and sends the summary email (see
+<span class="xref myst">Schema_SummaryEmail § Email Delivery</span>).</p></li>
+</ol>
+<section id="install-the-cron-job-one-time-on-the-server">
+<h3>Install the cron job (one-time, on the server)<a class="headerlink" href="#install-the-cron-job-one-time-on-the-server" title="Link to this heading">#</a></h3>
+<p>Must be run on the <strong>host</strong>, not inside the Docker container — cron lives on
+the host and the cron command itself talks to the host docker daemon.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>leonardo@mathis-server2
+<span class="nb">cd</span><span class="w"> </span>/mnt/md0/mouse_hockey/code/SCENE_MouseAR/dj_pipeline
+
+<span class="c1"># install the cron entry</span>
 make<span class="w"> </span>add-cron
 </pre></div>
 </div>
-<p>This installs <code class="docutils literal notranslate"><span class="pre">cron_script.sh</span></code> as a cron job that:</p>
-<ol class="arabic simple">
-<li><p>Sets the required environment variables</p></li>
-<li><p>Calls <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">populate.py</span></code></p></li>
-<li><p>Calls <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">post_populate.py</span></code> (sends summary email)</p></li>
-</ol>
+<p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">add-cron</span></code> reads <code class="docutils literal notranslate"><span class="pre">DJ_PIPELINE_DIR</span></code> from <code class="docutils literal notranslate"><span class="pre">.env</span></code>, errors out clearly if
+unset, creates <code class="docutils literal notranslate"><span class="pre">$DJ_PIPELINE_DIR/logs/</span></code>, and writes a crontab line:</p>
+<div class="highlight-cron notranslate"><div class="highlight"><pre><span></span>0 2 * * * DJ_PIPELINE_DIR=/mnt/md0/.../dj_pipeline bash /mnt/md0/.../cron_script.sh &gt;&gt; /mnt/md0/.../logs/cron.log 2&gt;&amp;1
+</pre></div>
+</div>
+<p>Schedule: <strong>2 AM local time, daily.</strong> To change the time, edit the <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">*</span> <span class="pre">*</span></code>
+prefix in <code class="docutils literal notranslate"><span class="pre">dj_pipeline/Makefile</span></code>’s <code class="docutils literal notranslate"><span class="pre">add-cron</span></code> target and re-run.</p>
+</section>
+<section id="inspect-remove-or-test-the-cron-job">
+<h3>Inspect, remove, or test the cron job<a class="headerlink" href="#inspect-remove-or-test-the-cron-job" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the currently installed crontab</span>
+crontab<span class="w"> </span>-l
+
+<span class="c1"># Remove all of the current user&#39;s cron entries</span>
+crontab<span class="w"> </span>-r
+
+<span class="c1"># Manual one-off test run (same env as cron, output goes to your terminal)</span>
+<span class="nv">DJ_PIPELINE_DIR</span><span class="o">=</span>/mnt/md0/.../dj_pipeline<span class="w"> </span>bash<span class="w"> </span>dj_pipeline/cron_script.sh
+
+<span class="c1"># Manual run that exercises the log redirect too</span>
+<span class="nv">DJ_PIPELINE_DIR</span><span class="o">=</span>/mnt/md0/.../dj_pipeline<span class="w"> </span>bash<span class="w"> </span>dj_pipeline/cron_script.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;&gt;<span class="w"> </span>/mnt/md0/.../logs/cron.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+tail<span class="w"> </span>-f<span class="w"> </span>/mnt/md0/.../logs/cron.log
+</pre></div>
+</div>
+</section>
+<section id="logs">
+<h3>Logs<a class="headerlink" href="#logs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$DJ_PIPELINE_DIR/logs/cron.log</span></code> — shell-level log captured via
+<code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span> <span class="pre">...</span> <span class="pre">2&gt;&amp;1</span></code>. Contains <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span></code> output and the populate steps’
+stdout/stderr. Append-only across runs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$DJ_PIPELINE_DIR/logs/log_YYMMDD_HHMMSS.log</span></code> — Python-level log written
+by the <code class="docutils literal notranslate"><span class="pre">populate.py</span></code> logger, one file per invocation.</p></li>
+</ul>
+<p>To keep <code class="docutils literal notranslate"><span class="pre">cron.log</span></code> from growing unbounded, configure logrotate (one-time):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/logrotate.d/mouse_hockey<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">/mnt/md0/mouse_hockey/code/SCENE_MouseAR/dj_pipeline/logs/cron.log {</span>
+<span class="s">    weekly</span>
+<span class="s">    rotate 8</span>
+<span class="s">    compress</span>
+<span class="s">    missingok</span>
+<span class="s">    notifempty</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+sudo<span class="w"> </span>logrotate<span class="w"> </span>-d<span class="w"> </span>/etc/logrotate.d/mouse_hockey<span class="w">   </span><span class="c1"># dry-run sanity check</span>
+</pre></div>
+</div>
+</section>
 </section>
 <hr class="docutils" />
 <section id="manual-population">
@@ -712,7 +776,12 @@ python<span class="w"> </span>manual_populate.py
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-sync-dlc-to-video-frame-grid">Step 9 — Sync DLC to video frame grid</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-population-cron">Automated Population (Cron)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-population-cron">Automated Population (Cron)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-cron-job-one-time-on-the-server">Install the cron job (one-time, on the server)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-remove-or-test-the-cron-job">Inspect, remove, or test the cron job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logs">Logs</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-population">Manual Population</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting-dlc-models">Inserting DLC Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-models-to-legacy-data">Assigning Models to Legacy Data</a></li>
