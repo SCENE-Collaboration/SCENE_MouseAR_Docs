@@ -752,6 +752,16 @@ The examples below are based on values that are actually present in this reposit
 <td><p>✓</p></td>
 <td><p>Format <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;N&gt;</span></code>, where unit is currently <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, or <code class="docutils literal notranslate"><span class="pre">epoch</span></code>.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">active_from</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Optional</p></td>
+<td><p>Activation lower bound in the same <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;count&gt;</span></code> format. Rule is ignored until that counter reaches the given count.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">active_until</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td><p>Optional</p></td>
+<td><p>Activation upper bound in the same <code class="docutils literal notranslate"><span class="pre">&lt;unit&gt;:&lt;count&gt;</span></code> format. Rule is ignored after that counter exceeds the given count.</p></td>
+</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p>Optional for arithmetic ops; required for <code class="docutils literal notranslate"><span class="pre">rand</span></code>/<code class="docutils literal notranslate"><span class="pre">random_choice</span></code></p></td>
@@ -780,8 +790,21 @@ The examples below are based on values that are actually present in this reposit
 <li><p><code class="docutils literal notranslate"><span class="pre">rand</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and samples <code class="docutils literal notranslate"><span class="pre">random.uniform(min,</span> <span class="pre">max)</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">random_choice</span></code> ignores <code class="docutils literal notranslate"><span class="pre">value</span></code> and currently chooses one of <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> ignores <code class="docutils literal notranslate"><span class="pre">target</span></code>/<code class="docutils literal notranslate"><span class="pre">value</span></code>/<code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code> at the top level and instead applies a randomly chosen <code class="docutils literal notranslate"><span class="pre">scenarios</span></code> entry — see below.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">active_from</span></code> and <code class="docutils literal notranslate"><span class="pre">active_until</span></code> are inclusive bounds against the scheduler’s cumulative counters. They do not reset the rule’s <code class="docutils literal notranslate"><span class="pre">every</span></code> cadence; they only gate whether a matching trigger is allowed to apply.</p></li>
 <li><p>Comments in some TOML files mention <code class="docutils literal notranslate"><span class="pre">trial:N</span></code>, but the current implementation only emits <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">episode</span></code>, and <code class="docutils literal notranslate"><span class="pre">epoch</span></code> ticks.</p></li>
 </ul>
+<p>Example staged switch:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_large_goal_scenario]</span>
+<span class="n">op</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
+<span class="n">every</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:1&quot;</span>
+<span class="n">active_until</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:15&quot;</span>
+
+<span class="k">[rules_lib.random_large_goal_scenario3]</span>
+<span class="n">op</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
+<span class="n">every</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:1&quot;</span>
+<span class="n">active_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:16&quot;</span>
+</pre></div>
+</div>
 </section>
 <section id="supported-target-namespaces">
 <h3>Supported target namespaces<a class="headerlink" href="#supported-target-namespaces" title="Link to this heading">#</a></h3>

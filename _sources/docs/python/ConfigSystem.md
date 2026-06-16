@@ -270,6 +270,8 @@ By the time `LiveParamScheduler` is constructed, it receives the already-selecte
 | `op` | `str` | ✓ | Supported ops: `set`, `add`, `mul`, `subtract`, `rand`, `random_choice`, `scenario_choice`. |
 | `value` | `float \| str \| list` | For `set`/`add`/`mul`/`subtract` | Single value or list of values. Lists cycle on repeated triggers. String values are only valid with `set`. |
 | `every` | `str` | ✓ | Format `<unit>:<N>`, where unit is currently `success`, `episode`, or `epoch`. |
+| `active_from` | `str` | Optional | Activation lower bound in the same `<unit>:<count>` format. Rule is ignored until that counter reaches the given count. |
+| `active_until` | `str` | Optional | Activation upper bound in the same `<unit>:<count>` format. Rule is ignored after that counter exceeds the given count. |
 | `min` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Lower clamp for numeric results. |
 | `max` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Upper clamp for numeric results. |
 | `window` | `int` | — | Parsed and stored, but not currently used by rule evaluation. |
@@ -280,7 +282,22 @@ Notes:
 - `rand` ignores `value` and samples `random.uniform(min, max)`.
 - `random_choice` ignores `value` and currently chooses one of `[min, max]`.
 - `scenario_choice` ignores `target`/`value`/`min`/`max` at the top level and instead applies a randomly chosen `scenarios` entry — see below.
+- `active_from` and `active_until` are inclusive bounds against the scheduler's cumulative counters. They do not reset the rule's `every` cadence; they only gate whether a matching trigger is allowed to apply.
 - Comments in some TOML files mention `trial:N`, but the current implementation only emits `success`, `episode`, and `epoch` ticks.
+
+Example staged switch:
+
+```toml
+[rules_lib.random_large_goal_scenario]
+op           = "scenario_choice"
+every        = "episode:1"
+active_until = "episode:15"
+
+[rules_lib.random_large_goal_scenario3]
+op          = "scenario_choice"
+every       = "episode:1"
+active_from = "episode:16"
+```
 
 ### Supported target namespaces
 
