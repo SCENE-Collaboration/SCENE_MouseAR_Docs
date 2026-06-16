@@ -1,0 +1,186 @@
+### Rules for HockeyGame #####
+[rules_lib.ramp_distance]
+target        = "unity.kv.hockeyFloor.move_object_max_distance"
+op            = "add"         # set|add|mul|substract
+value         = 0.04
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = 0.5
+max           = 5.00
+
+[rules_lib.ramp_distance_middlesteps]
+target        = "unity.kv.hockeyFloor.move_object_max_distance"
+op            = "add"         # set|add|mul|substract
+value         = 0.1
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = 3
+max           = 15.00
+
+[rules_lib.ramp_distance_largersteps]
+target        = "unity.kv.hockeyFloor.move_object_max_distance"
+op            = "add"         # set|add|mul|substract
+value         = 0.2
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = 5
+max           = 25
+
+[rules_lib.random_z_puck_position]
+target        = "unity.kv.hockeyFloor.move_object_z"
+op            = "rand"
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = -7
+max           = 7
+
+[rules_lib.random_x_puck_position]
+target        = "unity.kv.hockeyFloor.move_object_x"
+op            = "rand"
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = -5
+max           = 5
+
+
+[rules_lib.random_goal_zside]
+target        = "unity.kv.hockeyFloor.target_z"
+op            = "random_choice"
+every         = "success:1"    # chooses either min or max
+min           = -5
+max           = 5
+
+###########
+# Large goal is spawned in one of 4 quadrants, with random puck position, puck close to it
+[rules_lib.random_large_goal_scenario]
+op            = "scenario_choice"
+every         = "success:1"
+
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_thickness_x"
+value         = 14
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_width_z"
+value         = 3
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_z"
+value         = 7.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_x"
+value         = 0
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_x"
+op            = "rand"
+min           = -5.5
+max           = 5.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_z"
+value         = 4
+
+
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_thickness_x"
+value         = 14
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_width_z"
+value         = 3
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_z"
+value         = -7.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_x"
+value         = 0
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_x"
+op            = "rand"
+min           = -5.5
+max           = 5.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_z"
+value         = -4
+
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_thickness_x"
+value         = 3
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_width_z"
+value         = 18
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_x"
+value         = 5.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_z"
+value         = 0
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_x"
+value         = 2
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_z"
+op            = "rand"
+min           = -7
+max           = 7
+
+[[rules_lib.random_large_goal_scenario.scenarios]]
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_thickness_x"
+value         = 3
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.area_width_z"
+value         = 18
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_x"
+value         = -5.5
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.target_z"
+value         = 0
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_x"
+value         = -2
+
+[[rules_lib.random_large_goal_scenario.scenarios.params]]
+target        = "unity.kv.hockeyFloor.move_object_z"
+op            = "rand"
+min           = -7
+max           = 7
+
+##### Rules for Sequence Places ######
+[rules_lib.reduce_platform_sizex]
+target        = "unity.kv.gridSeq.target_scale_x"
+op            = "subtract"         # set|add|mul|subtract
+value         = 0.01
+every         = "success:5"    # trial:N | success:N | episode:N | epoch:N
+min           = 6
+max           = 8
+
+[rules_lib.reduce_platform_sizey]
+target        = "unity.kv.gridSeq.target_scale_y"
+op            = "subtract"         # set|add|mul|subtract
+value         = 0.01
+every         = "success:5"    # trial:N | success:N | episode:N | epoch:N
+min           = 6
+max           = 8
+
+[rules_lib.ramp_dwelltime]
+target        = "unity.kv.SequenceManager.dwell_target_seconds"
+op            = "add"         # set|add|mul|substract
+value         = 0.01
+every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+min           = 0.1
+max           = 1

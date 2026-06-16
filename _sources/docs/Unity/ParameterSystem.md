@@ -275,7 +275,7 @@ seqA.random_target_length=5
 seqA.wall_sequence=ABC
 seqA.start=1
 
-hockeyFloor.num_target_areas=3
+hockeyFloor.spawn_mode=0
 hockeyFloor.target_x=-8.0
 ```
 

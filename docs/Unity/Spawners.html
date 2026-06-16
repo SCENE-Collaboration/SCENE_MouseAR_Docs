@@ -427,14 +427,17 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefabs">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spawn-mode">Spawn mode</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-layout">Spatial Layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moveobject-configuration">MoveObject Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#player-aware-spawn-mode-2">Player-aware spawn (Mode 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-from-goal-spawn-mode-3">Distance-from-goal spawn (Mode 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-optional">Visual Feedback (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#object-jitter-optional">Object Jitter (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lock-until-action-optional">Lock Until Action (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawn-modes">Spawn Modes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-floortargetsspawneradapter">Adapter: FloorTargetsSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-floortargetsspawnerenvparams">EnvParams: FloorTargetsSpawnerEnvParams</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-example">Integration Example</a></li>
@@ -449,58 +452,58 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-optional">Parent (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-tracking">Completion Tracking</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-api">Public API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Integration Example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-simpletargetspawneradapter">Adapter: SimpleTargetSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-simpletargetspawnerenvparams">EnvParams: SimpleTargetSpawnerEnvParams</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Purpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-layout">Grid Layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-configuration">Wall Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-implementation">Interface Implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-gridtargetsspawnerenvparams">EnvParams: GridTargetsSpawnerEnvParams</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-sequencetargetmanager">Integration with SequenceTargetManager</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Purpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-placement">Counts &amp; Placement</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlap">Non-Overlap</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-screenspawneradapter">Adapter: ScreenSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-screenspawnerenvparams">EnvParams: ScreenSpawnerEnvParams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Integration Example</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Purpose</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts">Counts</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#placement">Placement</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Non-Overlap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Non-Overlap</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destruction">Destruction</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-sidetargetsspawneradapter">Adapter: SideTargetsSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-sidetargetsspawnerenvparams">EnvParams: SideTargetsSpawnerEnvParams</a></li>
 </ul>
@@ -554,7 +557,10 @@
 <h2>FloorTargetsSpawner<a class="headerlink" href="#floortargetsspawner" title="Link to this heading">#</a></h2>
 <section id="purpose">
 <h3>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
-<p>Spawns vertical target areas on the floor and a movable physics object. Designed for 3D navigation tasks where the agent must push/chase an object into target zones.</p>
+<p>Spawns a single vertical target area (“goal”) on the floor and one movable physics object (the “puck”). Designed for 3D navigation tasks where the agent must push/chase the puck into the goal zone. Four positioning strategies are selectable via <code class="docutils literal notranslate"><span class="pre">spawnMode</span></code> (see <a class="reference internal" href="#spawn-modes"><span class="xref myst">Spawn Modes</span></a> below).</p>
+<blockquote>
+<div><p><strong>Note (refactor, March 2026):</strong> Earlier versions spawned up to three Z-spaced goal walls (<code class="docutils literal notranslate"><span class="pre">numTargetAreas</span></code>, <code class="docutils literal notranslate"><span class="pre">minGapZ</span></code>, <code class="docutils literal notranslate"><span class="pre">jitterZ</span></code>, <code class="docutils literal notranslate"><span class="pre">snapZToIntegers</span></code>) and used <code class="docutils literal notranslate"><span class="pre">objectMinDistanceFromAreasZ</span></code>. The current spawner always spawns a <em>single</em> target area, replaces those fields with a <code class="docutils literal notranslate"><span class="pre">spawnMode</span></code> selector and a shared <code class="docutils literal notranslate"><span class="pre">minSeparation</span></code> check, and adds player-aware and distance-from-goal modes.</p>
+</div></blockquote>
 </section>
 <section id="components">
 <h3>Components<a class="headerlink" href="#components" title="Link to this heading">#</a></h3>
@@ -569,49 +575,75 @@
 <h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
 <section id="prefabs">
 <h4>Prefabs<a class="headerlink" href="#prefabs" title="Link to this heading">#</a></h4>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">moveObjectPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// Rigidbody + Collider (the object to push)</span>
-<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetAreaPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// BoxCollider (isTrigger), tag &quot;TargetArea&quot;</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">moveObjectPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// Rigidbody + Collider (the puck to push)</span>
+<span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetAreaPrefab</span><span class="p">;</span><span class="w">   </span><span class="c1">// BoxCollider (isTrigger), tag &quot;Target&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="spawn-mode">
+<h4>Spawn mode<a class="headerlink" href="#spawn-mode" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// 0 = Random within bounds, 1 = Fixed positions (KV),</span>
+<span class="c1">// 2 = Player-aware, 3 = Distance-from-goal</span>
+<span class="na">[Range(0, 3)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">spawnMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="spatial-layout">
 <h4>Spatial Layout<a class="headerlink" href="#spatial-layout" title="Link to this heading">#</a></h4>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Range(1, 3)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTargetAreas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// 1-3 vertical zones</span>
-
-<span class="c1">// Target area placement</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">8f</span><span class="p">;</span><span class="w">           </span><span class="c1">// World X line (fixed)</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Target area placement</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">8f</span><span class="p">;</span><span class="w">           </span><span class="c1">// World X (Mode 0 &amp; 1)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">            </span><span class="c1">// World Z (Mode 1 only; Mode 0 randomizes)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeTargetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w"> </span><span class="c1">// Randomize target X within xMin..xMax (Mode 0 only)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaCenterY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Height (world Y)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaHeightY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Height span (meters)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaThicknessX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.12f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Thickness along X (meters)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">areaWidthZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.2f</span><span class="p">;</span><span class="w">       </span><span class="c1">// Width along Z (meters)</span>
 
-<span class="c1">// Z band &amp; spacing</span>
+<span class="c1">// Arena bounds</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">zMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">6f</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">zMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6f</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minGapZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span><span class="w">          </span><span class="c1">// Min distance between areas</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">jitterZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.35f</span><span class="p">;</span><span class="w">         </span><span class="c1">// Random Z offset</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">snapZToIntegers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// Snap to integer Z coords</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">xMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">8f</span><span class="p">;</span><span class="w">              </span><span class="c1">// Min X for random spawn / clamping</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">xMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">8f</span><span class="p">;</span><span class="w">              </span><span class="c1">// Max X for random spawn / clamping</span>
+
+<span class="c1">// Separation</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">minSeparation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Min XZ distance between target and puck (Modes 0 &amp; 2)</span>
 </pre></div>
 </div>
 </section>
 <section id="moveobject-configuration">
 <h4>MoveObject Configuration<a class="headerlink" href="#moveobject-configuration" title="Link to this heading">#</a></h4>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Spawn position</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Spawn position (Mode 0 defaults / Mode 1 exact)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeStartZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeStartZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// Random Z within zMin..zMax (Mode 0 only)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">randomizeStartX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">   </span><span class="c1">// Random X within xMin..xMax (Mode 0 only)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">        </span><span class="c1">// Used if randomizeStartZ=false</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">objectMinDistanceFromAreasZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Safety margin</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Uniform scale (X,Z; Y fixed at 0.1)</span>
 
 <span class="c1">// Physics</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Uniform scale (X,Z)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Rigidbody mass (kg)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectDrag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">;</span><span class="w">   </span><span class="c1">// Linear drag</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectAngularDrag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Angular drag</span>
 
 <span class="c1">// Destruction</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMaxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Max travel distance (0 = infinite)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveObjectMaxDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Max travel distance (0 = disabled)</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">spawnTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">       </span><span class="c1">// Enable/disable target spawning</span>
+</pre></div>
+</div>
+</section>
+<section id="player-aware-spawn-mode-2">
+<h4>Player-aware spawn (Mode 2)<a class="headerlink" href="#player-aware-spawn-mode-2" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">Transform</span><span class="w"> </span><span class="n">playerTransform</span><span class="p">;</span><span class="w">        </span><span class="c1">// Falls back to FindWithTag(&quot;Player&quot;)</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">playerSpawnDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0f</span><span class="p">;</span><span class="w"> </span><span class="c1">// Distance from player to puck</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">playerSpawnAngle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0f</span><span class="p">;</span><span class="w">      </span><span class="c1">// Angle (deg) relative to player&#39;s forward</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">playerSpawnAngleRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Randomize within forward-facing ±100° arc</span>
+</pre></div>
+</div>
+</section>
+<section id="distance-from-goal-spawn-mode-3">
+<h4>Distance-from-goal spawn (Mode 3)<a class="headerlink" href="#distance-from-goal-spawn-mode-3" title="Link to this heading">#</a></h4>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">goalDistance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0f</span><span class="p">;</span><span class="w">     </span><span class="c1">// Puck distance to the goal&#39;s nearest edge</span>
+<span class="w">                                      </span><span class="c1">// (auto-clamped down to fit inside arena bounds)</span>
 </pre></div>
 </div>
 </section>
@@ -650,40 +682,33 @@
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableMoveByAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// Start kinematic, unlock on agent action</span>
 </pre></div>
 </div>
+<p><a name="spawn-modes"></a></p>
 </section>
 </section>
-<section id="spawning-algorithm">
-<h3>Spawning Algorithm<a class="headerlink" href="#spawning-algorithm" title="Link to this heading">#</a></h3>
-<p><strong>Target Areas:</strong></p>
-<ol class="arabic simple">
-<li><p>Compute N non-overlapping Z centers in [zMin, zMax]</p></li>
-<li><p>Snap to integers if enabled</p></li>
-<li><p>Add random jitter (±jitterZ)</p></li>
-<li><p>Resolve overlaps (iterative repulsion)</p></li>
-<li><p>Create BoxCollider trigger volumes at (targetX, areaCenterY, zc)</p></li>
-<li><p>Scale to world size: (areaThicknessX, areaHeightY, areaWidthZ)</p></li>
-</ol>
-<p><strong>MoveObject:</strong></p>
-<ol class="arabic simple">
-<li><p>Choose Z position:</p>
+<section id="spawn-modes">
+<h3>Spawn Modes<a class="headerlink" href="#spawn-modes" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">SpawnAll()</span></code> computes the target and puck positions according to <code class="docutils literal notranslate"><span class="pre">spawnMode</span></code>, spawns a single target area (if <code class="docutils literal notranslate"><span class="pre">spawnTarget</span></code>), then spawns the puck.</p>
 <ul class="simple">
-<li><p>If <code class="docutils literal notranslate"><span class="pre">randomizeStartZ=true</span></code>: Random Z far from target areas</p></li>
-<li><p>Else: Use <code class="docutils literal notranslate"><span class="pre">moveObjectZ</span></code></p></li>
+<li><p><strong>Mode 0 — Random</strong> (default): Target placed at <code class="docutils literal notranslate"><span class="pre">(targetX,</span> <span class="pre">random</span> <span class="pre">Z</span> <span class="pre">in</span> <span class="pre">zMin..zMax)</span></code>; if <code class="docutils literal notranslate"><span class="pre">randomizeTargetX</span></code>, target X is also randomized within <code class="docutils literal notranslate"><span class="pre">xMin..xMax</span></code>. Puck placed randomly within bounds (subject to <code class="docutils literal notranslate"><span class="pre">randomizeStartX/Z</span></code>, otherwise <code class="docutils literal notranslate"><span class="pre">moveObjectX/Z</span></code>), enforcing <code class="docutils literal notranslate"><span class="pre">minSeparation</span></code> (XZ) from the target and, when a Player-tagged object exists, from the player.</p></li>
+<li><p><strong>Mode 1 — Fixed</strong>: Target at <code class="docutils literal notranslate"><span class="pre">(targetX,</span> <span class="pre">targetZ)</span></code>, puck at <code class="docutils literal notranslate"><span class="pre">(moveObjectX,</span> <span class="pre">moveObjectZ)</span></code>. Randomize flags ignored — fully deterministic.</p></li>
+<li><p><strong>Mode 2 — Player-aware</strong>: Puck spawns <code class="docutils literal notranslate"><span class="pre">playerSpawnDistance</span></code> from the Player object at <code class="docutils literal notranslate"><span class="pre">playerSpawnAngle</span></code> (or within a forward-facing <code class="docutils literal notranslate"><span class="pre">±100°</span></code> arc when <code class="docutils literal notranslate"><span class="pre">playerSpawnAngleRandom</span></code>), then clamped into bounds. The target is sampled with Mode 0’s random rules and must satisfy <code class="docutils literal notranslate"><span class="pre">minSeparation</span></code> from the puck. Falls back to Mode 0 if no Player is found.</p></li>
+<li><p><strong>Mode 3 — Distance-from-goal</strong>: Goal placed at <code class="docutils literal notranslate"><span class="pre">(targetX,</span> <span class="pre">targetZ)</span></code> (clamped into bounds). The puck is spawned at a random location whose distance to the goal box’s <strong>nearest edge</strong> equals <code class="docutils literal notranslate"><span class="pre">goalDistance</span></code>. The valid locus is the goal outline expanded outward by <code class="docutils literal notranslate"><span class="pre">goalDistance</span></code> (a rounded rectangle); points are sampled along it, filtered to those inside bounds (minus a half-puck margin), and one is chosen uniformly at random. If <code class="docutils literal notranslate"><span class="pre">goalDistance</span></code> is too large to fit, it is reduced to the largest feasible value (the farthest reachable arena corner), guaranteeing an in-bounds spawn.</p></li>
 </ul>
-</li>
-<li><p>Create at (moveObjectX, moveObjectY, Z)</p></li>
+<p><strong>Target area:</strong> Created as a BoxCollider trigger at the computed position, scaled to world size <code class="docutils literal notranslate"><span class="pre">(areaThicknessX,</span> <span class="pre">areaHeightY,</span> <span class="pre">areaWidthZ)</span></code>, tagged <code class="docutils literal notranslate"><span class="pre">Target</span></code>.</p>
+<p><strong>MoveObject (puck):</strong></p>
+<ol class="arabic simple">
+<li><p>Created at the computed <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">moveObjectY,</span> <span class="pre">z)</span></code>, scaled <code class="docutils literal notranslate"><span class="pre">(moveObjectScale,</span> <span class="pre">0.1,</span> <span class="pre">moveObjectScale)</span></code>.</p></li>
 <li><p>Add/configure components:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Rigidbody</span></code> (mass, drag, angularDrag)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code> (destroys on target collision)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code> (destroys if travels &gt; maxDistance)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ColorByDistance</span></code> (if enableDistanceColor)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ColorByRotation</span></code> (if enableRotationColor)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">JitteryMovement</span></code> (if enableJitter)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume</span></code> (wired to the <code class="docutils literal notranslate"><span class="pre">neutralParent</span></code> arena BoxCollider)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PlayerContactFlag</span></code>, <code class="docutils literal notranslate"><span class="pre">TargetKillOnArea</span></code> (destroys on target collision)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance</span></code> (destroys if travels &gt; <code class="docutils literal notranslate"><span class="pre">moveObjectMaxDistance</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ColorByDistance</span></code> (if <code class="docutils literal notranslate"><span class="pre">enableDistanceColor</span></code>), <code class="docutils literal notranslate"><span class="pre">ColorByRotation</span></code> (if <code class="docutils literal notranslate"><span class="pre">enableRotationColor</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JitteryMovement</span></code> (if <code class="docutils literal notranslate"><span class="pre">enableJitter</span></code>), <code class="docutils literal notranslate"><span class="pre">MoveByAction</span></code> (if <code class="docutils literal notranslate"><span class="pre">enableMoveByAction</span></code>)</p></li>
 </ul>
 </li>
-<li><p>Scale uniformly: (scale, 1, scale)</p></li>
-<li><p>Parent to neutralParent (if set)</p></li>
+<li><p>Parent to <code class="docutils literal notranslate"><span class="pre">neutralParent</span></code> (if set).</p></li>
 </ol>
 </section>
 <section id="adapter-floortargetsspawneradapter">
@@ -715,6 +740,7 @@
 <section id="envparams-floortargetsspawnerenvparams">
 <h3>EnvParams: FloorTargetsSpawnerEnvParams<a class="headerlink" href="#envparams-floortargetsspawnerenvparams" title="Link to this heading">#</a></h3>
 <p><strong>Supported Parameters:</strong></p>
+<p>Applied on env reset (also routable live via <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code>, see <a class="reference internal" href="HockeyGame.html"><span class="std std-doc">HockeyGame.md</span></a>).</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Key Pattern</p></th>
@@ -727,13 +753,21 @@
 <td><p>bool</p></td>
 <td><p>Enable/disable spawner</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.num_target_areas</span></code></p></td>
-<td><p>int</p></td>
-<td><p>Number of target zones (1-3)</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.spawn_mode</span></code></p></td>
+<td><p>int 0–3</p></td>
+<td><p>Positioning strategy (see Spawn Modes)</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_x</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Target X position</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_z</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target Z position (Mode 1 &amp; 3)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.randomize_target_x</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Randomize target X within bounds (Mode 0)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.area_center_y</span></code></p></td>
 <td><p>float</p></td>
@@ -751,103 +785,107 @@
 <td><p>float</p></td>
 <td><p>Target width</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.z_min</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.z_min</span></code> / <code class="docutils literal notranslate"><span class="pre">.z_max</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Min Z coordinate</p></td>
+<td><p>Arena Z bounds</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.z_max</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.x_min</span></code> / <code class="docutils literal notranslate"><span class="pre">.x_max</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Max Z coordinate</p></td>
+<td><p>Arena X bounds</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.min_gap_z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.min_separation</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Min gap between targets</p></td>
+<td><p>Min XZ distance between target and puck</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_z</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_x/y/z</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Random Z jitter</p></td>
+<td><p>Puck position</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.target_scale_multiplier</span></code></p></td>
-<td><p>float</p></td>
-<td><p>Scale multiplier for targets (X,Z only)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.snap_z_to_integers</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.randomize_start_z</span></code></p></td>
 <td><p>bool</p></td>
-<td><p>Snap Z to integers</p></td>
+<td><p>Random puck Z (Mode 0)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_x/y/z</span></code></p></td>
-<td><p>float</p></td>
-<td><p>MoveObject position</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.randomize_start_z</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.randomize_start_x</span></code></p></td>
 <td><p>bool</p></td>
-<td><p>Random MoveObject Z</p></td>
+<td><p>Random puck X (Mode 0)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.object_min_distance_z</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_scale</span></code></p></td>
 <td><p>float</p></td>
-<td><p>Min distance from targets</p></td>
+<td><p>Puck scale</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_scale</span></code></p></td>
-<td><p>float</p></td>
-<td><p>MoveObject scale</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_mass</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_mass</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Rigidbody mass</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_drag</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_drag</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Linear drag</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_angular_drag</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_angular_drag</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Angular drag</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_max_distance</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.move_object_max_distance</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Max travel distance</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.spawn_target</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.spawn_target</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Enable target spawning</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_jitter</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.player_spawn_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Distance from player to puck (Mode 2)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.player_spawn_angle</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Angle from player’s forward (Mode 2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.player_spawn_angle_random</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Randomize angle within ±100° arc (Mode 2)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.goal_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Puck distance to goal’s nearest edge (Mode 3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_jitter</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Enable jitter</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_base_angle_deg</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_base_angle_deg</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Jitter angle</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_weighting_factor</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_weighting_factor</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Jitter strength</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_frequency</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.jitter_frequency</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Jitter Hz</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_distance_color</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_distance_color</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Enable distance coloring</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.distance_color_min/max</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.distance_color_min/max</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Distance color range</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_rotation_color</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_rotation_color</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Enable rotation coloring</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.rotation_color_min/max</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.rotation_color_min/max</span></code></p></td>
 <td><p>float</p></td>
 <td><p>Rotation color range</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.use_local_rotation</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.use_local_rotation</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Local rotation coloring</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_move_by_action</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;.enable_move_by_action</span></code></p></td>
 <td><p>bool</p></td>
 <td><p>Lock until action</p></td>
 </tr>
@@ -925,8 +963,8 @@ EpisodeManagerSingleWall:
 </div>
 </section>
 </section>
-<section id="id4">
-<h3>Spawning Algorithm<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="spawning-algorithm">
+<h3>Spawning Algorithm<a class="headerlink" href="#spawning-algorithm" title="Link to this heading">#</a></h3>
 <p><strong>Target Creation:</strong></p>
 <ol class="arabic simple">
 <li><p>Clear any existing target</p></li>
@@ -980,8 +1018,8 @@ EpisodeManagerSingleWall:
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h3>Integration Example<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3>Integration Example<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Scene Hierarchy:
 └── InitPlatform (GameObject)
     └── SimpleTargetSpawner
@@ -1057,12 +1095,12 @@ MultiEpisodeToAgentBridge:
 <hr class="docutils" />
 <section id="gridtargetsspawner">
 <h2>GridTargetsSpawner<a class="headerlink" href="#gridtargetsspawner" title="Link to this heading">#</a></h2>
-<section id="id6">
-<h3>Purpose<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3>Purpose<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Spawns an N×N grid of targets and optional walls between tiles. Used by <code class="docutils literal notranslate"><span class="pre">SequenceTargetManager</span></code> for sequential navigation tasks with hazards.</p>
 </section>
-<section id="id7">
-<h3>Components<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3>Components<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject
 ├── GridTargetsSpawner (implementation + interface)
 ├── GridTargetsSpawnerEnvParams (optional)
@@ -1070,10 +1108,10 @@ MultiEpisodeToAgentBridge:
 </div>
 <p><strong>Note:</strong> GridTargetsSpawner directly implements IEpisodeSpawner (no adapter needed).</p>
 </section>
+<section id="id7">
+<h3>Configuration<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <section id="id8">
-<h3>Configuration<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
-<section id="id9">
-<h4>Prefabs<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<h4>Prefabs<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetPrefab</span><span class="p">;</span><span class="w">  </span><span class="c1">// Must have StatefulTarget + trigger collider</span>
 <span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">wallPrefab</span><span class="p">;</span><span class="w">    </span><span class="c1">// Must have StatefulWall + trigger BoxCollider(size 1,1,1)</span>
 </pre></div>
@@ -1098,8 +1136,8 @@ MultiEpisodeToAgentBridge:
 </div>
 </section>
 </section>
-<section id="id10">
-<h3>Spawning Algorithm<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>Spawning Algorithm<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><strong>Targets (N×N grid):</strong></p>
 <ol class="arabic simple">
 <li><p>Compute grid layout in local space</p></li>
@@ -1245,12 +1283,12 @@ foreach (int wi in _hazardWalls)
 <hr class="docutils" />
 <section id="screenspawnerfromobject">
 <h2>ScreenSpawnerFromObject<a class="headerlink" href="#screenspawnerfromobject" title="Link to this heading">#</a></h2>
-<section id="id11">
-<h3>Purpose<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3>Purpose<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>Spawns targets on a virtual wall surface (2D projection). Used for touchscreen-style tasks where the agent interacts with a flat surface.</p>
 </section>
-<section id="id12">
-<h3>Components<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id11">
+<h3>Components<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject (with OrthoScreenFromObject)
 ├── ScreenSpawnerFromObject (implementation)
 ├── ScreenSpawnerAdapter (IEpisodeSpawner)
@@ -1259,10 +1297,10 @@ foreach (int wi in _hazardWalls)
 </div>
 <p><strong>Required:</strong> <code class="docutils literal notranslate"><span class="pre">OrthoScreenFromObject</span></code> component (defines wall geometry)</p>
 </section>
+<section id="id12">
+<h3>Configuration<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <section id="id13">
-<h3>Configuration<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
-<section id="id14">
-<h4>Prefabs<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<h4>Prefabs<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">playerPrefab</span><span class="p">;</span><span class="w">        </span><span class="c1">// Tagged &quot;Player&quot;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="p">[]</span><span class="w"> </span><span class="n">targetPrefabs</span><span class="p">;</span><span class="w">     </span><span class="c1">// Array of target variants</span>
 </pre></div>
@@ -1287,8 +1325,8 @@ foreach (int wi in _hazardWalls)
 </div>
 </section>
 </section>
-<section id="id15">
-<h3>Spawning Algorithm<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3>Spawning Algorithm<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p><strong>Player:</strong></p>
 <ol class="arabic simple">
 <li><p>Measure planar half-extents (2D bounding box on wall)</p></li>
@@ -1387,8 +1425,8 @@ foreach (int wi in _hazardWalls)
 </table>
 </div>
 </section>
-<section id="id16">
-<h3>Integration Example<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3>Integration Example<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Wall (GameObject with OrthoScreenFromObject)
 ├── ScreenSpawnerFromObject
 ├── ScreenSpawnerAdapter
@@ -1403,8 +1441,8 @@ EpisodeManagerSingleWall:
 <hr class="docutils" />
 <section id="sidetargetsspawnerfromobject">
 <h2>SideTargetsSpawnerFromObject<a class="headerlink" href="#sidetargetsspawnerfromobject" title="Link to this heading">#</a></h2>
-<section id="id17">
-<h3>Purpose<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<section id="id16">
+<h3>Purpose<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p>Spawns target objects in floor area and target areas on side walls. Combines 3D floor navigation with wall-projected targets.</p>
 </section>
 <section id="use-cases">
@@ -1416,8 +1454,8 @@ EpisodeManagerSingleWall:
 <li><p>Mixed 2D/3D training</p></li>
 </ul>
 </section>
-<section id="id18">
-<h3>Components<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id17">
+<h3>Components<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GameObject (with OrthoScreenFromObject)
 ├── SideTargetsSpawnerFromObject (implementation)
 ├── SideTargetsSpawnerAdapter (IEpisodeSpawner)
@@ -1425,10 +1463,10 @@ EpisodeManagerSingleWall:
 </pre></div>
 </div>
 </section>
+<section id="id18">
+<h3>Configuration<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <section id="id19">
-<h3>Configuration<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
-<section id="id20">
-<h4>Prefabs<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
+<h4>Prefabs<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">playerPrefab</span><span class="p">;</span><span class="w">        </span><span class="c1">// Player (floor)</span>
 <span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetObjectPrefab</span><span class="p">;</span><span class="w">  </span><span class="c1">// Target objects (floor)</span>
 <span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">targetAreaPrefab</span><span class="p">;</span><span class="w">    </span><span class="c1">// Target areas (walls)</span>
@@ -1459,8 +1497,8 @@ EpisodeManagerSingleWall:
 </pre></div>
 </div>
 </section>
-<section id="id21">
-<h4>Non-Overlap<a class="headerlink" href="#id21" title="Link to this heading">#</a></h4>
+<section id="id20">
+<h4>Non-Overlap<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">maxAttemptsPerTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">separationPadding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.02f</span><span class="p">;</span>
 </pre></div>
@@ -1473,8 +1511,8 @@ EpisodeManagerSingleWall:
 </div>
 </section>
 </section>
-<section id="id22">
-<h3>Spawning Algorithm<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<section id="id21">
+<h3>Spawning Algorithm<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p><strong>Target Areas (left/right walls):</strong></p>
 <ol class="arabic simple">
 <li><p>Determine which sides:</p>
@@ -1698,14 +1736,17 @@ EpisodeManagerSingleWall:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefabs">Prefabs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spawn-mode">Spawn mode</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-layout">Spatial Layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#moveobject-configuration">MoveObject Configuration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#player-aware-spawn-mode-2">Player-aware spawn (Mode 2)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-from-goal-spawn-mode-3">Distance-from-goal spawn (Mode 3)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback-optional">Visual Feedback (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#object-jitter-optional">Object Jitter (Optional)</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lock-until-action-optional">Lock Until Action (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawn-modes">Spawn Modes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-floortargetsspawneradapter">Adapter: FloorTargetsSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-floortargetsspawnerenvparams">EnvParams: FloorTargetsSpawnerEnvParams</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-example">Integration Example</a></li>
@@ -1720,58 +1761,58 @@ EpisodeManagerSingleWall:
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parent-optional">Parent (Optional)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spawning-algorithm">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#completion-tracking">Completion Tracking</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-api">Public API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Integration Example</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-simpletargetspawneradapter">Adapter: SimpleTargetSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-simpletargetspawnerenvparams">EnvParams: SimpleTargetSpawnerEnvParams</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gridtargetsspawner">GridTargetsSpawner</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Purpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-layout">Grid Layout</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wall-configuration">Wall Configuration</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-implementation">Interface Implementation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-gridtargetsspawnerenvparams">EnvParams: GridTargetsSpawnerEnvParams</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-sequencetargetmanager">Integration with SequenceTargetManager</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#screenspawnerfromobject">ScreenSpawnerFromObject</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Purpose</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts-placement">Counts &amp; Placement</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#non-overlap">Non-Overlap</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-screenspawneradapter">Adapter: ScreenSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-screenspawnerenvparams">EnvParams: ScreenSpawnerEnvParams</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Integration Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Integration Example</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidetargetsspawnerfromobject">SideTargetsSpawnerFromObject</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Purpose</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Prefabs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Configuration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Prefabs</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counts">Counts</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#placement">Placement</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Non-Overlap</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Non-Overlap</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#destruction">Destruction</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">Spawning Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Spawning Algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-sidetargetsspawneradapter">Adapter: SideTargetsSpawnerAdapter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#envparams-sidetargetsspawnerenvparams">EnvParams: SideTargetsSpawnerEnvParams</a></li>
 </ul>

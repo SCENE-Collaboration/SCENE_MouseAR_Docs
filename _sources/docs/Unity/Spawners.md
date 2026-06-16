@@ -38,7 +38,9 @@ Most spawners use a two-component architecture:
 
 ### Purpose
 
-Spawns vertical target areas on the floor and a movable physics object. Designed for 3D navigation tasks where the agent must push/chase an object into target zones.
+Spawns a single vertical target area ("goal") on the floor and one movable physics object (the "puck"). Designed for 3D navigation tasks where the agent must push/chase the puck into the goal zone. Four positioning strategies are selectable via `spawnMode` (see [Spawn Modes](#spawn-modes) below).
+
+> **Note (refactor, March 2026):** Earlier versions spawned up to three Z-spaced goal walls (`numTargetAreas`, `minGapZ`, `jitterZ`, `snapZToIntegers`) and used `objectMinDistanceFromAreasZ`. The current spawner always spawns a *single* target area, replaces those fields with a `spawnMode` selector and a shared `minSeparation` check, and adds player-aware and distance-from-goal modes.
 
 
 ### Components
@@ -54,47 +56,70 @@ GameObject
 
 #### Prefabs
 ```csharp
-public GameObject moveObjectPrefab;   // Rigidbody + Collider (the object to push)
-public GameObject targetAreaPrefab;   // BoxCollider (isTrigger), tag "TargetArea"
+public GameObject moveObjectPrefab;   // Rigidbody + Collider (the puck to push)
+public GameObject targetAreaPrefab;   // BoxCollider (isTrigger), tag "Target"
+```
+
+#### Spawn mode
+```csharp
+// 0 = Random within bounds, 1 = Fixed positions (KV),
+// 2 = Player-aware, 3 = Distance-from-goal
+[Range(0, 3)] public int spawnMode = 0;
 ```
 
 #### Spatial Layout
 ```csharp
-[Range(1, 3)] public int numTargetAreas = 2;  // 1-3 vertical zones
-
 // Target area placement
-public float targetX = -8f;           // World X line (fixed)
+public float targetX = -8f;           // World X (Mode 0 & 1)
+public float targetZ = 0f;            // World Z (Mode 1 only; Mode 0 randomizes)
+public bool randomizeTargetX = false; // Randomize target X within xMin..xMax (Mode 0 only)
 public float areaCenterY = 0.5f;      // Height (world Y)
 public float areaHeightY = 1.0f;      // Height span (meters)
 public float areaThicknessX = 0.12f;  // Thickness along X (meters)
 public float areaWidthZ = 1.2f;       // Width along Z (meters)
 
-// Z band & spacing
+// Arena bounds
 public float zMin = -6f;
 public float zMax = 6f;
-public float minGapZ = 0.5f;          // Min distance between areas
-public float jitterZ = 0.35f;         // Random Z offset
-public bool snapZToIntegers = true;   // Snap to integer Z coords
+public float xMin = -8f;              // Min X for random spawn / clamping
+public float xMax = 8f;              // Max X for random spawn / clamping
+
+// Separation
+public float minSeparation = 2.0f;   // Min XZ distance between target and puck (Modes 0 & 2)
 ```
 
 #### MoveObject Configuration
 ```csharp
-// Spawn position
+// Spawn position (Mode 0 defaults / Mode 1 exact)
 public float moveObjectX = 0f;
 public float moveObjectY = 0.5f;
-public bool randomizeStartZ = true;
+public bool randomizeStartZ = true;   // Random Z within zMin..zMax (Mode 0 only)
+public bool randomizeStartX = true;   // Random X within xMin..xMax (Mode 0 only)
 public float moveObjectZ = 0f;        // Used if randomizeStartZ=false
-public float objectMinDistanceFromAreasZ = 1.5f;  // Safety margin
+public float moveObjectScale = 1.0f;  // Uniform scale (X,Z; Y fixed at 0.1)
 
 // Physics
-public float moveObjectScale = 1.0f;  // Uniform scale (X,Z)
 public float moveObjectMass = 1.0f;   // Rigidbody mass (kg)
 public float moveObjectDrag = 0.0f;   // Linear drag
 public float moveObjectAngularDrag = 0.05f;  // Angular drag
 
 // Destruction
-public float moveObjectMaxDistance = 0f;  // Max travel distance (0 = infinite)
+public float moveObjectMaxDistance = 0f;  // Max travel distance (0 = disabled)
 public bool spawnTarget = true;       // Enable/disable target spawning
+```
+
+#### Player-aware spawn (Mode 2)
+```csharp
+public Transform playerTransform;        // Falls back to FindWithTag("Player")
+public float playerSpawnDistance = 3.0f; // Distance from player to puck
+public float playerSpawnAngle = 0f;      // Angle (deg) relative to player's forward
+public bool playerSpawnAngleRandom = true; // Randomize within forward-facing ±100° arc
+```
+
+#### Distance-from-goal spawn (Mode 3)
+```csharp
+public float goalDistance = 3.0f;     // Puck distance to the goal's nearest edge
+                                      // (auto-clamped down to fit inside arena bounds)
 ```
 
 #### Visual Feedback (Optional)
@@ -130,30 +155,28 @@ public float jitterBaseAngleDeg = 8f;     // Direction change angle
 public bool enableMoveByAction = false;  // Start kinematic, unlock on agent action
 ```
 
-### Spawning Algorithm
+<a name="spawn-modes"></a>
+### Spawn Modes
 
-**Target Areas:**
-1. Compute N non-overlapping Z centers in [zMin, zMax]
-2. Snap to integers if enabled
-3. Add random jitter (±jitterZ)
-4. Resolve overlaps (iterative repulsion)
-5. Create BoxCollider trigger volumes at (targetX, areaCenterY, zc)
-6. Scale to world size: (areaThicknessX, areaHeightY, areaWidthZ)
+`SpawnAll()` computes the target and puck positions according to `spawnMode`, spawns a single target area (if `spawnTarget`), then spawns the puck.
 
-**MoveObject:**
-1. Choose Z position:
-   - If `randomizeStartZ=true`: Random Z far from target areas
-   - Else: Use `moveObjectZ`
-2. Create at (moveObjectX, moveObjectY, Z)
-3. Add/configure components:
+- **Mode 0 — Random** (default): Target placed at `(targetX, random Z in zMin..zMax)`; if `randomizeTargetX`, target X is also randomized within `xMin..xMax`. Puck placed randomly within bounds (subject to `randomizeStartX/Z`, otherwise `moveObjectX/Z`), enforcing `minSeparation` (XZ) from the target and, when a Player-tagged object exists, from the player.
+- **Mode 1 — Fixed**: Target at `(targetX, targetZ)`, puck at `(moveObjectX, moveObjectZ)`. Randomize flags ignored — fully deterministic.
+- **Mode 2 — Player-aware**: Puck spawns `playerSpawnDistance` from the Player object at `playerSpawnAngle` (or within a forward-facing `±100°` arc when `playerSpawnAngleRandom`), then clamped into bounds. The target is sampled with Mode 0's random rules and must satisfy `minSeparation` from the puck. Falls back to Mode 0 if no Player is found.
+- **Mode 3 — Distance-from-goal**: Goal placed at `(targetX, targetZ)` (clamped into bounds). The puck is spawned at a random location whose distance to the goal box's **nearest edge** equals `goalDistance`. The valid locus is the goal outline expanded outward by `goalDistance` (a rounded rectangle); points are sampled along it, filtered to those inside bounds (minus a half-puck margin), and one is chosen uniformly at random. If `goalDistance` is too large to fit, it is reduced to the largest feasible value (the farthest reachable arena corner), guaranteeing an in-bounds spawn.
+
+**Target area:** Created as a BoxCollider trigger at the computed position, scaled to world size `(areaThicknessX, areaHeightY, areaWidthZ)`, tagged `Target`.
+
+**MoveObject (puck):**
+1. Created at the computed `(x, moveObjectY, z)`, scaled `(moveObjectScale, 0.1, moveObjectScale)`.
+2. Add/configure components:
    - `Rigidbody` (mass, drag, angularDrag)
-   - `TargetKillOnArea` (destroys on target collision)
-   - `TargetKillOnDistance` (destroys if travels > maxDistance)
-   - `ColorByDistance` (if enableDistanceColor)
-   - `ColorByRotation` (if enableRotationColor)
-   - `JitteryMovement` (if enableJitter)
-4. Scale uniformly: (scale, 1, scale)
-5. Parent to neutralParent (if set)
+   - `ContainmentInBoxVolume` (wired to the `neutralParent` arena BoxCollider)
+   - `PlayerContactFlag`, `TargetKillOnArea` (destroys on target collision)
+   - `TargetKillOnDistance` (destroys if travels > `moveObjectMaxDistance`)
+   - `ColorByDistance` (if `enableDistanceColor`), `ColorByRotation` (if `enableRotationColor`)
+   - `JitteryMovement` (if `enableJitter`), `MoveByAction` (if `enableMoveByAction`)
+3. Parent to `neutralParent` (if set).
 
 ### Adapter: FloorTargetsSpawnerAdapter
 
@@ -186,30 +209,35 @@ public class FloorTargetsSpawnerAdapter : MonoBehaviour, IEpisodeSpawner
 
 **Supported Parameters:**
 
+Applied on env reset (also routable live via `KvManagersDirector`, see [HockeyGame.md](HockeyGame.md)).
+
 | Key Pattern | Type | Purpose |
 |-------------|------|---------|
 | `<prefix>.enabled` | bool | Enable/disable spawner |
-| `<prefix>.num_target_areas` | int | Number of target zones (1-3) |
+| `<prefix>.spawn_mode` | int 0–3 | Positioning strategy (see Spawn Modes) |
 | `<prefix>.target_x` | float | Target X position |
+| `<prefix>.target_z` | float | Target Z position (Mode 1 & 3) |
+| `<prefix>.randomize_target_x` | bool | Randomize target X within bounds (Mode 0) |
 | `<prefix>.area_center_y` | float | Target Y center |
 | `<prefix>.area_height_y` | float | Target height |
 | `<prefix>.area_thickness_x` | float | Target thickness |
 | `<prefix>.area_width_z` | float | Target width |
-| `<prefix>.z_min` | float | Min Z coordinate |
-| `<prefix>.z_max` | float | Max Z coordinate |
-| `<prefix>.min_gap_z` | float | Min gap between targets |
-| `<prefix>.jitter_z` | float | Random Z jitter |
-| `<prefix>.target_scale_multiplier` | float | Scale multiplier for targets (X,Z only) |
-| `<prefix>.snap_z_to_integers` | bool | Snap Z to integers |
-| `<prefix>.move_object_x/y/z` | float | MoveObject position |
-| `<prefix>.randomize_start_z` | bool | Random MoveObject Z |
-| `<prefix>.object_min_distance_z` | float | Min distance from targets |
-| `<prefix>.move_object_scale` | float | MoveObject scale |
+| `<prefix>.z_min` / `.z_max` | float | Arena Z bounds |
+| `<prefix>.x_min` / `.x_max` | float | Arena X bounds |
+| `<prefix>.min_separation` | float | Min XZ distance between target and puck |
+| `<prefix>.move_object_x/y/z` | float | Puck position |
+| `<prefix>.randomize_start_z` | bool | Random puck Z (Mode 0) |
+| `<prefix>.randomize_start_x` | bool | Random puck X (Mode 0) |
+| `<prefix>.move_object_scale` | float | Puck scale |
 | `<prefix>.move_object_mass` | float | Rigidbody mass |
 | `<prefix>.move_object_drag` | float | Linear drag |
 | `<prefix>.move_object_angular_drag` | float | Angular drag |
 | `<prefix>.move_object_max_distance` | float | Max travel distance |
 | `<prefix>.spawn_target` | bool | Enable target spawning |
+| `<prefix>.player_spawn_distance` | float | Distance from player to puck (Mode 2) |
+| `<prefix>.player_spawn_angle` | float | Angle from player's forward (Mode 2) |
+| `<prefix>.player_spawn_angle_random` | bool | Randomize angle within ±100° arc (Mode 2) |
+| `<prefix>.goal_distance` | float | Puck distance to goal's nearest edge (Mode 3) |
 | `<prefix>.enable_jitter` | bool | Enable jitter |
 | `<prefix>.jitter_base_angle_deg` | float | Jitter angle |
 | `<prefix>.jitter_weighting_factor` | float | Jitter strength |

@@ -84,7 +84,7 @@ KvManagersDirector: HockeyManager.enabled=1
         │    → OnInitPhaseComplete
         │
         └─► FloorTargetsSpawner.SpawnAll()
-              positions target + puck based on spawn_mode (0/1/2)
+              positions target + puck based on spawn_mode (0/1/2/3)
               spawns 1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
               → SendKv("hockey.target_positions", "x,z")
@@ -194,11 +194,12 @@ These override `FloorTargetsSpawner` fields and optionally respawn immediately.
 
 | Key suffix | Type | Effect |
 |---|---|---|
-| `spawn_mode` | int 0–2 | Positioning strategy (see below) |
+| `spawn_mode` | int 0–3 | Positioning strategy (see below) |
 
 - **Mode 0 — Random** (default): Target zone placed at `(target_x, random Z within z_min..z_max)`. If `randomize_target_x=1`, target X is also randomized within `x_min..x_max` instead of using `target_x`. Puck placed randomly (controlled by `randomize_start_x/z` flags), enforcing `min_separation` (2D XZ distance) from the target and, when a Player-tagged object is present, from the player as well. When `randomize_start_x=0` or `randomize_start_z=0`, the corresponding `move_object_x/z` value is used directly.
 - **Mode 1 — Fixed**: Target placed at `(target_x, target_z)`, puck at `(move_object_x, move_object_z)`. Same parameters as Mode 0 but used as exact positions — `randomize_start_x/z` flags are ignored. Python has full control over placement for deterministic experiments.
 - **Mode 2 — Player-aware**: Puck spawns at `player_spawn_distance` from the Player-tagged object (virtual mouse) at `player_spawn_angle` relative to the mouse-facing direction used by the current scene setup, or within a forward-facing `player_spawn_angle ± 100°` arc when `player_spawn_angle_random=1`. The puck position is then clamped into `x_min..x_max` and `z_min..z_max`. The target no longer mirrors to the opposite side of the player; it is sampled with the same random-placement rules as Mode 0 and must satisfy `min_separation` from the puck. Falls back to Mode 0 if no Player object is found.
+- **Mode 3 — Distance-from-goal**: The goal (target zone) is placed at `(target_x, target_z)`, clamped so the zone stays fully inside the arena. The puck is then spawned at a **random location whose distance to the goal zone's nearest edge equals `goal_distance`** — distance is measured to the closest edge of the box, not its center, so the set of valid spawn points forms the goal outline expanded outward by `goal_distance` (a rounded rectangle). Only points that land inside `x_min..x_max` / `z_min..z_max` (minus a half-puck margin) are kept, and one is picked uniformly at random. If `goal_distance` is too large for any valid point to fit inside the arena, it is automatically reduced to the largest feasible distance (the farthest reachable arena corner), guaranteeing an in-bounds spawn.
 
 Compared with the previous implementation (before march 2026), the current spawner no longer builds up to three Z-spaced goal walls or derives player-aware target placement by mirroring the goal across the mouse. The current behavior always spawns a single target area, uses a shared random target sampler, extends Mode 0 separation checks so randomized puck placement also avoids the player, and changes Mode 2 so the puck is the player-aware object while the goal is sampled independently under the usual random-goal rules. In the same refactor, player-aware angle randomization changed from full 360 degree sampling to a forward-facing 200 degree window, and the player-facing basis was flipped to match the virtual mouse orientation used in this project.
 
@@ -247,6 +248,14 @@ Compared with the previous implementation (before march 2026), the current spawn
 | `player_spawn_angle_random` | bool | Randomize angle within a forward-facing `player_spawn_angle ± 100°` arc |
 
 The Player reference is resolved by `FindWithTag("Player")` at spawn time (the DLC-controlled virtual mouse avatar). Can also be set via Inspector (`playerTransform` field) for explicit wiring.
+
+**Distance-from-goal spawn (Mode 3)**
+
+| Key suffix | Type | Effect |
+|---|---|---|
+| `goal_distance` | float | Target distance from the puck to the goal zone's nearest edge. Automatically clamped down to the largest value that still fits inside the arena bounds |
+
+The goal position is taken from `target_x` / `target_z` (clamped into bounds); the goal zone dimensions come from `area_thickness_x` / `area_width_z`. Distance is measured to the nearest *edge* of the goal box, so `goal_distance=0` would spawn the puck right against the goal.
 
 **Optional features**
 
@@ -363,7 +372,7 @@ enabled                 = true  # sent last → starts the first episode
 
 ```toml
 [unity.kv.hockeyFloor]
-# Spawn mode: 0=random, 1=fixed, 2=player-aware
+# Spawn mode: 0=random, 1=fixed, 2=player-aware, 3=distance-from-goal
 spawn_mode             = 0
 
 # Target zone position & dimensions
@@ -404,6 +413,9 @@ player_spawn_distance      = 3.0
 player_spawn_angle         = 0    # degrees from player's forward
 player_spawn_angle_random  = 1    # randomize angle
 
+# Distance-from-goal spawn (Mode 3 only)
+goal_distance              = 3.0  # puck distance to goal zone's nearest edge (auto-clamped to fit bounds)
+
 # Optional features
 enable_distance_color  = 0
 enable_jitter          = 0
@@ -443,48 +455,49 @@ enabled = false    # disables the Sequence manager
 
 Profiles override the base configuration for staged training. See [ConfigSystem.md](../python/ConfigSystem.md) for how profiles and rule schedulers work.
 
-### `trainingstage1` — large puck, short task, automatic distance ramp
+### `trainingstage1` — large puck, no goal, automatic distance ramp
 
 ```toml
 [profile.trainingstage1.unity.kv.hockeyFloor]
-min_separation           = 0     # no separation needed (no target)
+spawn_mode               = 0     # random within bounds
 spawn_target             = 0     # no goal wall — puck destruction IS the success signal
-move_object_max_distance = 2.3   # starting max travel (rules will increase this)
-randomize_start_x        = 1
+move_object_max_distance = 0.5   # barely touch the puck (rules will increase this)
+randomize_start_x        = true
+randomize_start_z        = true
 move_object_scale        = 2     # larger puck for easier early training
 
 [profile.trainingstage1.unity.env.general]
-episode_length = 120
+episode_length = 60
 
 [profile.trainingstage1.game]
 reward_size          = 150
 max_session_duration = 40  # minutes
 
 [profile.trainingstage1.rules]
-use = ["ramp_distance"]    # adds 0.04 to move_object_max_distance per success, capped at 5.0
+use = ["ramp_distance"]    # adds 0.04 to move_object_max_distance per success, range 0.5–5.0
 ```
 
-### `trainingstage2` — harder init zone, steeper ramp
+Two variants of this stage also exist: `trainingstage1a` (Mode 2 player-aware, `player_spawn_distance = 5`) and `trainingstage1alt` (Mode 1 fixed with a large goal directly).
+
+### `trainingstage2` — steeper distance ramp
 
 ```toml
 [profile.trainingstage2.unity.kv.hockeyFloor]
-min_separation           = 0
+spawn_mode               = 0
 spawn_target             = 0
-move_object_max_distance = 4.5
+move_object_max_distance = 3
 randomize_start_x        = 1
-move_object_scale        = 2
-
-[profile.trainingstage2.unity.env.rewardAssociation]
-size_x = 5
-size_z = 5
+randomize_start_z        = 1
 
 [profile.trainingstage2.game]
-reward_size          = 400
-max_session_duration = 1
+reward_size          = 150
+max_session_duration = 45  # minutes
 
 [profile.trainingstage2.rules]
-use = ["ramp_distance_middlesteps"]  # adds 0.1 per success, capped at 15.0
+use = ["ramp_distance_middlesteps"]  # adds 0.1 per success, range 3–15
 ```
+
+Rule definitions live in [`rules.lib.toml`](../../mouse_ar/tasks/configs/rules.lib.toml) and are referenced by name in the `[profile.*.rules]` `use` list.
 
 ---
 

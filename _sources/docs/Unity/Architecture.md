@@ -622,7 +622,7 @@ public class FloorTargetsSpawnerEnvParams : MonoBehaviour
     void ApplyParams()
     {
         var envp = Academy.Instance.EnvironmentParameters;
-        _sp.numTargetAreas = (int)envp.GetWithDefault($"{prefix}.num_areas", _sp.numTargetAreas);
+        _sp.spawnMode = (int)envp.GetWithDefault($"{prefix}.spawn_mode", _sp.spawnMode);
         _sp.targetX = envp.GetWithDefault($"{prefix}.target_x", _sp.targetX);
         // ... apply all parameters
         TryRespawnOrClear();  // rebuild with new params

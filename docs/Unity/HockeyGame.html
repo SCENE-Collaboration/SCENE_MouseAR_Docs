@@ -458,8 +458,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-profiles">Training Profiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-harder-init-zone-steeper-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-no-goal-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, no goal, automatic distance ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-steeper-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — steeper distance ramp</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-python-unity-python-data-round-trip">Complete Python → Unity → Python Data Round-Trip</a></li>
@@ -617,7 +617,7 @@ KvManagersDirector: HockeyManager.enabled=1
         │    → OnInitPhaseComplete
         │
         └─► FloorTargetsSpawner.SpawnAll()
-              positions target + puck based on spawn_mode (0/1/2)
+              positions target + puck based on spawn_mode (0/1/2/3)
               spawns 1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
               → SendKv(&quot;hockey.target_positions&quot;, &quot;x,z&quot;)
@@ -809,7 +809,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spawn_mode</span></code></p></td>
-<td><p>int 0–2</p></td>
+<td><p>int 0–3</p></td>
 <td><p>Positioning strategy (see below)</p></td>
 </tr>
 </tbody>
@@ -819,6 +819,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <li><p><strong>Mode 0 — Random</strong> (default): Target zone placed at <code class="docutils literal notranslate"><span class="pre">(target_x,</span> <span class="pre">random</span> <span class="pre">Z</span> <span class="pre">within</span> <span class="pre">z_min..z_max)</span></code>. If <code class="docutils literal notranslate"><span class="pre">randomize_target_x=1</span></code>, target X is also randomized within <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> instead of using <code class="docutils literal notranslate"><span class="pre">target_x</span></code>. Puck placed randomly (controlled by <code class="docutils literal notranslate"><span class="pre">randomize_start_x/z</span></code> flags), enforcing <code class="docutils literal notranslate"><span class="pre">min_separation</span></code> (2D XZ distance) from the target and, when a Player-tagged object is present, from the player as well. When <code class="docutils literal notranslate"><span class="pre">randomize_start_x=0</span></code> or <code class="docutils literal notranslate"><span class="pre">randomize_start_z=0</span></code>, the corresponding <code class="docutils literal notranslate"><span class="pre">move_object_x/z</span></code> value is used directly.</p></li>
 <li><p><strong>Mode 1 — Fixed</strong>: Target placed at <code class="docutils literal notranslate"><span class="pre">(target_x,</span> <span class="pre">target_z)</span></code>, puck at <code class="docutils literal notranslate"><span class="pre">(move_object_x,</span> <span class="pre">move_object_z)</span></code>. Same parameters as Mode 0 but used as exact positions — <code class="docutils literal notranslate"><span class="pre">randomize_start_x/z</span></code> flags are ignored. Python has full control over placement for deterministic experiments.</p></li>
 <li><p><strong>Mode 2 — Player-aware</strong>: Puck spawns at <code class="docutils literal notranslate"><span class="pre">player_spawn_distance</span></code> from the Player-tagged object (virtual mouse) at <code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span></code> relative to the mouse-facing direction used by the current scene setup, or within a forward-facing <code class="docutils literal notranslate"><span class="pre">player_spawn_angle</span> <span class="pre">±</span> <span class="pre">100°</span></code> arc when <code class="docutils literal notranslate"><span class="pre">player_spawn_angle_random=1</span></code>. The puck position is then clamped into <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> and <code class="docutils literal notranslate"><span class="pre">z_min..z_max</span></code>. The target no longer mirrors to the opposite side of the player; it is sampled with the same random-placement rules as Mode 0 and must satisfy <code class="docutils literal notranslate"><span class="pre">min_separation</span></code> from the puck. Falls back to Mode 0 if no Player object is found.</p></li>
+<li><p><strong>Mode 3 — Distance-from-goal</strong>: The goal (target zone) is placed at <code class="docutils literal notranslate"><span class="pre">(target_x,</span> <span class="pre">target_z)</span></code>, clamped so the zone stays fully inside the arena. The puck is then spawned at a <strong>random location whose distance to the goal zone’s nearest edge equals <code class="docutils literal notranslate"><span class="pre">goal_distance</span></code></strong> — distance is measured to the closest edge of the box, not its center, so the set of valid spawn points forms the goal outline expanded outward by <code class="docutils literal notranslate"><span class="pre">goal_distance</span></code> (a rounded rectangle). Only points that land inside <code class="docutils literal notranslate"><span class="pre">x_min..x_max</span></code> / <code class="docutils literal notranslate"><span class="pre">z_min..z_max</span></code> (minus a half-puck margin) are kept, and one is picked uniformly at random. If <code class="docutils literal notranslate"><span class="pre">goal_distance</span></code> is too large for any valid point to fit inside the arena, it is automatically reduced to the largest feasible distance (the farthest reachable arena corner), guaranteeing an in-bounds spawn.</p></li>
 </ul>
 <p>Compared with the previous implementation (before march 2026), the current spawner no longer builds up to three Z-spaced goal walls or derives player-aware target placement by mirroring the goal across the mouse. The current behavior always spawns a single target area, uses a shared random target sampler, extends Mode 0 separation checks so randomized puck placement also avoids the player, and changes Mode 2 so the puck is the player-aware object while the goal is sampled independently under the usual random-goal rules. In the same refactor, player-aware angle randomization changed from full 360 degree sampling to a forward-facing 200 degree window, and the player-facing basis was flipped to match the virtual mouse orientation used in this project.</p>
 <p><strong>Target zone position &amp; dimensions</strong></p>
@@ -966,6 +967,23 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </table>
 </div>
 <p>The Player reference is resolved by <code class="docutils literal notranslate"><span class="pre">FindWithTag(&quot;Player&quot;)</span></code> at spawn time (the DLC-controlled virtual mouse avatar). Can also be set via Inspector (<code class="docutils literal notranslate"><span class="pre">playerTransform</span></code> field) for explicit wiring.</p>
+<p><strong>Distance-from-goal spawn (Mode 3)</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">goal_distance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target distance from the puck to the goal zone’s nearest edge. Automatically clamped down to the largest value that still fits inside the arena bounds</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The goal position is taken from <code class="docutils literal notranslate"><span class="pre">target_x</span></code> / <code class="docutils literal notranslate"><span class="pre">target_z</span></code> (clamped into bounds); the goal zone dimensions come from <code class="docutils literal notranslate"><span class="pre">area_thickness_x</span></code> / <code class="docutils literal notranslate"><span class="pre">area_width_z</span></code>. Distance is measured to the nearest <em>edge</em> of the goal box, so <code class="docutils literal notranslate"><span class="pre">goal_distance=0</span></code> would spawn the puck right against the goal.</p>
 <p><strong>Optional features</strong></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -1190,7 +1208,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="unity-kv-hockeyfloor-controls-floortargetsspawner">
 <h3><code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> (controls FloorTargetsSpawner)<a class="headerlink" href="#unity-kv-hockeyfloor-controls-floortargetsspawner" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[unity.kv.hockeyFloor]</span>
-<span class="c1"># Spawn mode: 0=random, 1=fixed, 2=player-aware</span>
+<span class="c1"># Spawn mode: 0=random, 1=fixed, 2=player-aware, 3=distance-from-goal</span>
 <span class="n">spawn_mode</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 
 <span class="c1"># Target zone position &amp; dimensions</span>
@@ -1231,6 +1249,9 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">player_spawn_angle</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1"># degrees from player&#39;s forward</span>
 <span class="n">player_spawn_angle_random</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1"># randomize angle</span>
 
+<span class="c1"># Distance-from-goal spawn (Mode 3 only)</span>
+<span class="n">goal_distance</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="w">  </span><span class="c1"># puck distance to goal zone&#39;s nearest edge (auto-clamped to fit bounds)</span>
+
 <span class="c1"># Optional features</span>
 <span class="n">enable_distance_color</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="n">enable_jitter</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -1270,48 +1291,47 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <section id="training-profiles">
 <h2>Training Profiles<a class="headerlink" href="#training-profiles" title="Link to this heading">#</a></h2>
 <p>Profiles override the base configuration for staged training. See <a class="reference internal" href="../python/ConfigSystem.html"><span class="std std-doc">ConfigSystem.md</span></a> for how profiles and rule schedulers work.</p>
-<section id="trainingstage1-large-puck-short-task-automatic-distance-ramp">
-<h3><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp<a class="headerlink" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp" title="Link to this heading">#</a></h3>
+<section id="trainingstage1-large-puck-no-goal-automatic-distance-ramp">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, no goal, automatic distance ramp<a class="headerlink" href="#trainingstage1-large-puck-no-goal-automatic-distance-ramp" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.unity.kv.hockeyFloor]</span>
-<span class="n">min_separation</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no separation needed (no target)</span>
+<span class="n">spawn_mode</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># random within bounds</span>
 <span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># no goal wall — puck destruction IS the success signal</span>
-<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.3</span><span class="w">   </span><span class="c1"># starting max travel (rules will increase this)</span>
-<span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w">   </span><span class="c1"># barely touch the puck (rules will increase this)</span>
+<span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">randomize_start_z</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">     </span><span class="c1"># larger puck for easier early training</span>
 
 <span class="k">[profile.trainingstage1.unity.env.general]</span>
-<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
+<span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span>
 
 <span class="k">[profile.trainingstage1.game]</span>
 <span class="n">reward_size</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span>
 <span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w">  </span><span class="c1"># minutes</span>
 
 <span class="k">[profile.trainingstage1.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span><span class="w">    </span><span class="c1"># adds 0.04 to move_object_max_distance per success, capped at 5.0</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span><span class="w">    </span><span class="c1"># adds 0.04 to move_object_max_distance per success, range 0.5–5.0</span>
 </pre></div>
 </div>
+<p>Two variants of this stage also exist: <code class="docutils literal notranslate"><span class="pre">trainingstage1a</span></code> (Mode 2 player-aware, <code class="docutils literal notranslate"><span class="pre">player_spawn_distance</span> <span class="pre">=</span> <span class="pre">5</span></code>) and <code class="docutils literal notranslate"><span class="pre">trainingstage1alt</span></code> (Mode 1 fixed with a large goal directly).</p>
 </section>
-<section id="trainingstage2-harder-init-zone-steeper-ramp">
-<h3><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp<a class="headerlink" href="#trainingstage2-harder-init-zone-steeper-ramp" title="Link to this heading">#</a></h3>
+<section id="trainingstage2-steeper-distance-ramp">
+<h3><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — steeper distance ramp<a class="headerlink" href="#trainingstage2-steeper-distance-ramp" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage2.unity.kv.hockeyFloor]</span>
-<span class="n">min_separation</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">spawn_mode</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="n">spawn_target</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.5</span>
+<span class="n">move_object_max_distance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
 <span class="n">randomize_start_x</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">move_object_scale</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
-
-<span class="k">[profile.trainingstage2.unity.env.rewardAssociation]</span>
-<span class="n">size_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
-<span class="n">size_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="n">randomize_start_z</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 
 <span class="k">[profile.trainingstage2.game]</span>
-<span class="n">reward_size</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">400</span>
-<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reward_size</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span>
+<span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">45</span><span class="w">  </span><span class="c1"># minutes</span>
 
 <span class="k">[profile.trainingstage2.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1"># adds 0.1 per success, capped at 15.0</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1"># adds 0.1 per success, range 3–15</span>
 </pre></div>
 </div>
+<p>Rule definitions live in <a class="reference download internal" download="" href="../../_downloads/8c6555b25e765c33934d74d481efc51b/rules.lib.toml"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">rules.lib.toml</span></code></span></a> and are referenced by name in the <code class="docutils literal notranslate"><span class="pre">[profile.*.rules]</span></code> <code class="docutils literal notranslate"><span class="pre">use</span></code> list.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -1475,8 +1495,8 @@ loop():
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-profiles">Training Profiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-short-task-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, short task, automatic distance ramp</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-harder-init-zone-steeper-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — harder init zone, steeper ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage1-large-puck-no-goal-automatic-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage1</span></code> — large puck, no goal, automatic distance ramp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trainingstage2-steeper-distance-ramp"><code class="docutils literal notranslate"><span class="pre">trainingstage2</span></code> — steeper distance ramp</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-python-unity-python-data-round-trip">Complete Python → Unity → Python Data Round-Trip</a></li>
