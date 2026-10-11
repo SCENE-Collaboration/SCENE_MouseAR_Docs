@@ -140,4 +140,4 @@ The sensor order matches the order in which `DlcAgent.Awake()` adds `CameraSenso
 
 - **[Agent System Reference](Agents.md)** — DlcAgent action/observation space
 - **[Parameter System](ParameterSystem.md)** — how env params are set from Python/TOML
-- **[RL Gymnasium Wrappers](../../rl/WRAPPER_ARCHITECTURE.md)** — wrapping visual observations for training
+- **[RL Gymnasium Wrappers](../RL/GYMNASIUM_WRAPPERS.md)** — wrapping visual observations for training

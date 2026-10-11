@@ -370,7 +370,7 @@ kv_channel.send_string("wallL.start=1")    # Restart episode
 | `general.enable_init_phase` | float | Enable init phase (0/1) | Inspector value |
 | `general.randomize_iti_length` | float | Randomize ITI ±25% (0/1) | Inspector value |
 | `general.enable_reporting` | float | Enable reporter (0/1) | Inspector value |
-| `general.reporting_period` | float | Reporter update interval | 0.1 |
+| `general.reporting_period_steps` | int | Reporter update interval, in FixedUpdate STEPS | 1 |
 
 **Python Example:**
 ```python
@@ -378,7 +378,7 @@ env_params = {
     "general.iti_length": 3.0,
     "general.episode_length": 15.0,
     "general.enable_reporting": 1.0,
-    "general.reporting_period": 0.5
+    "general.reporting_period_steps": 1
 }
 ```
 

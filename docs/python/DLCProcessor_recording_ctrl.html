@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/DLCProcessor_recording_ctrl';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DLC Client Documentation" href="DLCClient.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processor-side">Processor Side</a></li>
@@ -500,11 +551,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.dlc_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">DLCClient</span>
 
 <span class="c1"># Connect to processor</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># Set session name (affects save filename)</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;experiment_001&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">"experiment_001"</span><span class="p">)</span>
 
 <span class="c1"># Start recording (clears data queues on processor)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
@@ -519,7 +570,7 @@
 
 <span class="c1"># Trigger save on processor</span>
 <span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>
-<span class="c1"># Saves to: &quot;experiment_001_dlc_processor_data.pkl&quot;</span>
+<span class="c1"># Saves to: "experiment_001_dlc_processor_data.pkl"</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -527,18 +578,18 @@
 </section>
 <section id="multiple-sessions">
 <h3>Multiple Sessions<a class="headerlink" href="#multiple-sessions" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># Session 1</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_001&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">"trial_001"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Collect data</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
 <span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves trial_001_dlc_processor_data.pkl</span>
 
 <span class="c1"># Session 2 (reuses same processor)</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_002&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">"trial_002"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>  <span class="c1"># Clears queues</span>
 <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
@@ -554,7 +605,7 @@
 <span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>
 
 <span class="c1"># Or specify custom filename</span>
-<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;custom_data.pkl&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"custom_data.pkl"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -602,12 +653,12 @@
 <section id="command-format">
 <h3>Command Format<a class="headerlink" href="#command-format" title="Link to this heading">#</a></h3>
 <p>Commands are sent as dictionaries:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;set_session_name&quot;</span><span class="p">,</span> <span class="s2">&quot;session_name&quot;</span><span class="p">:</span> <span class="s2">&quot;my_session&quot;</span><span class="p">}</span>
-<span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;start_recording&quot;</span><span class="p">}</span>
-<span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;stop_recording&quot;</span><span class="p">}</span>
-<span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;save&quot;</span><span class="p">,</span> <span class="s2">&quot;filename&quot;</span><span class="p">:</span> <span class="s2">&quot;optional.pkl&quot;</span><span class="p">}</span>
-<span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;set_filter&quot;</span><span class="p">,</span> <span class="s2">&quot;use_filter&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
-<span class="p">{</span><span class="s2">&quot;cmd&quot;</span><span class="p">:</span> <span class="s2">&quot;set_filter_params&quot;</span><span class="p">,</span> <span class="s2">&quot;filter_kwargs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">}}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"set_session_name"</span><span class="p">,</span> <span class="s2">"session_name"</span><span class="p">:</span> <span class="s2">"my_session"</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"start_recording"</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"stop_recording"</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"save"</span><span class="p">,</span> <span class="s2">"filename"</span><span class="p">:</span> <span class="s2">"optional.pkl"</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"set_filter"</span><span class="p">,</span> <span class="s2">"use_filter"</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s2">"cmd"</span><span class="p">:</span> <span class="s2">"set_filter_params"</span><span class="p">,</span> <span class="s2">"filter_kwargs"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"min_cutoff"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">"beta"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">}}</span>
 </pre></div>
 </div>
 </section>
@@ -617,29 +668,29 @@
 <section id="high-level-methods">
 <h3>High-Level Methods<a class="headerlink" href="#high-level-methods" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="n">session_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the session name on the processor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Set the session name on the processor."""</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start recording on the processor (clears existing data).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Start recording on the processor (clears existing data)."""</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stop recording on the processor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Stop recording on the processor."""</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trigger the processor to save its data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Trigger the processor to save its data."""</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">set_filter</span><span class="p">(</span><span class="n">use_filter</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enable or disable filtering on the processor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Enable or disable filtering on the processor."""</span>
 
 <span class="n">client</span><span class="o">.</span><span class="n">set_filter_params</span><span class="p">(</span><span class="n">min_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">d_cutoff</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Update One-Euro filter parameters on the processor.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Update One-Euro filter parameters on the processor."""</span>
 </pre></div>
 </div>
 </section>
 <section id="low-level-method">
 <h3>Low-Level Method<a class="headerlink" href="#low-level-method" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Send a control command to the processor.</span>
 
 <span class="sd">    Args:</span>
@@ -647,8 +698,8 @@
 <span class="sd">        **kwargs: Additional command parameters</span>
 
 <span class="sd">    Example:</span>
-<span class="sd">        client.send_command(&quot;set_session_name&quot;, session_name=&quot;test&quot;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        client.send_command("set_session_name", session_name="test")</span>
+<span class="sd">    """</span>
 </pre></div>
 </div>
 </section>
@@ -704,7 +755,7 @@
 </ol>
 <p>Subclasses can override <code class="docutils literal notranslate"><span class="pre">_clear_data_queues()</span></code> to clear additional queues:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_clear_data_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clear all data storage queues including pose-specific ones.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Clear all data storage queues including pose-specific ones."""</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_clear_data_queues</span><span class="p">()</span>  <span class="c1"># Clear base class queues</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">center_x</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">center_y</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
@@ -721,7 +772,7 @@
 <span class="nd">@session_name</span><span class="o">.</span><span class="n">setter</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">session_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_session_name</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_dlc_processor_data.pkl&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_dlc_processor_data.pkl"</span>
 </pre></div>
 </div>
 </section>
@@ -740,12 +791,12 @@
 <h2>Example Use Cases<a class="headerlink" href="#example-use-cases" title="Link to this heading">#</a></h2>
 <section id="behavioral-experiment">
 <h3>Behavioral Experiment<a class="headerlink" href="#behavioral-experiment" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">trial_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="c1"># Set up trial</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mouse_A_trial_</span><span class="si">{</span><span class="n">trial_num</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">"mouse_A_trial_</span><span class="si">{</span><span class="n">trial_num</span><span class="si">:</span><span class="s2">03d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="c1"># Wait for trial start signal</span>
     <span class="n">wait_for_trial_start</span><span class="p">()</span>
@@ -769,7 +820,7 @@
 </section>
 <section id="real-time-monitoring-selective-recording">
 <h3>Real-time Monitoring + Selective Recording<a class="headerlink" href="#real-time-monitoring-selective-recording" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">DLCClient</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="p">(</span><span class="s2">"localhost"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># Monitor continuously</span>
@@ -779,7 +830,7 @@
 
     <span class="c1"># User decides to record interesting behavior</span>
     <span class="k">if</span> <span class="n">user_presses_record_button</span><span class="p">():</span>
-        <span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;recording_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="sa">f</span><span class="s2">"recording_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">user_presses_stop_button</span><span class="p">():</span>
@@ -858,7 +909,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processor-side">Processor Side</a></li>
@@ -945,8 +996,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

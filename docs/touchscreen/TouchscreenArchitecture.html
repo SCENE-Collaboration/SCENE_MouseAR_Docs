@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/touchscreen/TouchscreenArchitecture';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Teensy Hardware Reference" href="../hardware/Teensy.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
@@ -603,8 +654,8 @@
 <section id="constructor-parameters">
 <h4><strong>Constructor Parameters:</strong><a class="headerlink" href="#constructor-parameters" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TouchController</span><span class="p">(</span>
-    <span class="n">device_path</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>              <span class="c1"># Device path or &quot;auto&quot; for discovery</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reduced&quot;</span><span class="p">,</span>                  <span class="c1"># Default view mode</span>
+    <span class="n">device_path</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>              <span class="c1"># Device path or "auto" for discovery</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">"reduced"</span><span class="p">,</span>                  <span class="c1"># Default view mode</span>
     <span class="n">store_max_frames</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>           <span class="c1"># Ring buffer size</span>
 
     <span class="c1"># View filtering params</span>
@@ -615,16 +666,16 @@
     <span class="n">vector_window_ms</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>            <span class="c1"># Vectorized view sliding window</span>
 
     <span class="c1"># Transmission params</span>
-    <span class="n">tx_mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span>                  <span class="c1"># &quot;event&quot; | &quot;rate&quot; | &quot;both&quot;</span>
+    <span class="n">tx_mode</span><span class="o">=</span><span class="s2">"rate"</span><span class="p">,</span>                  <span class="c1"># "event" | "rate" | "both"</span>
     <span class="n">tx_hz</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span>                      <span class="c1"># Rate in Hz for rate mode</span>
     <span class="n">max_source_stale_ms</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>         <span class="c1"># Max age before heartbeat/hold</span>
     <span class="n">hold_last_when_touch_present</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Hold stale data if finger is down</span>
 
     <span class="c1"># Server params</span>
-    <span class="n">serve_addr</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>   <span class="c1"># Listen address</span>
-    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>             <span class="c1"># Authentication key</span>
+    <span class="n">serve_addr</span><span class="o">=</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>   <span class="c1"># Listen address</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"touchbus"</span><span class="p">,</span>             <span class="c1"># Authentication key</span>
     <span class="n">log_level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
-    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>                   <span class="c1"># &quot;evdev&quot; | &quot;win&quot; | &quot;stub&quot;</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">"auto"</span>                   <span class="c1"># "evdev" | "win" | "stub"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -634,7 +685,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span> <span class="o">=</span> <span class="n">TouchController</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="n">tc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>                           <span class="c1"># Start capture and transmission</span>
 <span class="n">tc</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>                            <span class="c1"># Stop all threads and cleanup</span>
-<span class="n">tc</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>            <span class="c1"># Switch view mode at runtime</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">"vectorized"</span><span class="p">)</span>            <span class="c1"># Switch view mode at runtime</span>
 <span class="n">tc</span><span class="o">.</span><span class="n">latest</span><span class="p">()</span>                          <span class="c1"># Get latest frame from current view</span>
 <span class="n">tc</span><span class="o">.</span><span class="n">since</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>                        <span class="c1"># Get all frames since sequence number</span>
 </pre></div>
@@ -683,27 +734,27 @@
 </ul>
 <p><strong>Output Schema:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;raw&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
-    <span class="s2">&quot;t_evt&quot;</span><span class="p">:</span> <span class="mf">1698765432.100</span><span class="p">,</span>
-    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"touch/v1"</span><span class="p">,</span>
+    <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"raw"</span><span class="p">,</span>
+    <span class="s2">"seq"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">"t_evt"</span><span class="p">:</span> <span class="mf">1698765432.100</span><span class="p">,</span>
+    <span class="s2">"points"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;slot&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>           <span class="c1"># tracking_id</span>
-            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>           <span class="c1"># raw device units</span>
-            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">1536</span><span class="p">,</span>
-            <span class="s2">&quot;active&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-            <span class="s2">&quot;t_start&quot;</span><span class="p">:</span> <span class="mf">1698765430.0</span><span class="p">,</span>
-            <span class="s2">&quot;t_now&quot;</span><span class="p">:</span> <span class="mf">1698765432.1</span><span class="p">,</span>
-            <span class="s2">&quot;t_end&quot;</span><span class="p">:</span> <span class="kc">None</span>
+            <span class="s2">"slot"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>           <span class="c1"># tracking_id</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="mi">2048</span><span class="p">,</span>           <span class="c1"># raw device units</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="mi">1536</span><span class="p">,</span>
+            <span class="s2">"active"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">"t_start"</span><span class="p">:</span> <span class="mf">1698765430.0</span><span class="p">,</span>
+            <span class="s2">"t_now"</span><span class="p">:</span> <span class="mf">1698765432.1</span><span class="p">,</span>
+            <span class="s2">"t_end"</span><span class="p">:</span> <span class="kc">None</span>
         <span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;Touchscreen Name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;abs_xmin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;abs_xmax&quot;</span><span class="p">:</span> <span class="mi">4095</span><span class="p">,</span>
-        <span class="s2">&quot;abs_ymin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;abs_ymax&quot;</span><span class="p">:</span> <span class="mi">4095</span>
+    <span class="s2">"meta"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"device"</span><span class="p">:</span> <span class="s2">"Touchscreen Name"</span><span class="p">,</span>
+        <span class="s2">"abs_xmin"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"abs_xmax"</span><span class="p">:</span> <span class="mi">4095</span><span class="p">,</span>
+        <span class="s2">"abs_ymin"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"abs_ymax"</span><span class="p">:</span> <span class="mi">4095</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -718,16 +769,16 @@
 </ul>
 <p><strong>Output Schema:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;normalized&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
-    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"touch/v1"</span><span class="p">,</span>
+    <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"normalized"</span><span class="p">,</span>
+    <span class="s2">"seq"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">"points"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>          <span class="c1"># normalized [0,1]</span>
-            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
-            <span class="s2">&quot;age_ms&quot;</span><span class="p">:</span> <span class="mi">2100</span>       <span class="c1"># time since t_start</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>          <span class="c1"># normalized [0,1]</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
+            <span class="s2">"age_ms"</span><span class="p">:</span> <span class="mi">2100</span>       <span class="c1"># time since t_start</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -765,18 +816,18 @@
 </ul>
 <p><strong>Output Schema:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;reduced&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
-    <span class="s2">&quot;point&quot;</span><span class="p">:</span> <span class="p">{</span>               <span class="c1"># Single representative touch or None</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-        <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>
-        <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
-        <span class="s2">&quot;age_ms&quot;</span><span class="p">:</span> <span class="mi">2100</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"touch/v1"</span><span class="p">,</span>
+    <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"reduced"</span><span class="p">,</span>
+    <span class="s2">"seq"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">"point"</span><span class="p">:</span> <span class="p">{</span>               <span class="c1"># Single representative touch or None</span>
+        <span class="s2">"id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
+        <span class="s2">"x"</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span>
+        <span class="s2">"y"</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">,</span>
+        <span class="s2">"age_ms"</span><span class="p">:</span> <span class="mi">2100</span>
     <span class="p">},</span>
-    <span class="s2">&quot;points&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>         <span class="c1"># List containing the single point (or empty)</span>
-    <span class="s2">&quot;n_active&quot;</span><span class="p">:</span> <span class="mi">3</span>            <span class="c1"># Total number of active touches before reduction</span>
+    <span class="s2">"points"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>         <span class="c1"># List containing the single point (or empty)</span>
+    <span class="s2">"n_active"</span><span class="p">:</span> <span class="mi">3</span>            <span class="c1"># Total number of active touches before reduction</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -803,24 +854,24 @@
 </ul>
 <p><strong>Output Schema:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="s2">&quot;touch/v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;vectorized&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
-    <span class="s2">&quot;window_ms&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="s2">&quot;point&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>          <span class="c1"># Current single-touch point (same as ReducedView)</span>
-    <span class="s2">&quot;n_active&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;vector&quot;</span><span class="p">:</span> <span class="p">{</span>              <span class="c1"># None if no touch</span>
-        <span class="s2">&quot;dx&quot;</span><span class="p">:</span> <span class="mf">0.120</span><span class="p">,</span>         <span class="c1"># Displacement in normalized units</span>
-        <span class="s2">&quot;dy&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.085</span><span class="p">,</span>
-        <span class="s2">&quot;dt_ms&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>        <span class="c1"># Actual time span</span>
-        <span class="s2">&quot;len&quot;</span><span class="p">:</span> <span class="mf">0.147</span><span class="p">,</span>        <span class="c1"># Euclidean length</span>
-        <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="mf">0.735</span><span class="p">,</span>      <span class="c1"># Units per second</span>
-        <span class="s2">&quot;vx&quot;</span><span class="p">:</span> <span class="mf">0.600</span><span class="p">,</span>         <span class="c1"># Velocity components</span>
-        <span class="s2">&quot;vy&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.425</span><span class="p">,</span>
-        <span class="s2">&quot;direction_deg&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">35.2</span><span class="p">,</span>  <span class="c1"># Atan2(dy, dx) in degrees</span>
-        <span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.0</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.380</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.460</span><span class="p">},</span>
-        <span class="s2">&quot;end&quot;</span><span class="p">:</span>   <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="mf">1698765432.2</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">}</span>
+    <span class="s2">"schema"</span><span class="p">:</span> <span class="s2">"touch/v1"</span><span class="p">,</span>
+    <span class="s2">"mode"</span><span class="p">:</span> <span class="s2">"vectorized"</span><span class="p">,</span>
+    <span class="s2">"seq"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.123</span><span class="p">,</span>
+    <span class="s2">"window_ms"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">"point"</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">},</span>          <span class="c1"># Current single-touch point (same as ReducedView)</span>
+    <span class="s2">"n_active"</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s2">"vector"</span><span class="p">:</span> <span class="p">{</span>              <span class="c1"># None if no touch</span>
+        <span class="s2">"dx"</span><span class="p">:</span> <span class="mf">0.120</span><span class="p">,</span>         <span class="c1"># Displacement in normalized units</span>
+        <span class="s2">"dy"</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.085</span><span class="p">,</span>
+        <span class="s2">"dt_ms"</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>        <span class="c1"># Actual time span</span>
+        <span class="s2">"len"</span><span class="p">:</span> <span class="mf">0.147</span><span class="p">,</span>        <span class="c1"># Euclidean length</span>
+        <span class="s2">"speed"</span><span class="p">:</span> <span class="mf">0.735</span><span class="p">,</span>      <span class="c1"># Units per second</span>
+        <span class="s2">"vx"</span><span class="p">:</span> <span class="mf">0.600</span><span class="p">,</span>         <span class="c1"># Velocity components</span>
+        <span class="s2">"vy"</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.425</span><span class="p">,</span>
+        <span class="s2">"direction_deg"</span><span class="p">:</span> <span class="o">-</span><span class="mf">35.2</span><span class="p">,</span>  <span class="c1"># Atan2(dy, dx) in degrees</span>
+        <span class="s2">"start"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.0</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span> <span class="mf">0.380</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mf">0.460</span><span class="p">},</span>
+        <span class="s2">"end"</span><span class="p">:</span>   <span class="p">{</span><span class="s2">"t"</span><span class="p">:</span> <span class="mf">1698765432.2</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">:</span> <span class="mf">0.500</span><span class="p">,</span> <span class="s2">"y"</span><span class="p">:</span> <span class="mf">0.375</span><span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -861,9 +912,9 @@
 <section id="id2">
 <h4><strong>Constructor Parameters:</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HostTouchClient</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">"127.0.0.1"</span><span class="p">,</span>
     <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span>
-    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"touchbus"</span><span class="p">,</span>
     <span class="n">max_packets</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>               <span class="c1"># Deque buffer size</span>
     <span class="n">reconnect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>                 <span class="c1"># Auto-reconnect on disconnect</span>
     <span class="n">reconnect_delay</span><span class="o">=</span><span class="mf">1.0</span>             <span class="c1"># Reconnect interval</span>
@@ -883,13 +934,13 @@
 <span class="n">client</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>                      <span class="c1"># Pop all queued packets, return latest</span>
 
 <span class="c1"># Commands to server</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>       <span class="c1"># Switch view mode</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>  <span class="c1"># Update transmission params</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">"vectorized"</span><span class="p">)</span>       <span class="c1"># Switch view mode</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"rate"</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>  <span class="c1"># Update transmission params</span>
 <span class="n">client</span><span class="o">.</span><span class="n">set_view_params</span><span class="p">(</span><span class="n">min_cutoff</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">window_ms</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>  <span class="c1"># Update filter params</span>
 <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>        <span class="c1"># Clock synchronization</span>
 
 <span class="c1"># Recording</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_recorder</span><span class="p">(</span><span class="n">AsyncJSONLRecorder</span><span class="p">(</span><span class="s2">&quot;data.jsonl.gz&quot;</span><span class="p">))</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_recorder</span><span class="p">(</span><span class="n">AsyncJSONLRecorder</span><span class="p">(</span><span class="s2">"data.jsonl.gz"</span><span class="p">))</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Auto-closes recorder</span>
 </pre></div>
 </div>
@@ -898,11 +949,11 @@
 <h4><strong>Clock Synchronization (NTP-Style):</strong><a class="headerlink" href="#clock-synchronization-ntp-style" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 <span class="c1"># Returns: {</span>
-<span class="c1">#   &quot;ok&quot;: True,</span>
-<span class="c1">#   &quot;offset_s&quot;: -0.0123,            # Host clock = Server clock - offset</span>
-<span class="c1">#   &quot;offset_ms&quot;: -12.3,</span>
-<span class="c1">#   &quot;rtt_ms&quot;: 4.2,                  # Round-trip time</span>
-<span class="c1">#   &quot;samples&quot;: [...]                # All attempts</span>
+<span class="c1">#   "ok": True,</span>
+<span class="c1">#   "offset_s": -0.0123,            # Host clock = Server clock - offset</span>
+<span class="c1">#   "offset_ms": -12.3,</span>
+<span class="c1">#   "rtt_ms": 4.2,                  # Round-trip time</span>
+<span class="c1">#   "samples": [...]                # All attempts</span>
 <span class="c1"># }</span>
 </pre></div>
 </div>
@@ -934,15 +985,15 @@
 <section id="api">
 <h4><strong>API:</strong><a class="headerlink" href="#api" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">recorder</span> <span class="o">=</span> <span class="n">AsyncJSONLRecorder</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;data.jsonl.gz&quot;</span><span class="p">,</span>
-    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;device&quot;</span><span class="p">:</span> <span class="s2">&quot;Touchscreen&quot;</span><span class="p">,</span> <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="s2">&quot;trial_001&quot;</span><span class="p">},</span>
+    <span class="n">path</span><span class="o">=</span><span class="s2">"data.jsonl.gz"</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"device"</span><span class="p">:</span> <span class="s2">"Touchscreen"</span><span class="p">,</span> <span class="s2">"experiment"</span><span class="p">:</span> <span class="s2">"trial_001"</span><span class="p">},</span>
     <span class="n">flush_every</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>                 <span class="c1"># Flush to disk every N lines</span>
     <span class="n">max_queue</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>                <span class="c1"># Queue capacity</span>
-    <span class="n">drop_policy</span><span class="o">=</span><span class="s2">&quot;drop_oldest&quot;</span>       <span class="c1"># Backpressure handling</span>
+    <span class="n">drop_policy</span><span class="o">=</span><span class="s2">"drop_oldest"</span>       <span class="c1"># Backpressure handling</span>
 <span class="p">)</span>
 <span class="n">recorder</span><span class="o">.</span><span class="n">record</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>             <span class="c1"># Non-blocking enqueue</span>
 <span class="n">recorder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>                    <span class="c1"># Flush and stop writer thread</span>
-<span class="n">recorder</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>                    <span class="c1"># {&quot;written&quot;: N, &quot;dropped&quot;: M, &quot;queued&quot;: K}</span>
+<span class="n">recorder</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>                    <span class="c1"># {"written": N, "dropped": M, "queued": K}</span>
 </pre></div>
 </div>
 </section>
@@ -1027,22 +1078,22 @@ Annotation → _host metadata
 <h3><strong>Host Timing Metadata (<code class="docutils literal notranslate"><span class="pre">_host</span></code> field)</strong><a class="headerlink" href="#host-timing-metadata-host-field" title="Link to this heading">#</a></h3>
 <p>Added by <code class="docutils literal notranslate"><span class="pre">HostTouchClient._annotate_packet()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;t_rx&quot;</span><span class="p">:</span> <span class="mf">1698765432.456</span><span class="p">,</span>           <span class="c1"># Host wall clock receive time</span>
-    <span class="s2">&quot;t_rx_mono&quot;</span><span class="p">:</span> <span class="mf">1234567.890</span><span class="p">,</span>         <span class="c1"># Host monotonic time</span>
-    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0123</span><span class="p">,</span>                <span class="c1"># Clock offset (if synced)</span>
-    <span class="s2">&quot;synced&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                   <span class="c1"># Clock sync status</span>
-    <span class="s2">&quot;rtt_ms&quot;</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>                    <span class="c1"># Last sync RTT</span>
+    <span class="s2">"t_rx"</span><span class="p">:</span> <span class="mf">1698765432.456</span><span class="p">,</span>           <span class="c1"># Host wall clock receive time</span>
+    <span class="s2">"t_rx_mono"</span><span class="p">:</span> <span class="mf">1234567.890</span><span class="p">,</span>         <span class="c1"># Host monotonic time</span>
+    <span class="s2">"offset"</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.0123</span><span class="p">,</span>                <span class="c1"># Clock offset (if synced)</span>
+    <span class="s2">"synced"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                   <span class="c1"># Clock sync status</span>
+    <span class="s2">"rtt_ms"</span><span class="p">:</span> <span class="mf">4.2</span><span class="p">,</span>                    <span class="c1"># Last sync RTT</span>
 
     <span class="c1"># Lag measurements</span>
-    <span class="s2">&quot;fresh&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                    <span class="c1"># Is this a new source frame?</span>
-    <span class="s2">&quot;stale_ms&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>                  <span class="c1"># Time since last fresh frame arrived at host</span>
-    <span class="s2">&quot;lag_ms_e2e&quot;</span><span class="p">:</span> <span class="mf">15.2</span><span class="p">,</span>               <span class="c1"># End-to-end: (t_rx - source_t) - offset [FROZEN on repeat frames]</span>
-    <span class="s2">&quot;lag_ms_wire&quot;</span><span class="p">:</span> <span class="mf">3.1</span><span class="p">,</span>               <span class="c1"># Wire delay: (t_rx - t_tx) - offset [COMPUTED EVERY PACKET]</span>
+    <span class="s2">"fresh"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>                    <span class="c1"># Is this a new source frame?</span>
+    <span class="s2">"stale_ms"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>                  <span class="c1"># Time since last fresh frame arrived at host</span>
+    <span class="s2">"lag_ms_e2e"</span><span class="p">:</span> <span class="mf">15.2</span><span class="p">,</span>               <span class="c1"># End-to-end: (t_rx - source_t) - offset [FROZEN on repeat frames]</span>
+    <span class="s2">"lag_ms_wire"</span><span class="p">:</span> <span class="mf">3.1</span><span class="p">,</span>               <span class="c1"># Wire delay: (t_rx - t_tx) - offset [COMPUTED EVERY PACKET]</span>
 
     <span class="c1"># Monotonic tick diagnostics (no cross-host sync needed)</span>
-    <span class="s2">&quot;srv_tick_ms&quot;</span><span class="p">:</span> <span class="mf">16.7</span><span class="p">,</span>              <span class="c1"># Server inter-packet interval (monotonic)</span>
-    <span class="s2">&quot;rx_tick_ms&quot;</span><span class="p">:</span> <span class="mf">17.2</span><span class="p">,</span>               <span class="c1"># Host inter-arrival interval (monotonic)</span>
-    <span class="s2">&quot;gap_ms&quot;</span><span class="p">:</span> <span class="mf">0.5</span>                     <span class="c1"># rx_tick - srv_tick (network jitter)</span>
+    <span class="s2">"srv_tick_ms"</span><span class="p">:</span> <span class="mf">16.7</span><span class="p">,</span>              <span class="c1"># Server inter-packet interval (monotonic)</span>
+    <span class="s2">"rx_tick_ms"</span><span class="p">:</span> <span class="mf">17.2</span><span class="p">,</span>               <span class="c1"># Host inter-arrival interval (monotonic)</span>
+    <span class="s2">"gap_ms"</span><span class="p">:</span> <span class="mf">0.5</span>                     <span class="c1"># rx_tick - srv_tick (network jitter)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1121,24 +1172,24 @@ Annotation → _host metadata
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">touchscreen.host_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">HostTouchClient</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span>  <span class="c1"># Raspberry Pi IP</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">"192.168.1.100"</span><span class="p">,</span>  <span class="c1"># Raspberry Pi IP</span>
     <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span>
-    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">,</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"touchbus"</span><span class="p">,</span>
     <span class="n">reconnect</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># Synchronize clocks</span>
 <span class="n">sync_result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Offset: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">&#39;offset_ms&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms, RTT: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">&#39;rtt_ms&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Offset: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">'offset_ms'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms, RTT: </span><span class="si">{</span><span class="n">sync_result</span><span class="p">[</span><span class="s1">'rtt_ms'</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
 
 <span class="c1"># Main loop</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">pkt</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">drain</span><span class="p">()</span>  <span class="c1"># Get latest packet</span>
-        <span class="k">if</span> <span class="n">pkt</span> <span class="ow">and</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;point&quot;</span><span class="p">):</span>
-            <span class="n">point</span> <span class="o">=</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch at (</span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pkt</span> <span class="ow">and</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"point"</span><span class="p">):</span>
+            <span class="n">point</span> <span class="o">=</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">"point"</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Touch at (</span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'x'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">point</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.016</span><span class="p">)</span>  <span class="c1"># ~60 fps</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="n">client</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -1149,14 +1200,14 @@ Annotation → _host metadata
 <h4><strong>With Recording:</strong><a class="headerlink" href="#with-recording" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">touchscreen.host_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">HostTouchClient</span><span class="p">,</span> <span class="n">AsyncJSONLRecorder</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span> <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;touchbus&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">"192.168.1.100"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">,</span> <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"touchbus"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">client</span><span class="o">.</span><span class="n">sync_time</span><span class="p">(</span><span class="n">attempts</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 
 <span class="c1"># Start recording</span>
 <span class="n">recorder</span> <span class="o">=</span> <span class="n">AsyncJSONLRecorder</span><span class="p">(</span>
-    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;./logs/experiment_001.jsonl.gz&quot;</span><span class="p">,</span>
-    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;subject&quot;</span><span class="p">:</span> <span class="s2">&quot;mouse_001&quot;</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="s2">&quot;training_day_3&quot;</span><span class="p">},</span>
+    <span class="n">path</span><span class="o">=</span><span class="s2">"./logs/experiment_001.jsonl.gz"</span><span class="p">,</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">"subject"</span><span class="p">:</span> <span class="s2">"mouse_001"</span><span class="p">,</span> <span class="s2">"session"</span><span class="p">:</span> <span class="s2">"training_day_3"</span><span class="p">},</span>
     <span class="n">flush_every</span><span class="o">=</span><span class="mi">64</span>
 <span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">set_recorder</span><span class="p">(</span><span class="n">recorder</span><span class="p">)</span>
@@ -1173,14 +1224,14 @@ Annotation → _host metadata
 </section>
 <section id="runtime-parameter-control">
 <h4><strong>Runtime Parameter Control:</strong><a class="headerlink" href="#runtime-parameter-control" title="Link to this heading">#</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">HostTouchClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">"192.168.1.100"</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">6001</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
 <span class="c1"># Switch to vectorized mode</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;vectorized&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="s2">"vectorized"</span><span class="p">)</span>
 
 <span class="c1"># Increase rate to 120 Hz</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_tx</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">"rate"</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">)</span>
 
 <span class="c1"># Update filter parameters</span>
 <span class="n">client</span><span class="o">.</span><span class="n">set_view_params</span><span class="p">(</span>
@@ -1218,7 +1269,7 @@ sudo<span class="w"> </span>evtest
 pip<span class="w"> </span>install<span class="w"> </span>evdev
 
 <span class="c1"># Auto-detect touchscreen</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from touchscreen.touch_controller import TouchController; tc = TouchController(device_path=&#39;auto&#39;); print(tc.device_path)&quot;</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from touchscreen.touch_controller import TouchController; tc = TouchController(device_path='auto'); print(tc.device_path)"</span>
 </pre></div>
 </div>
 </section>
@@ -1275,28 +1326,28 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </s
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="c1"># Read recorded JSONL</span>
-<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;logs/experiment_001.jsonl.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">"logs/experiment_001.jsonl.gz"</span><span class="p">,</span> <span class="s2">"rt"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">header</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device:&quot;</span><span class="p">,</span> <span class="n">header</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;device&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Device:"</span><span class="p">,</span> <span class="n">header</span><span class="p">[</span><span class="s2">"meta"</span><span class="p">][</span><span class="s2">"device"</span><span class="p">])</span>
 
-    <span class="n">packets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">if</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;packet&quot;</span><span class="p">]</span>
+    <span class="n">packets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">if</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)[</span><span class="s2">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"packet"</span><span class="p">]</span>
 
 <span class="c1"># Extract trajectories</span>
 <span class="n">trajectories</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">pkt</span> <span class="ow">in</span> <span class="n">packets</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;point&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heartbeat&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"point"</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"heartbeat"</span><span class="p">):</span>
         <span class="n">trajectories</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-            <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">][</span><span class="s2">&quot;x&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">&quot;point&quot;</span><span class="p">][</span><span class="s2">&quot;y&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;lag_ms&quot;</span><span class="p">:</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_host&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lag_ms_e2e&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="s2">"t"</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">"t"</span><span class="p">],</span>
+            <span class="s2">"x"</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">"point"</span><span class="p">][</span><span class="s2">"x"</span><span class="p">],</span>
+            <span class="s2">"y"</span><span class="p">:</span> <span class="n">pkt</span><span class="p">[</span><span class="s2">"point"</span><span class="p">][</span><span class="s2">"y"</span><span class="p">],</span>
+            <span class="s2">"lag_ms"</span><span class="p">:</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_host"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"lag_ms_e2e"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
         <span class="p">})</span>
 
 <span class="c1"># Analyze</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="n">lags</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s2">&quot;lag_ms&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trajectories</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;P95 lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+<span class="n">lags</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s2">"lag_ms"</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trajectories</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mean lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">lags</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"P95 lag: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">lags</span><span class="p">,</span><span class="w"> </span><span class="mi">95</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1368,7 +1419,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </s
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-architecture">System Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-components">Core Components</a><ul class="nav section-nav flex-column">
@@ -1492,8 +1543,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

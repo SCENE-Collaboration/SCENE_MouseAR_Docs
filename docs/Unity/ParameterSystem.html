@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/ParameterSystem';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Visual Feedback &amp; Utility Components" href="VisualFeedback.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-comparison">System Comparison</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a><ul class="nav section-nav flex-column">
@@ -522,13 +573,13 @@
 <span class="n">env_channel</span> <span class="o">=</span> <span class="n">EnvironmentParametersChannel</span><span class="p">()</span>
 
 <span class="c1"># Set parameters</span>
-<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;episode_length&quot;</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;general.iti_length&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
-<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">&quot;step_timeout_seconds&quot;</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">"episode_length"</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">)</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">"general.iti_length"</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+<span class="n">env_channel</span><span class="o">.</span><span class="n">set_float_parameter</span><span class="p">(</span><span class="s2">"step_timeout_seconds"</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">)</span>
 
 <span class="c1"># Create environment with channel</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">UnityEnvironment</span><span class="p">(</span>
-    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;Build/game.exe&quot;</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">"Build/game.exe"</span><span class="p">,</span>
     <span class="n">side_channels</span><span class="o">=</span><span class="p">[</span><span class="n">env_channel</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -548,10 +599,10 @@
 
 <span class="w">        </span><span class="c1">// Read parameters</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">episodeLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">itiLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">2f</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">episodeLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"episode_length"</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">itiLen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.iti_length"</span><span class="p">,</span><span class="w"> </span><span class="mf">2f</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;Episode length: {episodeLen}, ITI: {itiLen}&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$"Episode length: {episodeLen}, ITI: {itiLen}"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -599,9 +650,9 @@
 <td><p>Enable KV reporting (0/1)</p></td>
 <td><p>Reporter components</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period</span></code></p></td>
-<td><p>float</p></td>
-<td><p>Reporter update interval</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period_steps</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Reporter update interval, in FixedUpdate STEPS</p></td>
 <td><p>Reporter components</p></td>
 </tr>
 </tbody>
@@ -614,10 +665,10 @@
 <h4>EpisodeManagerSingleWall<a class="headerlink" href="#episodemanagersinglewall" title="Link to this heading">#</a></h4>
 <p>Read at <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code>:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="n">episodeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">episodeLength</span><span class="p">);</span>
-<span class="n">itiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiLength</span><span class="p">);</span>
-<span class="n">enableInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.enable_init_phase&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
-<span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.randomize_iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="n">episodeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.episode_length"</span><span class="p">,</span><span class="w"> </span><span class="n">episodeLength</span><span class="p">);</span>
+<span class="n">itiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.iti_length"</span><span class="p">,</span><span class="w"> </span><span class="n">itiLength</span><span class="p">);</span>
+<span class="n">enableInitPhase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.enable_init_phase"</span><span class="p">,</span><span class="w"> </span><span class="n">enableInitPhase</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.randomize_iti_length"</span><span class="p">,</span><span class="w"> </span><span class="n">randomizeItiLength</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -625,13 +676,13 @@
 <h4>SequenceTargetManager<a class="headerlink" href="#sequencetargetmanager" title="Link to this heading">#</a></h4>
 <p>Read at <code class="docutils literal notranslate"><span class="pre">StartEpisode()</span></code>:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="n">stepTimeoutSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;step_timeout_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="p">);</span>
-<span class="n">dwellTargetSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_target_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="p">);</span>
-<span class="n">dwellWallSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;dwell_wall_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="p">);</span>
-<span class="n">wallGraceSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;wall_grace_seconds&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="p">);</span>
-<span class="n">itiSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;general.iti_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">itiSeconds</span><span class="p">);</span>
-<span class="n">randomTargetLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;random_target_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="p">);</span>
-<span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;target_no_repeats&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="n">stepTimeoutSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"step_timeout_seconds"</span><span class="p">,</span><span class="w"> </span><span class="n">stepTimeoutSeconds</span><span class="p">);</span>
+<span class="n">dwellTargetSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"dwell_target_seconds"</span><span class="p">,</span><span class="w"> </span><span class="n">dwellTargetSeconds</span><span class="p">);</span>
+<span class="n">dwellWallSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"dwell_wall_seconds"</span><span class="p">,</span><span class="w"> </span><span class="n">dwellWallSeconds</span><span class="p">);</span>
+<span class="n">wallGraceSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"wall_grace_seconds"</span><span class="p">,</span><span class="w"> </span><span class="n">wallGraceSeconds</span><span class="p">);</span>
+<span class="n">itiSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"general.iti_length"</span><span class="p">,</span><span class="w"> </span><span class="n">itiSeconds</span><span class="p">);</span>
+<span class="n">randomTargetLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"random_target_length"</span><span class="p">,</span><span class="w"> </span><span class="n">randomTargetLength</span><span class="p">);</span>
+<span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"target_no_repeats"</span><span class="p">,</span><span class="w"> </span><span class="n">targetNoRepeatsInRandom</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mf">1f</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
@@ -642,7 +693,7 @@
 <p><strong>Pattern:</strong></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SomeSpawnerEnvParams</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spawnerName&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace prefix</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"spawnerName"</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace prefix</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SomeSpawner</span><span class="w"> </span><span class="n">_sp</span><span class="p">;</span><span class="w">                </span><span class="c1">// Spawner reference</span>
 
 <span class="w">    </span><span class="n">IEnumerator</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
@@ -660,13 +711,13 @@
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
 
 <span class="w">        </span><span class="c1">// Read with prefix</span>
-<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.some_property&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="p">);</span>
-<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.another_property&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$"{prefix}.some_property"</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">someProperty</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$"{prefix}.another_property"</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">anotherProperty</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TryRespawnOrClear</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$"{prefix}.enabled"</span><span class="p">,</span><span class="w"> </span><span class="mf">1f</span><span class="p">);</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">enabled</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="n">_sp</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">();</span>
@@ -766,13 +817,13 @@
 <span class="n">kv</span> <span class="o">=</span> <span class="n">KvChannel</span><span class="p">()</span>
 
 <span class="c1"># Send messages</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.enabled=1&quot;</span><span class="p">)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=12&quot;</span><span class="p">)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.enabled=1"</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.episode_length=12"</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.start=1"</span><span class="p">)</span>
 
 <span class="c1"># Create environment with channel</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">UnityEnvironment</span><span class="p">(</span>
-    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;Build/game.exe&quot;</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">"Build/game.exe"</span><span class="p">,</span>
     <span class="n">side_channels</span><span class="o">=</span><span class="p">[</span><span class="n">kv</span><span class="p">]</span>
 <span class="p">)</span>
 </pre></div>
@@ -787,24 +838,24 @@
 <span class="w">    </span><span class="na">[Serializable]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">WallManaged</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;wallL&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"wallL"</span><span class="p">;</span><span class="w">  </span><span class="c1">// Namespace</span>
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">EpisodeManagerSingleWall</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Serializable]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SeqManaged</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;seqA&quot;</span><span class="p">;</span><span class="w">   </span><span class="c1">// Namespace</span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"seqA"</span><span class="p">;</span><span class="w">   </span><span class="c1">// Namespace</span>
 <span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">SequenceTargetManager</span><span class="w"> </span><span class="n">manager</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="na">[Header(&quot;Managed Single-Wall episodes&quot;)]</span>
+<span class="w">    </span><span class="na">[Header("Managed Single-Wall episodes")]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">WallManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">walls</span><span class="p">;</span>
 
-<span class="w">    </span><span class="na">[Header(&quot;Managed SequenceTarget episodes&quot;)]</span>
+<span class="w">    </span><span class="na">[Header("Managed SequenceTarget episodes")]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SeqManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">sequences</span><span class="p">;</span>
 
-<span class="w">    </span><span class="na">[Header(&quot;Managed spawners&quot;)]</span>
+<span class="w">    </span><span class="na">[Header("Managed spawners")]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">FloorSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">floorSpawners</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ScreenSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">screenSpawners</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">SideTargetsSpawnerManaged</span><span class="p">[]</span><span class="w"> </span><span class="n">sideSpawners</span><span class="p">;</span>
@@ -815,19 +866,19 @@
 <p><strong>Inspector Setup:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>KvManagersDirector:
 ├── walls[0]:
-│   ├── key: &quot;wallL&quot;
+│   ├── key: "wallL"
 │   └── manager: → EpisodeManagerSingleWall
 ├── walls[1]:
-│   ├── key: &quot;wallR&quot;
+│   ├── key: "wallR"
 │   └── manager: → EpisodeManagerSingleWall
 ├── sequences[0]:
-│   ├── key: &quot;seqA&quot;
+│   ├── key: "seqA"
 │   └── manager: → SequenceTargetManager
 ├── floorSpawners[0]:
-│   ├── key: &quot;hockeyFloor&quot;
+│   ├── key: "hockeyFloor"
 │   └── envParams: → FloorTargetsSpawnerEnvParams
 └── screenSpawners[0]:
-    ├── key: &quot;touchDestroy&quot;
+    ├── key: "touchDestroy"
     └── env: → ScreenSpawnerEnvParams
 </pre></div>
 </div>
@@ -991,7 +1042,7 @@
 <section id="kv-reporting-unity-python">
 <h2>KV Reporting (Unity → Python)<a class="headerlink" href="#kv-reporting-unity-python" title="Link to this heading">#</a></h2>
 <p>KvManagersDirector can send state information back to Python. We use this to flexibly send observations from different managers, depending on the experiment.</p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Reporting&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Reporting")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">enableReporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
 <span class="c1">// Send KV message from Unity</span>
@@ -1005,7 +1056,7 @@
 <p><strong>Python Receiving:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># KvChannel receives messages in message_received callback</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_kv</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unity sent: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unity sent: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">kv</span><span class="o">.</span><span class="n">message_received</span> <span class="o">+=</span> <span class="n">handle_kv</span>
 </pre></div>
@@ -1021,13 +1072,13 @@
 <h3>Message Ordering<a class="headerlink" href="#message-ordering" title="Link to this heading">#</a></h3>
 <p>For KV, send configuration before <code class="docutils literal notranslate"><span class="pre">.start</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Good: Configure, then start</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=15&quot;</span><span class="p">)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.spawner=1&quot;</span><span class="p">)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>  <span class="c1"># Apply all</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.episode_length=15"</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.spawner=1"</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.start=1"</span><span class="p">)</span>  <span class="c1"># Apply all</span>
 
 <span class="c1"># Avoid: Start, then configure (too late)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
-<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=15&quot;</span><span class="p">)</span>  <span class="c1"># Won&#39;t affect running episode</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.start=1"</span><span class="p">)</span>
+<span class="n">kv</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.episode_length=15"</span><span class="p">)</span>  <span class="c1"># Won't affect running episode</span>
 </pre></div>
 </div>
 </section>
@@ -1108,7 +1159,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-comparison">System Comparison</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-environmentparameters">ML-Agents EnvironmentParameters</a><ul class="nav section-nav flex-column">
@@ -1197,8 +1248,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/Tasks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DLC Processor Documentation" href="DLCProcessors.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-responsibilities">Inheritance Responsibilities</a><ul class="nav section-nav flex-column">
@@ -786,7 +837,7 @@
 <section id="start">
 <h4><strong>start()</strong><a class="headerlink" href="#start" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize task, start hardware, open connections.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Initialize task, start hardware, open connections."""</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -794,7 +845,7 @@
 <section id="stop">
 <h4><strong>stop()</strong><a class="headerlink" href="#stop" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Clean up, close connections, save data.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Clean up, close connections, save data."""</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -802,12 +853,12 @@
 <section id="loop-bool">
 <h4><strong>loop() → bool</strong><a class="headerlink" href="#loop-bool" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Execute one iteration of task logic.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True to continue, False to stop task</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -907,11 +958,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="c1"># Returns teensy input/output logs:</span>
 <span class="p">{</span>
-    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_input_digital&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_output_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_output_command&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+    <span class="s2">"teensy_input_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_analog"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_digital"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_output_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_output_command"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -945,12 +996,12 @@
     <span class="n">teensy</span><span class="p">:</span> <span class="n">Teensy</span><span class="p">,</span>
     <span class="n">env_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">behavior_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
-    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UnnamedMouse&quot;</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"UnnamedMouse"</span><span class="p">,</span>
     <span class="n">epochs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.0</span><span class="p">]),</span>
     <span class="n">epoch_trials</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">agent_group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+    <span class="n">agent_group</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"default"</span><span class="p">,</span>
     <span class="n">display_args</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">reset_condition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+    <span class="n">reset_condition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"any"</span><span class="p">,</span>
     <span class="n">env_params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">env_kv_params</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">reward_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
@@ -1045,10 +1096,10 @@
 <section id="behavior-names">
 <h4><strong>Behavior Names</strong><a class="headerlink" href="#behavior-names" title="Link to this heading">#</a></h4>
 <p>Unity behaviors may have query string suffixes (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;MouseAgent?team=0&quot;</span></code>). The task automatically canonicalizes names:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unity behavior spec: &quot;MouseAgent?team=0&quot;</span>
-<span class="c1"># Canonical name: &quot;MouseAgent&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unity behavior spec: "MouseAgent?team=0"</span>
+<span class="c1"># Canonical name: "MouseAgent"</span>
 
-<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">]</span>  <span class="c1"># Use canonical name</span>
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"MouseAgent"</span><span class="p">]</span>  <span class="c1"># Use canonical name</span>
 </pre></div>
 </div>
 </section>
@@ -1056,8 +1107,8 @@
 <h4><strong>Behavior Mapping</strong><a class="headerlink" href="#behavior-mapping" title="Link to this heading">#</a></h4>
 <p>The task builds a <code class="docutils literal notranslate"><span class="pre">behavior_map</span></code> from canonical names to full names:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">behavior_map</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;MouseAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;MouseAgent?team=0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;TTLAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;TTLAgent&quot;</span>
+    <span class="s2">"MouseAgent"</span><span class="p">:</span> <span class="s2">"MouseAgent?team=0"</span><span class="p">,</span>
+    <span class="s2">"TTLAgent"</span><span class="p">:</span> <span class="s2">"TTLAgent"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1069,17 +1120,17 @@
 <section id="get-action-for-behavior-name-str-np-ndarray">
 <h4><strong>get_action_for(behavior_name: str) → np.ndarray</strong><a class="headerlink" href="#get-action-for-behavior-name-str-np-ndarray" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_action_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Return action for specified behavior.</span>
 <span class="sd">    Override in subclasses to provide custom actions.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        behavior_name: Canonical behavior name (e.g., &quot;MouseAgent&quot;)</span>
+<span class="sd">        behavior_name: Canonical behavior name (e.g., "MouseAgent")</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        np.ndarray: Action array matching behavior&#39;s action spec</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;spec&quot;</span><span class="p">]</span>
+<span class="sd">        np.ndarray: Action array matching behavior's action spec</span>
+<span class="sd">    """</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">"spec"</span><span class="p">]</span>
     <span class="c1"># Default: zero action</span>
     <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -1101,9 +1152,9 @@
 <li><p>Environment dimensions</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env_params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;spawn_rate&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-    <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-    <span class="s2">&quot;arena_size&quot;</span><span class="p">:</span> <span class="mf">10.0</span>
+    <span class="s2">"spawn_rate"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+    <span class="s2">"difficulty"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="s2">"arena_size"</span><span class="p">:</span> <span class="mf">10.0</span>
 <span class="p">}</span>
 <span class="n">task</span> <span class="o">=</span> <span class="n">UnityMultibehaviorTask</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">)</span>
 </pre></div>
@@ -1112,8 +1163,8 @@
 <section id="kvchannel-runtime-parameter-updates">
 <h4><strong>KvChannel</strong> (Runtime parameter updates)<a class="headerlink" href="#kvchannel-runtime-parameter-updates" title="Link to this heading">#</a></h4>
 <p>Set during task execution via <code class="docutils literal notranslate"><span class="pre">set_runtime_param()</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;target_speed&quot;</span><span class="p">,</span> <span class="s2">&quot;5.0&quot;</span><span class="p">)</span>
-<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;reward_delay&quot;</span><span class="p">,</span> <span class="s2">&quot;0.5&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"target_speed"</span><span class="p">,</span> <span class="s2">"5.0"</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"reward_delay"</span><span class="p">,</span> <span class="s2">"0.5"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Unity C# Receiver:</strong></p>
@@ -1121,9 +1172,9 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">HasMessage</span><span class="p">(</span><span class="s">&quot;target_speed&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">HasMessage</span><span class="p">(</span><span class="s">"target_speed"</span><span class="p">))</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="s">&quot;target_speed&quot;</span><span class="p">));</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">KvChannel</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="s">"target_speed"</span><span class="p">));</span>
 <span class="w">            </span><span class="c1">// Apply speed...</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1141,8 +1192,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyTask</span><span class="p">(</span><span class="n">UnityMultibehaviorTask</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">_on_kv_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kv</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_on_kv_events</span><span class="p">(</span><span class="n">kv</span><span class="p">)</span>
-        <span class="k">if</span> <span class="s2">&quot;hockey.player_contact&quot;</span> <span class="ow">in</span> <span class="n">kv</span><span class="p">:</span>
-            <span class="n">contact_on</span> <span class="o">=</span> <span class="n">kv</span><span class="p">[</span><span class="s2">&quot;hockey.player_contact&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+        <span class="k">if</span> <span class="s2">"hockey.player_contact"</span> <span class="ow">in</span> <span class="n">kv</span><span class="p">:</span>
+            <span class="n">contact_on</span> <span class="o">=</span> <span class="n">kv</span><span class="p">[</span><span class="s2">"hockey.player_contact"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"1"</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">on_player_contact</span><span class="p">(</span><span class="n">contact_on</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1185,14 +1236,14 @@
     <span class="k">for</span> <span class="n">behavior_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">:</span>
         <span class="n">step_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_step_result_for</span><span class="p">(</span><span class="n">behavior_name</span><span class="p">)</span>
         <span class="n">state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">done</span> <span class="o">=</span> <span class="n">step_result</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">done</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">"state"</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">"reward"</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">"done"</span><span class="p">]</span> <span class="o">=</span> <span class="n">done</span>
 
     <span class="c1"># 4. Check terminal condition</span>
-    <span class="n">any_done</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
-    <span class="n">all_done</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="n">any_done</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_condition</span> <span class="o">==</span> <span class="s2">&quot;any&quot;</span> <span class="k">else</span> <span class="n">all_done</span>
+    <span class="n">any_done</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">"done"</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
+    <span class="n">all_done</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s2">"done"</span><span class="p">]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="n">any_done</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reset_condition</span> <span class="o">==</span> <span class="s2">"any"</span> <span class="k">else</span> <span class="n">all_done</span>
 
     <span class="c1"># 5. Reset episode if terminal</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">terminal</span><span class="p">:</span>
@@ -1218,25 +1269,25 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 <span class="c1"># Returns:</span>
 <span class="p">{</span>
-    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Episode numbers</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>          <span class="c1"># Step within episode</span>
-    <span class="s2">&quot;step_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># Timestamps</span>
-    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">state0</span><span class="p">,</span> <span class="n">state1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># States per behavior (dict)</span>
-    <span class="s2">&quot;obs_states&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">vis0</span><span class="p">,</span> <span class="n">vis1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Visual observations</span>
-    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">action0</span><span class="p">,</span> <span class="n">action1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>     <span class="c1"># Actions per behavior (dict)</span>
-    <span class="s2">&quot;reward&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>               <span class="c1"># Rewards</span>
-    <span class="s2">&quot;terminal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="c1"># Terminal flags</span>
-    <span class="s2">&quot;runtime_params&quot;</span><span class="p">:</span> <span class="p">[</span>                    <span class="c1"># Parameter changes</span>
-        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">},</span>
+    <span class="s2">"episode"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Episode numbers</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>          <span class="c1"># Step within episode</span>
+    <span class="s2">"step_time"</span><span class="p">:</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># Timestamps</span>
+    <span class="s2">"state"</span><span class="p">:</span> <span class="p">[</span><span class="n">state0</span><span class="p">,</span> <span class="n">state1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>        <span class="c1"># States per behavior (dict)</span>
+    <span class="s2">"obs_states"</span><span class="p">:</span> <span class="p">[</span><span class="n">vis0</span><span class="p">,</span> <span class="n">vis1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>       <span class="c1"># Visual observations</span>
+    <span class="s2">"action"</span><span class="p">:</span> <span class="p">[</span><span class="n">action0</span><span class="p">,</span> <span class="n">action1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>     <span class="c1"># Actions per behavior (dict)</span>
+    <span class="s2">"reward"</span><span class="p">:</span> <span class="p">[</span><span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>               <span class="c1"># Rewards</span>
+    <span class="s2">"terminal"</span><span class="p">:</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="c1"># Terminal flags</span>
+    <span class="s2">"runtime_params"</span><span class="p">:</span> <span class="p">[</span>                    <span class="c1"># Parameter changes</span>
+        <span class="p">{</span><span class="s2">"key"</span><span class="p">:</span> <span class="s2">"value"</span><span class="p">,</span> <span class="s2">"time"</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">"episode"</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">"step"</span><span class="p">:</span> <span class="n">s</span><span class="p">},</span>
         <span class="o">...</span>
     <span class="p">],</span>
-    <span class="s2">&quot;kv_messages&quot;</span><span class="p">:</span> <span class="p">[</span>                       <span class="c1"># KV channel messages</span>
-        <span class="p">{</span><span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}},</span>
+    <span class="s2">"kv_messages"</span><span class="p">:</span> <span class="p">[</span>                       <span class="c1"># KV channel messages</span>
+        <span class="p">{</span><span class="s2">"timestamp"</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">"episode"</span><span class="p">:</span> <span class="n">e</span><span class="p">,</span> <span class="s2">"step"</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">"messages"</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}},</span>
         <span class="o">...</span>
     <span class="p">],</span>
     <span class="c1"># Plus teensy data from base class:</span>
-    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_analog"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
     <span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
@@ -1263,14 +1314,14 @@
     <span class="c1"># Base parameters (from UnityMultibehaviorTask)</span>
     <span class="n">teensy</span><span class="p">:</span> <span class="n">Teensy</span><span class="p">,</span>
     <span class="n">env_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;UnnamedMouse&quot;</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"UnnamedMouse"</span><span class="p">,</span>
     <span class="n">epochs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">60.0</span><span class="p">]),</span>
     <span class="c1"># ... (all UnityMultibehaviorTask params)</span>
 
     <span class="c1"># Control client parameters</span>
     <span class="n">use_dlc</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">dlc_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
-    <span class="n">dlc_filter_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">"dummy_constant"</span><span class="p">,</span>
+    <span class="n">dlc_filter_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"always"</span><span class="p">,</span>
     <span class="n">dlc_filter_kwargs</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">dlc_flip_x</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">dlc_flip_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1278,8 +1329,8 @@
     <span class="n">dlc_box_extents</span><span class="p">:</span> <span class="n">List</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 
     <span class="n">use_touch</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">touch_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
-    <span class="n">touch_tx_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;rate&quot;</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Tuple</span> <span class="o">=</span> <span class="s2">"dummy_constant"</span><span class="p">,</span>
+    <span class="n">touch_tx_mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"rate"</span><span class="p">,</span>
     <span class="n">touch_tx_hz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span>
     <span class="n">touch_invert_y</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">touch_speed_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
@@ -1448,18 +1499,18 @@
 <h3><strong>Dummy Mode Selection</strong><a class="headerlink" href="#dummy-mode-selection" title="Link to this heading">#</a></h3>
 <p>Instead of IP addresses, use strings to enable dummy clients:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># DLC dummy modes</span>
-<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>     <span class="c1"># Interactive pygame window</span>
-<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span>   <span class="c1"># Static position/heading</span>
-<span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>     <span class="c1"># Random walk</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">"dummy_pygame"</span>     <span class="c1"># Interactive pygame window</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">"dummy_constant"</span>   <span class="c1"># Static position/heading</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="s2">"dummy_random"</span>     <span class="c1"># Random walk</span>
 
 <span class="c1"># Touch dummy modes</span>
-<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span>   <span class="c1"># Interactive pygame window (hold LMB)</span>
-<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span> <span class="c1"># Static position/velocity</span>
-<span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_random&quot;</span>   <span class="c1"># Random positions</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">"dummy_pygame"</span>   <span class="c1"># Interactive pygame window (hold LMB)</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">"dummy_constant"</span> <span class="c1"># Static position/velocity</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="s2">"dummy_random"</span>   <span class="c1"># Random positions</span>
 
 <span class="c1"># Real hardware</span>
-<span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">)</span>         <span class="c1"># DLC server</span>
-<span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">)</span>      <span class="c1"># Touchscreen server</span>
+<span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">"192.168.1.50"</span><span class="p">,</span> <span class="mi">5005</span><span class="p">)</span>         <span class="c1"># DLC server</span>
+<span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">"192.168.1.100"</span><span class="p">,</span> <span class="mi">6001</span><span class="p">)</span>      <span class="c1"># Touchscreen server</span>
 </pre></div>
 </div>
 </section>
@@ -1480,7 +1531,7 @@
         <span class="k">return</span> <span class="n">empty</span>
 
     <span class="c1"># Extract [x, y, heading, head_angle, action]</span>
-    <span class="n">vals</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vals&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"vals"</span><span class="p">,</span> <span class="p">[])</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>  <span class="c1"># Drop timestamp</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pack_and_clip</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
 </pre></div>
@@ -1510,10 +1561,10 @@
 
     <span class="c1"># Pack [px, py, heading, speed01]</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;px&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;py&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;heading&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;speed01&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"px"</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"py"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"heading"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+        <span class="n">pkt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"speed01"</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="p">]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pack_and_clip</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
 </pre></div>
@@ -1556,12 +1607,12 @@
 <section id="on-player-contact-contact-bool">
 <h4><strong>on_player_contact(contact: bool)</strong><a class="headerlink" href="#on-player-contact-contact-bool" title="Link to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">on_player_contact</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">contact</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Called on every contact state change (edge-triggered from Unity).</span>
+<span class="w">    </span><span class="sd">"""Called on every contact state change (edge-triggered from Unity).</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        contact: True = contact started, False = contact ended.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Player-puck contact: </span><span class="si">{</span><span class="s1">&#39;start&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">contact</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;end&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Player-puck contact: </span><span class="si">{</span><span class="s1">'start'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">contact</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'end'</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">contact</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">vibration_on_interaction</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">give_vibration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vibration_step_duration</span><span class="p">)</span>
 </pre></div>
@@ -1584,13 +1635,13 @@
 <h3><strong>Behavior Routing</strong><a class="headerlink" href="#behavior-routing" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code> method routes to the appropriate client based on behavior name:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_action_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">behavior_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;spec&quot;</span><span class="p">]</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">"spec"</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="s2">&quot;dlc&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;mouse&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s2">"dlc"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"mouse"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&quot;touch&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;finger&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="k">elif</span> <span class="s2">"touch"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"finger"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&quot;ttl&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">&quot;photo&quot;</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="k">elif</span> <span class="s2">"ttl"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span> <span class="s2">"photo"</span> <span class="ow">in</span> <span class="n">behavior_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Default: zero action</span>
@@ -1622,38 +1673,38 @@
 <p><strong>Full Data Structure:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="c1"># Unity task data</span>
-    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;step_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;reward&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;terminal&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"episode"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"step_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"state"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"action"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"reward"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"terminal"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
 
     <span class="c1"># Teensy data</span>
-    <span class="s2">&quot;teensy_input_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_input_analog&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_input_digital&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_output_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;teensy_output_command&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_analog"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_input_digital"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_output_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"teensy_output_command"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
 
     <span class="c1"># DLC data (if use_dlc=True)</span>
-    <span class="s2">&quot;dlc_read_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;dlc_x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;dlc_y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;dlc_heading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;dlc_head_angle&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"dlc_read_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"dlc_x"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"dlc_y"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"dlc_heading"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"dlc_head_angle"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
 
     <span class="c1"># Touch data (if use_touch=True)</span>
-    <span class="s2">&quot;touch_read_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;touch_px&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;touch_py&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;touch_heading&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;touch_speed01&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"touch_read_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"touch_px"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"touch_py"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"touch_heading"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"touch_speed01"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
 
     <span class="c1"># TTL data (if use_photottl=True)</span>
-    <span class="s2">&quot;ttl_time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="s2">&quot;ttl_value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+    <span class="s2">"ttl_time"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span>
+    <span class="s2">"ttl_value"</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1667,20 +1718,20 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
 
-<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">"/dev/ttyACM0"</span><span class="p">)</span>
 
 <span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
     <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
-    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
-    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span><span class="p">,</span>
-    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">],</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"Build/MouseAR.exe"</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">"Mouse42"</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"MouseAgent"</span><span class="p">],</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">300.0</span><span class="p">]),</span>  <span class="c1"># 5 minutes</span>
 
     <span class="c1"># Enable DLC with real server</span>
     <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
-    <span class="n">dlc_filter_mode</span><span class="o">=</span><span class="s2">&quot;onread&quot;</span><span class="p">,</span>
-    <span class="n">dlc_filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">"192.168.1.50"</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
+    <span class="n">dlc_filter_mode</span><span class="o">=</span><span class="s2">"onread"</span><span class="p">,</span>
+    <span class="n">dlc_filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"min_cutoff"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">"beta"</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
     <span class="n">dlc_flip_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 
     <span class="c1"># Disable other clients</span>
@@ -1701,14 +1752,14 @@
 <h3><strong>Example 2: Touchscreen + TTL Sync</strong><a class="headerlink" href="#example-2-touchscreen-ttl-sync" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
     <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
-    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
-    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span><span class="p">,</span>
-    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TouchFingerAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLAgent&quot;</span><span class="p">],</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"Build/MouseAR.exe"</span><span class="p">,</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">"Mouse42"</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"TouchFingerAgent"</span><span class="p">,</span> <span class="s2">"TTLAgent"</span><span class="p">],</span>
 
     <span class="c1"># Enable Touch</span>
     <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>
-    <span class="n">touch_tx_mode</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="p">(</span><span class="s2">"192.168.1.100"</span><span class="p">,</span> <span class="mi">6001</span><span class="p">),</span>
+    <span class="n">touch_tx_mode</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span>
     <span class="n">touch_tx_hz</span><span class="o">=</span><span class="mf">120.0</span><span class="p">,</span>
     <span class="n">touch_invert_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 
@@ -1733,16 +1784,16 @@
 <h3><strong>Example 3: All Clients with Dummy Modes (Testing)</strong><a class="headerlink" href="#example-3-all-clients-with-dummy-modes-testing" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
     <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
-    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">,</span>
-    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TouchFingerAgent&quot;</span><span class="p">,</span> <span class="s2">&quot;TTLAgent&quot;</span><span class="p">],</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"Build/MouseAR.exe"</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"MouseAgent"</span><span class="p">,</span> <span class="s2">"TouchFingerAgent"</span><span class="p">,</span> <span class="s2">"TTLAgent"</span><span class="p">],</span>
 
     <span class="c1"># DLC dummy (pygame interactive)</span>
     <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">dlc_address</span><span class="o">=</span><span class="s2">&quot;dummy_pygame&quot;</span><span class="p">,</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="s2">"dummy_pygame"</span><span class="p">,</span>
 
     <span class="c1"># Touch dummy (constant position)</span>
     <span class="n">use_touch</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">touch_address</span><span class="o">=</span><span class="s2">&quot;dummy_constant&quot;</span><span class="p">,</span>
+    <span class="n">touch_address</span><span class="o">=</span><span class="s2">"dummy_constant"</span><span class="p">,</span>
 
     <span class="c1"># TTL generator (always enabled for dummy)</span>
     <span class="n">use_photottl</span><span class="o">=</span><span class="kc">True</span>
@@ -1762,13 +1813,13 @@
 <span class="c1"># Change spawn rate at 60s</span>
 <span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">cur_time</span> <span class="o">-</span> <span class="n">task</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="mf">60.0</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;spawn_rate&quot;</span><span class="p">,</span> <span class="s2">&quot;5.0&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"spawn_rate"</span><span class="p">,</span> <span class="s2">"5.0"</span><span class="p">)</span>
         <span class="k">break</span>
 
 <span class="c1"># Change difficulty at 120s</span>
 <span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">cur_time</span> <span class="o">-</span> <span class="n">task</span><span class="o">.</span><span class="n">start_time</span> <span class="o">&gt;</span> <span class="mf">120.0</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.8"</span><span class="p">)</span>
         <span class="k">break</span>
 
 <span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
@@ -1786,7 +1837,7 @@
         <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 
         <span class="c1"># Check for success event</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s2">"MouseAgent"</span><span class="p">][</span><span class="s2">"reward"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100ms water</span>
 
         <span class="k">return</span> <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span>
@@ -1803,9 +1854,9 @@
         <span class="c1"># Read Teensy digital input (e.g., barcode scanner)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">teensy</span><span class="o">.</span><span class="n">input_deque</span><span class="p">:</span>
             <span class="n">sample</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">teensy</span><span class="o">.</span><span class="n">input_deque</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;digital&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sample</span><span class="p">[</span><span class="s2">"digital"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">signal_ttl</span><span class="p">()</span>  <span class="c1"># Sync camera</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;trial_start&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"trial_start"</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">"time"</span><span class="p">]))</span>
 
         <span class="k">return</span> <span class="n">continuing</span><span class="p">,</span> <span class="n">info</span>
 </pre></div>
@@ -1821,7 +1872,7 @@
     <span class="o">...</span><span class="p">,</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
     <span class="n">env_params</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="mf">0.2</span>  <span class="c1"># Start easy</span>
+        <span class="s2">"difficulty"</span><span class="p">:</span> <span class="mf">0.2</span>  <span class="c1"># Start easy</span>
     <span class="p">}</span>
 <span class="p">)</span>
 
@@ -1829,9 +1880,9 @@
 <span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]:</span>
     <span class="c1"># Adjust difficulty per epoch</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">epoch</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.5&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.5"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">task</span><span class="o">.</span><span class="n">epoch</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.2&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.2"</span><span class="p">)</span>
 
 <span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
@@ -1846,51 +1897,51 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Load data</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;UnityData_Mouse42_20250130_120000.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"UnityData_Mouse42_20250130_120000.json"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
 <span class="c1"># Plot reward over time</span>
-<span class="n">episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;episode&quot;</span><span class="p">])</span>
-<span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;reward&quot;</span><span class="p">])</span>
-<span class="n">step_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;step_time&quot;</span><span class="p">])</span>
+<span class="n">episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"episode"</span><span class="p">])</span>
+<span class="n">rewards</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"reward"</span><span class="p">])</span>
+<span class="n">step_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"step_time"</span><span class="p">])</span>
 
 <span class="c1"># Cumulative reward per episode</span>
 <span class="n">unique_episodes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">episodes</span><span class="p">)</span>
 <span class="n">cumulative_rewards</span> <span class="o">=</span> <span class="p">[</span><span class="n">rewards</span><span class="p">[</span><span class="n">episodes</span> <span class="o">==</span> <span class="n">ep</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="n">unique_episodes</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unique_episodes</span><span class="p">,</span> <span class="n">cumulative_rewards</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Episode&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Reward&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Learning Curve: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;subject_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">unique_episodes</span><span class="p">,</span> <span class="n">cumulative_rewards</span><span class="p">,</span> <span class="s1">'o-'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Episode"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Cumulative Reward"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Learning Curve: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'params'</span><span class="p">][</span><span class="s1">'subject_id'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Plot DLC trajectory (if available)</span>
-<span class="k">if</span> <span class="s2">&quot;dlc_x&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">dlc_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;dlc_x&quot;</span><span class="p">])</span>
-    <span class="n">dlc_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;dlc_y&quot;</span><span class="p">])</span>
+<span class="k">if</span> <span class="s2">"dlc_x"</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">dlc_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"dlc_x"</span><span class="p">])</span>
+    <span class="n">dlc_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"dlc_y"</span><span class="p">])</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dlc_x</span><span class="p">,</span> <span class="n">dlc_y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X Position&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y Position&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mouse Trajectory&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"X Position"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Y Position"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Mouse Trajectory"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">"equal"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Analyze TTL bursts (if available)</span>
-<span class="k">if</span> <span class="s2">&quot;ttl_time&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="n">ttl_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ttl_time&quot;</span><span class="p">])</span>
-    <span class="n">ttl_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ttl_value&quot;</span><span class="p">])</span>
+<span class="k">if</span> <span class="s2">"ttl_time"</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">ttl_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"ttl_time"</span><span class="p">])</span>
+    <span class="n">ttl_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">"ttl_value"</span><span class="p">])</span>
 
     <span class="c1"># Detect burst starts (rising edges after idle)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ttl_value</span><span class="p">]))</span>
     <span class="n">rising</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">bursts</span> <span class="o">=</span> <span class="n">rising</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([[</span><span class="kc">True</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">ttl_time</span><span class="p">[</span><span class="n">rising</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">])]</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bursts</span><span class="p">)</span><span class="si">}</span><span class="s2"> TTL bursts&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Burst times: </span><span class="si">{</span><span class="n">ttl_time</span><span class="p">[</span><span class="n">bursts</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Detected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bursts</span><span class="p">)</span><span class="si">}</span><span class="s2"> TTL bursts"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Burst times: </span><span class="si">{</span><span class="n">ttl_time</span><span class="p">[</span><span class="n">bursts</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1903,7 +1954,7 @@
 <ol class="arabic">
 <li><p>Check <code class="docutils literal notranslate"><span class="pre">env_path</span></code> is correct:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;Build/MouseAR.exe&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"Build/MouseAR.exe"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -1915,10 +1966,10 @@
 </li>
 <li><p>Check display args:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
-    <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-    <span class="s2">&quot;quality_level&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s2">&quot;time_scale&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+    <span class="s2">"width"</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
+    <span class="s2">"height"</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
+    <span class="s2">"quality_level"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">"time_scale"</span><span class="p">:</span> <span class="mf">1.0</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1931,22 +1982,22 @@
 <p><strong>Solutions:</strong></p>
 <ol class="arabic">
 <li><p>Check <code class="docutils literal notranslate"><span class="pre">get_action_for()</span></code> is returning correct shape:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_action_for</span><span class="p">(</span><span class="s2">&quot;MouseAgent&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Action shape: </span><span class="si">{</span><span class="n">action</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s1">&#39;MouseAgent&#39;</span><span class="p">][</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_action_for</span><span class="p">(</span><span class="s2">"MouseAgent"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Action shape: </span><span class="si">{</span><span class="n">action</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Expected: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="s1">'MouseAgent'</span><span class="p">][</span><span class="s1">'spec'</span><span class="p">]</span><span class="o">.</span><span class="n">action_spec</span><span class="o">.</span><span class="n">continuous_size</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>Verify clients are started:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">touch_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DLC client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Touch client: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">touch_client</span><span class="w"> </span><span class="ow">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="kc">None</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>Check client data availability:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pkt</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC packet: </span><span class="si">{</span><span class="n">pkt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DLC packet: </span><span class="si">{</span><span class="n">pkt</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -1958,8 +2009,8 @@
 <p><strong>Solutions:</strong></p>
 <ol class="arabic">
 <li><p>Check reset condition:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reset condition: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">reset_condition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Behaviors done: </span><span class="si">{</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s1">&#39;done&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">task</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Reset condition: </span><span class="si">{</span><span class="n">task</span><span class="o">.</span><span class="n">reset_condition</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Behaviors done: </span><span class="si">{</span><span class="p">[</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="s1">'done'</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">task</span><span class="o">.</span><span class="n">behavior_list</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -1969,7 +2020,7 @@
 </ul>
 </li>
 <li><p>Adjust reset condition:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">reset_condition</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>  <span class="c1"># Wait for all agents</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">reset_condition</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>  <span class="c1"># Wait for all agents</span>
 </pre></div>
 </div>
 </li>
@@ -1983,15 +2034,15 @@
 <li><p>Check clients are logging:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dlc_read_time&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Touch samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;touch_read_time&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DLC samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'dlc_read_time'</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Touch samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'touch_read_time'</span><span class="p">,</span><span class="w"> </span><span class="p">[]))</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>Verify clients are reading data:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In loop:</span>
 <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">step</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DLC deque size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">filtered_deque</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DLC deque size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">dlc_client</span><span class="o">.</span><span class="n">filtered_deque</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -2143,7 +2194,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inheritance-responsibilities">Inheritance Responsibilities</a><ul class="nav section-nav flex-column">
@@ -2318,8 +2369,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

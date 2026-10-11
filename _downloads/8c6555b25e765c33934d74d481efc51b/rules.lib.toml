@@ -1,39 +1,39 @@
 ### Rules for HockeyGame #####
 [rules_lib.ramp_distance]
 target        = "unity.kv.hockeyFloor.move_object_max_distance"
-op            = "add"         # set|add|mul|substract
+op            = "add"         # set|add|mul|subtract
 value         = 0.04
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = 0.5
 max           = 5.00
 
 [rules_lib.ramp_distance_middlesteps]
 target        = "unity.kv.hockeyFloor.move_object_max_distance"
-op            = "add"         # set|add|mul|substract
+op            = "add"         # set|add|mul|subtract
 value         = 0.1
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = 3
 max           = 15.00
 
 [rules_lib.ramp_distance_largersteps]
 target        = "unity.kv.hockeyFloor.move_object_max_distance"
-op            = "add"         # set|add|mul|substract
+op            = "add"         # set|add|mul|subtract
 value         = 0.2
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = 5
 max           = 25
 
 [rules_lib.random_z_puck_position]
 target        = "unity.kv.hockeyFloor.move_object_z"
 op            = "rand"
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = -7
 max           = 7
 
 [rules_lib.random_x_puck_position]
 target        = "unity.kv.hockeyFloor.move_object_x"
 op            = "rand"
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = -5
 max           = 5
 
@@ -160,12 +160,526 @@ op            = "rand"
 min           = -7
 max           = 7
 
+##### Rules for goal-free Hockey variants ######
+
+# --- Control: block-switch on the pushability gain ---
+# List values cycle on each firing, so this alternates low/high gain blocks of 20 trials
+# with no scheduler support beyond what already exists.
+#
+# The gains are Task C's own g_lo / g_hi (3.0 / 9.0, ratio 3), not a separate pair: the control
+# has to ask whether the animal tracks THE dynamics it will later be cued about. 3.0 is a floor
+# rather than a preference -- below about g = 3 the positional coupling stops behaving like a
+# gain, because the command noise dominates and beta saturates at 1. 9.0 clears push_gain_max
+# (10.0) with 1.0 to spare.
+#
+# ORDER MATTERS, and it is the opposite of the reading order. The first firing is at the END of
+# episode 20, and it applies value[0] -- so value[0] must be the gain the profile is NOT already
+# running. With the profile at 3.0 and value = [3.0, 9.0] the first firing rewrote 3.0, a no-op:
+# the first block ran 40 trials, the first real switch was episode 41, and at 29-57 trials per
+# session most sessions contained no switch at all on a profile whose entire readout is the
+# trials just after one. [9.0, 3.0] puts the switch where the block boundary is.
+[rules_lib.block_switch_gain]
+target        = "unity.kv.hockeyFloor.push_gain"
+op            = "set"
+value         = [9.0, 3.0]
+every         = "episode:20"
+
+# --- Band shaping: raise the inner edge as the animal improves ---------------------------
+# Within-session ramp, in the same shape as ramp_distance: the profile sets the starting
+# band_min and this walks it up toward the task value. min/max bound the ramp for EVERY stage,
+# so one rule serves the whole ladder and no stage can overshoot the target.
+#
+# THIS IS TASK C'S LADDER ONLY. max = 2.42 is Task C's band_min; Task B's stage A has to reach
+# 3.54 and would stall 1.1 u short here. Task B uses taskb_stairA_up / _down below instead.
+#
+# The scheduler holds no state across sessions, so each session restarts from the profile's
+# band_min and re-earns the ramp. That is the same warm-up behaviour ramp_distance already has.
+#
+# THE STEP IS UNDERSIZED AND IT IS A LIVE BUG (§T55). 0.05 per 2 successes = 0.025 u/success was
+# inherited from ramp_distance (0.04 per 1) and never derived, so the 0.50 -> 2.42 walk costs 77
+# successes inside one session against a measured yield of 29-57 trials -- the ramp never
+# completes on any day, and because it resets nightly nothing accumulates to rescue it. The fix
+# is a per-profile step chosen from the target and the expected yield: value = 0.13 at
+# every = "success:2" completes inside ~30 successes. LEFT AT 0.05 DELIBERATELY -- it changes the
+# shipped Task C ladder and is the user's call, not a unilateral edit.
+#
+# In Task C the floor is not a difficulty in the first place (§T56): at kappa = 4 and drag 22 a
+# single MEDIAN corpus push moves 3.52 u against a 2.42 floor, so per-trial success is ~100% at
+# every value on the ramp and the failures are disengagement, not amplitude. That is why Task C
+# wants the arithmetic fix and NOT the performance staircase -- the ramp here is a warm-up, and
+# the performance test belongs one level up, at stage advance (§T52: ramp sits at the cap and
+# holds for a full session).
+#
+# DO NOT attach this to taskB, taskC or blockswitch. During data collection the reward
+# criterion has to be constant, or trials are not comparable and push scaling cannot be read
+# against a fixed band.
+[rules_lib.ramp_band_min]
+target        = "unity.kv.hockeyFloor.band_min"
+op            = "add"
+value         = 0.05
+every         = "success:2"
+min           = 0.5
+max           = 2.42
+
+# --- Task B stage A: a performance staircase on the floor -------------------------------------
+# §T56. Called stairA_up / stairA_down there; prefixed here because the VALUES are Task B's
+# (target 3.54), matching the taskb_/taskc_ convention the rest of this file uses.
+#
+# WHY TASK B AND NOT TASK C. "Advance on performance" presumes the criterion is what limits
+# success. In Task C's stage A it is not (see ramp_band_min above). Here one push is 0.70 u
+# against a 3.54 floor, so the criterion takes ~5 pushes and what it asks for is PERSISTENCE --
+# a real thing to titrate, and the one place a performance-contingent floor earns its keep.
+#
+# THE MECHANISM. A weighted up-down staircase: +delta_up on a rewarded trial, -delta_down on an
+# unrewarded one. It settles where the animal's hit rate equals
+# delta_down / (delta_up + delta_down) = 0.50 / 0.75 = 67% -- or stops where the animal is,
+# which is the point. Both rules clamp to [0.5, 3.54], so the floor can neither fall below the
+# stage-A start nor pass the Task B threshold.
+#
+# SIZING THE STEPS IS NOT THE ARITHMETIC IT LOOKS LIKE, and this is why they are small. The
+# tempting number -- span divided by delta_up, giving ~12 trials -- is the ALL-SUCCESS case.
+# Real drift is p*delta_up - (1-p)*delta_down, which collapses to zero as p approaches the
+# convergence point, so a step sized against a perfect animal climbs far too slowly against a
+# real one. The fix is not a bigger step: the share of trials that end up below the cap is set
+# by the RATIO, not the magnitude, because undoing one failure costs delta_down/delta_up
+# successes at any size. What actually pays for the climb is carrying the floor across sessions
+# (see the profile), and with that done small steps win -- 0.25/0.50 puts 91% of trials within
+# 0.55 u of criterion and keeps the floor trace smooth, which matters because what a criterion
+# jumping between trials does to ACQUISITION is the one thing here nobody has modelled.
+#
+# THE CONVERGENCE TARGET IS NOT A PERFORMANCE CRITERION. 67% is where the floor settles; it is
+# not Phase A's 75% allocation criterion, which measures a different quantity by a different
+# method. Do not read one as the other.
+#
+# `every: success:N` IS A SECOND RATIO CONTROL, NOT A SMOOTHING KNOB. It fires on the Nth tick
+# and applies the FULL value, so it keeps the jump size and merely halves its frequency -- a
+# smaller step every success is strictly better. It also divides the up-step's RATE without
+# touching delta_down, which silently moves the convergence target: 0.50/1.00 at `success:2`
+# converges at 80%, not 67%. Change `every` and you have changed where the staircase settles.
+#
+# THE DOWN-STEP IS KEYED ON THE `failure` COUNTER, which is why this is two plain rules and
+# nothing more. §T56 originally specified it as -delta_down on EVERY episode with a compensating
+# +(delta_up + delta_down) on success, because the scheduler had no failure counter; that worked
+# but depended on the task ticking on_success() before on_episode_end(), and needed the add rule
+# capped one down-step ABOVE the target (3.99) or a success at the cap would clamp the add, then
+# subtract, and the staircase would DECAY AT THE CEILING. The counter exists now
+# (rules_scheduler.LiveParamScheduler.counters), so neither subtlety applies: a success at the
+# cap simply clamps, and the tick order is irrelevant because only one of the two hooks fires per
+# trial.
+#
+# TWO THINGS TO KNOW BEFORE READING THE CONVERGED VALUE.
+#   1. The down-step fires on ANY unrewarded trial, and in stage A the dominant failure mode is
+#      disengagement rather than amplitude. So this is as much an ENGAGEMENT RESCUE as a
+#      difficulty titration -- still the behaviour we want, but the value it settles at is not a
+#      psychophysical threshold and must not be reported as one. Relatedly, the value only
+#      MEAN-REVERTS because a real animal's hit rate falls as the floor rises; at a hit rate that
+#      does not depend on the floor the drift is exactly zero and the value random-walks between
+#      the clamps. Read a trailing median, never the instantaneous value.
+#   2. ATTACH TO STAGE A ONLY, NEVER STAGE B. Stage B has two failure modes and only undershoot
+#      is about band_min; an overshoot failure would lower the floor for a reason that has
+#      nothing to do with it. Stage B should start at the task floor and introduce band_max by
+#      itself -- one thing at a time. This revises §T44's stage-B line "band live, floor ramps".
+#      When stage B does need a floor rule, the fix is a MORE SPECIFIC failure unit rather than
+#      this one, which is the other reason the counter is worth having.
+#
+# Task C's equivalent, IF it is ever wanted despite the above: target 2.42, and the same 2:1
+# ratio scaled to the shorter span -- delta_up 0.17, delta_down 0.34. Task C's stage A runs at
+# ~100% per-trial success, though, so a staircase there has no down-step to interact with and
+# nothing to titrate; the fixed ramp with a corrected step is the right tool. See ramp_band_min.
+[rules_lib.taskb_stairA_up]
+target        = "unity.kv.hockeyFloor.band_min"
+op            = "add"
+value         = 0.25           # delta_up
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
+min           = 0.5            # the stage-A starting floor
+max           = 3.54           # the Task B threshold
+
+[rules_lib.taskb_stairA_down]
+target        = "unity.kv.hockeyFloor.band_min"
+op            = "subtract"
+value         = 0.50           # delta_down
+every         = "failure:1"    # a terminal episode that paid no reward
+min           = 0.5            # the stage-A starting floor
+max           = 3.54           # the Task B threshold
+
+# --- Task B stage A: gain probes, to measure rho_eff before Task B ever runs ------------------
+# Task B identifies the rewarded puck by how far it moves per push: kappa 1.5 vs 6.0 (see the
+# Task B section below; 3.0 until 2026-10-06), targeting an effective ratio (rho_eff) of ~1.85.
+# The push travel the animals have LEARNED in stage A is mostly carry -- displacement while still
+# in contact, which the gain barely scales -- so rho_eff sits far below the nominal ratio of 4:
+# the old 1.5 / 3.0 pair delivered only ~1.3-1.5, and 6.0 was chosen from the carry/coast split
+# to restore ~1.85. A probe measures where it actually lands.
+#
+# NOT ATTACHED to any profile (decided 2026-10-06). Every probe trial is rewarded, so attaching
+# it pre-trains "the puck that flies pays" -- the reverse of Task B, where the high-gain puck is
+# the unrewarded distractor -- and biases Task B's readout (dwell on the distractor). rho_eff is
+# estimated from the carry/coast split of stage-A pushes instead, and measured in Task B from
+# first pushes. Kept for a deliberate, short one-off use only.
+#
+# When attached, it makes ~20% of stage-A trials kappa 6.0 (Task B's distractor gain) instead of 1.5.
+# Still one puck, still rewarded at the same staircase floor, so the stage's contingency is unchanged;
+# the high-gain trials are merely easier. Each animal's per-push displacement at the two gains
+# then gives its real rho_eff at its current push style (PushKinematicsAnalysis.rho_eff, with the
+# probe pushes kept out of d50_rewarded and the stage-A cap statistics scored on base-gain trials
+# only).
+#
+# Trial 1 runs the profile's push_gain (1.5): the scheduler fires on the episode boundary.
+# Each firing is logged with its label, so every trial's gain is recoverable either way.
+[rules_lib.taskb_stairA_gain_probe]
+op            = "scenario_choice"
+every         = "episode:1"
+
+[[rules_lib.taskb_stairA_gain_probe.scenarios]]
+label  = "base_gain"
+weight = 0.8
+[[rules_lib.taskb_stairA_gain_probe.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 1.5
+
+[[rules_lib.taskb_stairA_gain_probe.scenarios]]
+label  = "probe_distractor_gain"
+weight = 0.2
+[[rules_lib.taskb_stairA_gain_probe.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 6.0
+
+# --- Task C: SIZE -> pushability mapping, with ~10% probe trials ---
+# THE CUE IS SIZE, NOT TEXTURE. The design moved off texture: size is readable at any distance,
+# which is what makes Task C's anticipatory window long enough to measure, whereas the texture
+# pattern is only resolvable within about 5-6 cm and would compress that window to nothing.
+# Texture is still rendered, but it is redrawn independently every trial (taskc_texture_random)
+# so it carries no information about the gain.
+#
+# move_object_scale IS THE PUCK DIAMETER in world units. 1.21 / 2.42 is a 2x diameter and 4x
+# footprint contrast. The large value is coupled to the band and cannot be raised freely:
+# d_large <= 9.7 / (W + 0.5) with W = band_max - band_min, and band_min is pinned AT d_large so
+# a rewarded push has cleared the puck's own spot. At band 2.42-7.99 (W = 3.30) the cap is 2.55,
+# so 2.42 fits with 0.13 of margin. Re-derive both together or the leak stops being 0%.
+#
+# One scenario sets BOTH the size and the gain, so the pair can never desynchronise. The two
+# probe scenarios invert the mapping; their weights give a 10% probe rate. All randomisation
+# stays in Python, where every draw is already logged to runtime_params.
+#
+# THE MAIN COHORT RUNS size_gain_map_b, AND ONLY size_gain_map_b. small -> high gain is the
+# mapping the animals learn. size_gain_map_incongruent is the same rule with the mapping mirrored
+# (small -> low); it is NOT half of a counterbalanced design and is not attached to any profile
+# here. Keep it for a control group or a transfer manipulation, and if it is ever run, record in
+# the session metadata which of the two the animal was on -- the two are indistinguishable in the
+# data apart from the rule name in the draw log.
+#
+# The consequence, stated plainly because it is a real limitation: with a single mapping across
+# the cohort, SIZE IS CONFOUNDED WITH GAIN AT THE GROUP LEVEL. Nothing in the analysis can
+# separate "large means low gain" from "large pucks are treated differently" without the mirrored
+# group. That is a deliberate trade -- one mapping is faster to acquire and halves the cohort
+# needed per cell -- but it has to be pre-registered as an assumption rather than discovered.
+#
+# NOTE ON PROBES AND SIZE. Unlike a texture probe, a size probe also changes the puck's physical
+# footprint, so on a probe trial the wall margin moves with the cue value. That is the Q4(b)
+# confound, and it is designed around rather than corrected: band_max is chosen to keep the leak
+# at 0% AT EVERY cue value, not on average.
+
+# --- The INCONGRUENT mapping: small puck -> LOW gain -----------------------------------------
+# NOT RUN IN THE MAIN COHORT. Mirror of size_gain_map_b below.
+#
+# CONGRUENCE IS DEFINED BY THE SIGN, NOT BY WHICH RULE IS ATTACHED. Congruent means required
+# amplitude scales POSITIVELY with size: large puck -> low gain -> big push. This rule pairs large
+# with the HIGH gain, so a large puck needs a SMALLER push -- that is the incongruent mapping, and
+# the scenario labels say so. They used to say "congruent_*", which was wrong and would have
+# mislabelled every trial of an extension cohort in the draw log.
+#
+# The design deliberately does not run this in the main cohort: it predicts the opposite sign, so
+# pooling it with map_b would cancel the main effect rather than balance it. Keep it for the
+# extension cohort the design provides for.
+[rules_lib.size_gain_map_incongruent]
+op            = "scenario_choice"
+every         = "episode:1"
+
+# incongruent: small -> LOW gain, so the small puck needs the bigger push
+[[rules_lib.size_gain_map_incongruent.scenarios]]
+label  = "incongruent_small_low"
+weight = 0.45
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 3.0
+
+# incongruent: large -> HIGH gain, so the large puck needs the smaller push
+[[rules_lib.size_gain_map_incongruent.scenarios]]
+label  = "incongruent_large_high"
+weight = 0.45
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 2.42
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 9.0
+
+# probe: small -> HIGH gain (mapping broken)
+[[rules_lib.size_gain_map_incongruent.scenarios]]
+label  = "probe_small_high"
+weight = 0.05
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 9.0
+
+# probe: large -> LOW gain (mapping broken)
+[[rules_lib.size_gain_map_incongruent.scenarios]]
+label  = "probe_large_low"
+weight = 0.05
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 2.42
+[[rules_lib.size_gain_map_incongruent.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 3.0
+
+# --- size_gain_map_b: small puck -> HIGH gain. THIS IS THE MAPPING THE MAIN COHORT RUNS -------
+[rules_lib.size_gain_map_b]
+op            = "scenario_choice"
+every         = "episode:1"
+
+# congruent: small -> high gain
+[[rules_lib.size_gain_map_b.scenarios]]
+label  = "congruent_small_high"
+weight = 0.45
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 9.0
+
+# congruent: large -> low gain
+[[rules_lib.size_gain_map_b.scenarios]]
+label  = "congruent_large_low"
+weight = 0.45
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 2.42
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 3.0
+
+# probe: small -> LOW gain (mapping broken)
+[[rules_lib.size_gain_map_b.scenarios]]
+label  = "probe_small_low"
+weight = 0.05
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 3.0
+
+# probe: large -> HIGH gain (mapping broken)
+[[rules_lib.size_gain_map_b.scenarios]]
+label  = "probe_large_high"
+weight = 0.05
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 2.42
+[[rules_lib.size_gain_map_b.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 9.0
+
+# --- Task C: hold the texture UNINFORMATIVE by redrawing it every trial -----------------------
+# Stripes or rings, drawn independently of the size->gain scenario, so the pattern predicts
+# nothing. It is kept rather than dropped so the two tasks stay matched on what is on the screen:
+# Task B needs two visually distinct pucks, and a Task C puck that was always plain would differ
+# from a Task B puck in more than the binding.
+#
+# random_choice draws from {min, max}, i.e. exactly the two pattern ids named here (1 = stripes,
+# 4 = rings). It fires on the same episode:1 cadence as the size map; the scheduler evaluates
+# every rule independently and accumulates into one pending-KV dict, so two rules with DIFFERENT
+# targets compose rather than one winning (rules_scheduler._maybe_apply).
+[rules_lib.taskc_texture_random]
+target        = "unity.kv.hockeyFloor.puck_cue_pattern"
+op            = "random_choice"
+every         = "episode:1"
+min           = 1
+max           = 4
+
+# --- Task B: trial-unique texture <-> gain assignment ---
+# Textures are visually distinct but NON-predictive: the assignment is redrawn every trial,
+# so the animal must bind object to property afresh each time. That trial-unique binding is
+# what makes this the interference-stressor counterpart to Task C's stable mapping.
+# --- Task B: sequential sampling ---------------------------------------------------------
+# Two pucks per trial, visually distinct but NON-predictive: the texture->gain binding and the
+# texture->spawn-slot binding are both redrawn uniformly every trial, so neither the pattern nor
+# the position carries information about which puck is pushable. The animal can only find out by
+# probing.
+#
+# THE REWARDED PUCK IS THE LOW-GAIN ONE. This was reversed until 2026-09-02 and it is the one
+# structural error in the profile, not a tuning slip. The criterion is a threshold the puck must
+# be pushed PAST, and the distractor is inert: with the HIGH-gain puck rewarded, a single blind
+# push hard enough for the low-gain puck also carries the high-gain one past the threshold, so
+# one undifferentiated amplitude solves the trial and there is nothing to infer. Rewarding the
+# LOW-gain puck inverts that -- an amplitude sufficient for the rewarded puck is only reached by
+# committing to it, so the animal has to identify which puck it is holding before it commits.
+#
+# THE DISTRACTOR GAIN IS 6.0, NOT 3.0 (changed 2026-10-06). The design's target is an EFFECTIVE
+# displacement ratio near 2 -- the argmax of the switch diagnostic (T25): wider makes the pucks
+# trivially discriminable on one push, narrower makes the mistake budget vanish. 1.5 / 3.0 was
+# chosen assuming push travel scales with gain. Stage-A data say it does not: ~70% of a push is
+# CARRY (travel while still in contact, which the gain does not scale), so 1.5 / 3.0 delivers
+# rho_eff ~1.3 -- below T25's range. With coast share s ~0.28-0.30, rho_eff ~ (1-s) + s*k_hi/k_lo,
+# so 6.0 restores ~1.85 (a LOWER bound: some in-contact travel likely scales too). Measure it in
+# Task B from first pushes (PushKinematicsAnalysis.rho_first_push) and step 6.0 down during
+# acquisition while rho_first_push stays >= 1.75; freeze before data collection. Rewarded gain
+# and drag are unchanged, so the rewarded puck is the one stage A trained on.
+#
+# All three per-puck lists are set by ONE scenario, so pattern, gain and role can never
+# desynchronise within a trial. Values are comma-separated in spawn order, and role 0 = rewarded.
+#
+# THE FOUR CELLS ARE DRAWN I.I.D., NOT COUNTERBALANCED. scenario_choice picks one independently
+# every trial, so the realised split is binomial rather than exact: over 40-trial sessions the
+# rewarded-slot count ranges 9-30 against an expectation of 20, and about 16 per cent of sessions
+# land at 25/15 or worse. That is accepted -- i.i.d. draws carry no sequential structure for the
+# animal to exploit, which block-shuffling would introduce -- but it means a per-session
+# imbalance is NOISE, not evidence the rule failed. SessionMonitor's alarm is set accordingly:
+# it gates on texture_slot_balance_z against the i.i.d. null, not on the deviation being zero.
+[rules_lib.taskb_puck_assignment]
+op            = "scenario_choice"
+every         = "episode:1"
+
+# stripes in slot 0, and stripes is the REWARDED low-gain puck
+[[rules_lib.taskb_puck_assignment.scenarios]]
+label  = "stripes_low_slot0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_cue_patterns"
+value  = "1,4"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_gains"
+value  = "1.5,6.0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_roles"
+value  = "0,1"
+
+# stripes in slot 0, and rings is the REWARDED low-gain puck
+[[rules_lib.taskb_puck_assignment.scenarios]]
+label  = "stripes_high_slot0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_cue_patterns"
+value  = "1,4"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_gains"
+value  = "6.0,1.5"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_roles"
+value  = "1,0"
+
+# rings in slot 0, and rings is the REWARDED low-gain puck
+[[rules_lib.taskb_puck_assignment.scenarios]]
+label  = "rings_low_slot0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_cue_patterns"
+value  = "4,1"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_gains"
+value  = "1.5,6.0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_roles"
+value  = "0,1"
+
+# rings in slot 0, and stripes is the REWARDED low-gain puck
+[[rules_lib.taskb_puck_assignment.scenarios]]
+label  = "rings_high_slot0"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_cue_patterns"
+value  = "4,1"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_gains"
+value  = "6.0,1.5"
+[[rules_lib.taskb_puck_assignment.scenarios.params]]
+target = "unity.kv.hockeyFloor.puck_roles"
+value  = "1,0"
+
+# --- Task B: OPTIONAL per-trial jitter of the threshold ---------------------------------------
+# DEFAULT: NOT ATTACHED. Introduce it after the task is acquired, never before -- what a variable
+# criterion does to acquisition is the one thing the simulation could not model.
+#
+# WHAT IT BUYS. With a fixed threshold, an animal that pushes and gets nothing cannot tell "wrong
+# puck" from "right puck, not far enough yet" -- but it does not need to, because it knows how
+# far it pushed. Drawing theta_min afresh each trial removes that shortcut: absence of reward
+# stops being diagnostic of distance, so identifying the puck becomes worth more. Measured, it is
+# worth roughly x3 on the inference advantage (+0.9% -> +2.6% at a generous 15 s clock,
+# +5.5% -> +17% at a tight 5 s one).
+#
+# WHY A DISCRETE LADDER IS ENOUGH. Five log-spaced levels score within Monte-Carlo noise of a
+# continuous log-uniform draw (+15.9% vs +17.9% at J = 2, 5 s clock). The null strategy still has
+# to push to the TOP of the range before it can abandon a puck, and that is what sets its cost.
+#
+# WHY BOUNDED. A log-normal at matched SD gives the same effect (+15.4% vs +17.1%), so the shape
+# does not matter -- but it has no maximum, and an unreachable criterion is an unwinnable trial.
+# log-uniform at J = 2 tops out at 1.41x the median; the ladder's top level, 5.01, is exactly the
+# push-room floor at separation 100 / half-width 20 with a 3 x 2 u init zone.
+#
+# WHY THIS IS NOT ramp_band_min, WHICH THE COMMENT ABOVE FORBIDS HERE. That warning is about a
+# RAMP: it moves the criterion monotonically with success count, so session time and criterion are
+# confounded and the drift cannot be balanced away. A per-episode random draw is balanced by
+# construction, orthogonal to time, and logged per trial, so it enters the analysis as a covariate
+# rather than a confound. The warning's other clause -- "push scaling cannot be read against a
+# fixed band" -- is a Task C objection: C's readouts are aim relative to the band, while Task B
+# has no aiming demand at all because band_max sits at the arena limit. What DOES carry over is
+# "trials are not comparable": trial length, push count and wasted effort all scale with the drawn
+# threshold, so every one of them must be normalised by it in the analysis. The primary readout,
+# the first-push switch asymmetry, needs no normalisation -- it is scored long before any
+# criterion is approached.
+#
+# band_min is a SCALAR KV read by the spawner and applied to every puck, so all pucks share the
+# drawn criterion automatically. A per-puck criterion would be a second cue, and the scalar form
+# rules it out for free. band_max sits at the arena limit in Task B, so raising band_min can never
+# collide with it.
+[rules_lib.taskb_theta_jitter]
+op    = "scenario_choice"
+every = "episode:1"
+
+[[rules_lib.taskb_theta_jitter.scenarios]]           # x0.707
+label  = "theta_250"
+weight = 0.2
+[[rules_lib.taskb_theta_jitter.scenarios.params]]
+target = "unity.kv.hockeyFloor.band_min"
+value  = 2.50
+
+[[rules_lib.taskb_theta_jitter.scenarios]]           # x0.841
+label  = "theta_298"
+weight = 0.2
+[[rules_lib.taskb_theta_jitter.scenarios.params]]
+target = "unity.kv.hockeyFloor.band_min"
+value  = 2.98
+
+[[rules_lib.taskb_theta_jitter.scenarios]]           # x1.000, the median
+label  = "theta_354"
+weight = 0.2
+[[rules_lib.taskb_theta_jitter.scenarios.params]]
+target = "unity.kv.hockeyFloor.band_min"
+value  = 3.54
+
+[[rules_lib.taskb_theta_jitter.scenarios]]           # x1.189
+label  = "theta_421"
+weight = 0.2
+[[rules_lib.taskb_theta_jitter.scenarios.params]]
+target = "unity.kv.hockeyFloor.band_min"
+value  = 4.21
+
+[[rules_lib.taskb_theta_jitter.scenarios]]           # x1.414, pinned to the push-room floor
+label  = "theta_501"
+weight = 0.2
+[[rules_lib.taskb_theta_jitter.scenarios.params]]
+target = "unity.kv.hockeyFloor.band_min"
+value  = 5.01
+
 ##### Rules for Sequence Places ######
 [rules_lib.reduce_platform_sizex]
 target        = "unity.kv.gridSeq.target_scale_x"
 op            = "subtract"         # set|add|mul|subtract
 value         = 0.01
-every         = "success:5"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:5"    # success:N | failure:N | episode:N | epoch:N
 min           = 6
 max           = 8
 
@@ -173,14 +687,14 @@ max           = 8
 target        = "unity.kv.gridSeq.target_scale_y"
 op            = "subtract"         # set|add|mul|subtract
 value         = 0.01
-every         = "success:5"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:5"    # success:N | failure:N | episode:N | epoch:N
 min           = 6
 max           = 8
 
 [rules_lib.ramp_dwelltime]
 target        = "unity.kv.SequenceManager.dwell_target_seconds"
-op            = "add"         # set|add|mul|substract
+op            = "add"         # set|add|mul|subtract
 value         = 0.01
-every         = "success:1"    # trial:N | success:N | episode:N | epoch:N
+every         = "success:1"    # success:N | failure:N | episode:N | epoch:N
 min           = 0.1
 max           = 1

@@ -2,7 +2,7 @@
 
 ## datajoint.json
 
-DataJoint reads connection credentials from `datajoint.json` in the working directory (typically `dj_pipeline/`). Copy and edit the template:
+DataJoint reads connection credentials from `datajoint.json` in the working directory (typically `dj_pipeline/`). Copy `dj_pipeline/datajoint.json.example` and fill in your own values — the filled-in file is gitignored and must not be committed:
 
 ```json
 {

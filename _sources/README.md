@@ -7,7 +7,7 @@ The code and task design is based on the previous development in the Mathis Lab 
 * `mouse_ar/` - the main python module for the mice AR tasks.
 * `touchscreen/` - code for the touchscreen interface.
 * `UnityAR/` - Unity project files for the AR environment.
-* `rl/` - reinforcement learning related code.
+* `rl/` - Gymnasium wrappers: RL training, replay of recorded sessions and what-if replays. See the [user guide](docs/RL/GYMNASIUM_WRAPPERS.md).
 * `tests/` - unit tests for the codebase.
 * `docs/` - documentation files.
 * `dj_pipeline/` - DataJoint pipeline for data management and transfer, including a GUI for data transfer.
@@ -67,6 +67,41 @@ pre-commit install
 (3) Just run it on your code BEFORE you git push:
 ```bash
 pre-commit run --all-files
+```
+
+
+## Replay Integration Tests
+
+The RL wrappers and replay are documented in [docs/RL/GYMNASIUM_WRAPPERS.md](docs/RL/GYMNASIUM_WRAPPERS.md).
+
+Unity-backed replay integration tests live under [tests/rl](tests/rl) and are marked `integration`.
+They are manual-first and skip cleanly unless a local Unity build is available.
+
+Required environment variable:
+
+```bash
+export SCENE_UNITY_ENV_PATH=/absolute/path/to/MouseAR.x86_64
+```
+
+Optional environment variables:
+
+```bash
+export SCENE_REPLAY_DATA_PATH=data/UnityData_TestMouse_20260306_135117.json
+export SCENE_REPLAY_TRIAL_ID=1
+export SCENE_UNITY_BASE_PORT=5604
+export SCENE_UNITY_WORKER_ID=11
+```
+
+Run the manual Unity-backed replay integration suite with the touchscreen env:
+
+```bash
+conda run -n touchscreen python -m pytest tests/rl/test_hockey_replay_integration.py -q
+```
+
+Run the replay-wrapper unit suite without Unity:
+
+```bash
+conda run -n touchscreen python -m pytest tests/rl/ -q
 ```
 
 

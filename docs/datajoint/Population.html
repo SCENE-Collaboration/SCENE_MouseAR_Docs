@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datajoint/Population';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Infrastructure (Docker &amp; MySQL)" href="Infrastructure.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-population">Standard Population</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-register-datasets">Step 1 — Register datasets</a></li>
@@ -462,7 +513,7 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>Before running any population script:</p>
 <ol class="arabic simple">
-<li><p><strong>Database credentials</strong> — ensure <code class="docutils literal notranslate"><span class="pre">dj_pipeline/datajoint.json</span></code> contains valid credentials (see <a class="reference internal" href="Connections.html"><span class="std std-doc">Connections</span></a>)</p></li>
+<li><p><strong>Database credentials</strong> — copy <code class="docutils literal notranslate"><span class="pre">dj_pipeline/datajoint.json.example</span></code> to <code class="docutils literal notranslate"><span class="pre">dj_pipeline/datajoint.json</span></code> and fill in your own values (see <a class="reference internal" href="Connections.html"><span class="std std-doc">Connections</span></a>). The real file is gitignored and must stay that way: it was tracked with a live password once already.</p></li>
 <li><p><strong>Environment variables</strong> — <code class="docutils literal notranslate"><span class="pre">RAW_DATA_PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">VIDEO_PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">DLC_DATA_PATH</span></code> must point to the correct data directories (see <a class="reference internal" href="Connections.html"><span class="std std-doc">Connections</span></a>)</p></li>
 <li><p><strong>base_schemas sessions</strong> — <code class="docutils literal notranslate"><span class="pre">SessionDataset</span></code> links datasets to sessions in <code class="docutils literal notranslate"><span class="pre">base_schemas.exp.Session</span></code>. Sessions for the relevant mice and dates must already exist there before <code class="docutils literal notranslate"><span class="pre">SessionDataset.populate()</span></code> will succeed</p></li>
 <li><p><strong>DLC models</strong> — for <code class="docutils literal notranslate"><span class="pre">DlcLiveData.populate()</span></code>, at least one <code class="docutils literal notranslate"><span class="pre">DlcModel</span></code> entry must exist. See <a class="reference internal" href="#manual-population"><span class="xref myst">Manual Population</span></a> below</p></li>
@@ -583,7 +634,7 @@ prefix in <code class="docutils literal notranslate"><span class="pre">dj_pipeli
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the currently installed crontab</span>
 crontab<span class="w"> </span>-l
 
-<span class="c1"># Remove all of the current user&#39;s cron entries</span>
+<span class="c1"># Remove all of the current user's cron entries</span>
 crontab<span class="w"> </span>-r
 
 <span class="c1"># Manual one-off test run (same env as cron, output goes to your terminal)</span>
@@ -606,7 +657,7 @@ stdout/stderr. Append-only across runs.</p></li>
 by the <code class="docutils literal notranslate"><span class="pre">populate.py</span></code> logger, one file per invocation.</p></li>
 </ul>
 <p>To keep <code class="docutils literal notranslate"><span class="pre">cron.log</span></code> from growing unbounded, configure logrotate (one-time):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/logrotate.d/mouse_hockey<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/logrotate.d/mouse_hockey<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
 <span class="s">/mnt/md0/mouse_hockey/code/SCENE_MouseAR/dj_pipeline/logs/cron.log {</span>
 <span class="s">    weekly</span>
 <span class="s">    rotate 8</span>
@@ -629,11 +680,11 @@ sudo<span class="w"> </span>logrotate<span class="w"> </span>-d<span class="w"> 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_dlc_live</span><span class="w"> </span><span class="kn">import</span> <span class="n">DlcModel</span>
 
 <span class="n">model_id</span> <span class="o">=</span> <span class="n">DlcModel</span><span class="o">.</span><span class="n">insert_dlc_live_model_from_file</span><span class="p">(</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s2">&quot;/path/to/model.pt&quot;</span><span class="p">,</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;ResNet50 model trained on lab mice, 12 keypoints&quot;</span><span class="p">,</span>
-    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mice_resnet50_v1&quot;</span><span class="p">,</span>   <span class="c1"># optional, defaults to filename</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s2">"/path/to/model.pt"</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">"ResNet50 model trained on lab mice, 12 keypoints"</span><span class="p">,</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">"mice_resnet50_v1"</span><span class="p">,</span>   <span class="c1"># optional, defaults to filename</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Inserted model with ID: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Inserted model with ID: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This manual registration step should be treated as the normal path, not an optional cleanup step after population. Populate the model registry first, then run <code class="docutils literal notranslate"><span class="pre">DlcLiveData.populate()</span></code>, then <code class="docutils literal notranslate"><span class="pre">SyncedDlcLiveData.populate()</span></code>. That ordering is more reproducible than relying on inferred metadata from processor files.</p>
@@ -641,7 +692,7 @@ sudo<span class="w"> </span>logrotate<span class="w"> </span>-d<span class="w"> 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DlcLiveData</span><span class="o">.</span><span class="n">populate</span><span class="p">(</span>
     <span class="n">suppress_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">reserve_jobs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">make_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_from_file&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="n">make_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"init_from_file"</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -665,8 +716,8 @@ python<span class="w"> </span>manual_populate.py
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionDataset</span>
 
 <span class="n">SessionDataset</span><span class="o">.</span><span class="n">register_dataset</span><span class="p">(</span>
-    <span class="n">session_key</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mouse_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tick&quot;</span><span class="p">,</span> <span class="s2">&quot;doe&quot;</span><span class="p">:</span> <span class="s2">&quot;2026-02-10&quot;</span><span class="p">,</span> <span class="s2">&quot;attempt&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-    <span class="n">dataset_key</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataset_id&quot;</span><span class="p">:</span> <span class="s2">&quot;Tick_20260210_141820&quot;</span><span class="p">},</span>
+    <span class="n">session_key</span><span class="o">=</span><span class="p">{</span><span class="s2">"mouse_name"</span><span class="p">:</span> <span class="s2">"Tick"</span><span class="p">,</span> <span class="s2">"doe"</span><span class="p">:</span> <span class="s2">"2026-02-10"</span><span class="p">,</span> <span class="s2">"attempt"</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="n">dataset_key</span><span class="o">=</span><span class="p">{</span><span class="s2">"dataset_id"</span><span class="p">:</span> <span class="s2">"Tick_20260210_141820"</span><span class="p">},</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -682,13 +733,13 @@ python<span class="w"> </span>manual_populate.py
 <span class="kn">from</span><span class="w"> </span><span class="nn">dj_pipeline.schemas.mousear_screen_sync</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScreenSync</span>
 
 <span class="c1"># Count populated entries</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sessions:          </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">UnitySession</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trials:            </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TrialInfo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Videos:            </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">VideoRecording</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SyncedVideos:      </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">SynchronizedVideo</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ScreenSync:        </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ScreenSync</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DlcLiveData:       </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">DlcLiveData</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SyncedDlcLiveData: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">SyncedDlcLiveData</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sessions:          </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">UnitySession</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Trials:            </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">TrialInfo</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Videos:            </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">VideoRecording</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SyncedVideos:      </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">SynchronizedVideo</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ScreenSync:        </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ScreenSync</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DlcLiveData:       </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">DlcLiveData</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SyncedDlcLiveData: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">SyncedDlcLiveData</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Check error jobs</span>
 <span class="n">UnitySession</span><span class="o">.</span><span class="n">progress</span><span class="p">()</span>
@@ -762,7 +813,7 @@ python<span class="w"> </span>manual_populate.py
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-population">Standard Population</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-register-datasets">Step 1 — Register datasets</a></li>
@@ -841,8 +892,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

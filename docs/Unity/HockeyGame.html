@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/HockeyGame';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Python GUIs - User Guide" href="../python/GUIs.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#involved-unity-scripts">Involved Unity Scripts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships-how-they-work-together">Component Relationships &amp; How They Work Together</a></li>
@@ -443,6 +494,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-unity-python">Data Flow: Unity → Python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages-sent-by-floortargetsspawnerreporter">Messages sent by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-goal-free-telemetry-lands-in-datajoint">Where the goal-free telemetry lands in DataJoint</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-dlcagent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-ttlreceiveragent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
@@ -620,13 +672,13 @@ KvManagersDirector: HockeyManager.enabled=1
               positions target + puck based on spawn_mode (0/1/2/3)
               spawns 1 TargetArea (isTrigger, tag=Target)
               spawns 1 puck (Rigidbody + kill components)
-              → SendKv(&quot;hockey.target_positions&quot;, &quot;x,z&quot;)
+              → SendKv("hockey.target_positions", "x,z")
 
 State = Running
   ├─ FixedUpdate: FloorTargetsSpawnerReporter
-  │     → SendKv(&quot;hockey.object_position&quot;,
-  │              &quot;pos_x,pos_z,vel_x,vel_z&quot;)
-  │     → SendKv(&quot;hockey.player_contact&quot;, &quot;1&quot;/&quot;0&quot;)  ← edge-triggered only
+  │     → SendKv("hockey.object_position",
+  │              "pos_x,pos_z,vel_x,vel_z")
+  │     → SendKv("hockey.player_contact", "1"/"0")  ← edge-triggered only
   │
   ├─ ContainmentInBoxVolume: clamp + bounce puck
   ├─ TargetKillOnDistance: destroy puck if travel &gt; max
@@ -675,7 +727,7 @@ State = ITI
 <li><p>If <code class="docutils literal notranslate"><span class="pre">Elapsed</span> <span class="pre">&gt;=</span> <span class="pre">episodeLength</span></code>: timeout → <code class="docutils literal notranslate"><span class="pre">EndEpisode()</span></code> (with optional noise overlay).</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter.FixedUpdate()</span></code> sends puck position + velocity to Python every <code class="docutils literal notranslate"><span class="pre">reportingPeriod</span></code> physics steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter.FixedUpdate()</span></code> sends puck position + velocity to Python every <code class="docutils literal notranslate"><span class="pre">reportingPeriodSteps</span></code> physics steps.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ContainmentInBoxVolume.FixedUpdate()</span></code> (on puck) keeps puck inside arena.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TargetKillOnDistance.Update()</span></code> (on puck) accumulates travel distance; destroys puck when <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">moveObjectMaxDistance</span></code> (which also triggers TargetsAlive==0 → success on next frame tick).</p></li>
 </ul>
@@ -731,13 +783,13 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <td><p>Reporter + EnvParams</p></td>
 <td><p>Toggle KV reporting</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">general.reporting_period_steps</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerEnvParams</span></code></p></td>
-<td><p>Reporter interval (steps)</p></td>
+<td><p>Reporter interval in FixedUpdate STEPS, not seconds</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.position_x/y/z</span></code></p></td>
 <td><p>Init-phase spawner</p></td>
-<td><p>Init zone position</p></td>
+<td><p>Init zone position (x/z can instead be set live via <code class="docutils literal notranslate"><span class="pre">HockeyManager.init_position_x/z</span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.size_x/y/z</span></code></p></td>
 <td><p>Init-phase spawner</p></td>
@@ -745,7 +797,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rewardAssociation.dwell_time</span></code></p></td>
 <td><p>Init-phase spawner</p></td>
-<td><p>Dwell before cleared (s)</p></td>
+<td><p>Dwell before cleared (s) (or live via <code class="docutils literal notranslate"><span class="pre">HockeyManager.init_dwell_time</span></code>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1028,6 +1080,204 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 </tbody>
 </table>
 </div>
+<p><strong>Goal-free variants: push gain, texture cue, displacement band</strong></p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">mouse_ar/tasks/configs/hockey_goalfree.game.toml</span></code> (profiles <code class="docutils literal notranslate"><span class="pre">blockswitch</span></code>, <code class="docutils literal notranslate"><span class="pre">taskC</span></code>,
+<code class="docutils literal notranslate"><span class="pre">taskB</span></code>). All default to inert values, so existing hockey profiles are unaffected.</p>
+<p>None of these set <code class="docutils literal notranslate"><span class="pre">changed</span> <span class="pre">=</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code>: they are per-trial parameters
+consumed at the next <code class="docutils literal notranslate"><span class="pre">SpawnAll()</span></code>, which the episode manager already calls after the scheduler
+has drained during the ITI. Forcing a respawn would fire mid-ITI.</p>
+<p><em>Pushability gain κ</em> (<code class="docutils literal notranslate"><span class="pre">PushGain.cs</span></code>) — scales the velocity increment PhysX imparts on contact.
+<code class="docutils literal notranslate"><span class="pre">push_gain</span> <span class="pre">=</span> <span class="pre">1</span></code> adds exactly zero force, i.e. unmodified behaviour.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_push_gain</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Master switch for the κ multiplier</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">push_gain</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Mean gain κ. 1 = unmodified physics</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">push_gain_sigma</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Std-dev of the per-sample gain draw. 0 = deterministic</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">push_gain_resample</span></code></p></td>
+<td><p>int</p></td>
+<td><p>0 = draw κ once per trial, 1 = redraw on every push onset (Task B)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">push_gain_min</span></code> / <code class="docutils literal notranslate"><span class="pre">push_gain_max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Clamp applied to every sampled gain</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Texture cue</em> (<code class="docutils literal notranslate"><span class="pre">PuckAppearance.cs</span></code>) — all patterns render at the <strong>same mean luminance</strong>, so
+the cue is never confounded with brightness. Colours are solved from the pattern’s area
+fraction; <code class="docutils literal notranslate"><span class="pre">puck_cue_contrast</span></code> is clamped so neither colour leaves [0,1].</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">enable_puck_cue</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>Apply a pattern. When false the prefab material is left alone</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_pattern</span></code></p></td>
+<td><p>int</p></td>
+<td><p>0=plain, 1=stripes, 2=checker, 3=dots, 4=rings</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_spatial_freq</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Cycles per world metre</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_duty</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Duty cycle / area fraction of colour A. Checker ignores this (structurally 0.5)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_contrast</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Half-amplitude around the mean, in linear light</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_mean_luminance</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Target mean, held identical across every pattern</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_angle_deg</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Orientation (stripes only)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_phase</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Phase offset of the pattern lattice</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Displacement band</em> (<code class="docutils literal notranslate"><span class="pre">PuckDisplacementBand.cs</span></code>) — the win condition for the goal-free variants.
+The puck must be moved a <strong>net</strong> distance landing in <code class="docutils literal notranslate"><span class="pre">[band_min,</span> <span class="pre">band_max]</span></code> and come to rest
+there. Overshoot ends the trial without reward; undershoot stays correctable.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">move_object_max_depenetration_velocity</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Ceiling (m/s) on the velocity PhysX may impart to separate the puck from the player. <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> leaves Unity’s default. See <strong>Why the puck needs a depenetration clamp</strong> below</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">band_min</span></code> / <code class="docutils literal notranslate"><span class="pre">band_max</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Rewarded net-displacement band. <code class="docutils literal notranslate"><span class="pre">band_max</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> disables the criterion</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">band_settle_speed</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Speed below which the puck counts as settled (m/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">band_settle_time</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Seconds settled inside the band before it counts as a hit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Units.</strong> Unity world units are <em>not</em> centimetres. The DLC tracking box spans exactly 20 units
+across the 51 cm physical arena, so <strong>1 unit = 2.55 cm</strong> (affine fit RMSE 0.0000, isotropic).
+The puck region (<code class="docutils literal notranslate"><span class="pre">±7.2</span></code>, <code class="docutils literal notranslate"><span class="pre">±9.2</span></code>) is therefore ~37 × 47 cm, and a band of <code class="docutils literal notranslate"><span class="pre">[1.5,</span> <span class="pre">3.0]</span></code> is
+3.8 – 7.6 cm. Every distance and speed in these tables is in Unity units; convert before
+comparing anything to a physical measurement.</p>
+<p><strong>Why the puck needs a depenetration clamp.</strong> The avatar is a kinematic Rigidbody moved with
+<code class="docutils literal notranslate"><span class="pre">MovePosition</span></code>, so the puck is driven entirely by PhysX resolving overlap, and the speed that
+resolution imparts is <code class="docutils literal notranslate"><span class="pre">overlap</span> <span class="pre">/</span> <span class="pre">fixedDeltaTime</span></code>. DLC updates at ~68 Hz against a 205 Hz physics
+step, so one tracking interval’s motion arrives as a single step’s overlap, amplified ~3×.</p>
+<p>Measured across the NightSnake sessions, ordinary play is well behaved: mouse speed per DLC
+update is 18 cm/s at p90 and 77 cm/s at p99.9, and the puck’s peak speed is ~48 cm/s (p95
+98 cm/s) — comparable to the mouse, i.e. the puck is pushed, not launched. The fitted decay
+<code class="docutils literal notranslate"><span class="pre">tau</span></code> is 0.097 s against <code class="docutils literal notranslate"><span class="pre">1/drag</span></code> = 0.100 s, so the drag model is exact. The problem is confined
+to the extreme tail: the worst single update implies 4.8 m/s of mouse motion and ~14 m/s of puck
+ejection, which fires the puck across the arena.</p>
+<p>A clamp of 120 units/s preserves mouse speeds up to ~102 cm/s — above the observed p99.9 — while
+only 0.01% of DLC updates exceed it. Normal pushing peaks near 38 units/s, so it does not touch
+ordinary play; it truncates the impossible spikes only. <code class="docutils literal notranslate"><span class="pre">kappa</span></code> is applied with <code class="docutils literal notranslate"><span class="pre">AddForce</span></code>, not
+depenetration, so the gain manipulation is unaffected.</p>
+<p>The clamp bounds the symptom, not the cause: the deeper fix is interpolating the avatar between
+DLC updates instead of teleporting it, so a tracking interval’s motion is spread over the
+physics steps it actually spans.</p>
+<p>The band is the <strong>only</strong> win condition in the goal-free variants, Task B included. There is no
+probe/commit threshold in Unity: contact impulse and duration are measured and reported (see
+<code class="docutils literal notranslate"><span class="pre">hockey.push_contact</span></code>) but never thresholded, because classifying a contact as a probe or a
+commitment is an analysis decision that has to stay revisable after collection. A Task B
+distractor is fully inert — pushing it is neither rewarded nor punished, it only costs time.</p>
+<p><em>Multi-puck</em> (Task B). The scalar <code class="docutils literal notranslate"><span class="pre">push_gain</span></code> / <code class="docutils literal notranslate"><span class="pre">puck_cue_pattern</span></code> above apply to every puck; the
+three <code class="docutils literal notranslate"><span class="pre">puck_*</span></code> list keys override them per puck. Because one <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> rule sets all
+three together, a trial’s pattern, gain and role can never desynchronise.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key suffix</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">n_move_objects</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Number of pucks to spawn. 1 reproduces single-puck behaviour exactly</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_separation</span></code></p></td>
+<td><p>float</p></td>
+<td><p>Minimum XZ distance between two pucks. <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">0</span></code> falls back to <code class="docutils literal notranslate"><span class="pre">min_separation</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck_gains</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Per-puck base gain κ, comma-separated in spawn order (<code class="docutils literal notranslate"><span class="pre">&quot;2.0,0.4&quot;</span></code>). Blank entries and entries past the end fall back to <code class="docutils literal notranslate"><span class="pre">push_gain</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck_cue_patterns</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Per-puck cue pattern id, same convention (<code class="docutils literal notranslate"><span class="pre">&quot;1,4&quot;</span></code>), falling back to <code class="docutils literal notranslate"><span class="pre">puck_cue_pattern</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck_roles</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Per-puck role: <code class="docutils literal notranslate"><span class="pre">0</span></code> = rewarded, <code class="docutils literal notranslate"><span class="pre">1</span></code> = distractor (<code class="docutils literal notranslate"><span class="pre">&quot;0,1&quot;</span></code>). Empty means puck 0 rewarded, every other puck a distractor</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The band criterion (settle / overshoot) applies to the <strong>rewarded</strong> puck only. A distractor is
+resolved solely by the commit test, so nudging it around neither pays out nor fails the trial —
+only committing to it does.</p>
+<p>There is deliberately no per-trial <em>condition label</em> key. The label (“congruent” / “probe” /
+…) names a choice Python made, drives nothing in the rig, and is recorded by the scheduler’s
+draw log — see <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> labels in <code class="docutils literal notranslate"><span class="pre">docs/python/ConfigSystem.md</span></code>.</p>
+<p>Two matching <code class="docutils literal notranslate"><span class="pre">HockeyManager.*</span></code> keys:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">end_on_first_cleared</span></code></p></td>
+<td><p>bool</p></td>
+<td><p>End the episode when <em>any</em> target clears rather than all. Required for Task B, where only the rewarded puck carries a live band and the distractor is indestructible, so <code class="docutils literal notranslate"><span class="pre">TargetsAlive()</span></code> never reaches 0. Equivalent to the default with one puck</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="general-global-kv-keys">
 <h4><code class="docutils literal notranslate"><span class="pre">general.*</span></code> (global KV keys)<a class="headerlink" href="#general-global-kv-keys" title="Link to this heading">#</a></h4>
@@ -1070,17 +1320,224 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <td><p>Once at spawn — world XZ of the target area</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&quot;pos_x,pos_z,vel_x,vel_z&quot;</span></code></p></td>
-<td><p>Every <code class="docutils literal notranslate"><span class="pre">reportingPeriod</span></code> steps — puck XZ + velocity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;pos_x,pos_z,vel_x,vel_z&quot;</span></code>, one quad per puck</p></td>
+<td><p>Every <code class="docutils literal notranslate"><span class="pre">reportingPeriodSteps</span></code> steps — puck XZ + velocity</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code></p></td>
-<td><p>Edge-triggered: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> when DlcAgent first touches puck, <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> when contact ends or puck is destroyed during contact</p></td>
+<td><p>Edge-triggered for <strong>puck 0</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> when DlcAgent first touches it, <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> when contact ends or the puck is destroyed during contact</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.player_contact_&lt;i&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code></p></td>
+<td><p>Same, for puck <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code>. Only present when <code class="docutils literal notranslate"><span class="pre">n_move_objects</span> <span class="pre">&gt;</span> <span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.n_pucks</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;&lt;int&gt;&quot;</span></code></p></td>
+<td><p>Once at spawn</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_cue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;pattern_id,spatial_freq,duty,contrast&quot;</span></code>, pucks joined by <code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
+<td><p>Once at spawn, when <code class="docutils literal notranslate"><span class="pre">enable_puck_cue</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;base_gain,sigma&quot;</span></code>, pucks joined by <code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
+<td><p>Once at spawn, when <code class="docutils literal notranslate"><span class="pre">enable_push_gain</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_band</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;band_min,band_max&quot;</span></code>, pucks joined by <code class="docutils literal notranslate"><span class="pre">;</span></code></p></td>
+<td><p>Once at spawn, when <code class="docutils literal notranslate"><span class="pre">band_max</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_roles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;0,1&quot;</span></code> — role per puck in spawn order</p></td>
+<td><p>Once at spawn, only when <code class="docutils literal notranslate"><span class="pre">n_move_objects</span> <span class="pre">&gt;</span> <span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.push_gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;puck_index,push_index,sampled_gain&quot;</span></code></p></td>
+<td><p>Each contact <strong>rising</strong> edge — the gain drawn for this push, which is when it is sampled</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.push_contact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;puck_index,push_index,impulse,duration&quot;</span></code></p></td>
+<td><p>Each contact <strong>falling</strong> edge — the completed contact’s totals. <code class="docutils literal notranslate"><span class="pre">impulse</span></code> is the <strong>pre-κ</strong> increment the animal delivered, so it is comparable across pucks of different gain. This is the probe/commit evidence; Unity does not threshold it</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.trial_outcome</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;band_hit&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;goal_scored&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;overshoot&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;timeout&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;no_contact&quot;</span></code></p></td>
+<td><p>Episode end</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.final_displacement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;net,path&quot;</span></code></p></td>
+<td><p>Episode end</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>The last two are emitted <strong>before</strong> <code class="docutils literal notranslate"><span class="pre">ClearAll()</span></code> destroys the puck. <code class="docutils literal notranslate"><span class="pre">final_displacement</span></code> is
+cached every <code class="docutils literal notranslate"><span class="pre">FixedUpdate</span></code> by the reporter rather than read at episode end, because a band
+<em>hit</em> destroys the puck — the successful trials are exactly the ones whose displacement would
+otherwise be lost.</p>
+<p>Emitting <code class="docutils literal notranslate"><span class="pre">hockey.trial_outcome</span></code> explicitly means the analysis never has to infer success or
+failure from the reward stream.</p>
+<p><strong>Schema stability.</strong> Every multi-puck extension was chosen to leave the single-puck payloads
+byte-identical:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code> gains repeated <code class="docutils literal notranslate"><span class="pre">x,z,vx,vz</span></code> quads (one per puck, in spawn order) when
+<code class="docutils literal notranslate"><span class="pre">n_move_objects</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Both existing readers tolerate trailing fields — <code class="docutils literal notranslate"><span class="pre">hockey_parsing.py</span></code>
+checks <code class="docutils literal notranslate"><span class="pre">len(parts)</span> <span class="pre">&gt;=</span> <span class="pre">4</span></code> and <code class="docutils literal notranslate"><span class="pre">rl/hockey.py</span></code> uses <code class="docutils literal notranslate"><span class="pre">min(4,</span> <span class="pre">len(values))</span></code> — so
+appending is backward-compatible. <strong>Quad <code class="docutils literal notranslate"><span class="pre">k</span></code> is always puck <code class="docutils literal notranslate"><span class="pre">k</span></code></strong>: a destroyed puck keeps its
+slot, reported at its last known position with zero velocity, because dropping the slot would
+silently shift every later puck’s data into the wrong index. When puck 0 itself is gone the
+message is suppressed entirely, which is what the single-puck reporter always did.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_cue</span></code> / <code class="docutils literal notranslate"><span class="pre">puck_gain</span></code> / <code class="docutils literal notranslate"><span class="pre">puck_band</span></code> join per-puck records with <code class="docutils literal notranslate"><span class="pre">;</span></code>. A single-puck
+payload therefore contains no <code class="docutils literal notranslate"><span class="pre">;</span></code> at all.</p></li>
+<li><p>Puck 0 keeps the historical <code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code> key; extra pucks get indexed keys, so a
+multi-puck session never corrupts that stream.</p></li>
+</ul>
 <p><code class="docutils literal notranslate"><span class="pre">hockey.player_contact</span></code> is sent only on state changes (not every frame). If the puck is destroyed while contact is active, a final <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> is synthesised in the next <code class="docutils literal notranslate"><span class="pre">FixedUpdate</span></code> to ensure Python always sees a clean contact-end. Python receives the event via <code class="docutils literal notranslate"><span class="pre">UnityAgentTask._on_kv_events()</span></code> → <code class="docutils literal notranslate"><span class="pre">on_player_contact(contact:</span> <span class="pre">bool)</span></code>.</p>
+</section>
+<section id="where-the-goal-free-telemetry-lands-in-datajoint">
+<h3>Where the goal-free telemetry lands in DataJoint<a class="headerlink" href="#where-the-goal-free-telemetry-lands-in-datajoint" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">HockeySession.Trial</span></code> carries one column per value above, all with <code class="docutils literal notranslate"><span class="pre">=NULL</span></code> defaults so every
+pre-existing session still populates. The KV log is the primary source — it records what Unity
+actually <em>applied</em>, not what was requested — with the resolved config used only as a fallback
+for <code class="docutils literal notranslate"><span class="pre">band_min</span></code> / <code class="docutils literal notranslate"><span class="pre">band_max</span></code>, which Unity emits conditionally.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code> carries every puck in one flat payload</strong> — four fields each
+(<code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">z,</span> <span class="pre">vx,</span> <span class="pre">vz</span></code>), comma-separated throughout, so a two-puck sample is eight values. This differs
+from <code class="docutils literal notranslate"><span class="pre">puck_cue</span></code> / <code class="docutils literal notranslate"><span class="pre">puck_gain</span></code> / <code class="docutils literal notranslate"><span class="pre">puck_band</span></code>, which separate pucks with <code class="docutils literal notranslate"><span class="pre">;</span></code>, so the puck count has
+to be read off the field count. <code class="docutils literal notranslate"><span class="pre">parse_hockey_kv_messages</span></code> returns puck 0 only and is kept that
+way for the goal-directed callers; <code class="docutils literal notranslate"><span class="pre">parse_puck_trajectories</span></code> returns all of them as <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">P,</span> <span class="pre">4)</span></code>.
+<strong>Slot 0 is not the rewarded puck in Task B</strong> — <code class="docutils literal notranslate"><span class="pre">taskb_puck_assignment</span></code> redraws the roles every
+trial — so anything scored against the criterion must select on <code class="docutils literal notranslate"><span class="pre">rewarded_puck_index</span></code>. The other
+slot is the distractor, retained in <code class="docutils literal notranslate"><span class="pre">puck_positions_all</span></code> because it is the input to the
+dwell-on-distractor readout.</p>
+<p>One limitation is recorded rather than fixed: when <strong>puck 0</strong> is destroyed the reporter suppresses
+the whole message, every puck with it. In Task B that truncates the distractor’s trajectory at the
+hit on the ~half of successful trials where the rewarded puck happened to spawn in slot 0. Accepted
+because destroying the rewarded puck resolves the trial, so what is lost is the tail between the
+hit and the ITI, which no current readout scores — dwell-on-distractor is counted long before the
+band is satisfied. See the <code class="docutils literal notranslate"><span class="pre">GetMoveObjectPosition</span></code> docstring for what changing it would cost.</p>
+<p><strong>Two columns no longer come from KV at all.</strong> <code class="docutils literal notranslate"><span class="pre">0bf84e9</span></code> removed <code class="docutils literal notranslate"><span class="pre">precontact_window_ms</span></code> and
+<code class="docutils literal notranslate"><span class="pre">trial_condition</span></code> from the rig, on the rule that a value belongs in Unity if and only if it can
+change something Unity does in real time. A pre-contact window is defined backwards from contact
+onset, which Unity cannot anticipate; a condition label names a choice Python already made. See
+the table below for where each now comes from.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>KV key</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">HockeySession.Trial</span></code> column(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.n_pucks</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">n_pucks</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_cue</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">cue_pattern_id</span></code>, <code class="docutils literal notranslate"><span class="pre">cue_spatial_freq</span></code>, <code class="docutils literal notranslate"><span class="pre">cue_duty</span></code>, <code class="docutils literal notranslate"><span class="pre">cue_contrast</span></code> (puck 0)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">actual_gain</span></code>, <code class="docutils literal notranslate"><span class="pre">gain_sigma</span></code> (puck 0)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_band</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">band_min</span></code>, <code class="docutils literal notranslate"><span class="pre">band_max</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.puck_roles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rewarded_puck_index</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.trial_outcome</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trial_outcome</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.final_displacement</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">net_displacement</span></code>, <code class="docutils literal notranslate"><span class="pre">path_displacement</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.init_heading_at_spawn</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">init_heading_at_spawn</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.init_dwell_paused_s</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">init_dwell_paused_s</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.push_gain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">push_gains</span></code> blob, <code class="docutils literal notranslate"><span class="pre">n_probes_before_commit</span></code>, <code class="docutils literal notranslate"><span class="pre">committed_puck_id</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.push_contact</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">push_contacts</span></code> blob, <code class="docutils literal notranslate"><span class="pre">n_completed_contacts</span></code>, <code class="docutils literal notranslate"><span class="pre">total_contact_time_s</span></code>, <code class="docutils literal notranslate"><span class="pre">peak_contact_impulse</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">puck_positions</span></code> (puck 0), <code class="docutils literal notranslate"><span class="pre">puck_positions_all</span></code> + <code class="docutils literal notranslate"><span class="pre">puck_steps_all</span></code> (all pucks; populated on every trial, P = 1 included), and the band columns <code class="docutils literal notranslate"><span class="pre">peak_net_displacement</span></code>, <code class="docutils literal notranslate"><span class="pre">time_in_band_s</span></code>, <code class="docutils literal notranslate"><span class="pre">first_band_entry_lag</span></code>, <code class="docutils literal notranslate"><span class="pre">n_band_entries</span></code>, <code class="docutils literal notranslate"><span class="pre">n_undershoot_corrections</span></code> — computed on the <strong>rewarded</strong> puck, selected with <code class="docutils literal notranslate"><span class="pre">rewarded_puck_index</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Columns with a source that is <strong>not a KV key</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>source</p></th>
+<th class="head"><p>column(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">UnityRuntimeParams</span></code>, <code class="docutils literal notranslate"><span class="pre">source=scheduler_draw</span></code> → scenario <code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">trial_condition</span></code>, <code class="docutils literal notranslate"><span class="pre">is_probe_trial</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Anything PER-PUCK is a <code class="docutils literal notranslate"><span class="pre">HockeySession.TrialPuck</span></code> row, not a <code class="docutils literal notranslate"><span class="pre">Trial</span></code> column.</strong> <code class="docutils literal notranslate"><span class="pre">TrialPuck</span></code> is
+keyed on <code class="docutils literal notranslate"><span class="pre">(trial_id,</span> <span class="pre">puck_index)</span></code> and carries each puck’s cue, gain, role, band, path metrics and
+contact statistics. <code class="docutils literal notranslate"><span class="pre">Trial</span></code>’s surviving scalars (<code class="docutils literal notranslate"><span class="pre">cue_pattern_id</span></code>, <code class="docutils literal notranslate"><span class="pre">actual_gain</span></code>, <code class="docutils literal notranslate"><span class="pre">band_*</span></code>) describe
+the <strong>rewarded</strong> puck; they previously described slot 0, which in Task B is the distractor on half
+of trials. A single-puck trial has exactly one <code class="docutils literal notranslate"><span class="pre">TrialPuck</span></code> row, so the goal-directed sessions are
+unaffected.</p>
+<p><strong>Anything with a threshold or an event definition in it is NOT a <code class="docutils literal notranslate"><span class="pre">Trial</span></code> column.</strong> <code class="docutils literal notranslate"><span class="pre">Trial</span></code>
+records facts: what the rig was configured with, what it reported, and the raw trajectory. Derived
+quantities that embed an analysis choice live in method-parameterised tables, with the method in
+the primary key, so re-running under a different definition adds a row instead of overwriting the
+previous answer — the same property <code class="docutils literal notranslate"><span class="pre">0bf84e9</span></code> was protecting when it took the commit thresholds
+out of the rig.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>table</p></th>
+<th class="head"><p>method Lookup</p></th>
+<th class="head"><p>what it computes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BandPassageAnalysis</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BandPassageMethod</span></code> (<code class="docutils literal notranslate"><span class="pre">min_displacement</span></code>)</p></td>
+<td><p>band entries, dwell, undershoot corrections, <code class="docutils literal notranslate"><span class="pre">overshot</span></code>, per trial and per session</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PushCommitAnalysis</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CommitDetectionMethod</span></code> (<code class="docutils literal notranslate"><span class="pre">resolving_outcomes</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">committed_puck_id</span></code>, <code class="docutils literal notranslate"><span class="pre">n_probes_before_commit</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><em>(pre-contact readout)</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PushScalingMethod</span></code> (<code class="docutils literal notranslate"><span class="pre">precontact_window_ms</span></code>)</p></td>
+<td><p>not yet wired; the window is pre-registered here</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Two more are <strong>derived across the session rather than read from a key</strong>:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">predicted_gain</span></code></strong> — the texture→gain mapping is a design fact that is never sent over KV,
+so <code class="docutils literal notranslate"><span class="pre">recover_texture_gain_map()</span></code> learns it from the session’s own <em>congruent</em> trials (where
+texture and gain agree by construction) and applies it to every trial. On a probe trial
+<code class="docutils literal notranslate"><span class="pre">predicted_gain</span></code> and <code class="docutils literal notranslate"><span class="pre">actual_gain</span></code> therefore diverge, and asking which one the animal’s
+pre-contact behaviour follows is exactly the texture-cued design’s headline test. A pattern
+seen with more than one gain on congruent trials is dropped with a warning rather than
+guessed — that would manufacture a prediction the animal could not have made.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">is_probe_trial</span></code></strong> — only the <code class="docutils literal notranslate"><span class="pre">congruent</span></code> / <code class="docutils literal notranslate"><span class="pre">probe</span></code> scheme sets this. Task B labels its
+conditions differently (its texture is non-predictive <em>by design</em>, so no trial is a probe)
+and those trials stay <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, which is what keeps them out of the texture→gain map.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">peak_net_displacement</span></code> is computed from the trajectory alone, so it is populated for the
+existing goal-directed sessions too.</p>
+<p>Session-level aggregates land on the <code class="docutils literal notranslate"><span class="pre">HockeySession</span></code> master: <code class="docutils literal notranslate"><span class="pre">nr_trials_with_band</span></code>,
+<code class="docutils literal notranslate"><span class="pre">band_hit_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">overshoot_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">mean_peak_net_displacement</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mean_n_undershoot_corrections</span></code>. Rates are <code class="docutils literal notranslate"><span class="pre">NULL</span></code> rather than 0 when a session has no banded
+trials, so “this session had no band” never reads as “the animal never hit the band”.</p>
+<blockquote>
+<div><p><strong>Operational note.</strong> DataJoint table definitions are fixed at creation. Adding these
+columns means <code class="docutils literal notranslate"><span class="pre">HockeySession</span></code> (and its <code class="docutils literal notranslate"><span class="pre">Trial</span></code> part) must be dropped and re-populated before
+they appear; existing sessions will then repopulate with the new columns <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</div></blockquote>
 </section>
 <section id="observations-from-dlcagent-collectobservations">
 <h3>Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code><a class="headerlink" href="#observations-from-dlcagent-collectobservations" title="Link to this heading">#</a></h3>
@@ -1175,7 +1632,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">iti_length</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">        </span><span class="c1"># → EpisodeManagerSingleWall.itiLength</span>
 <span class="n">enable_init_phase</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1"># → EpisodeManagerSingleWall.enableInitPhase</span>
 <span class="n">enable_reporting</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># → EpisodeManagerSingleWallReporter + FloorTargetsSpawnerEnvParams</span>
-<span class="n">reporting_period</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">        </span><span class="c1"># → FloorTargetsSpawnerEnvParams.reportingPeriod</span>
+<span class="n">reporting_period_steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">      </span><span class="c1"># → FloorTargetsSpawnerEnvParams.reportingPeriodSteps (STEPS)</span>
 <span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">     </span><span class="c1"># → EpisodeManagerSingleWall.randomizeItiLength</span>
 </pre></div>
 </div>
@@ -1192,6 +1649,9 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">dwell_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="w">  </span><span class="c1"># seconds mouse must remain in zone</span>
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">position_x</span></code>, <code class="docutils literal notranslate"><span class="pre">position_z</span></code> and <code class="docutils literal notranslate"><span class="pre">dwell_time</span></code> can instead be set as <code class="docutils literal notranslate"><span class="pre">HockeyManager.init_position_x</span></code>,
+<code class="docutils literal notranslate"><span class="pre">init_position_z</span></code> and <code class="docutils literal notranslate"><span class="pre">init_dwell_time</span></code> (below), which makes them editable mid-session. Set each
+in ONE place only: the env block is re-applied on every env reset and would overwrite the KV value.</p>
 </section>
 <section id="unity-kv-hockeymanager-controls-episodemanagersinglewall">
 <h3><code class="docutils literal notranslate"><span class="pre">[unity.kv.HockeyManager]</span></code> (controls EpisodeManagerSingleWall)<a class="headerlink" href="#unity-kv-hockeymanager-controls-episodemanagersinglewall" title="Link to this heading">#</a></h3>
@@ -1201,6 +1661,9 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">reward_display_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span>
 <span class="n">display_noise_overlay</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="n">noise_display_duration</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="n">init_position_x</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="w">     </span><span class="c1"># init box centre X; live-editable, takes effect next init phase</span>
+<span class="n">init_position_z</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c1"># init box centre Z</span>
+<span class="n">init_dwell_time</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w">   </span><span class="c1"># seconds mouse must remain in the init box</span>
 <span class="n">enabled</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span><span class="c1"># sent last → starts the first episode</span>
 </pre></div>
 </div>
@@ -1246,11 +1709,11 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 
 <span class="c1"># Player-aware spawn (Mode 2 only)</span>
 <span class="n">player_spawn_distance</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
-<span class="n">player_spawn_angle</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1"># degrees from player&#39;s forward</span>
+<span class="n">player_spawn_angle</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c1"># degrees from player's forward</span>
 <span class="n">player_spawn_angle_random</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">    </span><span class="c1"># randomize angle</span>
 
 <span class="c1"># Distance-from-goal spawn (Mode 3 only)</span>
-<span class="n">goal_distance</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="w">  </span><span class="c1"># puck distance to goal zone&#39;s nearest edge (auto-clamped to fit bounds)</span>
+<span class="n">goal_distance</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span><span class="w">  </span><span class="c1"># puck distance to goal zone's nearest edge (auto-clamped to fit bounds)</span>
 
 <span class="c1"># Optional features</span>
 <span class="n">enable_distance_color</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
@@ -1265,7 +1728,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">use_photottl</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">             </span><span class="c1"># enable TTLGenerator → TTLInput behavior</span>
 <span class="n">use_dlc</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">             </span><span class="c1"># enable DLCClient → DLCInput behavior</span>
 <span class="n">use_touch</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="n">behavior_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">behavior_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"TTLInput"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DLCInput"</span><span class="p">]</span>
 <span class="n">random_seed</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="w">               </span><span class="c1"># -1 = choose a fresh Unity seed on each run; any other int is used as-is</span>
 <span class="n">reward_size</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w">              </span><span class="c1"># water solenoid pulse duration (ms)</span>
 
@@ -1309,7 +1772,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="w">  </span><span class="c1"># minutes</span>
 
 <span class="k">[profile.trainingstage1.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span><span class="w">    </span><span class="c1"># adds 0.04 to move_object_max_distance per success, range 0.5–5.0</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance"</span><span class="p">]</span><span class="w">    </span><span class="c1"># adds 0.04 to move_object_max_distance per success, range 0.5–5.0</span>
 </pre></div>
 </div>
 <p>Two variants of this stage also exist: <code class="docutils literal notranslate"><span class="pre">trainingstage1a</span></code> (Mode 2 player-aware, <code class="docutils literal notranslate"><span class="pre">player_spawn_distance</span> <span class="pre">=</span> <span class="pre">5</span></code>) and <code class="docutils literal notranslate"><span class="pre">trainingstage1alt</span></code> (Mode 1 fixed with a large goal directly).</p>
@@ -1328,7 +1791,7 @@ read directly by <code class="docutils literal notranslate"><span class="pre">Ep
 <span class="n">max_session_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">45</span><span class="w">  </span><span class="c1"># minutes</span>
 
 <span class="k">[profile.trainingstage2.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span><span class="w">  </span><span class="c1"># adds 0.1 per success, range 3–15</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance_middlesteps"</span><span class="p">]</span><span class="w">  </span><span class="c1"># adds 0.1 per success, range 3–15</span>
 </pre></div>
 </div>
 <p>Rule definitions live in <a class="reference download internal" download="" href="../../_downloads/8c6555b25e765c33934d74d481efc51b/rules.lib.toml"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">rules.lib.toml</span></code></span></a> and are referenced by name in the <code class="docutils literal notranslate"><span class="pre">[profile.*.rules]</span></code> <code class="docutils literal notranslate"><span class="pre">use</span></code> list.</p>
@@ -1358,7 +1821,7 @@ loop():
   env.step()
 
   ◄──[hockey.object_position]──  (every N physics steps)
-  ◄──[hockey.player_contact]───  (edge-triggered: &quot;1&quot; on start, &quot;0&quot; on end)
+  ◄──[hockey.player_contact]───  (edge-triggered: "1" on start, "0" on end)
          │
          └─► UnityAgentTask._on_kv_events()
                └─► on_player_contact(contact)
@@ -1455,7 +1918,7 @@ loop():
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#involved-unity-scripts">Involved Unity Scripts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships-how-they-work-together">Component Relationships &amp; How They Work Together</a></li>
@@ -1480,6 +1943,7 @@ loop():
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-flow-unity-python">Data Flow: Unity → Python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#messages-sent-by-floortargetsspawnerreporter">Messages sent by <code class="docutils literal notranslate"><span class="pre">FloorTargetsSpawnerReporter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-the-goal-free-telemetry-lands-in-datajoint">Where the goal-free telemetry lands in DataJoint</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-dlcagent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">DlcAgent.CollectObservations()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-from-ttlreceiveragent-collectobservations">Observations from <code class="docutils literal notranslate"><span class="pre">TTLReceiverAgent.CollectObservations()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rewards">Rewards</a></li>
@@ -1553,8 +2017,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

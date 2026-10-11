@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/ConfigSystem';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Task System Documentation" href="Tasks.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-used-by-hockey">Config files used by Hockey</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-names">Section names</a></li>
@@ -480,11 +531,11 @@ The examples below are based on values that are actually present in this reposit
 <p><code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code> imports these files:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[imports]</span>
 <span class="n">files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;./teensy.hw.toml&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;./dlc.hw.toml&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;./game.config.toml&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;./rl.config.toml&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;./rules.lib.toml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"./teensy.hw.toml"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"./dlc.hw.toml"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"./game.config.toml"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"./rl.config.toml"</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">"./rules.lib.toml"</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
 </div>
@@ -527,7 +578,7 @@ The examples below are based on values that are actually present in this reposit
 <span class="n">use_photottl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">use_touch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <span class="n">use_dlc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<span class="n">behavior_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">behavior_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"TTLInput"</span><span class="p">,</span><span class="w"> </span><span class="s2">"DLCInput"</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -535,14 +586,14 @@ The examples below are based on values that are actually present in this reposit
 <h3>Imported base values used by Hockey<a class="headerlink" href="#imported-base-values-used-by-hockey" title="Link to this heading">#</a></h3>
 <p>From <code class="docutils literal notranslate"><span class="pre">game.config.toml</span></code>:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[game]</span>
-<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">User</span><span class="se">\\</span><span class="s2">Repos</span><span class="se">\\</span><span class="s2">SCENE_MouseAR</span><span class="se">\\</span><span class="s2">UnityAR</span><span class="se">\\</span><span class="s2">Build</span><span class="se">\\</span><span class="s2">MouseAR.exe&quot;</span>
-<span class="n">monitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1&quot;</span>
+<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">User</span><span class="se">\\</span><span class="s2">Repos</span><span class="se">\\</span><span class="s2">SCENE_MouseAR</span><span class="se">\\</span><span class="s2">UnityAR</span><span class="se">\\</span><span class="s2">Build</span><span class="se">\\</span><span class="s2">MouseAR.exe"</span>
+<span class="n">monitor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span>
 <span class="n">reward_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
 <span class="n">use_perf_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
 <span class="k">[unity.env.general]</span>
 <span class="n">enable_reporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">reporting_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">reporting_period_steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">rotate_bottom_screen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
@@ -552,7 +603,7 @@ The examples below are based on values that are actually present in this reposit
 </div>
 <p>From <code class="docutils literal notranslate"><span class="pre">dlc.hw.toml</span></code>:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[dlc]</span>
-<span class="n">dlc_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">6000</span><span class="p">]</span>
+<span class="n">dlc_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">'localhost'</span><span class="p">,</span><span class="w"> </span><span class="mi">6000</span><span class="p">]</span>
 <span class="n">dlc_apply_filter_inprocessor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">dlc_box_extents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">115</span><span class="p">,</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="mi">577</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">]</span>
 <span class="n">dlc_flip_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
@@ -563,7 +614,7 @@ The examples below are based on values that are actually present in this reposit
 <p>From <code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[teensy]</span>
 <span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;COM3&quot;</span>
+<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"COM3"</span>
 <span class="n">baudrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span>
 <span class="n">csv_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
 </pre></div>
@@ -596,7 +647,7 @@ The examples below are based on values that are actually present in this reposit
 <span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">120</span>
 
 <span class="k">[profile.trainingstage1.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance"</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -618,7 +669,7 @@ The examples below are based on values that are actually present in this reposit
 <span class="n">size_z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 
 <span class="k">[profile.trainingstage2.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance_middlesteps"</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -626,7 +677,7 @@ The examples below are based on values that are actually present in this reposit
 <h3><code class="docutils literal notranslate"><span class="pre">RL</span></code> (from <code class="docutils literal notranslate"><span class="pre">rl.config.toml</span></code>)<a class="headerlink" href="#rl-from-rl-config-toml" title="Link to this heading">#</a></h3>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.RL.unity.env.general]</span>
 <span class="n">enable_reporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">reporting_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="n">reporting_period_steps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
 <span class="n">episode_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span>
 <span class="n">iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="n">randomize_iti_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
@@ -638,7 +689,7 @@ The examples below are based on values that are actually present in this reposit
 <span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 
 <span class="k">[profile.RL.game]</span>
-<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
 <span class="n">use_touch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <span class="n">use_dlc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 </pre></div>
@@ -674,13 +725,13 @@ The examples below are based on values that are actually present in this reposit
 <h3>Programmatic loading<a class="headerlink" href="#programmatic-loading" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.utils.config_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span><span class="p">,</span> <span class="n">get_available_profiles</span>
 
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"mouse_ar/tasks/configs/hockey.game.toml"</span>
 
 <span class="n">profiles</span> <span class="o">=</span> <span class="n">get_available_profiles</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="c1"># e.g. [&#39;RL&#39;, &#39;trainingstage1&#39;, &#39;trainingstage2&#39;]</span>
+<span class="c1"># e.g. ['RL', 'trainingstage1', 'trainingstage2']</span>
 
 <span class="n">env_kv</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>  <span class="c1"># base</span>
-<span class="n">env_kv_s1</span><span class="p">,</span> <span class="n">env_params_s1</span><span class="p">,</span> <span class="n">cfg_s1</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;trainingstage1&quot;</span><span class="p">)</span>
+<span class="n">env_kv_s1</span><span class="p">,</span> <span class="n">env_params_s1</span><span class="p">,</span> <span class="n">cfg_s1</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"trainingstage1"</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -693,7 +744,7 @@ The examples below are based on values that are actually present in this reposit
 <li><p><code class="docutils literal notranslate"><span class="pre">env_kv</span></code> for Unity KV-channel values (stored as strings)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">env_params</span></code> for Unity environment parameter values (stored as floats)</p></li>
 </ul>
-<p>Current integration detail: the scheduler can produce both KV and env changes, but <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> currently only pushes KV changes back to Unity and only logs KV changes to <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code>.</p>
+<p>Current integration detail: the scheduler can produce both KV and env changes, but <code class="docutils literal notranslate"><span class="pre">UnityMultibehaviorTask</span></code> currently only pushes KV changes back to Unity and only logs KV changes to <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code>. It logs two separate streams there — see <a class="reference internal" href="#what-the-task-layer-currently-applies"><span class="xref myst">What the task layer currently applies</span></a>.</p>
 <section id="concept">
 <h3>Concept<a class="headerlink" href="#concept" title="Link to this heading">#</a></h3>
 <p>A rule says:</p>
@@ -713,10 +764,10 @@ The examples below are based on values that are actually present in this reposit
 <h3>Where rules come from<a class="headerlink" href="#where-rules-come-from" title="Link to this heading">#</a></h3>
 <p>Rules are typically defined in shared <code class="docutils literal notranslate"><span class="pre">rules_lib.*</span></code> entries and activated by profile selection:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage1.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance&quot;</span><span class="p">]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance"</span><span class="p">]</span>
 
 <span class="k">[profile.trainingstage2.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ramp_distance_middlesteps&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;reduce_platform_sizex&quot;</span><span class="p">]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ramp_distance_middlesteps"</span><span class="p">,</span><span class="w"> </span><span class="s2">"reduce_platform_sizex"</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>By the time <code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code> is constructed, it receives the already-selected <code class="docutils literal notranslate"><span class="pre">rules_cfg</span></code> dictionary for the active session.</p>
@@ -780,7 +831,7 @@ The examples below are based on values that are actually present in this reposit
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scenarios</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
 <td><p>Required for <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code></p></td>
-<td><p>List of scenarios; each scenario is a list of param specs applied together. See <a class="reference internal" href="#scenario-rules-scenario_choice"><span class="xref myst">Scenario rules</span></a>.</p></td>
+<td><p>List of scenarios; each scenario is a list of param specs applied together, optionally with a <code class="docutils literal notranslate"><span class="pre">weight</span></code>. See <a class="reference internal" href="#scenario-rules-scenario_choice"><span class="xref myst">Scenario rules</span></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -795,14 +846,14 @@ The examples below are based on values that are actually present in this reposit
 </ul>
 <p>Example staged switch:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_large_goal_scenario]</span>
-<span class="n">op</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
-<span class="n">every</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:1&quot;</span>
-<span class="n">active_until</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:15&quot;</span>
+<span class="n">op</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"scenario_choice"</span>
+<span class="n">every</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"episode:1"</span>
+<span class="n">active_until</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"episode:15"</span>
 
 <span class="k">[rules_lib.random_large_goal_scenario3]</span>
-<span class="n">op</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
-<span class="n">every</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:1&quot;</span>
-<span class="n">active_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;episode:16&quot;</span>
+<span class="n">op</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"scenario_choice"</span>
+<span class="n">every</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"episode:1"</span>
+<span class="n">active_from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"episode:16"</span>
 </pre></div>
 </div>
 </section>
@@ -850,7 +901,36 @@ The examples below are based on values that are actually present in this reposit
 <section id="scenario-rules-scenario-choice">
 <h3>Scenario rules (<code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code>)<a class="headerlink" href="#scenario-rules-scenario-choice" title="Link to this heading">#</a></h3>
 <p>The ops described so far each touch a single <code class="docutils literal notranslate"><span class="pre">target</span></code>. <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> exists for the case where several parameters must change <strong>together</strong> to stay coherent — for example moving a goal and resizing the arena at the same time, where applying only one of the two would leave the environment in an invalid state.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> rule does not use the top-level <code class="docutils literal notranslate"><span class="pre">target</span></code>/<code class="docutils literal notranslate"><span class="pre">value</span></code>/<code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code> fields. Instead it carries a list of <strong>scenarios</strong>, and each scenario is a list of <strong>param specs</strong>. On each trigger the scheduler picks one scenario uniformly at random (<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>) and applies <em>all</em> of its param specs in order.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> rule does not use the top-level <code class="docutils literal notranslate"><span class="pre">target</span></code>/<code class="docutils literal notranslate"><span class="pre">value</span></code>/<code class="docutils literal notranslate"><span class="pre">min</span></code>/<code class="docutils literal notranslate"><span class="pre">max</span></code> fields. Instead it carries a list of <strong>scenarios</strong>, and each scenario is a list of <strong>param specs</strong>. On each trigger the scheduler picks one scenario and applies <em>all</em> of its param specs in order.</p>
+<p>Selection is uniform (<code class="docutils literal notranslate"><span class="pre">random.choice</span></code>) unless scenarios carry a <strong><code class="docutils literal notranslate"><span class="pre">weight</span></code></strong>, in which case it is a weighted draw (<code class="docutils literal notranslate"><span class="pre">random.choices</span></code>). Weights are relative, must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0</span></code>, and default to <code class="docutils literal notranslate"><span class="pre">1.0</span></code> — a rule where every weight is <code class="docutils literal notranslate"><span class="pre">1.0</span></code> is stored with no weights at all and keeps selecting through <code class="docutils literal notranslate"><span class="pre">random.choice</span></code>, so existing configs are bit-for-bit unaffected.</p>
+<p>Weights are what make low-rate conditions expressible. The goal-free hockey <code class="docutils literal notranslate"><span class="pre">size_gain_map_a</span></code> rule uses them for probe trials, where the size→pushability mapping is deliberately broken on ~10% of trials:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[rules_lib.size_gain_map_a.scenarios]]</span>
+<span class="n">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"congruent_small_low"</span>
+<span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.45</span>
+<span class="k">[[rules_lib.size_gain_map_a.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_scale"</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">1.21</span>
+<span class="k">[[rules_lib.size_gain_map_a.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.push_gain"</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">3.0</span>
+
+<span class="k">[[rules_lib.size_gain_map_a.scenarios]]</span>
+<span class="n">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"probe_small_high"</span>
+<span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span><span class="w">          </span><span class="c1"># probe: small -&gt; HIGH gain (mapping broken)</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>Expressing the pairing as one scenario is the point: the cue and the gain it predicts are written together, so no draw can ever pair them wrongly. Keeping the randomisation in Python also means every draw is recorded in <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code> under <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">=</span> <span class="pre">&quot;scheduler_draw&quot;</span></code> — including a draw that changed nothing.</p>
+<p>A scenario may also carry a <strong><code class="docutils literal notranslate"><span class="pre">label</span></code></strong>, which names the condition it represents:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[rules_lib.size_gain_map_a.scenarios]]</span>
+<span class="n">label</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"probe_small_high"</span>
+<span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.05</span>
+<span class="k">[[rules_lib.size_gain_map_a.scenarios.params]]</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_scale"</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">1.21</span>
+</pre></div>
+</div>
+<p>A label is pure metadata: it is never written to a target, never sent to Unity, and appears only in the draw log. That is deliberate — a condition label describes a choice Python made, so shipping it to the rig and echoing it back would buy nothing that <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">=</span> <span class="pre">&quot;scheduler_draw&quot;</span></code> does not already give, and would leave Unity holding a field it never acts on.</p>
 <p>Each param spec is a self-contained mini-rule with its own namespaced <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">op</span></code>:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -933,7 +1013,7 @@ The examples below are based on values that are actually present in this reposit
 <li><p><code class="docutils literal notranslate"><span class="pre">_apply_rule()</span></code> mutates the scheduler’s internal parameter dictionaries immediately.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> returns the pending delta as <code class="docutils literal notranslate"><span class="pre">{&quot;kv&quot;:</span> <span class="pre">{...},</span> <span class="pre">&quot;env&quot;:</span> <span class="pre">{...}}</span></code> and then clears the pending buffers.</p></li>
 <li><p>If multiple triggers happen before <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code> is called, the pending buffer keeps the latest value per key.</p></li>
-<li><p>No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound.</p></li>
+<li><p>No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound. That is why <code class="docutils literal notranslate"><span class="pre">get_draws()</span></code> exists alongside <code class="docutils literal notranslate"><span class="pre">get_changes()</span></code>: what is <em>sent</em> stays delta-filtered, but what is <em>logged</em> records every firing, including one that rewrote the value it already held.</p></li>
 <li><p>Per-rule cadence is tracked through an internal tick counter; <code class="docutils literal notranslate"><span class="pre">window</span></code> does not currently participate in scheduling.</p></li>
 </ul>
 </section>
@@ -946,6 +1026,30 @@ The examples below are based on values that are actually present in this reposit
 <li><p>Does not send <code class="docutils literal notranslate"><span class="pre">env</span></code> changes to Unity because the <code class="docutils literal notranslate"><span class="pre">set_float_parameter(...)</span></code> branch is still disabled</p></li>
 <li><p>Does not log env changes to <code class="docutils literal notranslate"><span class="pre">runtime_params</span></code></p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">_record_scheduler_draws()</span></code> then drains <code class="docutils literal notranslate"><span class="pre">get_draws()</span></code> and appends a <strong>second</strong> kind of entry, with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">=</span> <span class="pre">&quot;scheduler_draw&quot;</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rule</span></code></p></td>
+<td><p>Name of the rule that fired</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">scenario_index</span></code></p></td>
+<td><p>Which scenario was drawn (<code class="docutils literal notranslate"><span class="pre">scenario_choice</span></code> only)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<td><p>The scenario’s <code class="docutils literal notranslate"><span class="pre">label</span></code>, when it has one</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">draw.&lt;target&gt;</span></code></p></td>
+<td><p>Every target the firing wrote, and the value it wrote</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The two streams answer different questions and are filtered apart by <code class="docutils literal notranslate"><span class="pre">source</span></code>. The delta stream tells you what Unity was told; the draw stream tells you what the scheduler chose. They differ precisely when a rule redraws the value already in effect — which for a per-trial condition rule is common, and is exactly the trial you would otherwise lose.</p>
 <p>That means env-targeted rules are valid inside <code class="docutils literal notranslate"><span class="pre">LiveParamScheduler</span></code> and appear in <code class="docutils literal notranslate"><span class="pre">get_changes()[&quot;env&quot;]</span></code>, but they do not yet affect the running Unity task through the current task integration.</p>
 </section>
 <section id="examples">
@@ -953,10 +1057,10 @@ The examples below are based on values that are actually present in this reposit
 <section id="increment-a-kv-parameter-after-every-success">
 <h4>Increment a KV parameter after every success<a class="headerlink" href="#increment-a-kv-parameter-after-every-success" title="Link to this heading">#</a></h4>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.ramp_distance]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_max_distance&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;add&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_max_distance"</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"add"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span>
-<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"success:1"</span>
 <span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
 <span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span>
 </pre></div>
@@ -966,9 +1070,9 @@ The examples below are based on values that are actually present in this reposit
 <section id="sample-a-fresh-value-from-a-range">
 <h4>Sample a fresh value from a range<a class="headerlink" href="#sample-a-fresh-value-from-a-range" title="Link to this heading">#</a></h4>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_x_puck_position]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_x&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
-<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_x"</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"rand"</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"success:1"</span>
 <span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">-5</span>
 <span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
 </pre></div>
@@ -978,10 +1082,10 @@ The examples below are based on values that are actually present in this reposit
 <section id="alternate-among-fixed-states">
 <h4>Alternate among fixed states<a class="headerlink" href="#alternate-among-fixed-states" title="Link to this heading">#</a></h4>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.stage_sequence]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.HockeyManager.spawner&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;set&quot;</span>
-<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="p">]</span>
-<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;epoch:1&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.HockeyManager.spawner"</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"set"</span>
+<span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"2"</span><span class="p">]</span>
+<span class="n">every</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"epoch:1"</span>
 </pre></div>
 </div>
 <p>Each epoch advance writes the next list element, then wraps back to the start.</p>
@@ -989,40 +1093,40 @@ The examples below are based on values that are actually present in this reposit
 <section id="apply-a-coordinated-set-of-parameters-scenario">
 <h4>Apply a coordinated set of parameters (scenario)<a class="headerlink" href="#apply-a-coordinated-set-of-parameters-scenario" title="Link to this heading">#</a></h4>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[rules_lib.random_large_goal_scenario]</span>
-<span class="n">op</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scenario_choice&quot;</span>
-<span class="n">every</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;success:1&quot;</span>
+<span class="n">op</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"scenario_choice"</span>
+<span class="n">every</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"success:1"</span>
 
 <span class="c1"># Scenario 1: goal on the +z wall, puck z fixed, puck x randomised</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios]]</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_thickness_x&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.area_thickness_x"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_width_z&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.area_width_z"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.target_z&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.target_z"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">7.5</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_x&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_x"</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"rand"</span>
 <span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">-5.5</span>
 <span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mf">5.5</span>
 
 <span class="c1"># Scenario 2: goal on the +x wall (arena rotated), puck x fixed, puck z randomised</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios]]</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_thickness_x&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.area_thickness_x"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.area_width_z&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.area_width_z"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.target_x&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.target_x"</span>
 <span class="n">value</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">5.5</span>
 <span class="k">[[rules_lib.random_large_goal_scenario.scenarios.params]]</span>
-<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;unity.kv.hockeyFloor.move_object_z&quot;</span>
-<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rand&quot;</span>
+<span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"unity.kv.hockeyFloor.move_object_z"</span>
+<span class="n">op</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"rand"</span>
 <span class="n">min</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">-7</span>
 <span class="n">max</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span>
 </pre></div>
@@ -1030,7 +1134,7 @@ The examples below are based on values that are actually present in this reposit
 <p>On each successful episode the scheduler picks one of the two scenarios at random and applies <em>all</em> of its params together, so the arena dimensions, goal position, and puck spawn stay mutually consistent. (Note that TOML arrays-of-tables make the nesting verbose: <code class="docutils literal notranslate"><span class="pre">[[...scenarios]]</span></code> opens a new scenario and each following <code class="docutils literal notranslate"><span class="pre">[[...scenarios.params]]</span></code> adds a param spec to it.)</p>
 <p>Activate it through a profile like any other rule:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.trainingstage4c.rules]</span>
-<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;random_large_goal_scenario&quot;</span><span class="p">]</span>
+<span class="n">use</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"random_large_goal_scenario"</span><span class="p">]</span>
 </pre></div>
 </div>
 </section>
@@ -1112,7 +1216,7 @@ The examples below are based on values that are actually present in this reposit
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#config-files-used-by-hockey">Config files used by Hockey</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#section-names">Section names</a></li>
@@ -1202,8 +1306,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

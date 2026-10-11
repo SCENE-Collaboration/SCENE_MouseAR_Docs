@@ -504,4 +504,4 @@ else
 - **[Architecture Overview](Architecture.md)** - System design
 - **[Episode Management](EpisodeManagement.md)** - Episode lifecycle
 - **[Parameter System](ParameterSystem.md)** - Configuration
-- **[Wrapper Documentation](https://github.com/SCENE-Collaboration/SCENE_MouseAR/blob/main/rl/WRAPPER_ARCHITECTURE.md)** - Python training wrappers
+- **[Wrapper Documentation](../RL/GYMNASIUM_WRAPPERS.md)** - Python training wrappers

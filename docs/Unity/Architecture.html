@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Architecture';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Episode Management System" href="EpisodeManagement.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-architecture-layers">Core Architecture Layers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships">Component Relationships</a><ul class="nav section-nav flex-column">
@@ -640,7 +691,7 @@
 <p><strong>Source:</strong> Python scripts → Unity ML-Agents Academy</p>
 <p><strong>Usage:</strong></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">envParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="kt">float</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;episode_length&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"episode_length"</span><span class="p">,</span><span class="w"> </span><span class="mf">10f</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><strong>Characteristics:</strong></p>
@@ -652,7 +703,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python                    Unity
 ------                    -----
 env_params = {            →  Academy.Instance.EnvironmentParameters
-  &quot;episode_length&quot;: 15        ↓
+  "episode_length": 15        ↓
 }                             EpisodeManagerSingleWall.StartEpisode()
                               ↓
                               episodeLength = envParams.GetWithDefault(...)
@@ -664,9 +715,9 @@ env_params = {            →  Academy.Instance.EnvironmentParameters
 <p><strong>Source:</strong> Python scripts → Unity via <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code> side channel → <code class="docutils literal notranslate"><span class="pre">KvManagersDirector</span></code></p>
 <p><strong>Usage:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python</span>
-<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.enabled=1&quot;</span><span class="p">)</span>
-<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.episode_length=12&quot;</span><span class="p">)</span>
-<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">&quot;wallL.start=1&quot;</span><span class="p">)</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.enabled=1"</span><span class="p">)</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.episode_length=12"</span><span class="p">)</span>
+<span class="n">kv_channel</span><span class="o">.</span><span class="n">send_string</span><span class="p">(</span><span class="s2">"wallL.start=1"</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Characteristics:</strong></p>
@@ -678,11 +729,11 @@ env_params = {            →  Academy.Instance.EnvironmentParameters
 <p><strong>Example Flow:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Python                              Unity
 ------                              -----
-kv.send(&quot;wallL.enabled=1&quot;)       →  KvManagersDirector.OnKv()
+kv.send("wallL.enabled=1")       →  KvManagersDirector.OnKv()
                                     ↓
-                                    Parse &quot;wallL&quot; namespace
+                                    Parse "wallL" namespace
                                     ↓
-                                    Find EpisodeManagerSingleWall with key=&quot;wallL&quot;
+                                    Find EpisodeManagerSingleWall with key="wallL"
                                     ↓
                                     manager.enabled = true
 </pre></div>
@@ -762,7 +813,7 @@ EndEpisode()
   ↓
 [Running State - Per Step]
   → OnStepAdvanced(stepNum) (event)
-  → OnStepLabel(&quot;Target #5&quot;) (event)
+  → OnStepLabel("Target #5") (event)
   → Current target = Active
   → Wait for player dwell OR timeout
   ↓
@@ -845,10 +896,10 @@ OnEpisodeTimeout    → agent.OnIncorrect() (punishment)
 <p>Agents can include camera sensors for visual observations:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In DlcAgent.cs (configured via env params)</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">envParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="kt">bool</span><span class="w"> </span><span class="n">cameraEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;DlcAgent.camera_enabled&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_width&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
-<span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_height&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
-<span class="kt">bool</span><span class="w"> </span><span class="n">grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;MouseVisuals.camera_grayscale&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">cameraEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"DlcAgent.camera_enabled"</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"MouseVisuals.camera_width"</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"MouseVisuals.camera_height"</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">grayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envParams</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"MouseVisuals.camera_grayscale"</span><span class="p">,</span><span class="w"> </span><span class="mf">0f</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
 
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cameraEnabled</span><span class="p">)</span>
 <span class="p">{</span>
@@ -947,11 +998,11 @@ OnEpisodeTimeout    → agent.OnIncorrect() (punishment)
 <h3>Episode-Manager Hookup<a class="headerlink" href="#episode-manager-hookup" title="Link to this heading">#</a></h3>
 <p>Both managers support automatic overlay triggering:</p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In EpisodeManagerSingleWall</span>
-<span class="na">[Header(&quot;Reward Flash on Success&quot;)]</span>
+<span class="na">[Header("Reward Flash on Success")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Noise Overlay&quot;)]</span>
+<span class="na">[Header("Noise Overlay")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
 
@@ -982,12 +1033,12 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <span class="c1">#    File: mouse_ar/tasks/configs/hockey.game.toml</span>
 
 <span class="c1"># 3. Select profile from dropdown</span>
-<span class="c1">#    - &quot;Default&quot; (base parameters)</span>
-<span class="c1">#    - &quot;RL&quot; (fast execution for training)</span>
+<span class="c1">#    - "Default" (base parameters)</span>
+<span class="c1">#    - "RL" (fast execution for training)</span>
 
 <span class="c1"># 4. Adjust parameters in Parameters tab</span>
 <span class="c1">#    - Edit values (turn red when modified)</span>
-<span class="c1">#    - Click &quot;Send params (diff-only)&quot; to apply</span>
+<span class="c1">#    - Click "Send params (diff-only)" to apply</span>
 
 <span class="c1"># 5. Monitor live during experiment</span>
 <span class="c1">#    - Epochs, episodes, steps</span>
@@ -1005,31 +1056,31 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.tasks.unity_agent_task</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnityAgentTask</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
 
-<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">"/dev/ttyACM0"</span><span class="p">)</span>
 
 <span class="c1"># Define parameters (fake examples)</span>
 <span class="n">env_kv_params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;difficulty&quot;</span><span class="p">:</span> <span class="s2">&quot;0.5&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;target_color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;reward_type&quot;</span><span class="p">:</span> <span class="s2">&quot;immediate&quot;</span>
+    <span class="s2">"difficulty"</span><span class="p">:</span> <span class="s2">"0.5"</span><span class="p">,</span>
+    <span class="s2">"target_color"</span><span class="p">:</span> <span class="s2">"blue"</span><span class="p">,</span>
+    <span class="s2">"reward_type"</span><span class="p">:</span> <span class="s2">"immediate"</span>
 <span class="p">}</span>
 
 <span class="n">env_params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;episode_length&quot;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span>
-    <span class="s2">&quot;iti_length&quot;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="s2">&quot;target_size&quot;</span><span class="p">:</span> <span class="mf">0.3</span>
+    <span class="s2">"episode_length"</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span>
+    <span class="s2">"iti_length"</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="s2">"target_size"</span><span class="p">:</span> <span class="mf">0.3</span>
 <span class="p">}</span>
 
 <span class="c1"># Create task</span>
 <span class="n">task</span> <span class="o">=</span> <span class="n">UnityAgentTask</span><span class="p">(</span>
     <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
-    <span class="n">env_path</span><span class="o">=</span><span class="s2">&quot;Build/Hockey.x86_64&quot;</span><span class="p">,</span>
-    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DLCInput&quot;</span><span class="p">],</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"Build/Hockey.x86_64"</span><span class="p">,</span>
+    <span class="n">behavior_list</span><span class="o">=</span><span class="p">[</span><span class="s2">"DLCInput"</span><span class="p">],</span>
     <span class="n">env_kv_params</span><span class="o">=</span><span class="n">env_kv_params</span><span class="p">,</span>
     <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">,</span>
     <span class="n">use_dlc</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;192.168.1.50&quot;</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
-    <span class="n">subject_id</span><span class="o">=</span><span class="s2">&quot;Mouse42&quot;</span>
+    <span class="n">dlc_address</span><span class="o">=</span><span class="p">(</span><span class="s2">"192.168.1.50"</span><span class="p">,</span> <span class="mi">5005</span><span class="p">),</span>
+    <span class="n">subject_id</span><span class="o">=</span><span class="s2">"Mouse42"</span>
 <span class="p">)</span>
 
 <span class="c1"># Run experiment</span>
@@ -1037,7 +1088,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <span class="k">while</span> <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">():</span>
     <span class="c1"># Optional: runtime parameter adjustment</span>
     <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">episode</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.7&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.7"</span><span class="p">)</span>
 <span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 <span class="n">task</span><span class="o">.</span><span class="n">save_data_to_json</span><span class="p">()</span>
 </pre></div>
@@ -1052,8 +1103,8 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 
 <span class="c1"># Load with specific profile</span>
 <span class="n">env_kv</span><span class="p">,</span> <span class="n">env_params</span><span class="p">,</span> <span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">(</span>
-    <span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span><span class="p">,</span>
-    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;Training&quot;</span>  <span class="c1"># or &quot;RL&quot;, &quot;Testing&quot;, or None for default</span>
+    <span class="s2">"mouse_ar/tasks/configs/hockey.game.toml"</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"Training"</span>  <span class="c1"># or "RL", "Testing", or None for default</span>
 <span class="p">)</span>
 
 <span class="c1"># Use in task</span>
@@ -1061,7 +1112,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
     <span class="n">teensy</span><span class="o">=</span><span class="n">teensy</span><span class="p">,</span>
     <span class="n">env_kv_params</span><span class="o">=</span><span class="n">env_kv</span><span class="p">,</span>
     <span class="n">env_params</span><span class="o">=</span><span class="n">env_params</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;game&quot;</span><span class="p">,</span> <span class="p">{})</span>
+    <span class="o">**</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"game"</span><span class="p">,</span> <span class="p">{})</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1076,18 +1127,18 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <span class="k">for</span> <span class="n">episode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="c1"># Curriculum: increase difficulty</span>
     <span class="k">if</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">25</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.6&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.6"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.8"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">episode</span> <span class="o">==</span> <span class="mi">75</span><span class="p">:</span>
-        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0&quot;</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"1.0"</span><span class="p">)</span>
 
     <span class="n">task</span><span class="o">.</span><span class="n">loop</span><span class="p">()</span>
 
 <span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
 <span class="c1"># All parameter changes logged in task.runtime_params</span>
-<span class="c1"># [{&quot;difficulty&quot;: &quot;0.6&quot;, &quot;time&quot;: 120.5, &quot;episode&quot;: 25, &quot;step&quot;: 1240}, ...]</span>
+<span class="c1"># [{"difficulty": "0.6", "time": 120.5, "episode": 25, "step": 1240}, ...]</span>
 </pre></div>
 </div>
 </section>
@@ -1121,8 +1172,8 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyParams</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">envp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span><span class="p">;</span>
-<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">spawnMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.spawn_mode&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">spawnMode</span><span class="p">);</span>
-<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$&quot;{prefix}.target_x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">spawnMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$"{prefix}.spawn_mode"</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">spawnMode</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">envp</span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">$"{prefix}.target_x"</span><span class="p">,</span><span class="w"> </span><span class="n">_sp</span><span class="p">.</span><span class="n">targetX</span><span class="p">);</span>
 <span class="w">        </span><span class="c1">// ... apply all parameters</span>
 <span class="w">        </span><span class="n">TryRespawnOrClear</span><span class="p">();</span><span class="w">  </span><span class="c1">// rebuild with new params</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1254,7 +1305,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#core-architecture-layers">Core Architecture Layers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-relationships">Component Relationships</a><ul class="nav section-nav flex-column">
@@ -1363,8 +1414,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/Agents';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Parameter Control System" href="ParameterSystem.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inputs-are-split-across-multiple-agents">Why Inputs Are Split Across Multiple Agents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior">1. ML-Agents requires a fixed action and observation spec per behavior</a></li>
@@ -486,12 +537,12 @@
 <h3>2. Independent disablement and substitution<a class="headerlink" href="#independent-disablement-and-substitution" title="Link to this heading">#</a></h3>
 <p>Because each input is a distinct behavior, any of them can be dropped, replaced with a dummy, or run offline without touching the others:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hockey session: no touchscreen, DLC + TTL only</span>
-<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span> <span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"TTLInput"</span><span class="p">,</span> <span class="s2">"DLCInput"</span><span class="p">]</span>
 <span class="n">use_dlc</span>   <span class="o">=</span> <span class="kc">True</span>
 <span class="n">use_touch</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="c1"># RL training: no physical hardware at all, agent provides DLCInput</span>
-<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TTLInput&quot;</span><span class="p">,</span> <span class="s2">&quot;DLCInput&quot;</span><span class="p">]</span>
+<span class="n">behavior_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"TTLInput"</span><span class="p">,</span> <span class="s2">"DLCInput"</span><span class="p">]</span>
 <span class="n">use_dlc</span>   <span class="o">=</span> <span class="kc">False</span>
 <span class="n">use_photottl</span> <span class="o">=</span> <span class="kc">False</span>             <span class="c1"># zeros sent for TTLInput</span>
 </pre></div>
@@ -505,9 +556,9 @@
 <section id="python-side-action-routing-is-trivially-extensible">
 <h3>5. Python-side action routing is trivially extensible<a class="headerlink" href="#python-side-action-routing-is-trivially-extensible" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">UnityAgentTask.get_action_for(bname)</span></code> dispatches by canonical behavior name:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;DLCInput&quot;</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_dlc</span><span class="p">:</span>    <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;TouchInput&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_touch</span><span class="p">:</span>  <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">&quot;TTLInput&quot;</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_photottl</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;continuous&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">"DLCInput"</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_dlc</span><span class="p">:</span>    <span class="k">return</span> <span class="p">(</span><span class="s2">"continuous"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dlc_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">"TouchInput"</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_touch</span><span class="p">:</span>  <span class="k">return</span> <span class="p">(</span><span class="s2">"continuous"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_touch_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">bare</span> <span class="o">==</span> <span class="s2">"TTLInput"</span>   <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_photottl</span><span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="s2">"continuous"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ttl_action</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
 <span class="c1"># default: zeros</span>
 </pre></div>
 </div>
@@ -542,24 +593,24 @@
 <li><p>Optional: Camera sensor (84×84×1 or 84×84×3 pixels if enabled)</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Wiring&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Wiring")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">OrthoScreenFromObject</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span><span class="w">  </span><span class="c1">// Wall surface reference</span>
 
-<span class="na">[Header(&quot;Placement&quot;)]</span>
+<span class="na">[Header("Placement")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1f</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">clampFullyInside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Actions&quot;)]</span>
+<span class="na">[Header("Actions")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">emitAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w">  </span><span class="c1">// Action emission tracking</span>
 
-<span class="na">[Header(&quot;Visual Sensor&quot;)]</span>
+<span class="na">[Header("Visual Sensor")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Camera</span><span class="w"> </span><span class="n">obsCamera</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;MouseVisuals.camera_enabled&quot;</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraEnvKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"MouseVisuals.camera_enabled"</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">cameraEnabledDefault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cameraWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">cameraHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">84</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">cameraGrayscale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraSensorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;obs_cam&quot;</span><span class="p">;</span>
+<span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">cameraSensorName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"obs_cam"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>Visual Observations (Optional):</strong></p>
@@ -616,10 +667,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">obs[1]</span></code>: V position on screen (normalized 0-1)</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Wiring&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Wiring")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">OrthoScreenFromObject</span><span class="w"> </span><span class="n">screen</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Placement&quot;)]</span>
+<span class="na">[Header("Placement")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">faceOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.1f</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">clampFullyInside</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">teleport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w">      </span><span class="c1">// Instant vs smooth movement</span>
@@ -654,17 +705,17 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">obs[3]</span></code>: Latency measurement (Action-&gt;EndOfFrame delay in milliseconds)</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Visual TTL Output&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Visual TTL Output")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Image</span><span class="w"> </span><span class="n">patch</span><span class="p">;</span><span class="w">           </span><span class="c1">// UI Image for photodiode</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">onColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">white</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">offColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">black</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Integration&quot;)]</span>
+<span class="na">[Header("Integration")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">EpisodeScore</span><span class="w"> </span><span class="n">score</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">ITIFlag</span><span class="w"> </span><span class="n">itiFlag</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">InitPhaseFlag</span><span class="w"> </span><span class="n">initPhaseFlag</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Latency Debug&quot;)]</span>
+<span class="na">[Header("Latency Debug")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">debugLatency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span><span class="w">  </span><span class="c1">// Enable latency logging</span>
 </pre></div>
 </div>
@@ -1154,7 +1205,7 @@ Flow:
 <li><p><strong><a class="reference internal" href="Architecture.html"><span class="std std-doc">Architecture Overview</span></a></strong> - System design</p></li>
 <li><p><strong><a class="reference internal" href="EpisodeManagement.html"><span class="std std-doc">Episode Management</span></a></strong> - Episode lifecycle</p></li>
 <li><p><strong><a class="reference internal" href="ParameterSystem.html"><span class="std std-doc">Parameter System</span></a></strong> - Configuration</p></li>
-<li><p><strong><a class="reference external" href="https://github.com/SCENE-Collaboration/SCENE_MouseAR/blob/main/rl/WRAPPER_ARCHITECTURE.md">Wrapper Documentation</a></strong> - Python training wrappers</p></li>
+<li><p><strong><a class="reference internal" href="../RL/GYMNASIUM_WRAPPERS.html"><span class="std std-doc">Wrapper Documentation</span></a></strong> - Python training wrappers</p></li>
 </ul>
 </section>
 </section>
@@ -1224,7 +1275,7 @@ Flow:
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-inputs-are-split-across-multiple-agents">Why Inputs Are Split Across Multiple Agents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-agents-requires-a-fixed-action-and-observation-spec-per-behavior">1. ML-Agents requires a fixed action and observation spec per behavior</a></li>
@@ -1315,8 +1366,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

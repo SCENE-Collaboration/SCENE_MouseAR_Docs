@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/DLCProcessors';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Recording Control Documentation" href="DLCProcessor_recording_ctrl.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class Hierarchy</a></li>
@@ -574,8 +625,8 @@
 <section id="constructor">
 <h3><strong>Constructor</strong><a class="headerlink" href="#constructor" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BaseProcessor_socket</span><span class="p">(</span>
-    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
-    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;secret password&quot;</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"secret password"</span><span class="p">,</span>
     <span class="n">use_perf_counter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">save_original</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
@@ -698,8 +749,8 @@ Processes control messages from clients:</p>
 <section id="id2">
 <h3><strong>Constructor</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MyProcessor_socket</span><span class="p">(</span>
-    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
-    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">&quot;secret password&quot;</span><span class="p">,</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">authkey</span><span class="o">=</span><span class="sa">b</span><span class="s2">"secret password"</span><span class="p">,</span>
     <span class="n">use_perf_counter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">use_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">filter_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -792,20 +843,20 @@ Processes control messages from clients:</p>
 <h3><strong>Data Export</strong><a class="headerlink" href="#data-export" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save_dict</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1"># Base class data</span>
-    <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-    <span class="s2">&quot;time_stamp&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;frame_time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;pose_time&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;use_perf_counter&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s2">"start_time"</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s2">"time_stamp"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"frame_time"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"pose_time"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"use_perf_counter"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
 
     <span class="c1"># MyProcessor specific</span>
-    <span class="s2">&quot;x_pos&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;y_pos&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;heading_direction&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;head_angle&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
-    <span class="s2">&quot;use_filter&quot;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-    <span class="s2">&quot;filter_kwargs&quot;</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="s2">"x_pos"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"y_pos"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"heading_direction"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"head_angle"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span>
+    <span class="s2">"use_filter"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="s2">"filter_kwargs"</span><span class="p">:</span> <span class="nb">dict</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -821,14 +872,14 @@ Processes control messages from clients:</p>
 
 <span class="c1"># Create processor</span>
 <span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
-    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
+    <span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span>
     <span class="n">use_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;d_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
+    <span class="n">filter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">"min_cutoff"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">"beta"</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">"d_cutoff"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">}</span>
 <span class="p">)</span>
 
 <span class="c1"># Create DLCLive instance with processor</span>
 <span class="n">dlc_live</span> <span class="o">=</span> <span class="n">DLCLive</span><span class="p">(</span>
-    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;/path/to/dlc/model&quot;</span><span class="p">,</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">"/path/to/dlc/model"</span><span class="p">,</span>
     <span class="n">processor</span><span class="o">=</span><span class="n">processor</span>
 <span class="p">)</span>
 
@@ -847,18 +898,18 @@ Processes control messages from clients:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Processor runs continuously, clients control recording</span>
 
 <span class="c1"># Client controls (from DLCClient):</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_001&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">"trial_001"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
 <span class="c1"># ... run trial ...</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
-<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves &quot;trial_001_dlc_processor_data.pkl&quot;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves "trial_001_dlc_processor_data.pkl"</span>
 
 <span class="c1"># Next trial</span>
-<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">&quot;trial_002&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">set_session_name</span><span class="p">(</span><span class="s2">"trial_002"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">start_recording</span><span class="p">()</span>
 <span class="c1"># ... run trial ...</span>
 <span class="n">client</span><span class="o">.</span><span class="n">stop_recording</span><span class="p">()</span>
-<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves &quot;trial_002_dlc_processor_data.pkl&quot;</span>
+<span class="n">client</span><span class="o">.</span><span class="n">trigger_save</span><span class="p">()</span>  <span class="c1"># Saves "trial_002_dlc_processor_data.pkl"</span>
 </pre></div>
 </div>
 </section>
@@ -867,7 +918,7 @@ Processes control messages from clients:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">dlc_processor_socket</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseProcessor_socket</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyCustomProcessor</span><span class="p">(</span><span class="n">BaseProcessor_socket</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom processor that only tracks nose position.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Custom processor that only tracks nose position."""</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -875,13 +926,13 @@ Processes control messages from clients:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_clear_data_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear custom queues.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Clear custom queues."""</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_clear_data_queues</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract and broadcast nose position.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Extract and broadcast nose position."""</span>
         <span class="n">curr_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">timing_func</span><span class="p">()</span>
 
         <span class="c1"># Extract nose (keypoint 0)</span>
@@ -900,10 +951,10 @@ Processes control messages from clients:</p>
         <span class="k">return</span> <span class="n">pose</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Export custom data.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""Export custom data."""</span>
         <span class="n">save_dict</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
-        <span class="n">save_dict</span><span class="p">[</span><span class="s2">&quot;nose_x&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="p">)</span>
-        <span class="n">save_dict</span><span class="p">[</span><span class="s2">&quot;nose_y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="p">)</span>
+        <span class="n">save_dict</span><span class="p">[</span><span class="s2">"nose_x"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_x</span><span class="p">)</span>
+        <span class="n">save_dict</span><span class="p">[</span><span class="s2">"nose_y"</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nose_y</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">save_dict</span>
 </pre></div>
 </div>
@@ -930,10 +981,10 @@ Processes control messages from clients:</p>
 </section>
 <section id="recording-workflow">
 <h3><strong>Recording Workflow</strong><a class="headerlink" href="#recording-workflow" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Client] → set_session_name(&quot;exp_001&quot;)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Client] → set_session_name("exp_001")
                 ↓
-[Processor] session_name = &quot;exp_001&quot;
-            filename = &quot;exp_001_dlc_processor_data.pkl&quot;
+[Processor] session_name = "exp_001"
+            filename = "exp_001_dlc_processor_data.pkl"
 
 [Client] → start_recording()
                 ↓
@@ -956,7 +1007,7 @@ Processes control messages from clients:</p>
 [Client] → trigger_save()
                 ↓
 [Processor] pickle.dump(get_data(), file)
-            Saves to &quot;exp_001_dlc_processor_data.pkl&quot;
+            Saves to "exp_001_dlc_processor_data.pkl"
 </pre></div>
 </div>
 </section>
@@ -1065,9 +1116,9 @@ Processes control messages from clients:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span>
     <span class="n">use_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">filter_kwargs</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;min_cutoff&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># Lower = smoother</span>
-        <span class="s2">&quot;beta&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>        <span class="c1"># Lower = less responsive</span>
-        <span class="s2">&quot;d_cutoff&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+        <span class="s2">"min_cutoff"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1"># Lower = smoother</span>
+        <span class="s2">"beta"</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>        <span class="c1"># Lower = less responsive</span>
+        <span class="s2">"d_cutoff"</span><span class="p">:</span> <span class="mf">1.0</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </pre></div>
@@ -1096,9 +1147,9 @@ Processes control messages from clients:</p>
 </li>
 <li><p>Verify firewall allows port 6000</p></li>
 <li><p>Check bind address:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Allow external</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Allow external</span>
 <span class="c1"># vs</span>
-<span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Localhost only</span>
+<span class="n">processor</span> <span class="o">=</span> <span class="n">MyProcessor_socket</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="p">(</span><span class="s2">"127.0.0.1"</span><span class="p">,</span> <span class="mi">6000</span><span class="p">))</span>  <span class="c1"># Localhost only</span>
 </pre></div>
 </div>
 </li>
@@ -1110,13 +1161,13 @@ Processes control messages from clients:</p>
 <ol class="arabic">
 <li><p>Check client is connected before sending commands</p></li>
 <li><p>Verify command format:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="s2">&quot;start_recording&quot;</span><span class="p">)</span>  <span class="c1"># Correct</span>
-<span class="c1"># NOT: client.send(&quot;start_recording&quot;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="s2">"start_recording"</span><span class="p">)</span>  <span class="c1"># Correct</span>
+<span class="c1"># NOT: client.send("start_recording")</span>
 </pre></div>
 </div>
 </li>
 <li><p>Check processor logs:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Recording started, data queues cleared&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Recording started, data queues cleared"</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -1138,7 +1189,7 @@ Processes control messages from clients:</p>
 <ul>
 <li><p>Already handled! Heading is filtered in unwrapped space, then wrapped:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter in unwrapped space (e.g., -10° to 370°)</span>
-<span class="n">filtered_heading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">&quot;heading&quot;</span><span class="p">](</span><span class="n">t</span><span class="p">,</span> <span class="n">heading</span><span class="p">)</span>
+<span class="n">filtered_heading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">[</span><span class="s2">"heading"</span><span class="p">](</span><span class="n">t</span><span class="p">,</span> <span class="n">heading</span><span class="p">)</span>
 <span class="c1"># Then wrap to [0, 360)</span>
 <span class="n">heading</span> <span class="o">=</span> <span class="n">filtered_heading</span> <span class="o">%</span> <span class="mi">360</span>
 </pre></div>
@@ -1252,7 +1303,7 @@ Processes control messages from clients:</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-hierarchy">Class Hierarchy</a></li>
@@ -1366,8 +1417,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

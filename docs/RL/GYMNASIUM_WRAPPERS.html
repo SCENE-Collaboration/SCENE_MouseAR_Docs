@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Gymnasium Wrappers for Unity ML-Agents &#8212; MouseAR Documentation</title>
+    <title>RL and Replay: User Guide &#8212; MouseAR Documentation</title>
   
   
   
@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/RL/GYMNASIUM_WRAPPERS';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DataJoint Pipeline - Overview" href="../datajoint/Overview.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -409,7 +460,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Gymnasium Wrappers for Unity ML-Agents</h1>
+    <h1>RL and Replay: User Guide</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,38 +469,35 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-factory-functions">Using Factory Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-with-stable-baselines3">Training with Stable-Baselines3</a></li>
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-player">Unity player</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recorded-sessions">Recorded sessions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-reference">Wrapper Reference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchdestroywrapper">TouchDestroyWrapper</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeywrapper">HockeyWrapper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-rl-agents">1. Training RL agents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-the-example-script">With the example script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-your-own-code">In your own code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-reward-and-info">Observations, reward and info</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basegymunitywrapper-api">BaseGymUnityWrapper API</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-implement">Abstract Methods (Must Implement)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-methods-can-override">Optional Methods (Can Override)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provided-methods-use-as-is">Provided Methods (Use As-Is)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-unity-data">Accessing Unity Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replaying-recorded-sessions">2. Replaying recorded sessions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watch-a-trial-or-save-a-video">Watch a trial or save a video</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-a-replay-yourself">Step through a replay yourself</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-sessions-directly">Loading sessions directly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-exact-is-a-replay">How exact is a replay?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-config-requirements">Unity Config Requirements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-wrapper-config">Python Wrapper Config</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-replays">3. What-if replays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-environments-in-parallel">Many environments in parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-replay-sets-up-a-trial">How replay sets up a trial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-wrapper">Writing a wrapper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headless-training">Headless Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-environments">Vectorized Environments</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
 </ul>
             </nav>
         </div>
@@ -461,472 +509,579 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gymnasium-wrappers-for-unity-ml-agents">
-<h1>Gymnasium Wrappers for Unity ML-Agents<a class="headerlink" href="#gymnasium-wrappers-for-unity-ml-agents" title="Link to this heading">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>The RL training system provides <strong>Gymnasium-compatible wrappers</strong> for Unity ML-Agents environments. The architecture uses inheritance-based design where each game type has its own specialized wrapper that handles game-specific action transformation and observation extraction.</p>
-</section>
-<section id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>BaseGymUnityWrapper (abstract base class)
-│
-├── Common Functionality:
-│   ├── Unity task initialization &amp; lifecycle
-│   ├── Config loading from TOML files
-│   ├── Render mode handling (headless vs graphics)
-│   ├── Episode tracking &amp; info dict construction
-│   └── Multi-behavior action distribution
-│
-├── TouchDestroyWrapper
-│   ├── Game: Touch objects on screen to destroy them
-│   ├── Action: [x, y] direct position control
-│   ├── Observation: Object positions from KV channel
-│   └── Behavior: TouchInput (position teleportation)
-│
-├── HockeyWrapper
-│   ├── Game: Navigate to intercept moving objects
-│   ├── Action: [velocity, heading_change] velocity control
-│   ├── Observation: Agent state + object state + targets
-│   └── Behavior: DLCInput (velocity + heading)
-│
-└── [Your custom wrapper]
-    └── Implement: _setup_action_space(), _extract_observation(), etc.
+  <section class="tex2jax_ignore mathjax_ignore" id="rl-and-replay-user-guide">
+<h1>RL and Replay: User Guide<a class="headerlink" href="#rl-and-replay-user-guide" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">rl/</span></code> wraps the MouseAR Unity tasks as <a class="reference external" href="https://gymnasium.farama.org/">Gymnasium</a>
+environments. It serves three uses:</p>
+<ol class="arabic simple">
+<li><p><strong><a class="reference internal" href="#1-training-rl-agents"><span class="xref myst">Training RL agents</span></a></strong> on the tasks, live or starting from recorded
+trials.</p></li>
+<li><p><strong><a class="reference internal" href="#2-replaying-recorded-sessions"><span class="xref myst">Replaying recorded sessions</span></a></strong> exactly as they happened,
+to watch them or to save videos.</p></li>
+<li><p><strong><a class="reference internal" href="#3-what-if-replays"><span class="xref myst">What-if replays</span></a></strong>: replaying a recorded trial with changed
+parameters (drag, push gain, band, …) to see how the outcome would have differed.</p></li>
+</ol>
+<p>All three run the same Unity player and the same wrappers, so an observation or an action means
+the same thing whether an agent is training or a recording is being replayed.</p>
+<p>The rest of the page is reference: <a class="reference internal" href="#many-environments-in-parallel"><span class="xref myst">parallel environments</span></a>,
+<a class="reference internal" href="#how-replay-sets-up-a-trial"><span class="xref myst">how replay sets up a trial</span></a>,
+<a class="reference internal" href="#writing-a-wrapper"><span class="xref myst">writing a wrapper</span></a>, <a class="reference internal" href="#tests"><span class="xref myst">tests</span></a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rl/
+├── __init__.py        public API: from rl import HockeyWrapper, ...
+├── base.py            BaseGymUnityWrapper: Unity task, config/session params, episode loop
+├── touchdestroy.py    TouchDestroyWrapper   (TouchInput: [x, y] position)
+├── dlc.py             DlcAgentWrapper       (DLCInput: [velocity, turn], pose, camera frames)
+├── hockey.py          HockeyWrapper, HockeyObsLayout, goalfree_hockey_kwargs
+├── sequence.py        SequenceWrapper
+├── session.py         SessionData / TrialData: recorded sessions (file or DataJoint)
+├── replay.py          ReplayMixin: the replay engine (replay / free / hybrid, what-if overrides)
+├── hockey_replay.py   HockeyReplayWrapper   = ReplayMixin + HockeyWrapper
+├── sequence_replay.py SequenceReplayWrapper = ReplayMixin + SequenceWrapper
+├── video.py           play_trial, visual_replay_kwargs
+├── vec.py             create_vec_env, reset_to_trials, bootstrap_cross_trial
+└── example_train_hockey_rl.py   PPO / SAC training script
 </pre></div>
 </div>
+<hr class="docutils" />
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>rl<span class="w"> </span>--extra<span class="w"> </span>dev<span class="w">      </span><span class="c1"># or: pip install -e ".[rl,dev]"</span>
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">"imageio[ffmpeg]"</span><span class="w">       </span><span class="c1"># only for saving replay videos</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">rl</span></code> is a package: import with <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">rl</span> <span class="pre">import</span> <span class="pre">...</span></code>, and run its scripts from the repository
+root as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">rl.&lt;script&gt;</span></code>.</p>
+</section>
+<section id="unity-player">
+<h3>Unity player<a class="headerlink" href="#unity-player" title="Link to this heading">#</a></h3>
+<p>Every environment starts its own Unity player (<code class="docutils literal notranslate"><span class="pre">MouseAR.x86_64</span></code> on Linux, <code class="docutils literal notranslate"><span class="pre">MouseAR.exe</span></code> on
+Windows). Tell the wrappers where it is, either per environment with <code class="docutils literal notranslate"><span class="pre">env_path=...</span></code>
+(<code class="docutils literal notranslate"><span class="pre">--env-path</span></code> for the training script), or once in <code class="docutils literal notranslate"><span class="pre">mouse_ar/tasks/configs/rl.config.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[profile.RL.game]</span>
+<span class="n">env_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/path/to/MouseAR.x86_64"</span>
+</pre></div>
+</div>
+<p>Build the player from the <code class="docutils literal notranslate"><span class="pre">UnityAR/</span></code> project of the same commit as the Python code: in the
+Unity Editor, <em>File → Build Settings</em>, a standalone Linux or Windows target with
+<code class="docutils literal notranslate"><span class="pre">Assets/Scenes/SampleScene</span></code>. A
+<a class="reference external" href="https://drive.google.com/file/d/14okev4_VVTtz3-klMsoXTNLX4Jjxiy7G/view?usp=sharing">prebuilt player</a>
+exists, but it can be older than the code. Goal-free hockey, multi-puck trials and exact replay
+need Unity code that older players do not have, and a player that is too old fails in ways that
+are hard to see (for example, pucks spawning at random positions in a replay).</p>
+<p>To play a task yourself, set <code class="docutils literal notranslate"><span class="pre">dlc_address</span> <span class="pre">=</span> <span class="pre">&quot;dummy_pygame&quot;</span></code> in
+<code class="docutils literal notranslate"><span class="pre">mouse_ar/tasks/configs/dlc.hw.toml</span></code>, run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">mouse_ar/gui/unity_task_gui.py</span></code>, load
+<code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code> and steer the mouse in the pygame window.</p>
+</section>
+<section id="recorded-sessions">
+<h3>Recorded sessions<a class="headerlink" href="#recorded-sessions" title="Link to this heading">#</a></h3>
+<p>Replays read a recorded session from one of:</p>
+<ul class="simple">
+<li><p>a session file written by the task (<code class="docutils literal notranslate"><span class="pre">UnityData_&lt;subject&gt;_&lt;date&gt;_&lt;time&gt;.json</span></code> or <code class="docutils literal notranslate"><span class="pre">.npz</span></code>);</p></li>
+<li><p>the DataJoint database, by <code class="docutils literal notranslate"><span class="pre">dataset_id</span></code> (for example <code class="docutils literal notranslate"><span class="pre">&quot;Tick_20260210_105633&quot;</span></code>).</p></li>
+</ul>
+<p>Loading from the database needs a working DataJoint connection. The schema tag and credentials
+come from <code class="docutils literal notranslate"><span class="pre">dj_pipeline/.env</span></code> and <code class="docutils literal notranslate"><span class="pre">dj_pipeline/datajoint.json</span></code>, see
+<a class="reference internal" href="../datajoint/Connections.html"><span class="std std-doc">Connections</span></a> and <a class="reference internal" href="../datajoint/Infrastructure.html"><span class="std std-doc">Infrastructure</span></a>.
+DataJoint looks for <code class="docutils literal notranslate"><span class="pre">datajoint.json</span></code> from the working directory upwards, so run from
+<code class="docutils literal notranslate"><span class="pre">dj_pipeline/</span></code> with that environment loaded. Without the tag the schema name resolves to an
+empty schema and the session is “not found”. Session files need none of this.</p>
+</section>
+<section id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Live wrapper</p></th>
+<th class="head"><p>Replay wrapper</p></th>
+<th class="head"><p>Config</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hockey (goal)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HockeyWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HockeyReplayWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hockey, goal-free (displacement band, 1–2 pucks)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HockeyWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HockeyReplayWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">hockey_goalfree.game.toml</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sequence</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SequenceWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SequenceReplayWrapper</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sequence.game.toml</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>TouchDestroy</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TouchDestroyWrapper</span></code></p></td>
+<td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">touchdestroy.game.toml</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">rl.CONFIG_DIR</span></code> is the repository’s config directory. Hockey and the sequence task are played by
+the DLC agent and share their controls: the action is <code class="docutils literal notranslate"><span class="pre">[velocity,</span> <span class="pre">turn]</span></code>, both in [-1, 1]. The
+wrapper turns the agent’s <em>observed</em> heading by <code class="docutils literal notranslate"><span class="pre">turn</span> <span class="pre">×</span> <span class="pre">max_turn_rate</span></code> (π/4 per step by
+default) and moves it <code class="docutils literal notranslate"><span class="pre">velocity</span> <span class="pre">×</span> <span class="pre">velocity_scale</span></code> screen units along the new heading. Because
+the action is applied to the observed pose, an agent can take over a replayed trial at any step.</p>
+</section>
 </section>
 <hr class="docutils" />
-<section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
-<section id="using-factory-functions">
-<h3>Using Factory Functions<a class="headerlink" href="#using-factory-functions" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_hockey_env</span><span class="p">,</span> <span class="n">create_touchdestroy_env</span>
+<section id="training-rl-agents">
+<h2>1. Training RL agents<a class="headerlink" href="#training-rl-agents" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>The training infrastructure works end to end: parallel Unity instances, training, saving,
+loading and evaluating a model. Whether an agent actually <em>learns</em> a task has not been worked
+on yet: the example script’s reward and hyperparameters are placeholders.</p>
+</div></blockquote>
+<section id="with-the-example-script">
+<h3>With the example script<a class="headerlink" href="#with-the-example-script" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Live hockey from the game config, 4 Unity instances in parallel</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>train<span class="w"> </span>--headless<span class="w"> </span>--num-envs<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-init-phase<span class="w"> </span>--timesteps<span class="w"> </span><span class="m">200000</span><span class="w"> </span>--model<span class="w"> </span>runs/hockey_ppo
 
-<span class="c1"># Hockey game with sensible defaults</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span>
-    <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">,</span>
-    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.1</span>
-<span class="p">)</span>
+<span class="c1"># Goal-free hockey: a profile of hockey_goalfree.game.toml (bandstage1, taskB, ...)</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>train<span class="w"> </span>--headless<span class="w"> </span>--num-envs<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--goal-free<span class="w"> </span>taskB<span class="w"> </span>--no-init-phase<span class="w"> </span>--model<span class="w"> </span>runs/taskb_ppo
 
-<span class="c1"># TouchDestroy game</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">create_touchdestroy_env</span><span class="p">(</span>
-    <span class="n">max_objects</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># headless for training</span>
-    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.001</span>
-<span class="p">)</span>
+<span class="c1"># In the conditions of recorded trials; the agent takes over after 200 recorded steps</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>train<span class="w"> </span>--headless<span class="w"> </span>--num-envs<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--replay-data<span class="w"> </span>data/UnityData_Tick_20260210_105633.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--replay-mode<span class="w"> </span>hybrid<span class="w"> </span>--handover-step<span class="w"> </span><span class="m">200</span><span class="w"> </span>--model<span class="w"> </span>runs/replay_ppo
 
-<span class="c1"># Standard Gymnasium API</span>
+<span class="c1"># Evaluate a saved model, or watch it play in a Unity window</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>evaluate<span class="w"> </span>--headless<span class="w"> </span>--no-init-phase<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--model<span class="w"> </span>runs/hockey_ppo<span class="w"> </span>--episodes<span class="w"> </span><span class="m">20</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>visualize<span class="w"> </span>--no-init-phase<span class="w"> </span>--model<span class="w"> </span>runs/hockey_ppo
+
+<span class="c1"># Sanity check of an environment without any training</span>
+python<span class="w"> </span>-m<span class="w"> </span>rl.example_train_hockey_rl<span class="w"> </span>--mode<span class="w"> </span>random<span class="w"> </span>--headless<span class="w"> </span>--no-init-phase<span class="w"> </span>--episodes<span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--no-init-phase</span></code></p></td>
+<td><p>Spawn the pucks at the episode start. Without it the task waits for the agent to dwell in the initiation zone first, which an untrained agent practically never does, so no pucks appear.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--num-envs</span> <span class="pre">N</span></code></p></td>
+<td><p>N Unity instances in parallel (training only).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--goal-free</span> <span class="pre">PROFILE</span></code></p></td>
+<td><p>Goal-free hockey; sets config, profile and observation layout.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--config</span></code>, <code class="docutils literal notranslate"><span class="pre">--profile</span></code></p></td>
+<td><p>Game config and profile(s); stack profiles with <code class="docutils literal notranslate"><span class="pre">+</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">taskB+RL</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--max-pucks</span></code>, <code class="docutils literal notranslate"><span class="pre">--max-targets</span></code>, <code class="docutils literal notranslate"><span class="pre">--obs-features</span></code></p></td>
+<td><p>Observation layout, see below.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--replay-data</span></code>, <code class="docutils literal notranslate"><span class="pre">--replay-mode</span></code>, <code class="docutils literal notranslate"><span class="pre">--handover-step</span></code></p></td>
+<td><p>Train in the conditions of recorded trials.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--algorithm</span> <span class="pre">ppo|sac</span></code></p></td>
+<td><p>Stable-Baselines3 algorithm.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Checkpoints are written to <code class="docutils literal notranslate"><span class="pre">./checkpoints/</span></code> in the working directory. <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> and
+<code class="docutils literal notranslate"><span class="pre">visualize</span></code> build their environment from the same options as <code class="docutils literal notranslate"><span class="pre">train</span></code>, so pass the same ones
+(<code class="docutils literal notranslate"><span class="pre">--goal-free</span></code>, <code class="docutils literal notranslate"><span class="pre">--no-init-phase</span></code>, the layout flags): a model only fits the observation layout
+it was trained on.</p>
+</section>
+<section id="in-your-own-code">
+<h3>In your own code<a class="headerlink" href="#in-your-own-code" title="Link to this heading">#</a></h3>
+<p>Every live wrapper takes a game config, applies its <code class="docutils literal notranslate"><span class="pre">RL</span></code> profile on top, and starts Unity on
+port <code class="docutils literal notranslate"><span class="pre">base_port</span> <span class="pre">+</span> <span class="pre">worker_id</span></code> (headless unless <code class="docutils literal notranslate"><span class="pre">render_mode=&quot;human&quot;</span></code>). Keyword arguments are
+explicit: a misspelled one raises.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">PPO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="n">HockeyWrapper</span><span class="p">,</span> <span class="n">create_vec_env</span>
+
+<span class="n">BUILD</span> <span class="o">=</span> <span class="s2">"/path/to/MouseAR.x86_64"</span>
+<span class="n">CONFIG</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">CONFIG_DIR</span> <span class="o">/</span> <span class="s2">"hockey.game.toml"</span><span class="p">)</span>
+
+<span class="c1"># One environment</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">HockeyWrapper</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">,</span> <span class="n">env_path</span><span class="o">=</span><span class="n">BUILD</span><span class="p">,</span> <span class="n">init_phase</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">action</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
-    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
-        <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">())</span>
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Several in parallel (Stable-Baselines3 SubprocVecEnv; one Unity instance and port each)</span>
+<span class="n">vec_env</span> <span class="o">=</span> <span class="n">create_vec_env</span><span class="p">(</span>
+    <span class="n">HockeyWrapper</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">config_path</span><span class="o">=</span><span class="n">CONFIG</span><span class="p">,</span> <span class="n">env_path</span><span class="o">=</span><span class="n">BUILD</span><span class="p">,</span> <span class="n">init_phase</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s2">"MlpPolicy"</span><span class="p">,</span> <span class="n">vec_env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">200_000</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"runs/hockey_ppo"</span><span class="p">)</span>
+<span class="n">vec_env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Goal-free hockey (<code class="docutils literal notranslate"><span class="pre">hockey_goalfree.game.toml</span></code>: displacement band, no goal; Task B has two
+texture-cued pucks) takes its config, profiles and observation layout from the profile:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">HockeyWrapper</span><span class="p">,</span> <span class="n">goalfree_hockey_kwargs</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">HockeyWrapper</span><span class="p">(</span><span class="o">**</span><span class="n">goalfree_hockey_kwargs</span><span class="p">(</span><span class="s2">"taskB"</span><span class="p">),</span> <span class="n">env_path</span><span class="o">=</span><span class="n">BUILD</span><span class="p">,</span> <span class="n">init_phase</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">obs_slices</span><span class="p">)</span>     <span class="c1"># name -&gt; slice of the observation vector</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">goalfree_hockey_kwargs</span></code> stacks the profile with <code class="docutils literal notranslate"><span class="pre">RL</span></code> and sizes the observation from it
+(<code class="docutils literal notranslate"><span class="pre">max_pucks</span> <span class="pre">=</span> <span class="pre">n_move_objects</span></code>, <code class="docutils literal notranslate"><span class="pre">max_targets</span> <span class="pre">=</span> <span class="pre">0</span></code>, presence / displacement / band, plus cue when
+the profile enables it). The sequence task works the same way with <code class="docutils literal notranslate"><span class="pre">SequenceWrapper</span></code> and
+<code class="docutils literal notranslate"><span class="pre">sequence.game.toml</span></code>.</p>
+<p>Common arguments: <code class="docutils literal notranslate"><span class="pre">max_episode_steps</span></code> (truncation), <code class="docutils literal notranslate"><span class="pre">step_penalty</span></code> (reward on steps without
+reward), <code class="docutils literal notranslate"><span class="pre">init_phase</span></code> (<code class="docutils literal notranslate"><span class="pre">False</span></code> spawns at the episode start instead of after the self-initiation
+dwell), <code class="docutils literal notranslate"><span class="pre">config_profile</span></code> (profile(s) of the config), <code class="docutils literal notranslate"><span class="pre">env_path</span></code>, <code class="docutils literal notranslate"><span class="pre">time_scale</span></code>,
+<code class="docutils literal notranslate"><span class="pre">capture_frame_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">worker_id</span></code> / <code class="docutils literal notranslate"><span class="pre">base_port</span></code>, and <code class="docutils literal notranslate"><span class="pre">env_params_overrides</span></code> /
+<code class="docutils literal notranslate"><span class="pre">env_kv_params_overrides</span></code> merged over the loaded parameters.</p>
+</section>
+<section id="observations-reward-and-info">
+<h3>Observations, reward and info<a class="headerlink" href="#observations-reward-and-info" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">HockeyWrapper</span></code>’s observation is a flat vector laid out by <code class="docutils literal notranslate"><span class="pre">HockeyObsLayout</span></code>;
+<code class="docutils literal notranslate"><span class="pre">env.obs_slices</span></code> names every part.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Content</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">agent</span></code></p></td>
+<td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[pos_x,</span> <span class="pre">pos_z,</span> <span class="pre">screen_u,</span> <span class="pre">screen_v,</span> <span class="pre">heading]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck{i}</span></code></p></td>
+<td><p>4 each</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">z,</span> <span class="pre">vx,</span> <span class="pre">vz]</span></code>, for <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">max_pucks</span></code> (default 1)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck{i}_present</span></code></p></td>
+<td><p>1</p></td>
+<td><p>with <code class="docutils literal notranslate"><span class="pre">&quot;presence&quot;</span></code>: the puck was reported since the spawn</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">puck{i}_displacement</span></code></p></td>
+<td><p>2</p></td>
+<td><p>with <code class="docutils literal notranslate"><span class="pre">&quot;displacement&quot;</span></code>: <code class="docutils literal notranslate"><span class="pre">[dx,</span> <span class="pre">dz]</span></code> from its spawn position</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">puck{i}_cue</span></code></p></td>
+<td><p>5</p></td>
+<td><p>with <code class="docutils literal notranslate"><span class="pre">&quot;cue&quot;</span></code>: one-hot texture pattern</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">target{j}</span></code></p></td>
+<td><p>2 each</p></td>
+<td><p>goal <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">z]</span></code>, for <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">&lt;</span> <span class="pre">max_targets</span></code> (default 1, 0 for goal-free)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target{j}_present</span></code></p></td>
+<td><p>1</p></td>
+<td><p>with <code class="docutils literal notranslate"><span class="pre">&quot;presence&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">band</span></code></p></td>
+<td><p>2</p></td>
+<td><p>with <code class="docutils literal notranslate"><span class="pre">&quot;band&quot;</span></code>: <code class="docutils literal notranslate"><span class="pre">[band_min,</span> <span class="pre">band_max]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The optional parts are switched on with <code class="docutils literal notranslate"><span class="pre">obs_features=(&quot;presence&quot;,</span> <span class="pre">&quot;displacement&quot;,</span> <span class="pre">...)</span></code>. The
+defaults give the 11-value <code class="docutils literal notranslate"><span class="pre">[agent,</span> <span class="pre">puck0,</span> <span class="pre">target0]</span></code>. Values are clipped to the space
+(positions ±10, velocities ±20). Puck and goal reports arrive only on some steps; the last
+values are held until the next report, spawn or reset, and what was never reported is zero.
+Task C’s size cue is not in the vector observation.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SequenceWrapper</span></code> observes the agent plus the current target index. <code class="docutils literal notranslate"><span class="pre">TouchDestroyWrapper(</span> <span class="pre">config_path,</span> <span class="pre">max_objects=10)</span></code> takes <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code> in [-1, 1] (a touch position) and observes the
+object positions <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">...]</span></code> in [0, 1], zero-padded to <code class="docutils literal notranslate"><span class="pre">max_objects</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">create_mouseview_obs=True</span></code> adds mouse-view camera frames: the observation becomes a dict with
+<code class="docutils literal notranslate"><span class="pre">&quot;vector&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;camera&quot;</span></code> (plus <code class="docutils literal notranslate"><span class="pre">&quot;camera_left&quot;</span></code> / <code class="docutils literal notranslate"><span class="pre">&quot;camera_right&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;camera&quot;</span></code> as their
+side-by-side frame, with <code class="docutils literal notranslate"><span class="pre">mouse_obs_kwargs={&quot;camera_multi&quot;:</span> <span class="pre">1}</span></code>, which needs a build with the
+binocular sensors). <strong>Camera frames need a rendering player:</strong> a headless one
+(<code class="docutils literal notranslate"><span class="pre">render_mode=None</span></code>, <code class="docutils literal notranslate"><span class="pre">--headless</span></code>) has no renderer and its frames are a uniform grey.
+<code class="docutils literal notranslate"><span class="pre">create_vec_env</span></code> renders only its first environment, so camera observations are not usable for
+parallel training yet.</p>
+<p>The reward is the task’s own: +1 when the trial is solved, otherwise <code class="docutils literal notranslate"><span class="pre">-step_penalty</span></code> per step.
+An episode <em>terminates</em> when the task ends the trial and is <em>truncated</em> at <code class="docutils literal notranslate"><span class="pre">max_episode_steps</span></code>.
+<code class="docutils literal notranslate"><span class="pre">info[&quot;trial&quot;]</span></code> carries what Unity reported about the trial this episode (<code class="docutils literal notranslate"><span class="pre">n_pucks</span></code>,
+<code class="docutils literal notranslate"><span class="pre">puck_cue</span></code>, <code class="docutils literal notranslate"><span class="pre">puck_gain</span></code>, <code class="docutils literal notranslate"><span class="pre">puck_band</span></code>, <code class="docutils literal notranslate"><span class="pre">puck_roles</span></code>, and at the end <code class="docutils literal notranslate"><span class="pre">trial_outcome</span></code> such as
+<code class="docutils literal notranslate"><span class="pre">band_hit</span></code> / <code class="docutils literal notranslate"><span class="pre">overshoot</span></code> / <code class="docutils literal notranslate"><span class="pre">timeout</span></code>, and <code class="docutils literal notranslate"><span class="pre">final_displacement</span></code>).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="replaying-recorded-sessions">
+<h2>2. Replaying recorded sessions<a class="headerlink" href="#replaying-recorded-sessions" title="Link to this heading">#</a></h2>
+<p>A replay resets Unity into a recorded trial’s conditions and sends the animal’s recorded actions
+step by step. It needs no game config: Unity is set up from the session’s own parameters.</p>
+<section id="watch-a-trial-or-save-a-video">
+<h3>Watch a trial or save a video<a class="headerlink" href="#watch-a-trial-or-save-a-video" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">HockeyReplayWrapper</span><span class="p">,</span> <span class="n">play_trial</span><span class="p">,</span> <span class="n">visual_replay_kwargs</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">HockeyReplayWrapper</span><span class="p">(</span>
+    <span class="n">trial_data_path</span><span class="o">=</span><span class="s2">"data/UnityData_Tick_20260210_105633.json"</span><span class="p">,</span>   <span class="c1"># or dataset_id="Tick_20260210_105633"</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"/path/to/MouseAR.x86_64"</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">visual_replay_kwargs</span><span class="p">(</span><span class="n">camera_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">camera_width</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">camera_height</span><span class="o">=</span><span class="mi">256</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">play_trial</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">trial_id</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">save_video</span><span class="o">=</span><span class="s2">"outputs/trial_25.mp4"</span><span class="p">,</span> <span class="n">video_fps</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>        <span class="c1"># trial_id, steps, total_reward, terminated, truncated, video_path</span>
 <span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">visual_replay_kwargs(camera_index=0</span> <span class="pre">|</span> <span class="pre">1,</span> <span class="pre">camera_multi,</span> <span class="pre">camera_width,</span> <span class="pre">camera_height,</span> <span class="pre">camera_grayscale,</span> <span class="pre">time_scale,</span> <span class="pre">capture_frame_rate)</span></code> gives the wrapper arguments for watching:
+the Unity window, the virtual mouse, a camera observation (<code class="docutils literal notranslate"><span class="pre">0</span></code> = bird’s eye, <code class="docutils literal notranslate"><span class="pre">1</span></code> = the mouse’s
+view), <code class="docutils literal notranslate"><span class="pre">&quot;replay&quot;</span></code> mode, starting at the recorded spawn. <code class="docutils literal notranslate"><span class="pre">play_trial</span></code> then runs one trial to the
+end of its episode. One recorded step is one physics step (5 ms), so <code class="docutils literal notranslate"><span class="pre">video_fps=200</span></code> plays in
+real time.</p>
+<p>The Unity window (<code class="docutils literal notranslate"><span class="pre">render_mode=&quot;human&quot;</span></code>) is required for video: a headless player has no
+renderer, and the saved video would be a uniform grey. Replays that only read the vector
+observation and <code class="docutils literal notranslate"><span class="pre">info</span></code> work headless.</p>
 </section>
-<section id="training-with-stable-baselines3">
-<h3>Training with Stable-Baselines3<a class="headerlink" href="#training-with-stable-baselines3" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3</span><span class="w"> </span><span class="kn">import</span> <span class="n">PPO</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_hockey_env</span>
+<section id="step-through-a-replay-yourself">
+<h3>Step through a replay yourself<a class="headerlink" href="#step-through-a-replay-yourself" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">HockeyReplayWrapper</span>
 
-<span class="c1"># Create environment</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">HockeyReplayWrapper</span><span class="p">(</span>
+    <span class="n">trial_data_path</span><span class="o">=</span><span class="s2">"data/UnityData_Tick_20260210_105633.json"</span><span class="p">,</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"/path/to/MouseAR.x86_64"</span><span class="p">,</span>
+    <span class="n">replay_mode</span><span class="o">=</span><span class="s2">"replay"</span><span class="p">,</span>      <span class="c1"># send the recorded actions; the passed action is ignored</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">num_trials</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">trial_ids</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
-<span class="c1"># Train PPO agent</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">100_000</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;hockey_ppo&quot;</span><span class="p">)</span>
-
-<span class="c1"># Test trained agent</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
-<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">action</span><span class="p">,</span> <span class="n">_states</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="n">deterministic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">"trial_id"</span><span class="p">:</span> <span class="mi">25</span><span class="p">})</span>   <span class="c1"># omit trial_id for a random trial</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
     <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
         <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trial_outcome"</span><span class="p">),</span> <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trial_replay_complete"</span><span class="p">))</span>
 <span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="wrapper-reference">
-<h2>Wrapper Reference<a class="headerlink" href="#wrapper-reference" title="Link to this heading">#</a></h2>
-<section id="touchdestroywrapper">
-<h3>TouchDestroyWrapper<a class="headerlink" href="#touchdestroywrapper" title="Link to this heading">#</a></h3>
-<p><strong>Purpose:</strong> Touch-based game where agent destroys objects by moving to their positions.</p>
-<p><strong>Action Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=-1,</span> <span class="pre">high=1,</span> <span class="pre">shape=(2,))</span></code></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">action[0]</span></code>: X position in normalized device coordinates [-1, 1]</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">action[1]</span></code>: Y position in normalized device coordinates [-1, 1]</p></li>
-</ul>
-<p><strong>Observation Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=0,</span> <span class="pre">high=1,</span> <span class="pre">shape=(max_objects*2,))</span></code></p>
-<ul class="simple">
-<li><p>Flat array of object positions: <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2,</span> <span class="pre">...,</span> <span class="pre">xN,</span> <span class="pre">yN]</span></code></p></li>
-<li><p>Zero-padded if fewer than <code class="docutils literal notranslate"><span class="pre">max_objects</span></code> exist</p></li>
-<li><p>Positions in screen coordinates [0, 1]</p></li>
-</ul>
-<p><strong>Unity Integration:</strong></p>
-<ul class="simple">
-<li><p><strong>Trainable Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TouchInput</span></code> (TouchFingerAgent or PlayerAgent3DOnScreen)</p></li>
-<li><p><strong>Reward Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TTLInput</span></code> (TTLReceiverAgent)</p></li>
-<li><p><strong>KV Channel:</strong> Reads <code class="docutils literal notranslate"><span class="pre">touchScreen.object_positions</span></code> for object tracking</p></li>
-</ul>
-<p><strong>Parameters:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TouchDestroyWrapper</span><span class="p">(</span>
-    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;mouse_ar/tasks/configs/touchdestroy.game.toml&quot;</span><span class="p">,</span>
-    <span class="n">max_objects</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>           <span class="c1"># Maximum objects to track</span>
-    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># &quot;human&quot; or None</span>
-    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>    <span class="c1"># Truncation limit</span>
-    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>          <span class="c1"># Per-step penalty (e.g., -0.01)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Example:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl.gym_wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_touchdestroy_env</span>
-
-<span class="n">env</span> <span class="o">=</span> <span class="n">create_touchdestroy_env</span><span class="p">(</span><span class="n">max_objects</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
-<span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
-<span class="c1"># obs = [x1, y1, x2, y2, ..., x12, y12]  # 24-dimensional</span>
-<span class="c1"># Move to first object</span>
-<span class="n">action</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Convert [0,1] to [-1,1]</span>
-<span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="hockeywrapper">
-<h3>HockeyWrapper<a class="headerlink" href="#hockeywrapper" title="Link to this heading">#</a></h3>
-<p><strong>Purpose:</strong> Navigation game where agent uses velocity control to intercept moving objects and reach targets.</p>
-<p><strong>Action Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(low=[-1,</span> <span class="pre">-π/4],</span> <span class="pre">high=[1,</span> <span class="pre">π/4],</span> <span class="pre">shape=(2,))</span></code></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">action[0]</span></code>: <strong>Velocity</strong> - forward/backward speed in [-1, 1]</p>
-<ul>
-<li><p>Positive: move forward along heading direction</p></li>
-<li><p>Negative: move backward</p></li>
-<li><p>Scaled by <code class="docutils literal notranslate"><span class="pre">velocity_scale</span></code> (default: 0.1) per step</p></li>
-</ul>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">action[1]</span></code>: <strong>Heading change</strong> - angular velocity in radians [-π/4, π/4]</p>
-<ul>
-<li><p>Positive: turn right (clockwise)</p></li>
-<li><p>Negative: turn left (counterclockwise)</p></li>
-<li><p>Maximum turn rate: ±45° per step</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Observation Space:</strong> <code class="docutils literal notranslate"><span class="pre">Box(shape=(5+4+max_objects*2,))</span></code></p>
-<p>Structure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agent state (5D) - from DlcAgent.CollectObservations()</span>
-<span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">pos_x</span><span class="p">,</span>      <span class="c1"># Agent X position in world space (meters)</span>
-    <span class="n">pos_z</span><span class="p">,</span>      <span class="c1"># Agent Z position in world space (meters)</span>
-    <span class="n">screen_u</span><span class="p">,</span>   <span class="c1"># Screen U coordinate [0, 1]</span>
-    <span class="n">screen_v</span><span class="p">,</span>   <span class="c1"># Screen V coordinate [0, 1]</span>
-    <span class="n">heading</span>     <span class="c1"># Heading angle in radians [-π, π]</span>
-<span class="p">]</span>
-
-<span class="c1"># Moving object state (4D) - from KV &#39;hockey.object_position&#39;</span>
-<span class="n">obs</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">obj_pos_x</span><span class="p">,</span>  <span class="c1"># Object X position (meters)</span>
-    <span class="n">obj_pos_z</span><span class="p">,</span>  <span class="c1"># Object Z position (meters)</span>
-    <span class="n">obj_vel_x</span><span class="p">,</span>  <span class="c1"># Object X velocity (m/s)</span>
-    <span class="n">obj_vel_z</span>   <span class="c1"># Object Z velocity (m/s)</span>
-<span class="p">]</span>
-
-<span class="c1"># Target positions (max_objects*2) - from KV &#39;hockey.target_positions&#39;</span>
-<span class="n">obs</span><span class="p">[</span><span class="mi">9</span><span class="p">:]</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">tgt1_x</span><span class="p">,</span> <span class="n">tgt1_z</span><span class="p">,</span>
-    <span class="n">tgt2_x</span><span class="p">,</span> <span class="n">tgt2_z</span><span class="p">,</span>
-    <span class="o">...</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-<p><strong>Unity Integration:</strong></p>
-<ul class="simple">
-<li><p><strong>Trainable Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">DLCInput</span></code> (DlcAgent)</p></li>
-<li><p><strong>Reward Behavior:</strong> <code class="docutils literal notranslate"><span class="pre">TTLInput</span></code> (TTLReceiverAgent)</p></li>
-<li><p><strong>KV Channels:</strong></p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">hockey.object_position</span></code>: Moving object state (updated every step)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">hockey.target_positions</span></code>: Target locations (sent once per episode)</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Internal State:</strong></p>
-<ul class="simple">
-<li><p>Tracks <code class="docutils literal notranslate"><span class="pre">_agent_heading</span></code> (accumulated heading angle)</p></li>
-<li><p>Caches <code class="docutils literal notranslate"><span class="pre">_cached_target_positions</span></code> (persists across episode)</p></li>
-</ul>
-<p><strong>Parameters:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HockeyWrapper</span><span class="p">(</span>
-    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;mouse_ar/tasks/configs/hockey.game.toml&quot;</span><span class="p">,</span>
-    <span class="n">max_objects</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>             <span class="c1"># Number of targets to track</span>
-    <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>          <span class="c1"># &quot;human&quot; or None</span>
-    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>    <span class="c1"># Truncation limit</span>
-    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span>       <span class="c1"># Per-step penalty (time cost)</span>
-    <span class="n">velocity_scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>        <span class="c1"># Velocity → position scaling</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Action Processing:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wrapper converts [velocity, heading_change] to Unity format:</span>
-<span class="n">velocity</span><span class="p">,</span> <span class="n">heading_change</span> <span class="o">=</span> <span class="n">action</span>
-
-<span class="c1"># Update heading</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span> <span class="o">+=</span> <span class="n">heading_change</span>  <span class="c1"># Integrate angular velocity</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_agent_heading</span><span class="p">)</span>  <span class="c1"># Keep in [-π, π]</span>
-
-<span class="c1"># Get current position from observations</span>
-<span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">obs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Screen coordinates [0, 1]</span>
-<span class="n">current_x</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># Convert to [-1, 1]</span>
-<span class="n">current_y</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
-
-<span class="c1"># Calculate position change</span>
-<span class="n">dx</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">heading</span><span class="p">)</span> <span class="o">*</span> <span class="n">velocity_scale</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="n">velocity</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">heading</span><span class="p">)</span> <span class="o">*</span> <span class="n">velocity_scale</span>
-
-<span class="c1"># New position</span>
-<span class="n">new_x</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">current_x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">new_y</span> <span class="o">=</span> <span class="n">clip</span><span class="p">(</span><span class="n">current_y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Convert to Unity format: [x, y, heading_deg, head_angle, emit_action]</span>
-<span class="n">unity_action</span> <span class="o">=</span> <span class="p">[</span><span class="n">new_x</span><span class="p">,</span> <span class="n">new_y</span><span class="p">,</span> <span class="n">heading_deg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="basegymunitywrapper-api">
-<h2>BaseGymUnityWrapper API<a class="headerlink" href="#basegymunitywrapper-api" title="Link to this heading">#</a></h2>
-<section id="abstract-methods-must-implement">
-<h3>Abstract Methods (Must Implement)<a class="headerlink" href="#abstract-methods-must-implement" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyGameWrapper</span><span class="p">(</span><span class="n">BaseGymUnityWrapper</span><span class="p">):</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_action_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Space</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define action space for trainable behavior.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_setup_observation_space</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Space</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Define observation space structure.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">spaces</span><span class="o">.</span><span class="n">Box</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_transform_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert RL action to Unity format.&quot;&quot;&quot;</span>
-        <span class="c1"># Your transformation logic</span>
-        <span class="k">return</span> <span class="n">unity_action</span>
-
-    <span class="nd">@abstractmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_observation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract observation from Unity task.&quot;&quot;&quot;</span>
-        <span class="c1"># Read from self.task.behaviors and self.task.channel_kv</span>
-        <span class="k">return</span> <span class="n">obs_array</span>
-</pre></div>
-</div>
-</section>
-<section id="optional-methods-can-override">
-<h3>Optional Methods (Can Override)<a class="headerlink" href="#optional-methods-can-override" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_get_init_action</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return initialization action sent at episode start.</span>
-
-<span class="sd">    Default: None (no initialization)</span>
-<span class="sd">    Override to implement custom episode setup.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="kc">None</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">_get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Build info dictionary returned from step().</span>
-
-<span class="sd">    Default: Episode stats + KV messages</span>
-<span class="sd">    Override to add custom info.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">info</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_get_info</span><span class="p">()</span>
-    <span class="n">info</span><span class="p">[</span><span class="s2">&quot;my_metric&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_metric</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">info</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Reset environment.</span>
-
-<span class="sd">    Override to add custom reset logic.</span>
-<span class="sd">    Remember to call super().reset()!</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># Clear your state</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_my_state</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="c1"># Call parent reset</span>
-    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="provided-methods-use-as-is">
-<h3>Provided Methods (Use As-Is)<a class="headerlink" href="#provided-methods-use-as-is" title="Link to this heading">#</a></h3>
+<p>A replay ends when the task ends the trial (<code class="docutils literal notranslate"><span class="pre">terminated</span></code>) or when the recorded actions run out
+(<code class="docutils literal notranslate"><span class="pre">truncated</span></code>, with <code class="docutils literal notranslate"><span class="pre">info[&quot;trial_replay_complete&quot;]</span></code>). For goal-free or two-puck sessions pass the
+matching layout, e.g. <code class="docutils literal notranslate"><span class="pre">max_pucks=2,</span> <span class="pre">max_targets=0,</span> <span class="pre">obs_features=(&quot;presence&quot;,</span> <span class="pre">&quot;displacement&quot;,</span> <span class="pre">&quot;band&quot;)</span></code>. <code class="docutils literal notranslate"><span class="pre">SequenceReplayWrapper</span></code> replays sequence sessions with the same arguments.</p>
+<p>A replay wrapper is the live wrapper with <code class="docutils literal notranslate"><span class="pre">ReplayMixin</span></code> in front, so spaces, observations and
+the action conversion are the same as in training. <code class="docutils literal notranslate"><span class="pre">replay_mode</span></code> decides what reaches Unity
+(<code class="docutils literal notranslate"><span class="pre">info[&quot;action_source&quot;]</span></code> says which):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>Method</p></th>
-<th class="head"><p>Purpose</p></th>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">replay_mode</span></code></p></th>
+<th class="head"><p>Sent to Unity</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__init__()</span></code></p></td>
-<td><p>Initialize Unity task, load config, setup spaces</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;replay&quot;</span></code></p></td>
+<td><p>The recorded action every step (the passed one is ignored).</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">step(action)</span></code></p></td>
-<td><p>Execute action, get reward/obs/done</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;hybrid&quot;</span></code></p></td>
+<td><p>Recorded actions for <code class="docutils literal notranslate"><span class="pre">handover_step</span></code> steps after the replay start, then the passed action.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reset(seed,</span> <span class="pre">options)</span></code></p></td>
-<td><p>Reset environment to initial state</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">close()</span></code></p></td>
-<td><p>Cleanup and shutdown Unity</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">render()</span></code></p></td>
-<td><p>Handled automatically by Unity window</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">_send_init_action()</span></code></p></td>
-<td><p>Send initialization action at reset</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;free&quot;</span></code></p></td>
+<td><p>The passed action from the start (the trial only sets the conditions).</p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">replay_start_mode</span></code> is <code class="docutils literal notranslate"><span class="pre">&quot;first_non_iti&quot;</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">&quot;initiation_end&quot;</span></code> (the recorded spawn).
+<code class="docutils literal notranslate"><span class="pre">reset(options=...)</span></code> can set <code class="docutils literal notranslate"><span class="pre">replay_start_mode</span></code> and <code class="docutils literal notranslate"><span class="pre">handover_step</span></code> for one episode, and
+<code class="docutils literal notranslate"><span class="pre">action_trial_id</span></code> to replay another trial’s actions in this trial’s conditions.
+<code class="docutils literal notranslate"><span class="pre">set_replay_mode(mode)</span></code> switches modes.</p>
 </section>
-<section id="accessing-unity-data">
-<h3>Accessing Unity Data<a class="headerlink" href="#accessing-unity-data" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inside your wrapper methods (_extract_observation, etc.):</span>
+<section id="loading-sessions-directly">
+<h3>Loading sessions directly<a class="headerlink" href="#loading-sessions-directly" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionData</span>
 
-<span class="c1"># --- ML-Agents observations ---</span>
-<span class="n">behavior_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_behavior</span>
-<span class="n">obs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="n">behavior_name</span><span class="p">][</span><span class="s2">&quot;state&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;obs&quot;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">obs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">agent_obs</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># First agent&#39;s observations</span>
-
-<span class="c1"># --- KV channel messages ---</span>
-<span class="n">kv_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">channel_kv</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
-<span class="k">if</span> <span class="s2">&quot;my_key&quot;</span> <span class="ow">in</span> <span class="n">kv_dict</span><span class="p">:</span>
-    <span class="n">value_str</span> <span class="o">=</span> <span class="n">kv_dict</span><span class="p">[</span><span class="s2">&quot;my_key&quot;</span><span class="p">]</span>  <span class="c1"># String value</span>
-    <span class="n">parsed</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
-
-<span class="c1"># --- Reward and done ---</span>
-<span class="n">reward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reward_response_behavior</span><span class="p">][</span><span class="s2">&quot;reward&quot;</span><span class="p">]</span>
-<span class="n">done</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">behaviors</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">reward_response_behavior</span><span class="p">][</span><span class="s2">&quot;done&quot;</span><span class="p">]</span>
-
-<span class="c1"># --- Episode tracking ---</span>
-<span class="n">episode_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">episode</span>
-<span class="n">step_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">step</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">SessionData</span><span class="o">.</span><span class="n">load_from_file</span><span class="p">(</span><span class="s2">"UnityData_Tick_20260210_105633.json"</span><span class="p">)</span>  <span class="c1"># or .npz</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">SessionData</span><span class="o">.</span><span class="n">load_from_dj</span><span class="p">(</span><span class="s2">"Tick_20260210_105633"</span><span class="p">)</span>                    <span class="c1"># DataJoint</span>
+<span class="n">session</span><span class="o">.</span><span class="n">trial_ids</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">get_trial</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">session</span><span class="o">.</span><span class="n">runtime_params</span>
 </pre></div>
 </div>
+<p>Pass a loaded session to several wrappers with <code class="docutils literal notranslate"><span class="pre">session_data=session</span></code> to load it once.
+<code class="docutils literal notranslate"><span class="pre">min_trial_length</span></code> (default 5) drops shorter trials; a replay wrapper refuses a session that
+has none left. A <code class="docutils literal notranslate"><span class="pre">TrialData</span></code> holds equal-length per-step arrays — <code class="docutils literal notranslate"><span class="pre">observations</span></code> (DlcAgent
+pose), <code class="docutils literal notranslate"><span class="pre">actions</span></code> (recorded DlcAgent actions), <code class="docutils literal notranslate"><span class="pre">rewards</span></code>, <code class="docutils literal notranslate"><span class="pre">iti</span></code> (1 = inter-trial interval) —
+plus the trial’s <code class="docutils literal notranslate"><span class="pre">kv_messages</span></code> (key → list of value tuples), <code class="docutils literal notranslate"><span class="pre">kv_steps</span></code> (the game step of each
+of those values) and <code class="docutils literal notranslate"><span class="pre">metadata</span></code> (<code class="docutils literal notranslate"><span class="pre">start_step</span></code>, <code class="docutils literal notranslate"><span class="pre">initiation_end_step</span></code>, <code class="docutils literal notranslate"><span class="pre">start_idx</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pre_start_observation</span></code>, …).
+Both loaders cut trials the same way: <code class="docutils literal notranslate"><span class="pre">TrialInfo</span></code> rows (DataJoint) or the same trial extraction
+(files), mapped to array indices through the recorded game steps.</p>
+<p>From DataJoint (<code class="docutils literal notranslate"><span class="pre">dj_pipeline.schemas.mousear_behavior</span></code>) it reads <code class="docutils literal notranslate"><span class="pre">UnitySession.params</span></code>,
+<code class="docutils literal notranslate"><span class="pre">UnitySession.UnityData</span></code> (episode, step, reward), <code class="docutils literal notranslate"><span class="pre">UnitySession.UnityAgentBehavior</span></code> (DLCInput
+state/action, TTLInput state; <code class="docutils literal notranslate"><span class="pre">state[:,</span> <span class="pre">1]</span></code> is the ITI flag), <code class="docutils literal notranslate"><span class="pre">UnitySession.UnityMessage</span></code> (KV
+messages), <code class="docutils literal notranslate"><span class="pre">UnitySession.UnityRuntimeParams</span></code> and <code class="docutils literal notranslate"><span class="pre">TrialInfo</span></code>.</p>
 </section>
-</section>
-<hr class="docutils" />
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
-<section id="unity-config-requirements">
-<h3>Unity Config Requirements<a class="headerlink" href="#unity-config-requirements" title="Link to this heading">#</a></h3>
-<p>Your <code class="docutils literal notranslate"><span class="pre">.game.toml</span></code> must specify behaviors:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[game]</span>
-<span class="n">behavior_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;MyBehavior&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;TTLInput&quot;</span><span class="p">]</span>
-
-<span class="k">[unity.kv.MyReporter]</span>
-<span class="n">kvPrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mygame&quot;</span>
-<span class="n">enableReporting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">updateInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span>
-</pre></div>
-</div>
-</section>
-<section id="python-wrapper-config">
-<h3>Python Wrapper Config<a class="headerlink" href="#python-wrapper-config" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">MyGameWrapper</span><span class="p">(</span>
-    <span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;path/to/config.toml&quot;</span><span class="p">,</span>  <span class="c1"># Required</span>
-    <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">,</span>                <span class="c1"># &quot;human&quot; or None</span>
-    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>             <span class="c1"># Truncation limit</span>
-    <span class="n">step_penalty</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>                  <span class="c1"># Per-step cost</span>
-    <span class="c1"># ... custom parameters</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="performance">
-<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<section id="headless-training">
-<h3>Headless Training<a class="headerlink" href="#headless-training" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">create_hockey_env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>  <span class="c1"># no_graphics=True</span>
-</pre></div>
-</div>
-</section>
-<section id="vectorized-environments">
-<h3>Vectorized Environments<a class="headerlink" href="#vectorized-environments" title="Link to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">stable_baselines3.common.vec_env</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubprocVecEnv</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">make_env</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">_init</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">create_hockey_env</span><span class="p">(</span>
-            <span class="n">render_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">worker_id</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>  <span class="c1"># Different Unity port</span>
-        <span class="p">)</span>
-    <span class="k">return</span> <span class="n">_init</span>
-
-<span class="c1"># Train on 4 parallel environments</span>
-<span class="n">envs</span> <span class="o">=</span> <span class="n">SubprocVecEnv</span><span class="p">([</span><span class="n">make_env</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">PPO</span><span class="p">(</span><span class="s2">&quot;MlpPolicy&quot;</span><span class="p">,</span> <span class="n">envs</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">400_000</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Wrapper</p></th>
-<th class="head"><p>Game</p></th>
-<th class="head"><p>Action Space</p></th>
-<th class="head"><p>Observation Space</p></th>
-<th class="head"><p>Behavior</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>TouchDestroyWrapper</p></td>
-<td><p>Touch objects</p></td>
-<td><p>[x, y] position</p></td>
-<td><p>Object positions</p></td>
-<td><p>TouchInput</p></td>
-</tr>
-<tr class="row-odd"><td><p>HockeyWrapper</p></td>
-<td><p>Navigate &amp; intercept</p></td>
-<td><p>[vel, heading_Δ]</p></td>
-<td><p>Agent + object + targets</p></td>
-<td><p>DLCInput</p></td>
-</tr>
-<tr class="row-even"><td><p>BaseGymUnityWrapper</p></td>
-<td><p>(abstract)</p></td>
-<td><p>Define in subclass</p></td>
-<td><p>Define in subclass</p></td>
-<td><p>Configurable</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<hr class="docutils" />
-<section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<section id="how-exact-is-a-replay">
+<h3>How exact is a replay?<a class="headerlink" href="#how-exact-is-a-replay" title="Link to this heading">#</a></h3>
+<p>Unity’s physics is deterministic for a fixed frame schedule: a headless replay runs at
+<code class="docutils literal notranslate"><span class="pre">capture_frame_rate=60</span></code> unless you pass another, and replaying the same trial twice on one
+machine then gives identical results. The frame schedule matters because the player rewrites
+interpolated bodies on every rendered frame and checks the end of a trial once per frame. With
+the Unity window (<code class="docutils literal notranslate"><span class="pre">render_mode=&quot;human&quot;</span></code>) the replay runs in real time instead, and the same trial
+can come out differently from run to run: a contact one physics step earlier or later, the trial
+ending a few steps apart, occasionally another outcome. Pass <code class="docutils literal notranslate"><span class="pre">capture_frame_rate</span></code> there too when
+you need it to repeat.</p>
+<p>Whether a replay matches the <em>original recording</em> depends on the recording:</p>
 <ul class="simple">
-<li><p><strong><a class="reference internal" href="../Unity/Agents.html"><span class="std std-doc">Agents Documentation</span></a></strong> - Unity agent implementations</p></li>
-<li><p><strong><a class="reference download internal" download="" href="../../_downloads/70bcdc4c2ea8fd3824480d92e86fd3ac/unity_agent_task.py"><span class="xref download myst">Unity Agent Task</span></a></strong> - Task interface</p></li>
-<li><p><strong><a class="reference internal" href="#../../rl/train_touchdestroy_rl.py"><span class="xref myst">Training Examples</span></a></strong> - Example training scripts</p></li>
+<li><p><strong>Sessions recorded with a current player</strong> (one that logs <code class="docutils literal notranslate"><span class="pre">hockey.spawn_positions</span></code>) replay
+exactly: every puck position matches the recording at full float precision for the whole
+trial, with the same outcome (verified on Linux on 26 trials, including Task B).</p></li>
+<li><p><strong>Older sessions</strong> replay the agent’s path, the spawn positions (to the logged 3 decimals),
+gains, roles and cues, but the pucks drift from the recording after the first contacts. Most
+trials still end with the same outcome, not all.</p></li>
 </ul>
+<p>Not reproduced exactly: a session’s first trial, and recordings from another platform (the
+Windows rig replayed on Linux is untested). A recording made in real time also carries the frame
+timing of its own run, which a replay does not know. The reasons are in
+<a class="reference internal" href="#how-replay-sets-up-a-trial"><span class="xref myst">How replay sets up a trial</span></a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-if-replays">
+<h2>3. What-if replays<a class="headerlink" href="#what-if-replays" title="Link to this heading">#</a></h2>
+<p>A what-if replay sends the animal’s recorded actions into a trial whose parameters you changed:
+<em>what would this push have done with twice the drag?</em> The parameters are Unity KV keys, the same
+names as in the game configs (<code class="docutils literal notranslate"><span class="pre">[unity.kv.hockeyFloor]</span></code> → <code class="docutils literal notranslate"><span class="pre">hockeyFloor.&lt;name&gt;</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">HockeyReplayWrapper</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">HockeyReplayWrapper</span><span class="p">(</span>
+    <span class="n">trial_data_path</span><span class="o">=</span><span class="s2">"data/UnityData_&lt;session&gt;.json"</span><span class="p">,</span>       <span class="c1"># or dataset_id=...</span>
+    <span class="n">env_path</span><span class="o">=</span><span class="s2">"/path/to/MouseAR.x86_64"</span><span class="p">,</span>
+    <span class="n">replay_mode</span><span class="o">=</span><span class="s2">"replay"</span><span class="p">,</span>
+    <span class="n">max_pucks</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_targets</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">obs_features</span><span class="o">=</span><span class="p">(</span><span class="s2">"presence"</span><span class="p">,</span> <span class="s2">"displacement"</span><span class="p">,</span> <span class="s2">"band"</span><span class="p">),</span>
+    <span class="n">max_episode_steps</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">play</span><span class="p">(</span><span class="n">trial_id</span><span class="p">,</span> <span class="n">kv_overrides</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s2">"trial_id"</span><span class="p">:</span> <span class="n">trial_id</span><span class="p">,</span> <span class="s2">"kv_overrides"</span><span class="p">:</span> <span class="n">kv_overrides</span> <span class="ow">or</span> <span class="p">{}})</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="n">steps</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span><span class="p">:</span>
+            <span class="n">trial</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trial"</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">return</span> <span class="n">trial</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"trial_outcome"</span><span class="p">),</span> <span class="n">trial</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"final_displacement"</span><span class="p">),</span> <span class="n">steps</span>
+
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">play</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                                               <span class="c1"># the recorded parameters</span>
+<span class="n">more_drag</span> <span class="o">=</span> <span class="n">play</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">"hockeyFloor.move_object_drag"</span><span class="p">:</span> <span class="mi">84</span><span class="p">})</span>
+<span class="n">equal_gains</span> <span class="o">=</span> <span class="n">play</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">"hockeyFloor.puck_gains"</span><span class="p">:</span> <span class="s2">"1.0,1.0"</span><span class="p">})</span>
+<span class="n">higher_band</span> <span class="o">=</span> <span class="n">play</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="s2">"hockeyFloor.band_min"</span><span class="p">:</span> <span class="mi">8</span><span class="p">})</span>
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Setting the parameters.</strong> <code class="docutils literal notranslate"><span class="pre">kv_overrides</span></code> can be given per trial in <code class="docutils literal notranslate"><span class="pre">reset(options=...)</span></code>, as
+above, or once in the constructor (<code class="docutils literal notranslate"><span class="pre">HockeyReplayWrapper(...,</span> <span class="pre">kv_overrides={...})</span></code>) for every
+trial; the two are merged and the option wins. They are sent last, after the session’s
+parameters, the parameter changes recorded during the session and the trial’s own setup, so
+they always win. <code class="docutils literal notranslate"><span class="pre">info[&quot;kv_overrides&quot;]</span></code> at reset reports what was applied, and <code class="docutils literal notranslate"><span class="pre">info[&quot;trial&quot;]</span></code>
+shows what Unity reports back (<code class="docutils literal notranslate"><span class="pre">puck_gain</span></code>, <code class="docutils literal notranslate"><span class="pre">puck_band</span></code>, …), which is the check that a
+parameter arrived. Keys that drive the replay itself (<code class="docutils literal notranslate"><span class="pre">*.start</span></code>, <code class="docutils literal notranslate"><span class="pre">*.enabled</span></code>,
+<code class="docutils literal notranslate"><span class="pre">*.begin_running</span></code>, <code class="docutils literal notranslate"><span class="pre">*.external_running_start</span></code>) are refused.</p>
+<p><code class="docutils literal notranslate"><span class="pre">play_trial(env,</span> <span class="pre">trial_id,</span> <span class="pre">kv_overrides={...},</span> <span class="pre">save_video=...)</span></code> records a video of a what-if
+replay. Float <em>env</em> parameters (<code class="docutils literal notranslate"><span class="pre">[unity.env.*]</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">general.interaction_time_limit</span></code>) are not
+KV keys: set them at construction with <code class="docutils literal notranslate"><span class="pre">env_params_overrides={...}</span></code>.</p>
+<p><strong>Reading the result.</strong></p>
+<ul class="simple">
+<li><p><strong>Compare with the baseline replay, not with the recording.</strong> Headless replays on one machine
+are deterministic, so any difference between the baseline replay and a what-if replay is caused
+by the parameter. Comparing with the recording mixes in whatever the replay did not reproduce
+(see <a class="reference internal" href="#how-exact-is-a-replay"><span class="xref myst">How exact is a replay?</span></a>).</p></li>
+<li><p><strong>The animal does not react.</strong> It repeats its recorded movements whatever the puck now does.
+The replay answers “what would these movements have done”, not “what would the animal have
+done”. The further the puck departs from the recorded path, the less the later pushes mean:
+the animal is pushing at where the puck used to be. The first contacts are the most
+informative part.</p></li>
+<li><p><strong>The replay stops with the recording.</strong> If a changed parameter delays the outcome beyond the
+recorded trial, the episode is truncated without an outcome.</p></li>
+</ul>
+<p>For the same question with an agent that does react, use <code class="docutils literal notranslate"><span class="pre">replay_mode=&quot;hybrid&quot;</span></code>: recorded
+actions up to <code class="docutils literal notranslate"><span class="pre">handover_step</span></code>, then a trained policy.</p>
+</section>
+<hr class="docutils" />
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<section id="many-environments-in-parallel">
+<h3>Many environments in parallel<a class="headerlink" href="#many-environments-in-parallel" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rl</span><span class="w"> </span><span class="kn">import</span> <span class="n">HockeyReplayWrapper</span><span class="p">,</span> <span class="n">SessionData</span><span class="p">,</span> <span class="n">create_vec_env</span><span class="p">,</span> <span class="n">reset_to_trials</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rl.vec</span><span class="w"> </span><span class="kn">import</span> <span class="n">bootstrap_cross_trial</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">SessionData</span><span class="o">.</span><span class="n">load_from_dj</span><span class="p">(</span><span class="s2">"Tick_20260210_105633"</span><span class="p">)</span>  <span class="c1"># load once for all envs</span>
+<span class="n">vec_env</span> <span class="o">=</span> <span class="n">create_vec_env</span><span class="p">(</span><span class="n">HockeyReplayWrapper</span><span class="p">,</span> <span class="n">num_envs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">session_data</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+
+<span class="n">obs</span> <span class="o">=</span> <span class="n">reset_to_trials</span><span class="p">(</span><span class="n">vec_env</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># the others reset to random trials</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">bootstrap_cross_trial</span><span class="p">(</span><span class="n">vec_env</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">num_bootstraps_per_trial</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">vec_env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">create_vec_env</span></code> works for any wrapper, live or replay. <code class="docutils literal notranslate"><span class="pre">reset_to_trials</span></code> sets each
+environment’s next-reset options (<code class="docutils literal notranslate"><span class="pre">VecEnv.set_options</span></code>); SB3’s automatic resets afterwards pick
+random trials. <code class="docutils literal notranslate"><span class="pre">bootstrap_cross_trial</span></code> replays every trial with the actions of randomly chosen
+other trials and classifies each play as <code class="docutils literal notranslate"><span class="pre">rewarded</span></code>, <code class="docutils literal notranslate"><span class="pre">terminated</span></code>, <code class="docutils literal notranslate"><span class="pre">ended</span></code> (source actions ran
+out) or <code class="docutils literal notranslate"><span class="pre">truncated</span></code>.</p>
+</section>
+<section id="how-replay-sets-up-a-trial">
+<h3>How replay sets up a trial<a class="headerlink" href="#how-replay-sets-up-a-trial" title="Link to this heading">#</a></h3>
+<p>Unity is reset to the session-start parameters before every trial. On top the replay sends, in
+order:</p>
+<ol class="arabic simple">
+<li><p><strong>The parameter changes recorded up to the trial</strong> (<code class="docutils literal notranslate"><span class="pre">SessionData.runtime_params</span></code>):
+rules-scheduler changes of this or earlier episodes, GUI changes made before the spawn;
+<code class="docutils literal notranslate"><span class="pre">.start</span></code> / <code class="docutils literal notranslate"><span class="pre">.enabled</span></code> keys excluded.</p></li>
+<li><p><strong>The trial’s spawn</strong> at the recorded puck and goal positions (every puck’s with
+<code class="docutils literal notranslate"><span class="pre">puck_positions</span></code> on builds that support it).</p></li>
+<li><p><strong>The puck setup Unity applied</strong> (<code class="docutils literal notranslate"><span class="pre">hockey_replay.puck_setup</span></code>): <code class="docutils literal notranslate"><span class="pre">n_move_objects</span></code>, gains, cue
+patterns, roles, band. Puck scale is not reported, so Task C’s size cue is only reproduced
+through 1.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">kv_overrides</span></code></strong>, if any (what-if replays).</p></li>
+</ol>
+<p>A replay that starts after the first non-ITI step (<code class="docutils literal notranslate"><span class="pre">&quot;initiation_end&quot;</span></code>) is set up at the first
+non-ITI step and pre-rolled through the recorded actions, so Unity reaches the spawn the way the
+session did.</p>
+<p>Puck contacts amplify any difference, so matching the recording needs everything up to the
+first contact to be identical:</p>
+<ul class="simple">
+<li><p><em>Spawn positions</em>: <code class="docutils literal notranslate"><span class="pre">hockey.spawn_positions</span></code> carries each puck’s requested position (the
+reported transform is a float ulp off it; older recordings fall back to the first
+<code class="docutils literal notranslate"><span class="pre">object_position</span></code>, which is reported after a physics step and with three decimals). An
+episode can hold a spawn at the default settings before the trial’s own; pucks, goal and
+puck setup are all taken from the last spawn.</p></li>
+<li><p><em>Spawn timing</em>: live, the spawn runs in <code class="docutils literal notranslate"><span class="pre">Update()</span></code> on frame timers. Replay sets
+<code class="docutils literal notranslate"><span class="pre">HockeyManager.external_running_start=1</span></code> and sends <code class="docutils literal notranslate"><span class="pre">HockeyManager.begin_running=1</span></code> in the
+step of the recorded spawn, where a live spawn lands too.</p></li>
+<li><p><em>Agent timeline</em>: the agent is placed at the pose one step before the replay start
+(<code class="docutils literal notranslate"><span class="pre">pre_start_observation</span></code> for index 0) and the first recorded action is replayed.</p></li>
+</ul>
+<p>Not covered: a session’s first trial (no pose before it; the session may start with an extra
+default spawn), and recordings from another platform. The Python rules scheduler is unseeded,
+but its drawn values are replayed from the telemetry.</p>
+</section>
+<section id="writing-a-wrapper">
+<h3>Writing a wrapper<a class="headerlink" href="#writing-a-wrapper" title="Link to this heading">#</a></h3>
+<p>Subclass <code class="docutils literal notranslate"><span class="pre">BaseGymUnityWrapper</span></code> (or <code class="docutils literal notranslate"><span class="pre">DlcAgentWrapper</span></code> for a DLCInput task) and implement
+<code class="docutils literal notranslate"><span class="pre">_setup_action_space</span></code>, <code class="docutils literal notranslate"><span class="pre">_setup_observation_space</span></code>, <code class="docutils literal notranslate"><span class="pre">_transform_action</span></code> (RL action → Unity
+action) and <code class="docutils literal notranslate"><span class="pre">_extract_observation</span></code>; optionally <code class="docutils literal notranslate"><span class="pre">_get_init_action</span></code> (sent on reset) and
+<code class="docutils literal notranslate"><span class="pre">_get_info</span></code>. Set attributes the spaces depend on before calling <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code>, which
+builds the spaces. Read this step’s KV messages from <code class="docutils literal notranslate"><span class="pre">self.task.kv_messages_current</span></code>.</p>
+<p>A replay wrapper for a DLCInput task is <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">MyReplayWrapper(ReplayMixin,</span> <span class="pre">MyWrapper)</span></code>
+implementing <code class="docutils literal notranslate"><span class="pre">_trial_conditions(trial,</span> <span class="pre">start_mode)</span></code> (the task’s conditions, parsed from the
+trial’s KV messages) and <code class="docutils literal notranslate"><span class="pre">_trial_kv_updates(conditions,</span> <span class="pre">include_start=...)</span></code> (the KV messages
+that put Unity into them).</p>
+</section>
+<section id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tests/rl/</span></code> runs without Unity: wrappers take an already built <code class="docutils literal notranslate"><span class="pre">task</span></code> (a <code class="docutils literal notranslate"><span class="pre">MockTask</span></code>) instead of
+starting one.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>--extra<span class="w"> </span>dev<span class="w"> </span>--extra<span class="w"> </span>rl<span class="w"> </span>pytest<span class="w"> </span>tests/rl/
+</pre></div>
+</div>
+<p>The Unity-backed replay tests (<code class="docutils literal notranslate"><span class="pre">tests/rl/test_hockey_replay_integration.py</span></code>) run when
+<code class="docutils literal notranslate"><span class="pre">SCENE_UNITY_ENV_PATH</span></code> points to a build; see the repository README. The test that compares a
+session file with its DataJoint copy also needs the database connection described under
+<a class="reference internal" href="#recorded-sessions"><span class="xref myst">Recorded sessions</span></a>.</p>
+</section>
 </section>
 </section>
 
@@ -995,38 +1150,35 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-start">Quick Start</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-factory-functions">Using Factory Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-with-stable-baselines3">Training with Stable-Baselines3</a></li>
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-player">Unity player</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recorded-sessions">Recorded sessions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper-reference">Wrapper Reference</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#touchdestroywrapper">TouchDestroyWrapper</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hockeywrapper">HockeyWrapper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-rl-agents">1. Training RL agents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-the-example-script">With the example script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-your-own-code">In your own code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-reward-and-info">Observations, reward and info</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basegymunitywrapper-api">BaseGymUnityWrapper API</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-methods-must-implement">Abstract Methods (Must Implement)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-methods-can-override">Optional Methods (Can Override)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#provided-methods-use-as-is">Provided Methods (Use As-Is)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-unity-data">Accessing Unity Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#replaying-recorded-sessions">2. Replaying recorded sessions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watch-a-trial-or-save-a-video">Watch a trial or save a video</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-through-a-replay-yourself">Step through a replay yourself</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-sessions-directly">Loading sessions directly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-exact-is-a-replay">How exact is a replay?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unity-config-requirements">Unity Config Requirements</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-wrapper-config">Python Wrapper Config</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-replays">3. What-if replays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#many-environments-in-parallel">Many environments in parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-replay-sets-up-a-trial">How replay sets up a trial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-a-wrapper">Writing a wrapper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#headless-training">Headless Training</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorized-environments">Vectorized Environments</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
 </ul>
   </nav></div>
 
@@ -1079,8 +1231,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

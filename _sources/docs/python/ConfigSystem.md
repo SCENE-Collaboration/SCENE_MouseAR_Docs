@@ -78,7 +78,7 @@ use_perf_counter = true
 
 [unity.env.general]
 enable_reporting = 1
-reporting_period = 1
+reporting_period_steps = 1
 randomize_iti_length = true
 rotate_bottom_screen = true
 
@@ -166,7 +166,7 @@ use = ["ramp_distance_middlesteps"]
 ```toml
 [profile.RL.unity.env.general]
 enable_reporting = 1
-reporting_period = 0
+reporting_period_steps = 1
 episode_length = 40
 iti_length = 0
 randomize_iti_length = false
@@ -230,7 +230,7 @@ The Rules Scheduler is a small rule engine used by `UnityMultibehaviorTask` to m
 - `env_kv` for Unity KV-channel values (stored as strings)
 - `env_params` for Unity environment parameter values (stored as floats)
 
-Current integration detail: the scheduler can produce both KV and env changes, but `UnityMultibehaviorTask` currently only pushes KV changes back to Unity and only logs KV changes to `runtime_params`.
+Current integration detail: the scheduler can produce both KV and env changes, but `UnityMultibehaviorTask` currently only pushes KV changes back to Unity and only logs KV changes to `runtime_params`. It logs two separate streams there — see [What the task layer currently applies](#what-the-task-layer-currently-applies).
 
 ### Concept
 
@@ -275,7 +275,7 @@ By the time `LiveParamScheduler` is constructed, it receives the already-selecte
 | `min` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Lower clamp for numeric results. |
 | `max` | `float` | Optional for arithmetic ops; required for `rand`/`random_choice` | Upper clamp for numeric results. |
 | `window` | `int` | — | Parsed and stored, but not currently used by rule evaluation. |
-| `scenarios` | `list` | Required for `scenario_choice` | List of scenarios; each scenario is a list of param specs applied together. See [Scenario rules](#scenario-rules-scenario_choice). |
+| `scenarios` | `list` | Required for `scenario_choice` | List of scenarios; each scenario is a list of param specs applied together, optionally with a `weight`. See [Scenario rules](#scenario-rules-scenario_choice). |
 
 Notes:
 
@@ -318,7 +318,43 @@ Examples:
 
 The ops described so far each touch a single `target`. `scenario_choice` exists for the case where several parameters must change **together** to stay coherent — for example moving a goal and resizing the arena at the same time, where applying only one of the two would leave the environment in an invalid state.
 
-A `scenario_choice` rule does not use the top-level `target`/`value`/`min`/`max` fields. Instead it carries a list of **scenarios**, and each scenario is a list of **param specs**. On each trigger the scheduler picks one scenario uniformly at random (`random.choice`) and applies *all* of its param specs in order.
+A `scenario_choice` rule does not use the top-level `target`/`value`/`min`/`max` fields. Instead it carries a list of **scenarios**, and each scenario is a list of **param specs**. On each trigger the scheduler picks one scenario and applies *all* of its param specs in order.
+
+Selection is uniform (`random.choice`) unless scenarios carry a **`weight`**, in which case it is a weighted draw (`random.choices`). Weights are relative, must be `> 0`, and default to `1.0` — a rule where every weight is `1.0` is stored with no weights at all and keeps selecting through `random.choice`, so existing configs are bit-for-bit unaffected.
+
+Weights are what make low-rate conditions expressible. The goal-free hockey `size_gain_map_a` rule uses them for probe trials, where the size→pushability mapping is deliberately broken on ~10% of trials:
+
+```toml
+[[rules_lib.size_gain_map_a.scenarios]]
+label  = "congruent_small_low"
+weight = 0.45
+[[rules_lib.size_gain_map_a.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+[[rules_lib.size_gain_map_a.scenarios.params]]
+target = "unity.kv.hockeyFloor.push_gain"
+value  = 3.0
+
+[[rules_lib.size_gain_map_a.scenarios]]
+label  = "probe_small_high"
+weight = 0.05          # probe: small -> HIGH gain (mapping broken)
+# ...
+```
+
+Expressing the pairing as one scenario is the point: the cue and the gain it predicts are written together, so no draw can ever pair them wrongly. Keeping the randomisation in Python also means every draw is recorded in `runtime_params` under `source = "scheduler_draw"` — including a draw that changed nothing.
+
+A scenario may also carry a **`label`**, which names the condition it represents:
+
+```toml
+[[rules_lib.size_gain_map_a.scenarios]]
+label  = "probe_small_high"
+weight = 0.05
+[[rules_lib.size_gain_map_a.scenarios.params]]
+target = "unity.kv.hockeyFloor.move_object_scale"
+value  = 1.21
+```
+
+A label is pure metadata: it is never written to a target, never sent to Unity, and appears only in the draw log. That is deliberate — a condition label describes a choice Python made, so shipping it to the rig and echoing it back would buy nothing that `source = "scheduler_draw"` does not already give, and would leave Unity holding a field it never acts on.
 
 Each param spec is a self-contained mini-rule with its own namespaced `target` and `op`:
 
@@ -375,7 +411,7 @@ Key points:
 - `_apply_rule()` mutates the scheduler's internal parameter dictionaries immediately.
 - `get_changes()` returns the pending delta as `{"kv": {...}, "env": {...}}` and then clears the pending buffers.
 - If multiple triggers happen before `get_changes()` is called, the pending buffer keeps the latest value per key.
-- No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound.
+- No pending entry is produced when a rule leaves the target unchanged, for example when a clamped value is already at its bound. That is why `get_draws()` exists alongside `get_changes()`: what is *sent* stays delta-filtered, but what is *logged* records every firing, including one that rewrote the value it already held.
 - Per-rule cadence is tracked through an internal tick counter; `window` does not currently participate in scheduling.
 
 ### What the task layer currently applies
@@ -386,6 +422,17 @@ Key points:
 - Appends one `runtime_params` entry with `source = "scheduler"` and `kv.<key>` fields
 - Does not send `env` changes to Unity because the `set_float_parameter(...)` branch is still disabled
 - Does not log env changes to `runtime_params`
+
+`_record_scheduler_draws()` then drains `get_draws()` and appends a **second** kind of entry, with `source = "scheduler_draw"`:
+
+| Field | Meaning |
+|---|---|
+| `rule` | Name of the rule that fired |
+| `scenario_index` | Which scenario was drawn (`scenario_choice` only) |
+| `label` | The scenario's `label`, when it has one |
+| `draw.<target>` | Every target the firing wrote, and the value it wrote |
+
+The two streams answer different questions and are filtered apart by `source`. The delta stream tells you what Unity was told; the draw stream tells you what the scheduler chose. They differ precisely when a rule redraws the value already in effect — which for a per-trial condition rule is common, and is exactly the trial you would otherwise lose.
 
 That means env-targeted rules are valid inside `LiveParamScheduler` and appear in `get_changes()["env"]`, but they do not yet affect the running Unity task through the current task integration.
 

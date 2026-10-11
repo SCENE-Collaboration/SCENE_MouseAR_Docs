@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Unity/VisualFeedback';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Mouse Visual Observations" href="MouseVision.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback">Visual Feedback</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
@@ -478,26 +529,26 @@
 <li><p>Configurable opacity and duration</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Color &amp; Opacity&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Color &amp; Opacity")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="n">overlayColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="n">green</span><span class="p">;</span>
 <span class="na">[Range(0f,1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Displays&quot;)]</span>
+<span class="na">[Header("Displays")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">targetDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoActivateDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Region&quot;)]</span>
+<span class="na">[Header("Region")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">RegionMode</span><span class="w"> </span><span class="n">regionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegionMode</span><span class="p">.</span><span class="n">Fullscreen</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="n">regionNormalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="k">public</span><span class="w"> </span><span class="n">RectInt</span><span class="w"> </span><span class="n">regionPixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RectInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">);</span>
 
-<span class="na">[Header(&quot;Default Duration&quot;)]</span>
+<span class="na">[Header("Default Duration")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">defaultDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
 </pre></div>
 </div>
 <p><strong>Integration with Episode Managers:</strong></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// EpisodeManagerSingleWall</span>
-<span class="na">[Header(&quot;Reward Flash on Success&quot;)]</span>
+<span class="na">[Header("Reward Flash on Success")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayRewardFlash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">rewardDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
 
@@ -521,16 +572,16 @@
 <li><p>Configurable FPS and opacity</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Material &amp; Look&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Material &amp; Look")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">noiseMaterial</span><span class="p">;</span><span class="w">  </span><span class="c1">// Assign FullscreenNoise shader material</span>
 <span class="na">[Range(0f,1f)]</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">opacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1f</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseFps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60f</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Displays&quot;)]</span>
+<span class="na">[Header("Displays")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="n">targetDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoActivateDisplays</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Region&quot;)]</span>
+<span class="na">[Header("Region")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">RegionMode</span><span class="w"> </span><span class="n">regionMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegionMode</span><span class="p">.</span><span class="n">Fullscreen</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Rect</span><span class="w"> </span><span class="n">regionNormalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="k">public</span><span class="w"> </span><span class="n">RectInt</span><span class="w"> </span><span class="n">regionPixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RectInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span><span class="w"> </span><span class="mi">1080</span><span class="p">);</span>
@@ -538,7 +589,7 @@
 </div>
 <p><strong>Integration:</strong></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// EpisodeManagerSingleWall</span>
-<span class="na">[Header(&quot;Noise Overlay&quot;)]</span>
+<span class="na">[Header("Noise Overlay")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">displayNoiseOverlay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">noiseDisplayDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2f</span><span class="p">;</span>
 
@@ -573,15 +624,15 @@
 <li><p><strong>Inactive:</strong> Hidden, no collision (disabled renderers)</p></li>
 </ul>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Materials / Visuals&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Materials / Visuals")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">matSawDust</span><span class="p">;</span><span class="w">     </span><span class="c1">// Static appearance</span>
 <span class="k">public</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">matChecked</span><span class="p">;</span><span class="w">     </span><span class="c1">// Active appearance</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">disableRenderersWhenInactive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;Interaction&quot;)]</span>
+<span class="na">[Header("Interaction")]</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">dwellSeconds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span><span class="w">  </span><span class="c1">// Required dwell time</span>
 
-<span class="na">[Header(&quot;Events&quot;)]</span>
+<span class="na">[Header("Events")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">UnityEvent</span><span class="w"> </span><span class="n">OnCompleted</span><span class="p">;</span><span class="w">  </span><span class="c1">// Fired when player completes dwell</span>
 </pre></div>
 </div>
@@ -650,15 +701,15 @@
 <li><p>Manage ITI flag for observations</p></li>
 </ol>
 <p><strong>Configuration:</strong></p>
-<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header(&quot;Listen to these managers&quot;)]</span>
+<div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="na">[Header("Listen to these managers")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EpisodeManagerSingleWall</span><span class="o">&gt;</span><span class="w"> </span><span class="n">wallManagers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 <span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">SequenceTargetManager</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sequenceManagers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 
-<span class="na">[Header(&quot;Notify these agents&quot;)]</span>
+<span class="na">[Header("Notify these agents")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TTLReceiverAgent</span><span class="o">&gt;</span><span class="w"> </span><span class="n">agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 <span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">autoFindAgentIfEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 
-<span class="na">[Header(&quot;ITI flag for observations&quot;)]</span>
+<span class="na">[Header("ITI flag for observations")]</span>
 <span class="k">public</span><span class="w"> </span><span class="n">ITIFlag</span><span class="w"> </span><span class="n">itiFlag</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -898,7 +949,7 @@
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-feedback">Visual Feedback</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coloroverlay">ColorOverlay</a></li>
@@ -979,8 +1030,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

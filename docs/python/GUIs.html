@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -61,6 +61,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/python/GUIs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Data Transfer GUI (dj_pipeline/gui_transfer)" href="DataTransferGUI.html" />
@@ -68,20 +69,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -107,7 +114,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -418,7 +469,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui">UnityTaskGUI</a><ul class="nav section-nav flex-column">
@@ -620,31 +671,31 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
 │ 1. SETUP                                                    │
 │    • Enter mouse name and weight (optional)                 │
-│    • Select serial port for Teensy (or &quot;dummy&quot;)             │
+│    • Select serial port for Teensy (or "dummy")             │
 │    • Browse to *.game.toml config file                      │
-│    • Click &quot;Load Config&quot;                                    │
+│    • Click "Load Config"                                    │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ 2. CONFIGURE (Optional)                                     │
-│    • Select a profile (e.g., &quot;Training&quot;, &quot;RL&quot;)              │
+│    • Select a profile (e.g., "Training", "RL")              │
 │    • Edit parameters in the Parameters tab                  │
 │    • Inspect config sections (game, teensy, dlc, etc.)      │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ 3. RUN                                                      │
-│    • Click &quot;Start&quot; to begin experiment                      │
+│    • Click "Start" to begin experiment                      │
 │    • Monitor live statistics on Config &amp; Status tab         │
 │    • Adjust parameters during run (Parameters tab)          │
-│    • Click &quot;Send params (diff-only)&quot; to apply changes       │
+│    • Click "Send params (diff-only)" to apply changes       │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. STOP &amp; SAVE                                              │
-│    • Click &quot;Stop&quot; when complete                             │
+│    • Click "Stop" when complete                             │
 │    • Data automatically saved as JSON                       │
-│    • Click &quot;Reset&quot; to start new session                     │
+│    • Click "Reset" to start new session                     │
 └─────────────────────────────────────────────────────────────┘
 </pre></div>
 </div>
@@ -829,7 +880,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <p>Profiles allow multiple parameter sets in one config file:</p>
 <p><strong>Example <code class="docutils literal notranslate"><span class="pre">hockey.game.toml</span></code>:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[meta]</span>
-<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hockey Task&quot;</span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Hockey Task"</span>
 
 <span class="c1"># Default profile</span>
 <span class="k">[game]</span>
@@ -838,7 +889,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 
 <span class="c1"># Training profile (easy)</span>
 <span class="k">[profile.Training]</span>
-<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Easy settings for initial training&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Easy settings for initial training"</span>
 
 <span class="k">[profile.Training.game]</span>
 <span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.3</span>
@@ -846,7 +897,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 
 <span class="c1"># RL profile (fast)</span>
 <span class="k">[profile.RL]</span>
-<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Fast execution for reinforcement learning&quot;</span>
+<span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Fast execution for reinforcement learning"</span>
 
 <span class="k">[profile.RL.game]</span>
 <span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.7</span>
@@ -883,17 +934,17 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_
 <p>The GUI supports runtime parameter modification via Unity ML-Agents’ <code class="docutils literal notranslate"><span class="pre">EnvironmentParametersChannel</span></code> and <code class="docutils literal notranslate"><span class="pre">KvChannel</span></code>:</p>
 <p><strong>Process:</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span># 1. User edits parameter in GUI
-difficulty: &quot;0.5&quot; → &quot;0.8&quot;  # Field turns red
+difficulty: "0.5" → "0.8"  # Field turns red
 
-# 2. User clicks &quot;Send params (diff-only)&quot;
-# GUI calls: worker.enqueue_set_param(&quot;difficulty&quot;, &quot;0.8&quot;)
+# 2. User clicks "Send params (diff-only)"
+# GUI calls: worker.enqueue_set_param("difficulty", "0.8")
 
 # 3. Worker thread sends to Unity
-task.set_runtime_param(&quot;difficulty&quot;, &quot;0.8&quot;)
+task.set_runtime_param("difficulty", "0.8")
 
 # 4. Unity C# receives update
 float newDifficulty = float.Parse(
-    Academy.Instance.EnvironmentParameters.GetWithDefault(&quot;difficulty&quot;, 0.5f)
+    Academy.Instance.EnvironmentParameters.GetWithDefault("difficulty", 0.5f)
 );
 </pre></div>
 </div>
@@ -919,12 +970,12 @@ float newDifficulty = float.Parse(
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># From UnityWorker.run():</span>
 <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="s2">&quot;epoch&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s2">&quot;episode&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-    <span class="s2">&quot;step&quot;</span><span class="p">:</span> <span class="mi">145</span><span class="p">,</span>
-    <span class="s2">&quot;last_reward&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
-    <span class="s2">&quot;total_rewards&quot;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
-    <span class="s2">&quot;behavior_info&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
+    <span class="s2">"epoch"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"episode"</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="s2">"step"</span><span class="p">:</span> <span class="mi">145</span><span class="p">,</span>
+    <span class="s2">"last_reward"</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">"total_rewards"</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+    <span class="s2">"behavior_info"</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -959,27 +1010,27 @@ UnityData_MusterMaus_20250930_101812.json
 </div>
 <p><strong>Saved Data Structure:</strong></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
-  &quot;params&quot;: {
-    &quot;subject_id&quot;: &quot;MusterMaus&quot;,
-    &quot;mouse_weight_g&quot;: 25.5,
-    &quot;env_path&quot;: &quot;Build/Hockey.exe&quot;,
-    &quot;config_file&quot;: &quot;/path/to/hockey.game.toml&quot;,
-    &quot;profile&quot;: &quot;Training&quot;,
+  "params": {
+    "subject_id": "MusterMaus",
+    "mouse_weight_g": 25.5,
+    "env_path": "Build/Hockey.exe",
+    "config_file": "/path/to/hockey.game.toml",
+    "profile": "Training",
     ...
   },
 
-  &quot;episode&quot;: [0, 0, 0, 1, 1, ...],
-  &quot;step&quot;: [0, 1, 2, 0, 1, ...],
-  &quot;step_time&quot;: [0.0, 0.016, 0.032, ...],
+  "episode": [0, 0, 0, 1, 1, ...],
+  "step": [0, 1, 2, 0, 1, ...],
+  "step_time": [0.0, 0.016, 0.032, ...],
 
-  &quot;state&quot;: [{...}, {...}, ...],
-  &quot;action&quot;: [{...}, {...}, ...],
-  &quot;reward&quot;: [0.0, 0.0, 1.0, ...],
+  "state": [{...}, {...}, ...],
+  "action": [{...}, {...}, ...],
+  "reward": [0.0, 0.0, 1.0, ...],
 
-  &quot;dlc_x&quot;: [0.5, 0.51, ...],
-  &quot;teensy_input_analog&quot;: [512, 515, ...],
-  &quot;runtime_params&quot;: [...],
-  &quot;kv_messages&quot;: [...]
+  "dlc_x": [0.5, 0.51, ...],
+  "teensy_input_analog": [512, 515, ...],
+  "runtime_params": [...],
+  "kv_messages": [...]
 }
 </pre></div>
 </div>
@@ -999,10 +1050,10 @@ UnityData_MusterMaus_20250930_101812.json
 </ol>
 <p><strong>Solution:</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate TOML syntax</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import tomli; tomli.load(open(&#39;path/to/config.toml&#39;, &#39;rb&#39;))&quot;</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import tomli; tomli.load(open('path/to/config.toml', 'rb'))"</span>
 
 <span class="c1"># Check required sections</span>
-grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;^\[game\]|\[unity\]&#39;</span><span class="w"> </span>path/to/config.toml
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'^\[game\]|\[unity\]'</span><span class="w"> </span>path/to/config.toml
 </pre></div>
 </div>
 </section>
@@ -1042,15 +1093,15 @@ lsof<span class="w"> </span>-i<span class="w"> </span>:5004<span class="w">  </s
 <p><strong>Solution:</strong></p>
 <p><strong>Python side:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify parameter sent</span>
-<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">&quot;difficulty&quot;</span><span class="p">,</span> <span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+<span class="n">task</span><span class="o">.</span><span class="n">set_runtime_param</span><span class="p">(</span><span class="s2">"difficulty"</span><span class="p">,</span> <span class="s2">"0.8"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">runtime_params</span><span class="p">)</span>  <span class="c1"># Should show update</span>
 </pre></div>
 </div>
 <p><strong>Unity C# side:</strong></p>
 <div class="highlight-csharp notranslate"><div class="highlight"><pre><span></span><span class="c1">// In Agent.OnEpisodeBegin():</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">difficulty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Academy</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">EnvironmentParameters</span>
-<span class="w">    </span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">&quot;difficulty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">);</span>
-<span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$&quot;Received difficulty: {difficulty}&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">.</span><span class="n">GetWithDefault</span><span class="p">(</span><span class="s">"difficulty"</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">);</span>
+<span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="s">$"Received difficulty: {difficulty}"</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
@@ -1092,12 +1143,12 @@ pip<span class="w"> </span>install<span class="w"> </span>pyserial
 python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.unity_task_gui
 
 <span class="c1"># Test Unity build separately</span>
-python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
 <span class="s2">from mouse_ar.tasks.unity_multibehavior_task import UnityMultibehaviorTask</span>
-<span class="s2">task = UnityMultibehaviorTask(env=&#39;Build/Hockey.x86_64&#39;)</span>
+<span class="s2">task = UnityMultibehaviorTask(env='Build/Hockey.x86_64')</span>
 <span class="s2">task.start()  # Should complete in &lt;5s</span>
 <span class="s2">task.stop()</span>
-<span class="s2">&quot;</span>
+<span class="s2">"</span>
 
 <span class="c1"># Test Teensy separately</span>
 python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_control_gui
@@ -1166,13 +1217,13 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_cont
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────────┐
 │ 1. SETUP                                                    │
 │    • Load teensy.hw.toml config file                        │
-│    • Select serial port (or &quot;dummy&quot; for testing)            │
-│    • Click &quot;Connect&quot;                                        │
+│    • Select serial port (or "dummy" for testing)            │
+│    • Click "Connect"                                        │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ 2. TEST (Optional)                                          │
-│    • Click &quot;Start Reading&quot; to monitor sensors               │
+│    • Click "Start Reading" to monitor sensors               │
 │    • Check TTL signal display                               │
 │    • Test water pulse with manual duration                  │
 └─────────────────────────────────────────────────────────────┘
@@ -1181,17 +1232,17 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_cont
 │ 3. CALIBRATE                                                │
 │    • Switch to WaterPort tab                                │
 │    • Add calibration points (opening times)                 │
-│    • Click &quot;Run All&quot; to start calibration                   │
+│    • Click "Run All" to start calibration                   │
 │    • For each step:                                         │
 │      - Water pulse delivered                                │
 │      - Weigh collected water                                │
 │      - Enter weight (mg) in table                           │
-│      - Click &quot;Next Step&quot;                                    │
+│      - Click "Next Step"                                    │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
 │ 4. SAVE                                                     │
-│    • Click &quot;Finish &amp; Save JSON&quot;                             │
+│    • Click "Finish &amp; Save JSON"                             │
 │    • Review regression R² value                             │
 │    • Use predicted opening time for desired water volume    │
 └─────────────────────────────────────────────────────────────┘
@@ -1221,19 +1272,19 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_cont
 </div>
 <p><strong>Example <code class="docutils literal notranslate"><span class="pre">teensy.hw.toml</span></code>:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[teensy]</span>
-<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="w">  </span><span class="c1"># Auto-selected in GUI</span>
+<span class="n">serial_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/dev/ttyACM0"</span><span class="w">  </span><span class="c1"># Auto-selected in GUI</span>
 <span class="n">baudrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">115200</span>
 <span class="n">csv_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="c1"># Number of comma-separated values</span>
 
-<span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;analog_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;analog_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;digital_0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ttl_in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sync&quot;</span><span class="p">]</span>
+<span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"analog_0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"analog_1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"digital_0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ttl_in"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sync"</span><span class="p">]</span>
 
 <span class="k">[teensy.outputs]</span>
-<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">}</span>
-<span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;Z&quot;</span><span class="p">}</span>
-<span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;W&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dur_ms&quot;</span><span class="p">]}</span>
-<span class="n">TTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;S&quot;</span><span class="p">}</span>
-<span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;X&quot;</span><span class="p">}</span>
-<span class="n">drain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;D&quot;</span><span class="p">}</span>
+<span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"A"</span><span class="p">}</span>
+<span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"Z"</span><span class="p">}</span>
+<span class="n">water</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"W"</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"dur_ms"</span><span class="p">]}</span>
+<span class="n">TTL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"S"</span><span class="p">}</span>
+<span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"X"</span><span class="p">}</span>
+<span class="n">drain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">command</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"D"</span><span class="p">}</span>
 </pre></div>
 </div>
 <p><strong>Serial Port Selection:</strong></p>
@@ -1408,7 +1459,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_cont
 <p><strong>Step-by-Step:</strong></p>
 <section id="prepare-calibration-points">
 <h4><strong>1. Prepare Calibration Points</strong><a class="headerlink" href="#prepare-calibration-points" title="Link to this heading">#</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Click &quot;Add row&quot; multiple times to create test points:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Click "Add row" multiple times to create test points:
 ┌──────────────┬────────────────┐
 │ Opening (ms) │ Weight (mg)    │
 ├──────────────┼────────────────┤
@@ -1446,7 +1497,7 @@ python<span class="w"> </span>-m<span class="w"> </span>mouse_ar.gui.teensy_cont
    │ 50           │ 12.3          │  ← Enter here
    │ 100          │               │
    └──────────────┴────────────────┘
-4. Click &quot;Next Step&quot;
+4. Click "Next Step"
 5. Repeat for next point
 </pre></div>
 </div>
@@ -1480,22 +1531,22 @@ R² = quality metric (0.0-1.0)
 <hr class="docutils" />
 <p><strong>Example Calibration Output:</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1696089123.456</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;points&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0123</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0254</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0381</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0508</span><span class="p">},</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">&quot;open_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;weight_g&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0635</span><span class="p">}</span>
+<span class="w">  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1696089123.456</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"points"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"open_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="nt">"weight_g"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0123</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"open_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nt">"weight_g"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0254</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"open_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="nt">"weight_g"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0381</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"open_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nt">"weight_g"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0508</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"open_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w"> </span><span class="nt">"weight_g"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0635</span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;regression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;slope&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000254</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;intercept&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00005</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;r_squared&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9987</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;n_points&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="nt">"regression"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"slope"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000254</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"intercept"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00005</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"r_squared"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9987</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"n_points"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
 <span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;desired_mg&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;predicted_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span>
+<span class="w">  </span><span class="nt">"desired_mg"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"predicted_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -1543,7 +1594,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <span class="c1"># Connect to Teensy</span>
 screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m">115200</span>
 
-<span class="c1"># Type &#39;A&#39; to start, should see CSV output:</span>
+<span class="c1"># Type 'A' to start, should see CSV output:</span>
 <span class="m">512</span>,513,0,1,12345
 <span class="m">513</span>,514,0,1,12346
 ...
@@ -1553,7 +1604,7 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 </div>
 <p><strong>Adjust CSV field count:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">If</span> <span class="n">you</span> <span class="n">see</span> <span class="mi">6</span> <span class="n">values</span> <span class="n">but</span> <span class="n">GUI</span> <span class="n">expects</span> <span class="mi">5</span><span class="p">:</span>
-<span class="o">-</span> <span class="n">Increase</span> <span class="s2">&quot;CSV fields&quot;</span> <span class="n">spinbox</span> <span class="n">to</span> <span class="mi">6</span>
+<span class="o">-</span> <span class="n">Increase</span> <span class="s2">"CSV fields"</span> <span class="n">spinbox</span> <span class="n">to</span> <span class="mi">6</span>
 <span class="o">-</span> <span class="n">Disconnect</span> <span class="ow">and</span> <span class="n">reconnect</span>
 </pre></div>
 </div>
@@ -1608,7 +1659,7 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 <p><strong>Test valve directly:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mouse_ar.ctrl.teensy_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">Teensy</span>
 
-<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">&quot;/dev/ttyACM0&quot;</span><span class="p">)</span>
+<span class="n">teensy</span> <span class="o">=</span> <span class="n">Teensy</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="s2">"/dev/ttyACM0"</span><span class="p">)</span>
 <span class="n">teensy</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 <span class="n">teensy</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="n">teensy</span><span class="o">.</span><span class="n">give_reward</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># Should hear click and see water</span>
@@ -1693,9 +1744,9 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 <p><strong>Set explicit path in code:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In unity_task_gui.py, line ~450:</span>
 <span class="n">path</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">QFileDialog</span><span class="o">.</span><span class="n">getOpenFileName</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Select *.game.toml&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;/absolute/path/to/mice_ar_tasks/mouse_ar/tasks/configs&quot;</span><span class="p">,</span>  <span class="c1"># Absolute path</span>
-    <span class="s2">&quot;Game TOML (*.game.toml)&quot;</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="s2">"Select *.game.toml"</span><span class="p">,</span>
+    <span class="s2">"/absolute/path/to/mice_ar_tasks/mouse_ar/tasks/configs"</span><span class="p">,</span>  <span class="c1"># Absolute path</span>
+    <span class="s2">"Game TOML (*.game.toml)"</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -1743,7 +1794,7 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 <p><strong>Add custom control to UnityTaskGUI:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In _build_config_tab():</span>
 <span class="n">custom_row</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Custom Action&quot;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">"Custom Action"</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_custom_action</span><span class="p">)</span>
 <span class="n">custom_row</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_button</span><span class="p">)</span>
 <span class="n">lay</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">custom_row</span><span class="p">)</span>
@@ -1760,7 +1811,7 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 
 <span class="k">def</span><span class="w"> </span><span class="nf">_build_tab_custom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">w</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">&quot;Custom&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tabs</span><span class="o">.</span><span class="n">addTab</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s2">"Custom"</span><span class="p">)</span>
     <span class="n">lay</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
     <span class="c1"># Add custom widgets...</span>
 </pre></div>
@@ -1778,11 +1829,11 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
 <span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
 
 <span class="c1"># Auto-load config</span>
-<span class="n">window</span><span class="o">.</span><span class="n">config_path_edit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;/path/to/hockey.game.toml&quot;</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">config_path_edit</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">"/path/to/hockey.game.toml"</span><span class="p">)</span>
 <span class="n">window</span><span class="o">.</span><span class="n">on_load_config</span><span class="p">()</span>
 
 <span class="c1"># Auto-select profile</span>
-<span class="n">window</span><span class="o">.</span><span class="n">profile_combo</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s2">&quot;Training&quot;</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">profile_combo</span><span class="o">.</span><span class="n">setCurrentText</span><span class="p">(</span><span class="s2">"Training"</span><span class="p">)</span>
 
 <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
@@ -1871,7 +1922,7 @@ screen<span class="w"> </span>/dev/ttyACM0<span class="w"> </span><span class="m
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unitytaskgui">UnityTaskGUI</a><ul class="nav section-nav flex-column">
@@ -1993,8 +2044,8 @@ By M Lab of Adaptive Intelligence
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

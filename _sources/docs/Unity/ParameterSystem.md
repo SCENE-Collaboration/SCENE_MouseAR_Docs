@@ -78,7 +78,7 @@ public class MyScript : MonoBehaviour
 | `general.randomize_iti_length` | float | Randomize ITI ±25% (0/1) | Episode managers |
 | `general.rotate_bottom_screen` | float | Rotate bottom-screen layout (0/1) | RotateBottomScreen |
 | `general.enable_reporting` | float | Enable KV reporting (0/1) | Reporter components |
-| `general.reporting_period` | float | Reporter update interval | Reporter components |
+| `general.reporting_period_steps` | int | Reporter update interval, in FixedUpdate STEPS | Reporter components |
 
 ### Manager-Specific Parameters
 

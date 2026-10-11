@@ -4,7 +4,7 @@
 
 Before running any population script:
 
-1. **Database credentials** — ensure `dj_pipeline/datajoint.json` contains valid credentials (see [Connections](Connections.md))
+1. **Database credentials** — copy `dj_pipeline/datajoint.json.example` to `dj_pipeline/datajoint.json` and fill in your own values (see [Connections](Connections.md)). The real file is gitignored and must stay that way: it was tracked with a live password once already.
 2. **Environment variables** — `RAW_DATA_PATH`, `VIDEO_PATH`, `DLC_DATA_PATH` must point to the correct data directories (see [Connections](Connections.md))
 3. **base_schemas sessions** — `SessionDataset` links datasets to sessions in `base_schemas.exp.Session`. Sessions for the relevant mice and dates must already exist there before `SessionDataset.populate()` will succeed
 4. **DLC models** — for `DlcLiveData.populate()`, at least one `DlcModel` entry must exist. See [Manual Population](#manual-population) below
